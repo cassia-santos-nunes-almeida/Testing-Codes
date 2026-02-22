@@ -1,0 +1,66 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 560 400" preserveAspectRatio="xMidYMid meet" role="img" aria-label="Q2 Variant 2: RC circuit with resistor and capacitor in series with DC source">
+  <title>Q2-V2: RC Circuit — Capacitor Energy &amp; KCL-Charge Conservation</title>
+  <style>
+    text { font-family: 'Segoe UI', Arial, Helvetica, sans-serif; }
+    .title { font-size: 18px; font-weight: bold; fill: #222; }
+    .comp-label { font-size: 16px; font-weight: bold; fill: #0055aa; }
+    .annotation { font-size: 14px; fill: #666; }
+    .polarity { font-size: 14px; fill: #333; }
+    .wire { stroke: #333; stroke-width: 2.5; fill: none; }
+    .component { stroke: #333; stroke-width: 2.5; fill: none; }
+    .ref-dir { stroke: #cc0000; stroke-width: 1.8; fill: none; }
+    .find-text { font-size: 16px; fill: #cc0000; font-weight: bold; }
+    .info-text { font-size: 14px; fill: #0055aa; font-style: italic; }
+  </style>
+  <defs>
+    <marker id="cur-arr2" markerWidth="8" markerHeight="6" refX="8" refY="3" orient="auto">
+      <polygon points="0 0, 8 3, 0 6" fill="#cc0000"/>
+    </marker>
+  </defs>
+
+  <text x="280" y="28" text-anchor="middle" class="title">Q2-V2: RC Circuit — Capacitor Energy &amp; Fields</text>
+
+  <!-- Circuit: Vs - R - C loop -->
+  <!-- Top rail -->
+  <line x1="80" y1="90" x2="230" y2="90" class="wire"/>
+  <!-- R on top -->
+  <rect x="230" y="80" width="100" height="20" class="component" rx="3"/>
+  <text x="280" y="72" text-anchor="middle" class="comp-label">R</text>
+  <line x1="330" y1="90" x2="480" y2="90" class="wire"/>
+
+  <!-- Right side: capacitor (vertical) -->
+  <line x1="480" y1="90" x2="480" y2="175" class="wire"/>
+  <!-- Capacitor plates -->
+  <line x1="460" y1="175" x2="500" y2="175" class="wire" stroke-width="3"/>
+  <line x1="460" y1="195" x2="500" y2="195" class="wire" stroke-width="3"/>
+  <line x1="480" y1="195" x2="480" y2="320" class="wire"/>
+  <text x="515" y="190" class="comp-label">C</text>
+
+  <!-- Bottom rail -->
+  <line x1="80" y1="320" x2="480" y2="320" class="wire"/>
+
+  <!-- Vs on left -->
+  <line x1="80" y1="90" x2="80" y2="160" class="wire"/>
+  <circle cx="80" cy="205" r="28" class="component"/>
+  <text x="72" y="198" class="polarity">+</text>
+  <text x="75" y="222" class="polarity">&minus;</text>
+  <text x="35" y="210" class="comp-label">V_s</text>
+  <line x1="80" y1="233" x2="80" y2="320" class="wire"/>
+
+  <!-- Current direction arrow -->
+  <line x1="170" y1="80" x2="220" y2="80" class="ref-dir" marker-end="url(#cur-arr2)"/>
+  <text x="195" y="72" text-anchor="middle" style="font-size:14px; fill:#cc0000; font-weight:bold;">i(t)</text>
+
+  <!-- Voltage polarity across C -->
+  <text x="525" y="172" class="polarity">+</text>
+  <text x="525" y="205" class="polarity">&minus;</text>
+  <text x="545" y="190" style="font-size:14px; fill:#cc0000; font-weight:bold;">v_C</text>
+
+  <!-- Node label -->
+  <circle cx="480" cy="90" r="4" fill="#cc0000"/>
+  <text x="485" y="72" style="font-size:14px; fill:#cc0000; font-weight:bold;">Node X</text>
+
+  <!-- Info -->
+  <text x="280" y="365" text-anchor="middle" class="info-text">At steady state, v_C = V_s and i = 0.</text>
+  <text x="280" y="390" text-anchor="middle" class="find-text">Analyze capacitor energy and the physical basis of KCL.</text>
+</svg>
