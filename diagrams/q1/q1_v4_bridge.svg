@@ -1,0 +1,71 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 400" font-family="Arial, sans-serif" font-size="14">
+  <defs>
+    <marker id="arr4" markerWidth="10" markerHeight="7" refX="10" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#333"/>
+    </marker>
+  </defs>
+
+  <!-- Title -->
+  <text x="250" y="25" text-anchor="middle" font-size="16" font-weight="bold">Q1-V4: Bridge Circuit</text>
+
+  <!-- Top node -->
+  <circle cx="250" cy="60" r="4" fill="#c00"/>
+  <text x="260" y="50" fill="#c00" font-weight="bold">Node A</text>
+
+  <!-- Bottom node (with Vs) -->
+  <line x1="250" y1="340" x2="250" y2="340" stroke="#333" stroke-width="2"/>
+
+  <!-- Left node -->
+  <circle cx="100" cy="200" r="4" fill="#c00"/>
+  <text x="60" y="200" fill="#c00" font-weight="bold">Node B</text>
+
+  <!-- Right node -->
+  <circle cx="400" cy="200" r="4" fill="#c00"/>
+  <text x="410" y="200" fill="#c00" font-weight="bold">Node C</text>
+
+  <!-- R1: Top to Left (diagonal) -->
+  <line x1="250" y1="60" x2="195" y2="110" stroke="#333" stroke-width="2"/>
+  <rect x="140" y="120" width="50" height="16" fill="none" stroke="#333" stroke-width="2" rx="2" transform="rotate(-45, 165, 128)"/>
+  <line x1="145" y1="150" x2="100" y2="200" stroke="#333" stroke-width="2"/>
+  <text x="130" y="115" fill="#0066cc" font-weight="bold" font-size="13">R₁</text>
+
+  <!-- R2: Top to Right (diagonal) -->
+  <line x1="250" y1="60" x2="305" y2="110" stroke="#333" stroke-width="2"/>
+  <rect x="310" y="120" width="50" height="16" fill="none" stroke="#333" stroke-width="2" rx="2" transform="rotate(45, 335, 128)"/>
+  <line x1="355" y1="150" x2="400" y2="200" stroke="#333" stroke-width="2"/>
+  <text x="345" y="115" fill="#0066cc" font-weight="bold" font-size="13">R₂</text>
+
+  <!-- R3: Left to Bottom (diagonal) -->
+  <line x1="100" y1="200" x2="145" y2="250" stroke="#333" stroke-width="2"/>
+  <rect x="150" y="260" width="50" height="16" fill="none" stroke="#333" stroke-width="2" rx="2" transform="rotate(45, 175, 268)"/>
+  <line x1="195" y1="290" x2="250" y2="340" stroke="#333" stroke-width="2"/>
+  <text x="115" y="285" fill="#0066cc" font-weight="bold" font-size="13">R₃</text>
+
+  <!-- R4: Right to Bottom (diagonal) -->
+  <line x1="400" y1="200" x2="355" y2="250" stroke="#333" stroke-width="2"/>
+  <rect x="300" y="260" width="50" height="16" fill="none" stroke="#333" stroke-width="2" rx="2" transform="rotate(-45, 325, 268)"/>
+  <line x1="305" y1="290" x2="250" y2="340" stroke="#333" stroke-width="2"/>
+  <text x="365" y="285" fill="#0066cc" font-weight="bold" font-size="13">R₄</text>
+
+  <!-- R5: Bridge resistor (Left to Right, horizontal) -->
+  <line x1="100" y1="200" x2="190" y2="200" stroke="#333" stroke-width="2"/>
+  <rect x="190" y="192" width="120" height="16" fill="none" stroke="#333" stroke-width="2" rx="2"/>
+  <line x1="310" y1="200" x2="400" y2="200" stroke="#333" stroke-width="2"/>
+  <text x="250" y="186" text-anchor="middle" fill="#0066cc" font-weight="bold" font-size="13">R₅</text>
+
+  <!-- Vs: voltage source at bottom -->
+  <line x1="250" y1="340" x2="150" y2="340" stroke="#333" stroke-width="2"/>
+  <line x1="150" y1="340" x2="150" y2="370" stroke="#333" stroke-width="2"/>
+  <line x1="150" y1="370" x2="50" y2="370" stroke="#333" stroke-width="2"/>
+  <line x1="50" y1="370" x2="50" y2="60" stroke="#333" stroke-width="2"/>
+  <line x1="50" y1="60" x2="250" y2="60" stroke="#333" stroke-width="2"/>
+
+  <!-- Vs circle on left vertical -->
+  <circle cx="50" cy="215" r="25" fill="none" stroke="#333" stroke-width="2"/>
+  <text x="40" y="208" font-size="12">+</text>
+  <text x="43" y="230" font-size="12">−</text>
+  <text x="15" y="220" fill="#0066cc" font-weight="bold" font-size="13">V_s</text>
+
+  <!-- Find annotation -->
+  <text x="250" y="395" text-anchor="middle" font-size="13" fill="#c00" font-weight="bold">Find: voltage V_BC across R₅ (between Nodes B and C)</text>
+</svg>
