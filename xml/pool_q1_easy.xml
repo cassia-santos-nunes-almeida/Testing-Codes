@@ -15,7 +15,7 @@
 
 <p>Consider the circuit shown below. The circuit contains a voltage source \(V_s = {@Vs@}\;\text{V}\), a current source \(I_s = {@Is@}\;\text{A}\), and three resistors: \(R_1 = {@R1@}\;\text{k}\Omega\), \(R_2 = {@R2@}\;\text{k}\Omega\), and \(R_3 = {@R3@}\;\text{k}\Omega\).</p>
 
-<p>The voltage source \(V_s\) is connected on the left with \(R_1\) (horizontal) leading to Node&nbsp;A. From Node&nbsp;A, \(R_2\) connects vertically down to ground, and \(R_3\) also connects vertically down to ground. The current source \(I_s\) feeds into Node&nbsp;A (arrow pointing into the node).</p>
+<p>The voltage source \(V_s\) is connected on the left side (positive terminal on top). A horizontal resistor \(R_1\) connects \(V_s\) to Node&nbsp;A. From Node&nbsp;A, \(R_2\) connects vertically down to ground, and \(R_3\) also connects vertically down to ground (to the right of \(R_2\)). The current source \(I_s\) is on the far right, connected between ground and the top rail; its arrow points <strong>upward</strong>, meaning \(I_s\) delivers current <strong>into</strong> Node&nbsp;A.</p>
 
 <p><strong>[INSERT DIAGRAM: diagrams/q1/q1_v1_two_node.svg]</strong></p>
 
