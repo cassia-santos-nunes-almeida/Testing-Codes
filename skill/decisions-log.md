@@ -107,5 +107,41 @@ Each entry: `[date] — Decision` followed by reasoning and rejected alternative
 
 ---
 
+### 2026-02-23 — Use STACK MCQ list format `[[value, bool, "text"]]` for all dropdowns
+**Reason:** STACK 4.x requires dropdown/MCQ options to be defined as Maxima lists of `[value, correctness_flag, "display_text"]` triples in `questionvariables`. Bare integers or `<options>` XML elements don't work. Discovered through iterative Moodle import testing — Q1 was fixed first, then Q2 was converted to match.
+**Alternatives rejected:** Bare integer answer with `<options>` XML element (does not render in STACK 4.x), radio buttons (not compatible with inline STACK input slots).
+
+---
+
+### 2026-02-23 — Use text placeholders for diagram references instead of embedding
+**Reason:** After three failed embedding approaches (base64 data URIs stripped by Moodle security, `@@PLUGINFILE@@` references unreliable on import, inline SVG too large), the pragmatic solution is text placeholders like `[INSERT DIAGRAM: diagrams/q1/q1_v1_two_node.svg]`. The instructor manually uploads each diagram via Moodle's rich text editor after importing the XML.
+**Alternatives rejected:** Base64 data URIs (stripped by Moodle's HTML sanitizer), `@@PLUGINFILE@@` with `<file>` elements (unreliable rendering after import), inline SVG in CDATA (bloated XML, rendering inconsistencies).
+
+---
+
+### 2026-02-23 — Generate PNG exports alongside SVGs for Moodle compatibility
+**Reason:** Some Moodle themes and export paths (PDF, mobile app) don't render SVGs reliably. High-resolution PNG exports (1200px wide, 150 DPI) provide a universal fallback. Both formats are kept in the repository.
+**Alternatives rejected:** SVG-only (rendering issues in some Moodle contexts), PNG-only (loses scalability and version-controllability of SVG source).
+
+---
+
+### 2026-02-23 — Change Q2 energy tolerance from NumAbsolute to NumRelative (5%)
+**Reason:** Energy calculations with randomized parameters produce answers spanning several orders of magnitude. A fixed absolute tolerance (e.g., ±0.01) is too tight for large answers and too generous for small ones. A 5% relative tolerance (`NumRelative`) adapts to the answer magnitude.
+**Alternatives rejected:** Wider absolute tolerance (still fails for extreme parameter combinations), tighter relative tolerance (penalizes rounding differences).
+
+---
+
+### 2026-02-23 — Remove all textarea placeholders that leak answers
+**Reason:** Critical audit discovered that placeholder text in Essay textareas for Q1 (Part B equations), Q1 V4 (bridge balance hint), and Q4 (s-domain setup) gave away partial or full solutions. These were removed to maintain exam integrity.
+**Alternatives rejected:** Keeping generic placeholders (even generic hints can narrow the solution space in a take-home exam).
+
+---
+
+### 2026-02-23 — Remove syntaxhint from Q3 ansB to prevent answer leakage
+**Reason:** STACK's `syntaxhint` parameter for algebraic inputs was pre-filling the exact transfer function structure, effectively giving away the answer. Removed across all Q3 variants. Also added uppercase letters to `allowwords` so students can type `A`, `B`, `C`, `D` without case errors.
+**Alternatives rejected:** Keeping a partial hint (any structural hint narrows the answer space too much for a take-home exam).
+
+---
+
 ## Last Updated
-2026-02-23
+2026-02-24
