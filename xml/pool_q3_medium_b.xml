@@ -202,9 +202,9 @@ taD: "See model answer in general feedback.";
     </input>
     <input>
         <name>ansD</name>
-        <type>essay</type>
+        <type>textarea</type>
         <tans>taD</tans>
-        <boxsize>15</boxsize>
+        <boxsize>60</boxsize>
         <strictsyntax>0</strictsyntax>
         <insertstars>0</insertstars>
         <syntaxhint></syntaxhint>
@@ -608,9 +608,9 @@ taD: "See model answer in general feedback.";
     </input>
     <input>
         <name>ansD</name>
-        <type>essay</type>
+        <type>textarea</type>
         <tans>taD</tans>
-        <boxsize>15</boxsize>
+        <boxsize>60</boxsize>
         <strictsyntax>0</strictsyntax>
         <insertstars>0</insertstars>
         <syntaxhint></syntaxhint>
@@ -1014,9 +1014,9 @@ taD: "See model answer in general feedback.";
     </input>
     <input>
         <name>ansD</name>
-        <type>essay</type>
+        <type>textarea</type>
         <tans>taD</tans>
-        <boxsize>15</boxsize>
+        <boxsize>60</boxsize>
         <strictsyntax>0</strictsyntax>
         <insertstars>0</insertstars>
         <syntaxhint></syntaxhint>
@@ -1420,9 +1420,9 @@ taD: "See model answer in general feedback.";
     </input>
     <input>
         <name>ansD</name>
-        <type>essay</type>
+        <type>textarea</type>
         <tans>taD</tans>
-        <boxsize>15</boxsize>
+        <boxsize>60</boxsize>
         <strictsyntax>0</strictsyntax>
         <insertstars>0</insertstars>
         <syntaxhint></syntaxhint>

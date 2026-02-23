@@ -189,9 +189,9 @@ ta5_essay: "See model answer in general feedback.";
   <!-- Input: ans4 (Part B - s-domain essay) -->
   <input>
     <name>ans4</name>
-    <type>essay</type>
+    <type>textarea</type>
     <tans>ta4_essay</tans>
-    <boxsize>15</boxsize>
+    <boxsize>60</boxsize>
     <strictsyntax>0</strictsyntax>
     <insertstars>0</insertstars>
     <syntaxhint></syntaxhint>
@@ -209,9 +209,9 @@ ta5_essay: "See model answer in general feedback.";
   <!-- Input: ans5 (Part D - interpretation essay) -->
   <input>
     <name>ans5</name>
-    <type>essay</type>
+    <type>textarea</type>
     <tans>ta5_essay</tans>
-    <boxsize>15</boxsize>
+    <boxsize>60</boxsize>
     <strictsyntax>0</strictsyntax>
     <insertstars>0</insertstars>
     <syntaxhint></syntaxhint>
@@ -641,9 +641,9 @@ ta5_essay: "See model answer in general feedback.";
   <!-- Input: ans4 (Part B - s-domain essay) -->
   <input>
     <name>ans4</name>
-    <type>essay</type>
+    <type>textarea</type>
     <tans>ta4_essay</tans>
-    <boxsize>15</boxsize>
+    <boxsize>60</boxsize>
     <strictsyntax>0</strictsyntax>
     <insertstars>0</insertstars>
     <syntaxhint></syntaxhint>
@@ -661,9 +661,9 @@ ta5_essay: "See model answer in general feedback.";
   <!-- Input: ans5 (Part D - interpretation essay) -->
   <input>
     <name>ans5</name>
-    <type>essay</type>
+    <type>textarea</type>
     <tans>ta5_essay</tans>
-    <boxsize>15</boxsize>
+    <boxsize>60</boxsize>
     <strictsyntax>0</strictsyntax>
     <insertstars>0</insertstars>
     <syntaxhint></syntaxhint>
@@ -1066,9 +1066,9 @@ ta6_essay: "See model answer in general feedback.";
   <!-- Input: ans5 (Part B - s-domain essay) -->
   <input>
     <name>ans5</name>
-    <type>essay</type>
+    <type>textarea</type>
     <tans>ta5_essay</tans>
-    <boxsize>15</boxsize>
+    <boxsize>60</boxsize>
     <strictsyntax>0</strictsyntax>
     <insertstars>0</insertstars>
     <syntaxhint></syntaxhint>
@@ -1086,9 +1086,9 @@ ta6_essay: "See model answer in general feedback.";
   <!-- Input: ans6 (Part D - interpretation essay) -->
   <input>
     <name>ans6</name>
-    <type>essay</type>
+    <type>textarea</type>
     <tans>ta6_essay</tans>
-    <boxsize>15</boxsize>
+    <boxsize>60</boxsize>
     <strictsyntax>0</strictsyntax>
     <insertstars>0</insertstars>
     <syntaxhint></syntaxhint>
