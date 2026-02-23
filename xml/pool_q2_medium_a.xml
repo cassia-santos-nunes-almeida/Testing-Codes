@@ -156,9 +156,8 @@ E_mJ : E_J * 1000;
 /* Teacher answer for Part B */
 taB : E_mJ;
 
-/* MCQ options for Part A — correct answer is option 1 */
-/* Using STACK MCQ framework with dropdown */
-taA : 1;
+/* Part A: inductor v-i relationship, correct answer is option 1 */
+taA: [[1, true, "v = L di/dt (voltage proportional to rate of change of current)"], [2, false, "v = (1/L) integral of i dt (voltage proportional to integral of current)"], [3, false, "v = L * i (voltage proportional to current)"], [4, false, "v = L / i (voltage inversely proportional to current)"]];
 ]]></text>
     </questionvariables>
     <specificfeedback format="html">
@@ -211,7 +210,7 @@ connection, and debug an incorrect student solution.</p>
         <checkanswertype>0</checkanswertype>
         <mustverify>0</mustverify>
         <showvalidation>0</showvalidation>
-        <options>[[1,"\\(v = L \\frac{di}{dt}\\) (voltage proportional to rate of change of current)"],[2,"\\(v = \\frac{1}{L} \\int i\\,dt\\) (voltage proportional to integral of current)"],[3,"\\(v = L \\cdot i\\) (voltage proportional to current)"],[4,"\\(v = \\frac{L}{i}\\) (voltage inversely proportional to current)"]]</options>
+        <options/>
     </input>
     <input>
         <name>ansB</name>
@@ -243,7 +242,7 @@ connection, and debug an incorrect student solution.</p>
             <name>0</name>
             <answertest>AlgEquiv</answertest>
             <sans>ansA</sans>
-            <tans>taA</tans>
+            <tans>1</tans>
             <testoptions></testoptions>
             <quiet>0</quiet>
             <truescoremode>=</truescoremode>
@@ -462,8 +461,8 @@ E_mJ : E_J * 1000;
 /* Teacher answer for Part B */
 taB : E_mJ;
 
-/* MCQ correct answer is option 1 */
-taA : 1;
+/* Part A: capacitor energy formula, correct answer is option 1 */
+taA: [[1, true, "E = (1/2) C V^2 (energy proportional to capacitance and voltage squared)"], [2, false, "E = (1/2) C I^2 (energy proportional to capacitance and current squared)"], [3, false, "E = C V (energy proportional to capacitance times voltage)"], [4, false, "E = (1/2) V^2 / C (energy inversely proportional to capacitance)"]];
 ]]></text>
     </questionvariables>
     <specificfeedback format="html">
@@ -516,7 +515,7 @@ conservation connection, and compare two energy calculation approaches.</p>
         <checkanswertype>0</checkanswertype>
         <mustverify>0</mustverify>
         <showvalidation>0</showvalidation>
-        <options>[[1,"\\(E = \\frac{1}{2}C V^2\\) (energy proportional to capacitance and voltage squared)"],[2,"\\(E = \\frac{1}{2}C I^2\\) (energy proportional to capacitance and current squared)"],[3,"\\(E = C V\\) (energy proportional to capacitance times voltage)"],[4,"\\(E = \\frac{1}{2} \\frac{V^2}{C}\\) (energy inversely proportional to capacitance)"]]</options>
+        <options/>
     </input>
     <input>
         <name>ansB</name>
@@ -548,7 +547,7 @@ conservation connection, and compare two energy calculation approaches.</p>
             <name>0</name>
             <answertest>AlgEquiv</answertest>
             <sans>ansA</sans>
-            <tans>taA</tans>
+            <tans>1</tans>
             <testoptions></testoptions>
             <quiet>0</quiet>
             <truescoremode>=</truescoremode>
@@ -808,8 +807,8 @@ E_mJ : E_J * 1000;
 /* Teacher answers */
 taB : E_mJ;
 
-/* MCQ: correct answer is the segment number with highest |v| */
-taA : max_seg;
+/* Part A: which segment has highest |v_L|, correct answer is max_seg (1 or 3) */
+taA: [[1, is(max_seg = 1), "Segment 1 (ramp up from 0 to Ipeak)"], [2, false, "Segment 2 (constant at Ipeak)"], [3, is(max_seg = 3), "Segment 3 (ramp down from Ipeak to 0)"]];
 ]]></text>
     </questionvariables>
     <specificfeedback format="html">
@@ -863,7 +862,7 @@ confusion error.</p>
         <checkanswertype>0</checkanswertype>
         <mustverify>0</mustverify>
         <showvalidation>0</showvalidation>
-        <options>[[1,"Segment 1 (ramp up from 0 to Ipeak)"],[2,"Segment 2 (constant at Ipeak)"],[3,"Segment 3 (ramp down from Ipeak to 0)"]]</options>
+        <options/>
     </input>
     <input>
         <name>ansB</name>
@@ -895,7 +894,7 @@ confusion error.</p>
             <name>0</name>
             <answertest>AlgEquiv</answertest>
             <sans>ansA</sans>
-            <tans>taA</tans>
+            <tans>max_seg</tans>
             <testoptions></testoptions>
             <quiet>0</quiet>
             <truescoremode>=</truescoremode>
@@ -1148,8 +1147,8 @@ E_mJ : E_J * 1000;
 /* Teacher answers */
 taB : E_mJ;
 
-/* MCQ correct answer: option 1 (C1+C2) */
-taA : 1;
+/* Part A: parallel capacitor combination, correct answer is option 1 */
+taA: [[1, true, "C_total = C1 + C2 (capacitances add in parallel)"], [2, false, "1/C_total = 1/C1 + 1/C2 (reciprocals add in parallel)"], [3, false, "C_total = C1 * C2 (capacitances multiply in parallel)"], [4, false, "C_total = C1*C2/(C1+C2) (product over sum in parallel)"]];
 ]]></text>
     </questionvariables>
     <specificfeedback format="html">
@@ -1203,7 +1202,7 @@ approaches to energy calculation.</p>
         <checkanswertype>0</checkanswertype>
         <mustverify>0</mustverify>
         <showvalidation>0</showvalidation>
-        <options>[[1,"\\(C_{total} = C_1 + C_2\\) (capacitances add in parallel)"],[2,"\\(\\frac{1}{C_{total}} = \\frac{1}{C_1} + \\frac{1}{C_2}\\) (reciprocals add in parallel)"],[3,"\\(C_{total} = C_1 \\cdot C_2\\) (capacitances multiply in parallel)"],[4,"\\(C_{total} = \\frac{C_1 \\cdot C_2}{C_1 + C_2}\\) (product over sum in parallel)"]]</options>
+        <options/>
     </input>
     <input>
         <name>ansB</name>
@@ -1235,7 +1234,7 @@ approaches to energy calculation.</p>
             <name>0</name>
             <answertest>AlgEquiv</answertest>
             <sans>ansA</sans>
-            <tans>taA</tans>
+            <tans>1</tans>
             <testoptions></testoptions>
             <quiet>0</quiet>
             <truescoremode>=</truescoremode>
