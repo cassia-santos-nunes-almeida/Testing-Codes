@@ -26,6 +26,8 @@
 \(R = {@R@}\;\Omega\) and an inductor \(L = {@L_mH@}\;\text{mH}\).
 The switch S closes at \(t = 0\). Before the switch closes, the current is zero.</p>
 
+<p><em><strong>Note:</strong> Express numerical answers to 3 significant figures. Scientific notation is accepted (e.g., <code>2.50*10^3</code> or <code>2.50E3</code>).</em></p>
+
 <p><strong>[INSERT DIAGRAM: diagrams/q2/q2_v1_inductor_rl.svg]</strong></p>
 
 <p>At steady state the inductor acts as a short circuit (dc), so the
@@ -45,7 +47,7 @@ inductor in terms of its current?</p>
 <!-- ======== Part B (4 pts) — STACK Numerical ======== -->
 <h4>Part B (4 pts) — Energy Stored at Steady State</h4>
 <p>Calculate the energy stored in the inductor at steady state.
-Express your answer in <strong>millijoules (mJ)</strong>, rounded to two decimal places.</p>
+Express your answer in <strong>millijoules (mJ)</strong>, to 3 significant figures.</p>
 <p>\(E_L = \) [[input:ansB]] mJ [[validation:ansB]]</p>
 <div>[[feedback:prtB]]</div>
 
@@ -315,7 +317,13 @@ or its integral.</p>
         <autosimplify>1</autosimplify>
         <feedbackstyle>1</feedbackstyle>
         <feedbackvariables>
-            <text></text>
+            <text><![CDATA[
+/* Order-of-magnitude check for tiered grading */
+_ratio: if (taB = 0 or ansB = 0) then 0 else float(abs(ansB / taB));
+_log10r: if _ratio > 0 then float(log(_ratio)/log(10)) else -999;
+_nearint: round(_log10r);
+_mag_err: is(_ratio > 0 and abs(_nearint) >= 1 and abs(_log10r - _nearint) < 0.2);
+]]></text>
         </feedbackvariables>
         <node>
             <name>0</name>
@@ -329,26 +337,62 @@ or its integral.</p>
             <truepenalty></truepenalty>
             <truenextnode>-1</truenextnode>
             <trueanswernote>prtB-1-T</trueanswernote>
-            <truefeedback format="html">
-                <text><![CDATA[
+            <truefeedback format="html"><text><![CDATA[
 <p>Correct! The energy stored in the inductor at steady state is</p>
 <p>\(E_L = \frac{1}{2}L\,I_{ss}^2
      = \frac{1}{2}\times {@L_val@}\;\text{H}\times ({@Iss@})^2\;\text{A}^2
      = {@E_mJ@}\;\text{mJ}.\)</p>
-]]></text>
-            </truefeedback>
+]]></text></truefeedback>
+            <falsescoremode>=</falsescoremode>
+            <falsescore>0</falsescore>
+            <falsepenalty></falsepenalty>
+            <falsenextnode>1</falsenextnode>
+            <falseanswernote>prtB-1-F</falseanswernote>
+            <falsefeedback format="html"><text></text></falsefeedback>
+        </node>
+        <node>
+            <name>1</name>
+            <answertest>NumRelative</answertest>
+            <sans>ansB</sans>
+            <tans>taB</tans>
+            <testoptions>0.15</testoptions>
+            <quiet>0</quiet>
+            <truescoremode>=</truescoremode>
+            <truescore>0.7</truescore>
+            <truepenalty></truepenalty>
+            <truenextnode>-1</truenextnode>
+            <trueanswernote>prtB-2-T</trueanswernote>
+            <truefeedback format="html"><text><![CDATA[<p>Your answer is close but not precise enough. You received 70% for this part.</p>]]></text></truefeedback>
+            <falsescoremode>=</falsescoremode>
+            <falsescore>0</falsescore>
+            <falsepenalty></falsepenalty>
+            <falsenextnode>2</falsenextnode>
+            <falseanswernote>prtB-2-F</falseanswernote>
+            <falsefeedback format="html"><text></text></falsefeedback>
+        </node>
+        <node>
+            <name>2</name>
+            <answertest>AlgEquiv</answertest>
+            <sans>_mag_err</sans>
+            <tans>true</tans>
+            <testoptions></testoptions>
+            <quiet>0</quiet>
+            <truescoremode>=</truescoremode>
+            <truescore>0.6</truescore>
+            <truepenalty></truepenalty>
+            <truenextnode>-1</truenextnode>
+            <trueanswernote>prtB-3-T</trueanswernote>
+            <truefeedback format="html"><text><![CDATA[<p>Your significant figures appear correct but the order of magnitude is wrong. Check your unit conversions. You received 60% for this part.</p>]]></text></truefeedback>
             <falsescoremode>=</falsescoremode>
             <falsescore>0</falsescore>
             <falsepenalty></falsepenalty>
             <falsenextnode>-1</falsenextnode>
-            <falseanswernote>prtB-1-F</falseanswernote>
-            <falsefeedback format="html">
-                <text><![CDATA[
+            <falseanswernote>prtB-3-F</falseanswernote>
+            <falsefeedback format="html"><text><![CDATA[
 <p>Incorrect. The energy stored in an inductor is \(E = \frac{1}{2}L\,I^2\).</p>
 <p>At steady state: \(I_{ss} = V_s/R = {@Vs@}/{@R@} = {@Iss@}\;\text{A}\).</p>
 <p>So \(E = \frac{1}{2}\times{@L_val@}\times({@Iss@})^2 = {@E_mJ@}\;\text{mJ}\).</p>
-]]></text>
-            </falsefeedback>
+]]></text></falsefeedback>
         </node>
     </prt>
     <deployedseed>12345</deployedseed>
@@ -374,6 +418,8 @@ or its integral.</p>
 The capacitor is initially uncharged. At steady state the capacitor is fully
 charged to \(v_C = V_s = {@Vs@}\;\text{V}\).</p>
 
+<p><em><strong>Note:</strong> Express numerical answers to 3 significant figures. Scientific notation is accepted (e.g., <code>2.50*10^3</code> or <code>2.50E3</code>).</em></p>
+
 <p><strong>[INSERT DIAGRAM: diagrams/q2/q2_v2_capacitor_rc.svg]</strong></p>
 
 <hr />
@@ -390,7 +436,7 @@ capacitor charged to voltage \(V\)?</p>
 <!-- ======== Part B (4 pts) — STACK Numerical ======== -->
 <h4>Part B (4 pts) — Energy Stored at Steady State</h4>
 <p>Calculate the energy stored in the capacitor at steady state.
-Express your answer in <strong>millijoules (mJ)</strong>, rounded to two decimal places.</p>
+Express your answer in <strong>millijoules (mJ)</strong>, to 3 significant figures.</p>
 <p>\(E_C = \) [[input:ansB]] mJ [[validation:ansB]]</p>
 <div>[[feedback:prtB]]</div>
 
@@ -659,7 +705,13 @@ voltage across the capacitor.  Note the analogy: for an inductor it is
         <autosimplify>1</autosimplify>
         <feedbackstyle>1</feedbackstyle>
         <feedbackvariables>
-            <text></text>
+            <text><![CDATA[
+/* Order-of-magnitude check for tiered grading */
+_ratio: if (taB = 0 or ansB = 0) then 0 else float(abs(ansB / taB));
+_log10r: if _ratio > 0 then float(log(_ratio)/log(10)) else -999;
+_nearint: round(_log10r);
+_mag_err: is(_ratio > 0 and abs(_nearint) >= 1 and abs(_log10r - _nearint) < 0.2);
+]]></text>
         </feedbackvariables>
         <node>
             <name>0</name>
@@ -673,29 +725,65 @@ voltage across the capacitor.  Note the analogy: for an inductor it is
             <truepenalty></truepenalty>
             <truenextnode>-1</truenextnode>
             <trueanswernote>prtB-1-T</trueanswernote>
-            <truefeedback format="html">
-                <text><![CDATA[
+            <truefeedback format="html"><text><![CDATA[
 <p>Correct! The energy stored in the capacitor at steady state is</p>
 <p>\(E_C = \frac{1}{2}C V_s^2
      = \frac{1}{2}\times{@C_val@}\;\text{F}\times({@Vs@})^2\;\text{V}^2
      = {@E_mJ@}\;\text{mJ}.\)</p>
-]]></text>
-            </truefeedback>
+]]></text></truefeedback>
+            <falsescoremode>=</falsescoremode>
+            <falsescore>0</falsescore>
+            <falsepenalty></falsepenalty>
+            <falsenextnode>1</falsenextnode>
+            <falseanswernote>prtB-1-F</falseanswernote>
+            <falsefeedback format="html"><text></text></falsefeedback>
+        </node>
+        <node>
+            <name>1</name>
+            <answertest>NumRelative</answertest>
+            <sans>ansB</sans>
+            <tans>taB</tans>
+            <testoptions>0.15</testoptions>
+            <quiet>0</quiet>
+            <truescoremode>=</truescoremode>
+            <truescore>0.7</truescore>
+            <truepenalty></truepenalty>
+            <truenextnode>-1</truenextnode>
+            <trueanswernote>prtB-2-T</trueanswernote>
+            <truefeedback format="html"><text><![CDATA[<p>Your answer is close but not precise enough. You received 70% for this part.</p>]]></text></truefeedback>
+            <falsescoremode>=</falsescoremode>
+            <falsescore>0</falsescore>
+            <falsepenalty></falsepenalty>
+            <falsenextnode>2</falsenextnode>
+            <falseanswernote>prtB-2-F</falseanswernote>
+            <falsefeedback format="html"><text></text></falsefeedback>
+        </node>
+        <node>
+            <name>2</name>
+            <answertest>AlgEquiv</answertest>
+            <sans>_mag_err</sans>
+            <tans>true</tans>
+            <testoptions></testoptions>
+            <quiet>0</quiet>
+            <truescoremode>=</truescoremode>
+            <truescore>0.6</truescore>
+            <truepenalty></truepenalty>
+            <truenextnode>-1</truenextnode>
+            <trueanswernote>prtB-3-T</trueanswernote>
+            <truefeedback format="html"><text><![CDATA[<p>Your significant figures appear correct but the order of magnitude is wrong. Check your unit conversions. You received 60% for this part.</p>]]></text></truefeedback>
             <falsescoremode>=</falsescoremode>
             <falsescore>0</falsescore>
             <falsepenalty></falsepenalty>
             <falsenextnode>-1</falsenextnode>
-            <falseanswernote>prtB-1-F</falseanswernote>
-            <falsefeedback format="html">
-                <text><![CDATA[
+            <falseanswernote>prtB-3-F</falseanswernote>
+            <falsefeedback format="html"><text><![CDATA[
 <p>Incorrect. The energy stored in a capacitor is \(E = \frac{1}{2}C V^2\).</p>
 <p>At steady state: \(v_C = V_s = {@Vs@}\;\text{V}\).</p>
 <p>\(E = \frac{1}{2}\times{@C_val@}\;\text{F}\times({@Vs@})^2
      = {@E_mJ@}\;\text{mJ}\).</p>
 <p>Make sure you converted \(\mu\text{F}\) to \(\text{F}\) correctly
 (divide by \(10^6\)) and expressed the answer in mJ (multiply joules by 1000).</p>
-]]></text>
-            </falsefeedback>
+]]></text></falsefeedback>
         </node>
     </prt>
     <deployedseed>23456</deployedseed>
@@ -716,6 +804,8 @@ voltage across the capacitor.  Note the analogy: for an inductor it is
 <p><strong>Context:</strong> An inductor with inductance
 \(L = {@L_mH@}\;\text{mH}\) carries a piecewise-linear current waveform
 \(i(t)\) described as follows:</p>
+
+<p><em><strong>Note:</strong> Express numerical answers to 3 significant figures. Scientific notation is accepted (e.g., <code>2.50*10^3</code> or <code>2.50E3</code>).</em></p>
 
 <p><strong>[INSERT DIAGRAM: diagrams/q2/q2_v3_inductor_waveform.svg]</strong></p>
 
@@ -749,7 +839,7 @@ inductor voltage \(|v_L|\)?</p>
 <p>Calculate the energy stored in the inductor at the end of Segment 1
 (at time \(t = {@t1@}\;\text{ms}\)), when the current has just reached
 its peak value \(I_{peak} = {@Ipeak@}\;\text{A}\).</p>
-<p>Express your answer in <strong>millijoules (mJ)</strong>, rounded to two decimal places.</p>
+<p>Express your answer in <strong>millijoules (mJ)</strong>, to 3 significant figures.</p>
 <p>\(E_L(t_1) = \) [[input:ansB]] mJ [[validation:ansB]]</p>
 <div>[[feedback:prtB]]</div>
 
@@ -1050,7 +1140,13 @@ voltage magnitude.</p>
         <autosimplify>1</autosimplify>
         <feedbackstyle>1</feedbackstyle>
         <feedbackvariables>
-            <text></text>
+            <text><![CDATA[
+/* Order-of-magnitude check for tiered grading */
+_ratio: if (taB = 0 or ansB = 0) then 0 else float(abs(ansB / taB));
+_log10r: if _ratio > 0 then float(log(_ratio)/log(10)) else -999;
+_nearint: round(_log10r);
+_mag_err: is(_ratio > 0 and abs(_nearint) >= 1 and abs(_log10r - _nearint) < 0.2);
+]]></text>
         </feedbackvariables>
         <node>
             <name>0</name>
@@ -1064,29 +1160,65 @@ voltage magnitude.</p>
             <truepenalty></truepenalty>
             <truenextnode>-1</truenextnode>
             <trueanswernote>prtB-1-T</trueanswernote>
-            <truefeedback format="html">
-                <text><![CDATA[
+            <truefeedback format="html"><text><![CDATA[
 <p>Correct! The energy stored at time \(t_1\) when \(i = I_{peak} = {@Ipeak@}\;\text{A}\) is</p>
 <p>\(E_L = \frac{1}{2}L\,I_{peak}^2
      = \frac{1}{2}\times{@L_val@}\times({@Ipeak@})^2
      = {@E_mJ@}\;\text{mJ}.\)</p>
-]]></text>
-            </truefeedback>
+]]></text></truefeedback>
+            <falsescoremode>=</falsescoremode>
+            <falsescore>0</falsescore>
+            <falsepenalty></falsepenalty>
+            <falsenextnode>1</falsenextnode>
+            <falseanswernote>prtB-1-F</falseanswernote>
+            <falsefeedback format="html"><text></text></falsefeedback>
+        </node>
+        <node>
+            <name>1</name>
+            <answertest>NumRelative</answertest>
+            <sans>ansB</sans>
+            <tans>taB</tans>
+            <testoptions>0.15</testoptions>
+            <quiet>0</quiet>
+            <truescoremode>=</truescoremode>
+            <truescore>0.7</truescore>
+            <truepenalty></truepenalty>
+            <truenextnode>-1</truenextnode>
+            <trueanswernote>prtB-2-T</trueanswernote>
+            <truefeedback format="html"><text><![CDATA[<p>Your answer is close but not precise enough. You received 70% for this part.</p>]]></text></truefeedback>
+            <falsescoremode>=</falsescoremode>
+            <falsescore>0</falsescore>
+            <falsepenalty></falsepenalty>
+            <falsenextnode>2</falsenextnode>
+            <falseanswernote>prtB-2-F</falseanswernote>
+            <falsefeedback format="html"><text></text></falsefeedback>
+        </node>
+        <node>
+            <name>2</name>
+            <answertest>AlgEquiv</answertest>
+            <sans>_mag_err</sans>
+            <tans>true</tans>
+            <testoptions></testoptions>
+            <quiet>0</quiet>
+            <truescoremode>=</truescoremode>
+            <truescore>0.6</truescore>
+            <truepenalty></truepenalty>
+            <truenextnode>-1</truenextnode>
+            <trueanswernote>prtB-3-T</trueanswernote>
+            <truefeedback format="html"><text><![CDATA[<p>Your significant figures appear correct but the order of magnitude is wrong. Check your unit conversions. You received 60% for this part.</p>]]></text></truefeedback>
             <falsescoremode>=</falsescoremode>
             <falsescore>0</falsescore>
             <falsepenalty></falsepenalty>
             <falsenextnode>-1</falsenextnode>
-            <falseanswernote>prtB-1-F</falseanswernote>
-            <falsefeedback format="html">
-                <text><![CDATA[
+            <falseanswernote>prtB-3-F</falseanswernote>
+            <falsefeedback format="html"><text><![CDATA[
 <p>Incorrect. The energy stored in an inductor is \(E = \frac{1}{2}L\,I^2\).</p>
 <p>At time \(t_1 = {@t1@}\;\text{ms}\), the current is \(I_{peak} = {@Ipeak@}\;\text{A}\).</p>
 <p>\(E = \frac{1}{2}\times{@L_val@}\;\text{H}\times({@Ipeak@})^2\;\text{A}^2
      = {@E_mJ@}\;\text{mJ}.\)</p>
 <p>Remember: convert mH to H by dividing by 1000, and express the final
 answer in mJ by multiplying joules by 1000.</p>
-]]></text>
-            </falsefeedback>
+]]></text></falsefeedback>
         </node>
     </prt>
     <deployedseed>34567</deployedseed>
@@ -1109,6 +1241,8 @@ answer in mJ by multiplying joules by 1000.</p>
 across a voltage source of \(V = {@V@}\;\text{V}\).  Both capacitors are
 fully charged to voltage \(V\).</p>
 
+<p><em><strong>Note:</strong> Express numerical answers to 3 significant figures. Scientific notation is accepted (e.g., <code>2.50*10^3</code> or <code>2.50E3</code>).</em></p>
+
 <p><strong>[INSERT DIAGRAM: diagrams/q2/q2_v4_capacitor_parallel.svg]</strong></p>
 
 <hr />
@@ -1125,7 +1259,7 @@ in parallel?</p>
 <!-- ======== Part B (4 pts) — STACK Numerical ======== -->
 <h4>Part B (4 pts) — Total Stored Energy</h4>
 <p>Calculate the <strong>total</strong> energy stored in both capacitors combined.
-Express your answer in <strong>millijoules (mJ)</strong>, rounded to two decimal places.</p>
+Express your answer in <strong>millijoules (mJ)</strong>, to 3 significant figures.</p>
 <p>\(E_{total} = \) [[input:ansB]] mJ [[validation:ansB]]</p>
 <div>[[feedback:prtB]]</div>
 
@@ -1424,7 +1558,13 @@ resistor convention where resistances add in series.)</p>
         <autosimplify>1</autosimplify>
         <feedbackstyle>1</feedbackstyle>
         <feedbackvariables>
-            <text></text>
+            <text><![CDATA[
+/* Order-of-magnitude check for tiered grading */
+_ratio: if (taB = 0 or ansB = 0) then 0 else float(abs(ansB / taB));
+_log10r: if _ratio > 0 then float(log(_ratio)/log(10)) else -999;
+_nearint: round(_log10r);
+_mag_err: is(_ratio > 0 and abs(_nearint) >= 1 and abs(_log10r - _nearint) < 0.2);
+]]></text>
         </feedbackvariables>
         <node>
             <name>0</name>
@@ -1438,21 +1578,58 @@ resistor convention where resistances add in series.)</p>
             <truepenalty></truepenalty>
             <truenextnode>-1</truenextnode>
             <trueanswernote>prtB-1-T</trueanswernote>
-            <truefeedback format="html">
-                <text><![CDATA[
+            <truefeedback format="html"><text><![CDATA[
 <p>Correct! The total energy stored is</p>
 <p>\(E_{total} = \frac{1}{2}(C_1+C_2)V^2
      = \frac{1}{2}\times{@Ctot_val@}\;\text{F}\times({@V@})^2
      = {@E_mJ@}\;\text{mJ}.\)</p>
-]]></text>
-            </truefeedback>
+]]></text></truefeedback>
+            <falsescoremode>=</falsescoremode>
+            <falsescore>0</falsescore>
+            <falsepenalty></falsepenalty>
+            <falsenextnode>1</falsenextnode>
+            <falseanswernote>prtB-1-F</falseanswernote>
+            <falsefeedback format="html"><text></text></falsefeedback>
+        </node>
+        <node>
+            <name>1</name>
+            <answertest>NumRelative</answertest>
+            <sans>ansB</sans>
+            <tans>taB</tans>
+            <testoptions>0.15</testoptions>
+            <quiet>0</quiet>
+            <truescoremode>=</truescoremode>
+            <truescore>0.7</truescore>
+            <truepenalty></truepenalty>
+            <truenextnode>-1</truenextnode>
+            <trueanswernote>prtB-2-T</trueanswernote>
+            <truefeedback format="html"><text><![CDATA[<p>Your answer is close but not precise enough. You received 70% for this part.</p>]]></text></truefeedback>
+            <falsescoremode>=</falsescoremode>
+            <falsescore>0</falsescore>
+            <falsepenalty></falsepenalty>
+            <falsenextnode>2</falsenextnode>
+            <falseanswernote>prtB-2-F</falseanswernote>
+            <falsefeedback format="html"><text></text></falsefeedback>
+        </node>
+        <node>
+            <name>2</name>
+            <answertest>AlgEquiv</answertest>
+            <sans>_mag_err</sans>
+            <tans>true</tans>
+            <testoptions></testoptions>
+            <quiet>0</quiet>
+            <truescoremode>=</truescoremode>
+            <truescore>0.6</truescore>
+            <truepenalty></truepenalty>
+            <truenextnode>-1</truenextnode>
+            <trueanswernote>prtB-3-T</trueanswernote>
+            <truefeedback format="html"><text><![CDATA[<p>Your significant figures appear correct but the order of magnitude is wrong. Check your unit conversions. You received 60% for this part.</p>]]></text></truefeedback>
             <falsescoremode>=</falsescoremode>
             <falsescore>0</falsescore>
             <falsepenalty></falsepenalty>
             <falsenextnode>-1</falsenextnode>
-            <falseanswernote>prtB-1-F</falseanswernote>
-            <falsefeedback format="html">
-                <text><![CDATA[
+            <falseanswernote>prtB-3-F</falseanswernote>
+            <falsefeedback format="html"><text><![CDATA[
 <p>Incorrect. For parallel capacitors at the same voltage:</p>
 <p>\(C_{total} = C_1 + C_2 = {@C1_uF@} + {@C2_uF@} = {@Ctot_uF@}\;\mu\text{F}
    = {@Ctot_val@}\;\text{F}\).</p>
@@ -1461,8 +1638,7 @@ resistor convention where resistances add in series.)</p>
      = {@E_mJ@}\;\text{mJ}.\)</p>
 <p>Check your unit conversions: \(\mu\text{F} = 10^{-6}\;\text{F}\)
 and multiply joules by 1000 to get mJ.</p>
-]]></text>
-            </falsefeedback>
+]]></text></falsefeedback>
         </node>
     </prt>
     <deployedseed>45678</deployedseed>

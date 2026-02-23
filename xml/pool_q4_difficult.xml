@@ -16,6 +16,8 @@
     <text><![CDATA[
 <h3>Q4-V1: RC Circuit with Switch — Complete Transient Analysis</h3>
 
+<p><em><strong>Note:</strong> Express numerical answers to 3 significant figures. Scientific notation is accepted (e.g., <code>2.50*10^3</code> or <code>2.50E3</code>).</em></p>
+
 <p>Consider the circuit below. A DC voltage source <b>V<sub>s</sub> = {@Vs@} V</b> drives a series resistor <b>R<sub>1</sub> = {@R1@} k&Omega;</b>. At the junction node A, a switch S is in series with <b>R<sub>2</sub> = {@R2@} k&Omega;</b> (to ground), and a capacitor <b>C = {@Cval@} &mu;F</b> is connected from node A to ground.</p>
 
 <p><em>Before t = 0:</em> Switch S is <strong>closed</strong>. The circuit is in DC steady state.<br/>
@@ -229,12 +231,21 @@ ta5_essay: "See model answer in general feedback.";
     <value>2.0000000</value>
     <autosimplify>1</autosimplify>
     <feedbackstyle>1</feedbackstyle>
+    <feedbackvariables>
+        <text><![CDATA[
+/* Order-of-magnitude check for tiered grading */
+_ratio: if (ta1 = 0 or ans1 = 0) then 0 else float(abs(ans1 / ta1));
+_log10r: if _ratio > 0 then float(log(_ratio)/log(10)) else -999;
+_nearint: round(_log10r);
+_mag_err: is(_ratio > 0 and abs(_nearint) >= 1 and abs(_log10r - _nearint) < 0.2);
+]]></text>
+    </feedbackvariables>
     <node>
       <name>0</name>
-      <answertest>NumAbsolute</answertest>
+      <answertest>NumRelative</answertest>
       <sans>ans1</sans>
       <tans>ta1</tans>
-      <testoptions>0.1</testoptions>
+      <testoptions>0.05</testoptions>
       <quiet>0</quiet>
       <truescoremode>=</truescoremode>
       <truescore>1.0000000</truescore>
@@ -245,8 +256,48 @@ ta5_essay: "See model answer in general feedback.";
       <falsescoremode>=</falsescoremode>
       <falsescore>0.0000000</falsescore>
       <falsepenalty/>
-      <falsenextnode>-1</falsenextnode>
+      <falsenextnode>1</falsenextnode>
       <falseanswernote>prt1-1-F</falseanswernote>
+      <falsefeedback format="html"><text></text></falsefeedback>
+    </node>
+    <node>
+      <name>1</name>
+      <answertest>NumRelative</answertest>
+      <sans>ans1</sans>
+      <tans>ta1</tans>
+      <testoptions>0.15</testoptions>
+      <quiet>0</quiet>
+      <truescoremode>=</truescoremode>
+      <truescore>0.7000000</truescore>
+      <truepenalty/>
+      <truenextnode>-1</truenextnode>
+      <trueanswernote>prt1-2-T</trueanswernote>
+      <truefeedback format="html"><text><![CDATA[<p>Your answer is close but not precise enough. You received 70% for this part.</p>]]></text></truefeedback>
+      <falsescoremode>=</falsescoremode>
+      <falsescore>0.0000000</falsescore>
+      <falsepenalty/>
+      <falsenextnode>2</falsenextnode>
+      <falseanswernote>prt1-2-F</falseanswernote>
+      <falsefeedback format="html"><text></text></falsefeedback>
+    </node>
+    <node>
+      <name>2</name>
+      <answertest>AlgEquiv</answertest>
+      <sans>_mag_err</sans>
+      <tans>true</tans>
+      <testoptions></testoptions>
+      <quiet>0</quiet>
+      <truescoremode>=</truescoremode>
+      <truescore>0.6000000</truescore>
+      <truepenalty/>
+      <truenextnode>-1</truenextnode>
+      <trueanswernote>prt1-3-T</trueanswernote>
+      <truefeedback format="html"><text><![CDATA[<p>Your significant figures appear correct but the order of magnitude is wrong. Check your unit conversions. You received 60% for this part.</p>]]></text></truefeedback>
+      <falsescoremode>=</falsescoremode>
+      <falsescore>0.0000000</falsescore>
+      <falsepenalty/>
+      <falsenextnode>-1</falsenextnode>
+      <falseanswernote>prt1-3-F</falseanswernote>
       <falsefeedback format="html"><text><![CDATA[<p>Incorrect. At DC steady state, C is open. The voltage at node A is determined by the voltage divider R<sub>1</sub> and R<sub>2</sub>: V<sub>0</sub> = V<sub>s</sub> &middot; R<sub>2</sub>/(R<sub>1</sub>+R<sub>2</sub>).</p>]]></text></falsefeedback>
     </node>
   </prt>
@@ -257,12 +308,21 @@ ta5_essay: "See model answer in general feedback.";
     <value>2.0000000</value>
     <autosimplify>1</autosimplify>
     <feedbackstyle>1</feedbackstyle>
+    <feedbackvariables>
+        <text><![CDATA[
+/* Order-of-magnitude check for tiered grading */
+_p2_ratio: if (ta2 = 0 or ans2 = 0) then 0 else float(abs(ans2 / ta2));
+_p2_log10r: if _p2_ratio > 0 then float(log(_p2_ratio)/log(10)) else -999;
+_p2_nearint: round(_p2_log10r);
+_p2_mag_err: is(_p2_ratio > 0 and abs(_p2_nearint) >= 1 and abs(_p2_log10r - _p2_nearint) < 0.2);
+]]></text>
+    </feedbackvariables>
     <node>
       <name>0</name>
-      <answertest>NumAbsolute</answertest>
+      <answertest>NumRelative</answertest>
       <sans>ans2</sans>
       <tans>ta2</tans>
-      <testoptions>0.5</testoptions>
+      <testoptions>0.05</testoptions>
       <quiet>0</quiet>
       <truescoremode>=</truescoremode>
       <truescore>1.0000000</truescore>
@@ -273,8 +333,48 @@ ta5_essay: "See model answer in general feedback.";
       <falsescoremode>=</falsescoremode>
       <falsescore>0.0000000</falsescore>
       <falsepenalty/>
-      <falsenextnode>-1</falsenextnode>
+      <falsenextnode>1</falsenextnode>
       <falseanswernote>prt2-1-F</falseanswernote>
+      <falsefeedback format="html"><text></text></falsefeedback>
+    </node>
+    <node>
+      <name>1</name>
+      <answertest>NumRelative</answertest>
+      <sans>ans2</sans>
+      <tans>ta2</tans>
+      <testoptions>0.15</testoptions>
+      <quiet>0</quiet>
+      <truescoremode>=</truescoremode>
+      <truescore>0.7000000</truescore>
+      <truepenalty/>
+      <truenextnode>-1</truenextnode>
+      <trueanswernote>prt2-2-T</trueanswernote>
+      <truefeedback format="html"><text><![CDATA[<p>Your answer is close but not precise enough. You received 70% for this part.</p>]]></text></truefeedback>
+      <falsescoremode>=</falsescoremode>
+      <falsescore>0.0000000</falsescore>
+      <falsepenalty/>
+      <falsenextnode>2</falsenextnode>
+      <falseanswernote>prt2-2-F</falseanswernote>
+      <falsefeedback format="html"><text></text></falsefeedback>
+    </node>
+    <node>
+      <name>2</name>
+      <answertest>AlgEquiv</answertest>
+      <sans>_p2_mag_err</sans>
+      <tans>true</tans>
+      <testoptions></testoptions>
+      <quiet>0</quiet>
+      <truescoremode>=</truescoremode>
+      <truescore>0.6000000</truescore>
+      <truepenalty/>
+      <truenextnode>-1</truenextnode>
+      <trueanswernote>prt2-3-T</trueanswernote>
+      <truefeedback format="html"><text><![CDATA[<p>Your significant figures appear correct but the order of magnitude is wrong. Check your unit conversions. You received 60% for this part.</p>]]></text></truefeedback>
+      <falsescoremode>=</falsescoremode>
+      <falsescore>0.0000000</falsescore>
+      <falsepenalty/>
+      <falsenextnode>-1</falsenextnode>
+      <falseanswernote>prt2-3-F</falseanswernote>
       <falsefeedback format="html"><text><![CDATA[<p>Incorrect. After the switch opens, the capacitor sees only R<sub>1</sub>. &tau; = R<sub>1</sub>(k&Omega;) &times; C(&mu;F) = {@tau_ms@} ms.</p>]]></text></falsefeedback>
     </node>
   </prt>
@@ -285,12 +385,21 @@ ta5_essay: "See model answer in general feedback.";
     <value>2.0000000</value>
     <autosimplify>1</autosimplify>
     <feedbackstyle>1</feedbackstyle>
+    <feedbackvariables>
+        <text><![CDATA[
+/* Order-of-magnitude check for tiered grading */
+_p3_ratio: if (ta3 = 0 or ans3 = 0) then 0 else float(abs(ans3 / ta3));
+_p3_log10r: if _p3_ratio > 0 then float(log(_p3_ratio)/log(10)) else -999;
+_p3_nearint: round(_p3_log10r);
+_p3_mag_err: is(_p3_ratio > 0 and abs(_p3_nearint) >= 1 and abs(_p3_log10r - _p3_nearint) < 0.2);
+]]></text>
+    </feedbackvariables>
     <node>
       <name>0</name>
-      <answertest>NumAbsolute</answertest>
+      <answertest>NumRelative</answertest>
       <sans>ans3</sans>
       <tans>ta3</tans>
-      <testoptions>0.01</testoptions>
+      <testoptions>0.05</testoptions>
       <quiet>0</quiet>
       <truescoremode>=</truescoremode>
       <truescore>1.0000000</truescore>
@@ -301,8 +410,48 @@ ta5_essay: "See model answer in general feedback.";
       <falsescoremode>=</falsescoremode>
       <falsescore>0.0000000</falsescore>
       <falsepenalty/>
-      <falsenextnode>-1</falsenextnode>
+      <falsenextnode>1</falsenextnode>
       <falseanswernote>prt3-1-F</falseanswernote>
+      <falsefeedback format="html"><text></text></falsefeedback>
+    </node>
+    <node>
+      <name>1</name>
+      <answertest>NumRelative</answertest>
+      <sans>ans3</sans>
+      <tans>ta3</tans>
+      <testoptions>0.15</testoptions>
+      <quiet>0</quiet>
+      <truescoremode>=</truescoremode>
+      <truescore>0.7000000</truescore>
+      <truepenalty/>
+      <truenextnode>-1</truenextnode>
+      <trueanswernote>prt3-2-T</trueanswernote>
+      <truefeedback format="html"><text><![CDATA[<p>Your answer is close but not precise enough. You received 70% for this part.</p>]]></text></truefeedback>
+      <falsescoremode>=</falsescoremode>
+      <falsescore>0.0000000</falsescore>
+      <falsepenalty/>
+      <falsenextnode>2</falsenextnode>
+      <falseanswernote>prt3-2-F</falseanswernote>
+      <falsefeedback format="html"><text></text></falsefeedback>
+    </node>
+    <node>
+      <name>2</name>
+      <answertest>AlgEquiv</answertest>
+      <sans>_p3_mag_err</sans>
+      <tans>true</tans>
+      <testoptions></testoptions>
+      <quiet>0</quiet>
+      <truescoremode>=</truescoremode>
+      <truescore>0.6000000</truescore>
+      <truepenalty/>
+      <truenextnode>-1</truenextnode>
+      <trueanswernote>prt3-3-T</trueanswernote>
+      <truefeedback format="html"><text><![CDATA[<p>Your significant figures appear correct but the order of magnitude is wrong. Check your unit conversions. You received 60% for this part.</p>]]></text></truefeedback>
+      <falsescoremode>=</falsescoremode>
+      <falsescore>0.0000000</falsescore>
+      <falsepenalty/>
+      <falsenextnode>-1</falsenextnode>
+      <falseanswernote>prt3-3-F</falseanswernote>
       <falsefeedback format="html"><text><![CDATA[<p>Incorrect. With R<sub>2</sub> disconnected, at steady state i = 0, so v<sub>R1</sub> = 0, meaning v<sub>C</sub>(&infin;) = V<sub>s</sub>.</p>]]></text></falsefeedback>
     </node>
   </prt>
@@ -317,6 +466,8 @@ ta5_essay: "See model answer in general feedback.";
   <questiontext format="html">
     <text><![CDATA[
 <h3>Q4-V2: RL Circuit with Switch — Complete Transient Analysis</h3>
+
+<p><em><strong>Note:</strong> Express numerical answers to 3 significant figures. Scientific notation is accepted (e.g., <code>2.50*10^3</code> or <code>2.50E3</code>).</em></p>
 
 <p>Consider the circuit below. A DC voltage source <b>V<sub>s</sub> = {@Vs@} V</b> is in series with a switch S and <b>R<sub>1</sub> = {@R1@} &Omega;</b>. From the junction node A: <b>R<sub>2</sub> = {@R2@} &Omega;</b> goes to ground, and an inductor <b>L = {@Lval@} mH</b> goes to ground.</p>
 
@@ -531,12 +682,21 @@ ta5_essay: "See model answer in general feedback.";
     <value>2.0000000</value>
     <autosimplify>1</autosimplify>
     <feedbackstyle>1</feedbackstyle>
+    <feedbackvariables>
+        <text><![CDATA[
+/* Order-of-magnitude check for tiered grading */
+_ratio: if (ta1 = 0 or ans1 = 0) then 0 else float(abs(ans1 / ta1));
+_log10r: if _ratio > 0 then float(log(_ratio)/log(10)) else -999;
+_nearint: round(_log10r);
+_mag_err: is(_ratio > 0 and abs(_nearint) >= 1 and abs(_log10r - _nearint) < 0.2);
+]]></text>
+    </feedbackvariables>
     <node>
       <name>0</name>
-      <answertest>NumAbsolute</answertest>
+      <answertest>NumRelative</answertest>
       <sans>ans1</sans>
       <tans>ta1</tans>
-      <testoptions>0.005</testoptions>
+      <testoptions>0.05</testoptions>
       <quiet>0</quiet>
       <truescoremode>=</truescoremode>
       <truescore>1.0000000</truescore>
@@ -547,8 +707,48 @@ ta5_essay: "See model answer in general feedback.";
       <falsescoremode>=</falsescoremode>
       <falsescore>0.0000000</falsescore>
       <falsepenalty/>
-      <falsenextnode>-1</falsenextnode>
+      <falsenextnode>1</falsenextnode>
       <falseanswernote>prt1-1-F</falseanswernote>
+      <falsefeedback format="html"><text></text></falsefeedback>
+    </node>
+    <node>
+      <name>1</name>
+      <answertest>NumRelative</answertest>
+      <sans>ans1</sans>
+      <tans>ta1</tans>
+      <testoptions>0.15</testoptions>
+      <quiet>0</quiet>
+      <truescoremode>=</truescoremode>
+      <truescore>0.7000000</truescore>
+      <truepenalty/>
+      <truenextnode>-1</truenextnode>
+      <trueanswernote>prt1-2-T</trueanswernote>
+      <truefeedback format="html"><text><![CDATA[<p>Your answer is close but not precise enough. You received 70% for this part.</p>]]></text></truefeedback>
+      <falsescoremode>=</falsescoremode>
+      <falsescore>0.0000000</falsescore>
+      <falsepenalty/>
+      <falsenextnode>2</falsenextnode>
+      <falseanswernote>prt1-2-F</falseanswernote>
+      <falsefeedback format="html"><text></text></falsefeedback>
+    </node>
+    <node>
+      <name>2</name>
+      <answertest>AlgEquiv</answertest>
+      <sans>_mag_err</sans>
+      <tans>true</tans>
+      <testoptions></testoptions>
+      <quiet>0</quiet>
+      <truescoremode>=</truescoremode>
+      <truescore>0.6000000</truescore>
+      <truepenalty/>
+      <truenextnode>-1</truenextnode>
+      <trueanswernote>prt1-3-T</trueanswernote>
+      <truefeedback format="html"><text><![CDATA[<p>Your significant figures appear correct but the order of magnitude is wrong. Check your unit conversions. You received 60% for this part.</p>]]></text></truefeedback>
+      <falsescoremode>=</falsescoremode>
+      <falsescore>0.0000000</falsescore>
+      <falsepenalty/>
+      <falsenextnode>-1</falsenextnode>
+      <falseanswernote>prt1-3-F</falseanswernote>
       <falsefeedback format="html"><text><![CDATA[<p>Incorrect. At DC steady state, the inductor is a short circuit. The current through L is I<sub>0</sub> = V<sub>s</sub>/R<sub>1</sub>.</p>]]></text></falsefeedback>
     </node>
   </prt>
@@ -559,6 +759,15 @@ ta5_essay: "See model answer in general feedback.";
     <value>2.0000000</value>
     <autosimplify>1</autosimplify>
     <feedbackstyle>1</feedbackstyle>
+    <feedbackvariables>
+        <text><![CDATA[
+/* Order-of-magnitude check for tiered grading */
+_p2_ratio: if (ta2 = 0 or ans2 = 0) then 0 else float(abs(ans2 / ta2));
+_p2_log10r: if _p2_ratio > 0 then float(log(_p2_ratio)/log(10)) else -999;
+_p2_nearint: round(_p2_log10r);
+_p2_mag_err: is(_p2_ratio > 0 and abs(_p2_nearint) >= 1 and abs(_p2_log10r - _p2_nearint) < 0.2);
+]]></text>
+    </feedbackvariables>
     <node>
       <name>0</name>
       <answertest>NumRelative</answertest>
@@ -575,8 +784,48 @@ ta5_essay: "See model answer in general feedback.";
       <falsescoremode>=</falsescoremode>
       <falsescore>0.0000000</falsescore>
       <falsepenalty/>
-      <falsenextnode>-1</falsenextnode>
+      <falsenextnode>1</falsenextnode>
       <falseanswernote>prt2-1-F</falseanswernote>
+      <falsefeedback format="html"><text></text></falsefeedback>
+    </node>
+    <node>
+      <name>1</name>
+      <answertest>NumRelative</answertest>
+      <sans>ans2</sans>
+      <tans>ta2</tans>
+      <testoptions>0.15</testoptions>
+      <quiet>0</quiet>
+      <truescoremode>=</truescoremode>
+      <truescore>0.7000000</truescore>
+      <truepenalty/>
+      <truenextnode>-1</truenextnode>
+      <trueanswernote>prt2-2-T</trueanswernote>
+      <truefeedback format="html"><text><![CDATA[<p>Your answer is close but not precise enough. You received 70% for this part.</p>]]></text></truefeedback>
+      <falsescoremode>=</falsescoremode>
+      <falsescore>0.0000000</falsescore>
+      <falsepenalty/>
+      <falsenextnode>2</falsenextnode>
+      <falseanswernote>prt2-2-F</falseanswernote>
+      <falsefeedback format="html"><text></text></falsefeedback>
+    </node>
+    <node>
+      <name>2</name>
+      <answertest>AlgEquiv</answertest>
+      <sans>_p2_mag_err</sans>
+      <tans>true</tans>
+      <testoptions></testoptions>
+      <quiet>0</quiet>
+      <truescoremode>=</truescoremode>
+      <truescore>0.6000000</truescore>
+      <truepenalty/>
+      <truenextnode>-1</truenextnode>
+      <trueanswernote>prt2-3-T</trueanswernote>
+      <truefeedback format="html"><text><![CDATA[<p>Your significant figures appear correct but the order of magnitude is wrong. Check your unit conversions. You received 60% for this part.</p>]]></text></truefeedback>
+      <falsescoremode>=</falsescoremode>
+      <falsescore>0.0000000</falsescore>
+      <falsepenalty/>
+      <falsenextnode>-1</falsenextnode>
+      <falseanswernote>prt2-3-F</falseanswernote>
       <falsefeedback format="html"><text><![CDATA[<p>Incorrect. After switch opens, L discharges through R<sub>2</sub>. &tau; = L/R<sub>2</sub>. Since L is in mH and R<sub>2</sub> in &Omega;, L(mH)/R<sub>2</sub>(&Omega;) gives &tau; directly in ms: {@tau_ms_rounded@} ms.</p>]]></text></falsefeedback>
     </node>
   </prt>
@@ -619,6 +868,8 @@ ta5_essay: "See model answer in general feedback.";
   <questiontext format="html">
     <text><![CDATA[
 <h3>Q4-V3: Th&eacute;venin + RC — Complete Transient Analysis</h3>
+
+<p><em><strong>Note:</strong> Express numerical answers to 3 significant figures. Scientific notation is accepted (e.g., <code>2.50*10^3</code> or <code>2.50E3</code>).</em></p>
 
 <p>Consider the following circuit. A DC source <b>V<sub>s</sub> = {@Vs@} V</b> connects to a voltage divider: <b>R<sub>1</sub> = {@R1@} k&Omega;</b> (top) and <b>R<sub>2</sub> = {@R2@} k&Omega;</b> (bottom, to ground). At the midpoint (node A), a switch S is in series with a capacitor <b>C = {@Cval@} &mu;F</b>.</p>
 
@@ -855,12 +1106,21 @@ ta6_essay: "See model answer in general feedback.";
     <value>1.0000000</value>
     <autosimplify>1</autosimplify>
     <feedbackstyle>1</feedbackstyle>
+    <feedbackvariables>
+        <text><![CDATA[
+/* Order-of-magnitude check for tiered grading */
+_ratio: if (ta1 = 0 or ans1 = 0) then 0 else float(abs(ans1 / ta1));
+_log10r: if _ratio > 0 then float(log(_ratio)/log(10)) else -999;
+_nearint: round(_log10r);
+_mag_err: is(_ratio > 0 and abs(_nearint) >= 1 and abs(_log10r - _nearint) < 0.2);
+]]></text>
+    </feedbackvariables>
     <node>
       <name>0</name>
-      <answertest>NumAbsolute</answertest>
+      <answertest>NumRelative</answertest>
       <sans>ans1</sans>
       <tans>ta1</tans>
-      <testoptions>0.1</testoptions>
+      <testoptions>0.05</testoptions>
       <quiet>0</quiet>
       <truescoremode>=</truescoremode>
       <truescore>1.0000000</truescore>
@@ -871,8 +1131,48 @@ ta6_essay: "See model answer in general feedback.";
       <falsescoremode>=</falsescoremode>
       <falsescore>0.0000000</falsescore>
       <falsepenalty/>
-      <falsenextnode>-1</falsenextnode>
+      <falsenextnode>1</falsenextnode>
       <falseanswernote>prt1-1-F</falseanswernote>
+      <falsefeedback format="html"><text></text></falsefeedback>
+    </node>
+    <node>
+      <name>1</name>
+      <answertest>NumRelative</answertest>
+      <sans>ans1</sans>
+      <tans>ta1</tans>
+      <testoptions>0.15</testoptions>
+      <quiet>0</quiet>
+      <truescoremode>=</truescoremode>
+      <truescore>0.7000000</truescore>
+      <truepenalty/>
+      <truenextnode>-1</truenextnode>
+      <trueanswernote>prt1-2-T</trueanswernote>
+      <truefeedback format="html"><text><![CDATA[<p>Your answer is close but not precise enough. You received 70% for this part.</p>]]></text></truefeedback>
+      <falsescoremode>=</falsescoremode>
+      <falsescore>0.0000000</falsescore>
+      <falsepenalty/>
+      <falsenextnode>2</falsenextnode>
+      <falseanswernote>prt1-2-F</falseanswernote>
+      <falsefeedback format="html"><text></text></falsefeedback>
+    </node>
+    <node>
+      <name>2</name>
+      <answertest>AlgEquiv</answertest>
+      <sans>_mag_err</sans>
+      <tans>true</tans>
+      <testoptions></testoptions>
+      <quiet>0</quiet>
+      <truescoremode>=</truescoremode>
+      <truescore>0.6000000</truescore>
+      <truepenalty/>
+      <truenextnode>-1</truenextnode>
+      <trueanswernote>prt1-3-T</trueanswernote>
+      <truefeedback format="html"><text><![CDATA[<p>Your significant figures appear correct but the order of magnitude is wrong. Check your unit conversions. You received 60% for this part.</p>]]></text></truefeedback>
+      <falsescoremode>=</falsescoremode>
+      <falsescore>0.0000000</falsescore>
+      <falsepenalty/>
+      <falsenextnode>-1</falsenextnode>
+      <falseanswernote>prt1-3-F</falseanswernote>
       <falsefeedback format="html"><text><![CDATA[<p>Incorrect. V<sub>th</sub> is the open-circuit voltage at node A = V<sub>s</sub> &middot; R<sub>2</sub>/(R<sub>1</sub>+R<sub>2</sub>).</p>]]></text></falsefeedback>
     </node>
   </prt>
@@ -883,9 +1183,18 @@ ta6_essay: "See model answer in general feedback.";
     <value>1.0000000</value>
     <autosimplify>1</autosimplify>
     <feedbackstyle>1</feedbackstyle>
+    <feedbackvariables>
+        <text><![CDATA[
+/* Order-of-magnitude check for tiered grading */
+_p2_ratio: if (ta2 = 0 or ans2 = 0) then 0 else float(abs(ans2 / ta2));
+_p2_log10r: if _p2_ratio > 0 then float(log(_p2_ratio)/log(10)) else -999;
+_p2_nearint: round(_p2_log10r);
+_p2_mag_err: is(_p2_ratio > 0 and abs(_p2_nearint) >= 1 and abs(_p2_log10r - _p2_nearint) < 0.2);
+]]></text>
+    </feedbackvariables>
     <node>
       <name>0</name>
-      <answertest>NumAbsolute</answertest>
+      <answertest>NumRelative</answertest>
       <sans>ans2</sans>
       <tans>ta2</tans>
       <testoptions>0.05</testoptions>
@@ -899,8 +1208,48 @@ ta6_essay: "See model answer in general feedback.";
       <falsescoremode>=</falsescoremode>
       <falsescore>0.0000000</falsescore>
       <falsepenalty/>
-      <falsenextnode>-1</falsenextnode>
+      <falsenextnode>1</falsenextnode>
       <falseanswernote>prt2-1-F</falseanswernote>
+      <falsefeedback format="html"><text></text></falsefeedback>
+    </node>
+    <node>
+      <name>1</name>
+      <answertest>NumRelative</answertest>
+      <sans>ans2</sans>
+      <tans>ta2</tans>
+      <testoptions>0.15</testoptions>
+      <quiet>0</quiet>
+      <truescoremode>=</truescoremode>
+      <truescore>0.7000000</truescore>
+      <truepenalty/>
+      <truenextnode>-1</truenextnode>
+      <trueanswernote>prt2-2-T</trueanswernote>
+      <truefeedback format="html"><text><![CDATA[<p>Your answer is close but not precise enough. You received 70% for this part.</p>]]></text></truefeedback>
+      <falsescoremode>=</falsescoremode>
+      <falsescore>0.0000000</falsescore>
+      <falsepenalty/>
+      <falsenextnode>2</falsenextnode>
+      <falseanswernote>prt2-2-F</falseanswernote>
+      <falsefeedback format="html"><text></text></falsefeedback>
+    </node>
+    <node>
+      <name>2</name>
+      <answertest>AlgEquiv</answertest>
+      <sans>_p2_mag_err</sans>
+      <tans>true</tans>
+      <testoptions></testoptions>
+      <quiet>0</quiet>
+      <truescoremode>=</truescoremode>
+      <truescore>0.6000000</truescore>
+      <truepenalty/>
+      <truenextnode>-1</truenextnode>
+      <trueanswernote>prt2-3-T</trueanswernote>
+      <truefeedback format="html"><text><![CDATA[<p>Your significant figures appear correct but the order of magnitude is wrong. Check your unit conversions. You received 60% for this part.</p>]]></text></truefeedback>
+      <falsescoremode>=</falsescoremode>
+      <falsescore>0.0000000</falsescore>
+      <falsepenalty/>
+      <falsenextnode>-1</falsenextnode>
+      <falseanswernote>prt2-3-F</falseanswernote>
       <falsefeedback format="html"><text><![CDATA[<p>Incorrect. R<sub>th</sub> = R<sub>1</sub>||R<sub>2</sub> = R<sub>1</sub>&middot;R<sub>2</sub>/(R<sub>1</sub>+R<sub>2</sub>). Remember to deactivate V<sub>s</sub> (short it) when finding R<sub>th</sub>.</p>]]></text></falsefeedback>
     </node>
   </prt>
@@ -911,12 +1260,21 @@ ta6_essay: "See model answer in general feedback.";
     <value>2.0000000</value>
     <autosimplify>1</autosimplify>
     <feedbackstyle>1</feedbackstyle>
+    <feedbackvariables>
+        <text><![CDATA[
+/* Order-of-magnitude check for tiered grading */
+_p3_ratio: if (ta3 = 0 or ans3 = 0) then 0 else float(abs(ans3 / ta3));
+_p3_log10r: if _p3_ratio > 0 then float(log(_p3_ratio)/log(10)) else -999;
+_p3_nearint: round(_p3_log10r);
+_p3_mag_err: is(_p3_ratio > 0 and abs(_p3_nearint) >= 1 and abs(_p3_log10r - _p3_nearint) < 0.2);
+]]></text>
+    </feedbackvariables>
     <node>
       <name>0</name>
-      <answertest>NumAbsolute</answertest>
+      <answertest>NumRelative</answertest>
       <sans>ans3</sans>
       <tans>ta3</tans>
-      <testoptions>0.5</testoptions>
+      <testoptions>0.05</testoptions>
       <quiet>0</quiet>
       <truescoremode>=</truescoremode>
       <truescore>1.0000000</truescore>
@@ -927,8 +1285,48 @@ ta6_essay: "See model answer in general feedback.";
       <falsescoremode>=</falsescoremode>
       <falsescore>0.0000000</falsescore>
       <falsepenalty/>
-      <falsenextnode>-1</falsenextnode>
+      <falsenextnode>1</falsenextnode>
       <falseanswernote>prt3-1-F</falseanswernote>
+      <falsefeedback format="html"><text></text></falsefeedback>
+    </node>
+    <node>
+      <name>1</name>
+      <answertest>NumRelative</answertest>
+      <sans>ans3</sans>
+      <tans>ta3</tans>
+      <testoptions>0.15</testoptions>
+      <quiet>0</quiet>
+      <truescoremode>=</truescoremode>
+      <truescore>0.7000000</truescore>
+      <truepenalty/>
+      <truenextnode>-1</truenextnode>
+      <trueanswernote>prt3-2-T</trueanswernote>
+      <truefeedback format="html"><text><![CDATA[<p>Your answer is close but not precise enough. You received 70% for this part.</p>]]></text></truefeedback>
+      <falsescoremode>=</falsescoremode>
+      <falsescore>0.0000000</falsescore>
+      <falsepenalty/>
+      <falsenextnode>2</falsenextnode>
+      <falseanswernote>prt3-2-F</falseanswernote>
+      <falsefeedback format="html"><text></text></falsefeedback>
+    </node>
+    <node>
+      <name>2</name>
+      <answertest>AlgEquiv</answertest>
+      <sans>_p3_mag_err</sans>
+      <tans>true</tans>
+      <testoptions></testoptions>
+      <quiet>0</quiet>
+      <truescoremode>=</truescoremode>
+      <truescore>0.6000000</truescore>
+      <truepenalty/>
+      <truenextnode>-1</truenextnode>
+      <trueanswernote>prt3-3-T</trueanswernote>
+      <truefeedback format="html"><text><![CDATA[<p>Your significant figures appear correct but the order of magnitude is wrong. Check your unit conversions. You received 60% for this part.</p>]]></text></truefeedback>
+      <falsescoremode>=</falsescoremode>
+      <falsescore>0.0000000</falsescore>
+      <falsepenalty/>
+      <falsenextnode>-1</falsenextnode>
+      <falseanswernote>prt3-3-F</falseanswernote>
       <falsefeedback format="html"><text><![CDATA[<p>Incorrect. &tau; = R<sub>th</sub>(k&Omega;) &times; C(&mu;F) gives ms directly.</p>]]></text></falsefeedback>
     </node>
   </prt>
@@ -939,12 +1337,21 @@ ta6_essay: "See model answer in general feedback.";
     <value>2.0000000</value>
     <autosimplify>1</autosimplify>
     <feedbackstyle>1</feedbackstyle>
+    <feedbackvariables>
+        <text><![CDATA[
+/* Order-of-magnitude check for tiered grading */
+_p4_ratio: if (ta4 = 0 or ans4 = 0) then 0 else float(abs(ans4 / ta4));
+_p4_log10r: if _p4_ratio > 0 then float(log(_p4_ratio)/log(10)) else -999;
+_p4_nearint: round(_p4_log10r);
+_p4_mag_err: is(_p4_ratio > 0 and abs(_p4_nearint) >= 1 and abs(_p4_log10r - _p4_nearint) < 0.2);
+]]></text>
+    </feedbackvariables>
     <node>
       <name>0</name>
-      <answertest>NumAbsolute</answertest>
+      <answertest>NumRelative</answertest>
       <sans>ans4</sans>
       <tans>ta4</tans>
-      <testoptions>0.1</testoptions>
+      <testoptions>0.05</testoptions>
       <quiet>0</quiet>
       <truescoremode>=</truescoremode>
       <truescore>1.0000000</truescore>
@@ -955,8 +1362,48 @@ ta6_essay: "See model answer in general feedback.";
       <falsescoremode>=</falsescoremode>
       <falsescore>0.0000000</falsescore>
       <falsepenalty/>
-      <falsenextnode>-1</falsenextnode>
+      <falsenextnode>1</falsenextnode>
       <falseanswernote>prt4-1-F</falseanswernote>
+      <falsefeedback format="html"><text></text></falsefeedback>
+    </node>
+    <node>
+      <name>1</name>
+      <answertest>NumRelative</answertest>
+      <sans>ans4</sans>
+      <tans>ta4</tans>
+      <testoptions>0.15</testoptions>
+      <quiet>0</quiet>
+      <truescoremode>=</truescoremode>
+      <truescore>0.7000000</truescore>
+      <truepenalty/>
+      <truenextnode>-1</truenextnode>
+      <trueanswernote>prt4-2-T</trueanswernote>
+      <truefeedback format="html"><text><![CDATA[<p>Your answer is close but not precise enough. You received 70% for this part.</p>]]></text></truefeedback>
+      <falsescoremode>=</falsescoremode>
+      <falsescore>0.0000000</falsescore>
+      <falsepenalty/>
+      <falsenextnode>2</falsenextnode>
+      <falseanswernote>prt4-2-F</falseanswernote>
+      <falsefeedback format="html"><text></text></falsefeedback>
+    </node>
+    <node>
+      <name>2</name>
+      <answertest>AlgEquiv</answertest>
+      <sans>_p4_mag_err</sans>
+      <tans>true</tans>
+      <testoptions></testoptions>
+      <quiet>0</quiet>
+      <truescoremode>=</truescoremode>
+      <truescore>0.6000000</truescore>
+      <truepenalty/>
+      <truenextnode>-1</truenextnode>
+      <trueanswernote>prt4-3-T</trueanswernote>
+      <truefeedback format="html"><text><![CDATA[<p>Your significant figures appear correct but the order of magnitude is wrong. Check your unit conversions. You received 60% for this part.</p>]]></text></truefeedback>
+      <falsescoremode>=</falsescoremode>
+      <falsescore>0.0000000</falsescore>
+      <falsepenalty/>
+      <falsenextnode>-1</falsenextnode>
+      <falseanswernote>prt4-3-F</falseanswernote>
       <falsefeedback format="html"><text><![CDATA[<p>Incorrect. At steady state, no current flows through R<sub>th</sub>, so v<sub>C</sub> = V<sub>th</sub>.</p>]]></text></falsefeedback>
     </node>
   </prt>

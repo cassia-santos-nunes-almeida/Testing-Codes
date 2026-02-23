@@ -26,6 +26,8 @@
 
 <p><strong>[INSERT DIAGRAM: diagrams/q3/q3_v1_rl_step.svg]</strong></p>
 
+<p><em><strong>Note:</strong> Express numerical answers to 3 significant figures. Scientific notation is accepted (e.g., <code>2.50*10^3</code> or <code>2.50E3</code>).</em></p>
+
 <hr/>
 
 <h4>Part A (2 pts)</h4>
@@ -46,7 +48,7 @@
 
 <h4>Part B (4 pts)</h4>
 <p>Determine the equivalent resistance \(R_\text{eq}\) that the inductor \(L\) "sees" looking back into the rest of the circuit from its terminals (with the voltage source replaced by its internal impedance).</p>
-<p>Give your answer in ohms as a decimal number.</p>
+<p>Give your answer in ohms to 3 significant figures.</p>
 <p>\(R_\text{eq} = \) [[input:ansB]] \(\Omega\) [[validation:ansB]]</p>
 [[feedback:prtB]]
 
@@ -54,7 +56,7 @@
 
 <h4>Part C (4 pts)</h4>
 <p>Using your result from Part B, compute the time constant \(\tau\) of this circuit.</p>
-<p>Give your answer in seconds as a decimal number.</p>
+<p>Give your answer in seconds to 3 significant figures.</p>
 <p>\(\tau = \) [[input:ansC]] seconds [[validation:ansC]]</p>
 [[feedback:prtC]]
 
@@ -255,32 +257,76 @@ taD: "See model answer in general feedback.";
         <autosimplify>1</autosimplify>
         <feedbackstyle>1</feedbackstyle>
         <feedbackvariables>
-            <text></text>
+            <text><![CDATA[
+/* Order-of-magnitude check for tiered grading */
+_ratio: if (correctB = 0 or ansB = 0) then 0 else float(abs(ansB / correctB));
+_log10r: if _ratio > 0 then float(log(_ratio)/log(10)) else -999;
+_nearint: round(_log10r);
+_mag_err: is(_ratio > 0 and abs(_nearint) >= 1 and abs(_log10r - _nearint) < 0.2);
+]]></text>
         </feedbackvariables>
         <node>
             <name>0</name>
-            <description>Check Req</description>
+            <description>Check within 5% (full marks)</description>
             <answertest>NumRelative</answertest>
             <sans>ansB</sans>
             <tans>correctB</tans>
-            <testoptions>0.02</testoptions>
+            <testoptions>0.05</testoptions>
             <quiet>0</quiet>
             <truescoremode>=</truescoremode>
             <truescore>1</truescore>
             <truepenalty></truepenalty>
             <truenextnode>-1</truenextnode>
             <trueanswernote>prtB-1-T</trueanswernote>
-            <truefeedback format="html">
-                <text><![CDATA[<p>Correct.</p>]]></text>
-            </truefeedback>
+            <truefeedback format="html"><text><![CDATA[<p>Correct.</p>]]></text></truefeedback>
+            <falsescoremode>=</falsescoremode>
+            <falsescore>0</falsescore>
+            <falsepenalty></falsepenalty>
+            <falsenextnode>1</falsenextnode>
+            <falseanswernote>prtB-1-F</falseanswernote>
+            <falsefeedback format="html"><text></text></falsefeedback>
+        </node>
+        <node>
+            <name>1</name>
+            <description>Check within 15% (70% marks)</description>
+            <answertest>NumRelative</answertest>
+            <sans>ansB</sans>
+            <tans>correctB</tans>
+            <testoptions>0.15</testoptions>
+            <quiet>0</quiet>
+            <truescoremode>=</truescoremode>
+            <truescore>0.7</truescore>
+            <truepenalty></truepenalty>
+            <truenextnode>-1</truenextnode>
+            <trueanswernote>prtB-2-T</trueanswernote>
+            <truefeedback format="html"><text><![CDATA[<p>Your answer is close but not precise enough. You received 70% for this part.</p>]]></text></truefeedback>
+            <falsescoremode>=</falsescoremode>
+            <falsescore>0</falsescore>
+            <falsepenalty></falsepenalty>
+            <falsenextnode>2</falsenextnode>
+            <falseanswernote>prtB-2-F</falseanswernote>
+            <falsefeedback format="html"><text></text></falsefeedback>
+        </node>
+        <node>
+            <name>2</name>
+            <description>Check order of magnitude error (60% marks)</description>
+            <answertest>AlgEquiv</answertest>
+            <sans>_mag_err</sans>
+            <tans>true</tans>
+            <testoptions></testoptions>
+            <quiet>0</quiet>
+            <truescoremode>=</truescoremode>
+            <truescore>0.6</truescore>
+            <truepenalty></truepenalty>
+            <truenextnode>-1</truenextnode>
+            <trueanswernote>prtB-3-T</trueanswernote>
+            <truefeedback format="html"><text><![CDATA[<p>Your significant figures appear correct but the order of magnitude is wrong. Check your unit conversions. You received 60% for this part.</p>]]></text></truefeedback>
             <falsescoremode>=</falsescoremode>
             <falsescore>0</falsescore>
             <falsepenalty></falsepenalty>
             <falsenextnode>-1</falsenextnode>
-            <falseanswernote>prtB-1-F</falseanswernote>
-            <falsefeedback format="html">
-                <text><![CDATA[<p>Incorrect. Think carefully about which resistors are in series and which are in parallel when viewed from the inductor terminals.</p>]]></text>
-            </falsefeedback>
+            <falseanswernote>prtB-3-F</falseanswernote>
+            <falsefeedback format="html"><text><![CDATA[<p>Incorrect. Think carefully about which resistors are in series and which are in parallel when viewed from the inductor terminals.</p>]]></text></falsefeedback>
         </node>
     </prt>
     <prt>
@@ -289,32 +335,76 @@ taD: "See model answer in general feedback.";
         <autosimplify>1</autosimplify>
         <feedbackstyle>1</feedbackstyle>
         <feedbackvariables>
-            <text></text>
+            <text><![CDATA[
+/* Order-of-magnitude check for tiered grading */
+_c_ratio: if (correctC = 0 or ansC = 0) then 0 else float(abs(ansC / correctC));
+_c_log10r: if _c_ratio > 0 then float(log(_c_ratio)/log(10)) else -999;
+_c_nearint: round(_c_log10r);
+_c_mag_err: is(_c_ratio > 0 and abs(_c_nearint) >= 1 and abs(_c_log10r - _c_nearint) < 0.2);
+]]></text>
         </feedbackvariables>
         <node>
             <name>0</name>
-            <description>Check time constant tau</description>
+            <description>Check within 5% (full marks)</description>
             <answertest>NumRelative</answertest>
             <sans>ansC</sans>
             <tans>correctC</tans>
-            <testoptions>0.02</testoptions>
+            <testoptions>0.05</testoptions>
             <quiet>0</quiet>
             <truescoremode>=</truescoremode>
             <truescore>1</truescore>
             <truepenalty></truepenalty>
             <truenextnode>-1</truenextnode>
             <trueanswernote>prtC-1-T</trueanswernote>
-            <truefeedback format="html">
-                <text><![CDATA[<p>Correct.</p>]]></text>
-            </truefeedback>
+            <truefeedback format="html"><text><![CDATA[<p>Correct.</p>]]></text></truefeedback>
+            <falsescoremode>=</falsescoremode>
+            <falsescore>0</falsescore>
+            <falsepenalty></falsepenalty>
+            <falsenextnode>1</falsenextnode>
+            <falseanswernote>prtC-1-F</falseanswernote>
+            <falsefeedback format="html"><text></text></falsefeedback>
+        </node>
+        <node>
+            <name>1</name>
+            <description>Check within 15% (70% marks)</description>
+            <answertest>NumRelative</answertest>
+            <sans>ansC</sans>
+            <tans>correctC</tans>
+            <testoptions>0.15</testoptions>
+            <quiet>0</quiet>
+            <truescoremode>=</truescoremode>
+            <truescore>0.7</truescore>
+            <truepenalty></truepenalty>
+            <truenextnode>-1</truenextnode>
+            <trueanswernote>prtC-2-T</trueanswernote>
+            <truefeedback format="html"><text><![CDATA[<p>Your answer is close but not precise enough. You received 70% for this part.</p>]]></text></truefeedback>
+            <falsescoremode>=</falsescoremode>
+            <falsescore>0</falsescore>
+            <falsepenalty></falsepenalty>
+            <falsenextnode>2</falsenextnode>
+            <falseanswernote>prtC-2-F</falseanswernote>
+            <falsefeedback format="html"><text></text></falsefeedback>
+        </node>
+        <node>
+            <name>2</name>
+            <description>Check order of magnitude error (60% marks)</description>
+            <answertest>AlgEquiv</answertest>
+            <sans>_c_mag_err</sans>
+            <tans>true</tans>
+            <testoptions></testoptions>
+            <quiet>0</quiet>
+            <truescoremode>=</truescoremode>
+            <truescore>0.6</truescore>
+            <truepenalty></truepenalty>
+            <truenextnode>-1</truenextnode>
+            <trueanswernote>prtC-3-T</trueanswernote>
+            <truefeedback format="html"><text><![CDATA[<p>Your significant figures appear correct but the order of magnitude is wrong. Check your unit conversions. You received 60% for this part.</p>]]></text></truefeedback>
             <falsescoremode>=</falsescoremode>
             <falsescore>0</falsescore>
             <falsepenalty></falsepenalty>
             <falsenextnode>-1</falsenextnode>
-            <falseanswernote>prtC-1-F</falseanswernote>
-            <falsefeedback format="html">
-                <text><![CDATA[<p>Incorrect. Recall the relationship between the time constant, the equivalent resistance, and the energy storage element.</p>]]></text>
-            </falsefeedback>
+            <falseanswernote>prtC-3-F</falseanswernote>
+            <falsefeedback format="html"><text><![CDATA[<p>Incorrect. Recall the relationship between the time constant, the equivalent resistance, and the energy storage element.</p>]]></text></falsefeedback>
         </node>
     </prt>
     <deployedseed>12345</deployedseed>
@@ -340,6 +430,8 @@ taD: "See model answer in general feedback.";
 
 <p><strong>[INSERT DIAGRAM: diagrams/q3/q3_v2_rc_step.svg]</strong></p>
 
+<p><em><strong>Note:</strong> Express numerical answers to 3 significant figures. Scientific notation is accepted (e.g., <code>2.50*10^3</code> or <code>2.50E3</code>).</em></p>
+
 <hr/>
 
 <h4>Part A (2 pts)</h4>
@@ -360,7 +452,7 @@ taD: "See model answer in general feedback.";
 
 <h4>Part B (4 pts)</h4>
 <p>Determine the equivalent resistance \(R_\text{eq}\) that the capacitor \(C\) "sees" looking out from its terminals into the rest of the circuit (with the voltage source replaced by its internal impedance).</p>
-<p>Give your answer in ohms as a decimal number.</p>
+<p>Give your answer in ohms to 3 significant figures.</p>
 <p>\(R_\text{eq} = \) [[input:ansB]] \(\Omega\) [[validation:ansB]]</p>
 [[feedback:prtB]]
 
@@ -368,7 +460,7 @@ taD: "See model answer in general feedback.";
 
 <h4>Part C (4 pts)</h4>
 <p>Using your result from Part B, compute the time constant \(\tau\) of this circuit.</p>
-<p>Give your answer in seconds as a decimal number.</p>
+<p>Give your answer in seconds to 3 significant figures.</p>
 <p>\(\tau = \) [[input:ansC]] seconds [[validation:ansC]]</p>
 [[feedback:prtC]]
 
@@ -570,32 +662,76 @@ taD: "See model answer in general feedback.";
         <autosimplify>1</autosimplify>
         <feedbackstyle>1</feedbackstyle>
         <feedbackvariables>
-            <text></text>
+            <text><![CDATA[
+/* Order-of-magnitude check for tiered grading */
+_ratio: if (correctB = 0 or ansB = 0) then 0 else float(abs(ansB / correctB));
+_log10r: if _ratio > 0 then float(log(_ratio)/log(10)) else -999;
+_nearint: round(_log10r);
+_mag_err: is(_ratio > 0 and abs(_nearint) >= 1 and abs(_log10r - _nearint) < 0.2);
+]]></text>
         </feedbackvariables>
         <node>
             <name>0</name>
-            <description>Check Req</description>
+            <description>Check within 5% (full marks)</description>
             <answertest>NumRelative</answertest>
             <sans>ansB</sans>
             <tans>correctB</tans>
-            <testoptions>0.02</testoptions>
+            <testoptions>0.05</testoptions>
             <quiet>0</quiet>
             <truescoremode>=</truescoremode>
             <truescore>1</truescore>
             <truepenalty></truepenalty>
             <truenextnode>-1</truenextnode>
             <trueanswernote>prtB-1-T</trueanswernote>
-            <truefeedback format="html">
-                <text><![CDATA[<p>Correct.</p>]]></text>
-            </truefeedback>
+            <truefeedback format="html"><text><![CDATA[<p>Correct.</p>]]></text></truefeedback>
+            <falsescoremode>=</falsescoremode>
+            <falsescore>0</falsescore>
+            <falsepenalty></falsepenalty>
+            <falsenextnode>1</falsenextnode>
+            <falseanswernote>prtB-1-F</falseanswernote>
+            <falsefeedback format="html"><text></text></falsefeedback>
+        </node>
+        <node>
+            <name>1</name>
+            <description>Check within 15% (70% marks)</description>
+            <answertest>NumRelative</answertest>
+            <sans>ansB</sans>
+            <tans>correctB</tans>
+            <testoptions>0.15</testoptions>
+            <quiet>0</quiet>
+            <truescoremode>=</truescoremode>
+            <truescore>0.7</truescore>
+            <truepenalty></truepenalty>
+            <truenextnode>-1</truenextnode>
+            <trueanswernote>prtB-2-T</trueanswernote>
+            <truefeedback format="html"><text><![CDATA[<p>Your answer is close but not precise enough. You received 70% for this part.</p>]]></text></truefeedback>
+            <falsescoremode>=</falsescoremode>
+            <falsescore>0</falsescore>
+            <falsepenalty></falsepenalty>
+            <falsenextnode>2</falsenextnode>
+            <falseanswernote>prtB-2-F</falseanswernote>
+            <falsefeedback format="html"><text></text></falsefeedback>
+        </node>
+        <node>
+            <name>2</name>
+            <description>Check order of magnitude error (60% marks)</description>
+            <answertest>AlgEquiv</answertest>
+            <sans>_mag_err</sans>
+            <tans>true</tans>
+            <testoptions></testoptions>
+            <quiet>0</quiet>
+            <truescoremode>=</truescoremode>
+            <truescore>0.6</truescore>
+            <truepenalty></truepenalty>
+            <truenextnode>-1</truenextnode>
+            <trueanswernote>prtB-3-T</trueanswernote>
+            <truefeedback format="html"><text><![CDATA[<p>Your significant figures appear correct but the order of magnitude is wrong. Check your unit conversions. You received 60% for this part.</p>]]></text></truefeedback>
             <falsescoremode>=</falsescoremode>
             <falsescore>0</falsescore>
             <falsepenalty></falsepenalty>
             <falsenextnode>-1</falsenextnode>
-            <falseanswernote>prtB-1-F</falseanswernote>
-            <falsefeedback format="html">
-                <text><![CDATA[<p>Incorrect. Consider what the capacitor sees from each of its terminals independently.</p>]]></text>
-            </falsefeedback>
+            <falseanswernote>prtB-3-F</falseanswernote>
+            <falsefeedback format="html"><text><![CDATA[<p>Incorrect. Consider what the capacitor sees from each of its terminals independently.</p>]]></text></falsefeedback>
         </node>
     </prt>
     <prt>
@@ -604,32 +740,76 @@ taD: "See model answer in general feedback.";
         <autosimplify>1</autosimplify>
         <feedbackstyle>1</feedbackstyle>
         <feedbackvariables>
-            <text></text>
+            <text><![CDATA[
+/* Order-of-magnitude check for tiered grading */
+_c_ratio: if (correctC = 0 or ansC = 0) then 0 else float(abs(ansC / correctC));
+_c_log10r: if _c_ratio > 0 then float(log(_c_ratio)/log(10)) else -999;
+_c_nearint: round(_c_log10r);
+_c_mag_err: is(_c_ratio > 0 and abs(_c_nearint) >= 1 and abs(_c_log10r - _c_nearint) < 0.2);
+]]></text>
         </feedbackvariables>
         <node>
             <name>0</name>
-            <description>Check time constant tau</description>
+            <description>Check within 5% (full marks)</description>
             <answertest>NumRelative</answertest>
             <sans>ansC</sans>
             <tans>correctC</tans>
-            <testoptions>0.02</testoptions>
+            <testoptions>0.05</testoptions>
             <quiet>0</quiet>
             <truescoremode>=</truescoremode>
             <truescore>1</truescore>
             <truepenalty></truepenalty>
             <truenextnode>-1</truenextnode>
             <trueanswernote>prtC-1-T</trueanswernote>
-            <truefeedback format="html">
-                <text><![CDATA[<p>Correct.</p>]]></text>
-            </truefeedback>
+            <truefeedback format="html"><text><![CDATA[<p>Correct.</p>]]></text></truefeedback>
+            <falsescoremode>=</falsescoremode>
+            <falsescore>0</falsescore>
+            <falsepenalty></falsepenalty>
+            <falsenextnode>1</falsenextnode>
+            <falseanswernote>prtC-1-F</falseanswernote>
+            <falsefeedback format="html"><text></text></falsefeedback>
+        </node>
+        <node>
+            <name>1</name>
+            <description>Check within 15% (70% marks)</description>
+            <answertest>NumRelative</answertest>
+            <sans>ansC</sans>
+            <tans>correctC</tans>
+            <testoptions>0.15</testoptions>
+            <quiet>0</quiet>
+            <truescoremode>=</truescoremode>
+            <truescore>0.7</truescore>
+            <truepenalty></truepenalty>
+            <truenextnode>-1</truenextnode>
+            <trueanswernote>prtC-2-T</trueanswernote>
+            <truefeedback format="html"><text><![CDATA[<p>Your answer is close but not precise enough. You received 70% for this part.</p>]]></text></truefeedback>
+            <falsescoremode>=</falsescoremode>
+            <falsescore>0</falsescore>
+            <falsepenalty></falsepenalty>
+            <falsenextnode>2</falsenextnode>
+            <falseanswernote>prtC-2-F</falseanswernote>
+            <falsefeedback format="html"><text></text></falsefeedback>
+        </node>
+        <node>
+            <name>2</name>
+            <description>Check order of magnitude error (60% marks)</description>
+            <answertest>AlgEquiv</answertest>
+            <sans>_c_mag_err</sans>
+            <tans>true</tans>
+            <testoptions></testoptions>
+            <quiet>0</quiet>
+            <truescoremode>=</truescoremode>
+            <truescore>0.6</truescore>
+            <truepenalty></truepenalty>
+            <truenextnode>-1</truenextnode>
+            <trueanswernote>prtC-3-T</trueanswernote>
+            <truefeedback format="html"><text><![CDATA[<p>Your significant figures appear correct but the order of magnitude is wrong. Check your unit conversions. You received 60% for this part.</p>]]></text></truefeedback>
             <falsescoremode>=</falsescoremode>
             <falsescore>0</falsescore>
             <falsepenalty></falsepenalty>
             <falsenextnode>-1</falsenextnode>
-            <falseanswernote>prtC-1-F</falseanswernote>
-            <falsefeedback format="html">
-                <text><![CDATA[<p>Incorrect. Recall the relationship between the time constant, the equivalent resistance, and the energy storage element.</p>]]></text>
-            </falsefeedback>
+            <falseanswernote>prtC-3-F</falseanswernote>
+            <falsefeedback format="html"><text><![CDATA[<p>Incorrect. Recall the relationship between the time constant, the equivalent resistance, and the energy storage element.</p>]]></text></falsefeedback>
         </node>
     </prt>
     <deployedseed>56789</deployedseed>
@@ -655,6 +835,8 @@ taD: "See model answer in general feedback.";
 
 <p><strong>[INSERT DIAGRAM: diagrams/q3/q3_v3_rl_natural.svg]</strong></p>
 
+<p><em><strong>Note:</strong> Express numerical answers to 3 significant figures. Scientific notation is accepted (e.g., <code>2.50*10^3</code> or <code>2.50E3</code>).</em></p>
+
 <hr/>
 
 <h4>Part A (2 pts)</h4>
@@ -675,7 +857,7 @@ taD: "See model answer in general feedback.";
 
 <h4>Part B (4 pts)</h4>
 <p>Determine the equivalent resistance \(R_\text{eq}\) that the inductor "sees" looking into the resistor network from its terminals.</p>
-<p>Give your answer in ohms as a decimal number.</p>
+<p>Give your answer in ohms to 3 significant figures.</p>
 <p>\(R_\text{eq} = \) [[input:ansB]] \(\Omega\) [[validation:ansB]]</p>
 [[feedback:prtB]]
 
@@ -683,7 +865,7 @@ taD: "See model answer in general feedback.";
 
 <h4>Part C (4 pts)</h4>
 <p>Using your result from Part B, compute the time constant \(\tau\) of this circuit.</p>
-<p>Give your answer in seconds as a decimal number.</p>
+<p>Give your answer in seconds to 3 significant figures.</p>
 <p>\(\tau = \) [[input:ansC]] seconds [[validation:ansC]]</p>
 [[feedback:prtC]]
 
@@ -885,32 +1067,76 @@ taD: "See model answer in general feedback.";
         <autosimplify>1</autosimplify>
         <feedbackstyle>1</feedbackstyle>
         <feedbackvariables>
-            <text></text>
+            <text><![CDATA[
+/* Order-of-magnitude check for tiered grading */
+_ratio: if (correctB = 0 or ansB = 0) then 0 else float(abs(ansB / correctB));
+_log10r: if _ratio > 0 then float(log(_ratio)/log(10)) else -999;
+_nearint: round(_log10r);
+_mag_err: is(_ratio > 0 and abs(_nearint) >= 1 and abs(_log10r - _nearint) < 0.2);
+]]></text>
         </feedbackvariables>
         <node>
             <name>0</name>
-            <description>Check Req</description>
+            <description>Check within 5% (full marks)</description>
             <answertest>NumRelative</answertest>
             <sans>ansB</sans>
             <tans>correctB</tans>
-            <testoptions>0.02</testoptions>
+            <testoptions>0.05</testoptions>
             <quiet>0</quiet>
             <truescoremode>=</truescoremode>
             <truescore>1</truescore>
             <truepenalty></truepenalty>
             <truenextnode>-1</truenextnode>
             <trueanswernote>prtB-1-T</trueanswernote>
-            <truefeedback format="html">
-                <text><![CDATA[<p>Correct.</p>]]></text>
-            </truefeedback>
+            <truefeedback format="html"><text><![CDATA[<p>Correct.</p>]]></text></truefeedback>
+            <falsescoremode>=</falsescoremode>
+            <falsescore>0</falsescore>
+            <falsepenalty></falsepenalty>
+            <falsenextnode>1</falsenextnode>
+            <falseanswernote>prtB-1-F</falseanswernote>
+            <falsefeedback format="html"><text></text></falsefeedback>
+        </node>
+        <node>
+            <name>1</name>
+            <description>Check within 15% (70% marks)</description>
+            <answertest>NumRelative</answertest>
+            <sans>ansB</sans>
+            <tans>correctB</tans>
+            <testoptions>0.15</testoptions>
+            <quiet>0</quiet>
+            <truescoremode>=</truescoremode>
+            <truescore>0.7</truescore>
+            <truepenalty></truepenalty>
+            <truenextnode>-1</truenextnode>
+            <trueanswernote>prtB-2-T</trueanswernote>
+            <truefeedback format="html"><text><![CDATA[<p>Your answer is close but not precise enough. You received 70% for this part.</p>]]></text></truefeedback>
+            <falsescoremode>=</falsescoremode>
+            <falsescore>0</falsescore>
+            <falsepenalty></falsepenalty>
+            <falsenextnode>2</falsenextnode>
+            <falseanswernote>prtB-2-F</falseanswernote>
+            <falsefeedback format="html"><text></text></falsefeedback>
+        </node>
+        <node>
+            <name>2</name>
+            <description>Check order of magnitude error (60% marks)</description>
+            <answertest>AlgEquiv</answertest>
+            <sans>_mag_err</sans>
+            <tans>true</tans>
+            <testoptions></testoptions>
+            <quiet>0</quiet>
+            <truescoremode>=</truescoremode>
+            <truescore>0.6</truescore>
+            <truepenalty></truepenalty>
+            <truenextnode>-1</truenextnode>
+            <trueanswernote>prtB-3-T</trueanswernote>
+            <truefeedback format="html"><text><![CDATA[<p>Your significant figures appear correct but the order of magnitude is wrong. Check your unit conversions. You received 60% for this part.</p>]]></text></truefeedback>
             <falsescoremode>=</falsescoremode>
             <falsescore>0</falsescore>
             <falsepenalty></falsepenalty>
             <falsenextnode>-1</falsenextnode>
-            <falseanswernote>prtB-1-F</falseanswernote>
-            <falsefeedback format="html">
-                <text><![CDATA[<p>Incorrect. Identify the different current paths from the inductor terminals to ground and combine them correctly.</p>]]></text>
-            </falsefeedback>
+            <falseanswernote>prtB-3-F</falseanswernote>
+            <falsefeedback format="html"><text><![CDATA[<p>Incorrect. Identify the different current paths from the inductor terminals to ground and combine them correctly.</p>]]></text></falsefeedback>
         </node>
     </prt>
     <prt>
@@ -919,32 +1145,76 @@ taD: "See model answer in general feedback.";
         <autosimplify>1</autosimplify>
         <feedbackstyle>1</feedbackstyle>
         <feedbackvariables>
-            <text></text>
+            <text><![CDATA[
+/* Order-of-magnitude check for tiered grading */
+_c_ratio: if (correctC = 0 or ansC = 0) then 0 else float(abs(ansC / correctC));
+_c_log10r: if _c_ratio > 0 then float(log(_c_ratio)/log(10)) else -999;
+_c_nearint: round(_c_log10r);
+_c_mag_err: is(_c_ratio > 0 and abs(_c_nearint) >= 1 and abs(_c_log10r - _c_nearint) < 0.2);
+]]></text>
         </feedbackvariables>
         <node>
             <name>0</name>
-            <description>Check time constant tau</description>
+            <description>Check within 5% (full marks)</description>
             <answertest>NumRelative</answertest>
             <sans>ansC</sans>
             <tans>correctC</tans>
-            <testoptions>0.02</testoptions>
+            <testoptions>0.05</testoptions>
             <quiet>0</quiet>
             <truescoremode>=</truescoremode>
             <truescore>1</truescore>
             <truepenalty></truepenalty>
             <truenextnode>-1</truenextnode>
             <trueanswernote>prtC-1-T</trueanswernote>
-            <truefeedback format="html">
-                <text><![CDATA[<p>Correct.</p>]]></text>
-            </truefeedback>
+            <truefeedback format="html"><text><![CDATA[<p>Correct.</p>]]></text></truefeedback>
+            <falsescoremode>=</falsescoremode>
+            <falsescore>0</falsescore>
+            <falsepenalty></falsepenalty>
+            <falsenextnode>1</falsenextnode>
+            <falseanswernote>prtC-1-F</falseanswernote>
+            <falsefeedback format="html"><text></text></falsefeedback>
+        </node>
+        <node>
+            <name>1</name>
+            <description>Check within 15% (70% marks)</description>
+            <answertest>NumRelative</answertest>
+            <sans>ansC</sans>
+            <tans>correctC</tans>
+            <testoptions>0.15</testoptions>
+            <quiet>0</quiet>
+            <truescoremode>=</truescoremode>
+            <truescore>0.7</truescore>
+            <truepenalty></truepenalty>
+            <truenextnode>-1</truenextnode>
+            <trueanswernote>prtC-2-T</trueanswernote>
+            <truefeedback format="html"><text><![CDATA[<p>Your answer is close but not precise enough. You received 70% for this part.</p>]]></text></truefeedback>
+            <falsescoremode>=</falsescoremode>
+            <falsescore>0</falsescore>
+            <falsepenalty></falsepenalty>
+            <falsenextnode>2</falsenextnode>
+            <falseanswernote>prtC-2-F</falseanswernote>
+            <falsefeedback format="html"><text></text></falsefeedback>
+        </node>
+        <node>
+            <name>2</name>
+            <description>Check order of magnitude error (60% marks)</description>
+            <answertest>AlgEquiv</answertest>
+            <sans>_c_mag_err</sans>
+            <tans>true</tans>
+            <testoptions></testoptions>
+            <quiet>0</quiet>
+            <truescoremode>=</truescoremode>
+            <truescore>0.6</truescore>
+            <truepenalty></truepenalty>
+            <truenextnode>-1</truenextnode>
+            <trueanswernote>prtC-3-T</trueanswernote>
+            <truefeedback format="html"><text><![CDATA[<p>Your significant figures appear correct but the order of magnitude is wrong. Check your unit conversions. You received 60% for this part.</p>]]></text></truefeedback>
             <falsescoremode>=</falsescoremode>
             <falsescore>0</falsescore>
             <falsepenalty></falsepenalty>
             <falsenextnode>-1</falsenextnode>
-            <falseanswernote>prtC-1-F</falseanswernote>
-            <falsefeedback format="html">
-                <text><![CDATA[<p>Incorrect. Recall the relationship between the time constant, the equivalent resistance, and the energy storage element.</p>]]></text>
-            </falsefeedback>
+            <falseanswernote>prtC-3-F</falseanswernote>
+            <falsefeedback format="html"><text><![CDATA[<p>Incorrect. Recall the relationship between the time constant, the equivalent resistance, and the energy storage element.</p>]]></text></falsefeedback>
         </node>
     </prt>
     <deployedseed>11111</deployedseed>
@@ -970,6 +1240,8 @@ taD: "See model answer in general feedback.";
 
 <p><strong>[INSERT DIAGRAM: diagrams/q3/q3_v4_rc_natural.svg]</strong></p>
 
+<p><em><strong>Note:</strong> Express numerical answers to 3 significant figures. Scientific notation is accepted (e.g., <code>2.50*10^3</code> or <code>2.50E3</code>).</em></p>
+
 <hr/>
 
 <h4>Part A (2 pts)</h4>
@@ -990,7 +1262,7 @@ taD: "See model answer in general feedback.";
 
 <h4>Part B (4 pts)</h4>
 <p>Determine the equivalent resistance \(R_\text{eq}\) that the capacitor "sees" looking into the resistor network from its terminals.</p>
-<p>Give your answer in ohms as a decimal number.</p>
+<p>Give your answer in ohms to 3 significant figures.</p>
 <p>\(R_\text{eq} = \) [[input:ansB]] \(\Omega\) [[validation:ansB]]</p>
 [[feedback:prtB]]
 
@@ -998,7 +1270,7 @@ taD: "See model answer in general feedback.";
 
 <h4>Part C (4 pts)</h4>
 <p>Using your result from Part B, compute the time constant \(\tau\) of this circuit.</p>
-<p>Give your answer in seconds as a decimal number.</p>
+<p>Give your answer in seconds to 3 significant figures.</p>
 <p>\(\tau = \) [[input:ansC]] seconds [[validation:ansC]]</p>
 [[feedback:prtC]]
 
@@ -1200,32 +1472,76 @@ taD: "See model answer in general feedback.";
         <autosimplify>1</autosimplify>
         <feedbackstyle>1</feedbackstyle>
         <feedbackvariables>
-            <text></text>
+            <text><![CDATA[
+/* Order-of-magnitude check for tiered grading */
+_ratio: if (correctB = 0 or ansB = 0) then 0 else float(abs(ansB / correctB));
+_log10r: if _ratio > 0 then float(log(_ratio)/log(10)) else -999;
+_nearint: round(_log10r);
+_mag_err: is(_ratio > 0 and abs(_nearint) >= 1 and abs(_log10r - _nearint) < 0.2);
+]]></text>
         </feedbackvariables>
         <node>
             <name>0</name>
-            <description>Check Req</description>
+            <description>Check within 5% (full marks)</description>
             <answertest>NumRelative</answertest>
             <sans>ansB</sans>
             <tans>correctB</tans>
-            <testoptions>0.02</testoptions>
+            <testoptions>0.05</testoptions>
             <quiet>0</quiet>
             <truescoremode>=</truescoremode>
             <truescore>1</truescore>
             <truepenalty></truepenalty>
             <truenextnode>-1</truenextnode>
             <trueanswernote>prtB-1-T</trueanswernote>
-            <truefeedback format="html">
-                <text><![CDATA[<p>Correct.</p>]]></text>
-            </truefeedback>
+            <truefeedback format="html"><text><![CDATA[<p>Correct.</p>]]></text></truefeedback>
+            <falsescoremode>=</falsescoremode>
+            <falsescore>0</falsescore>
+            <falsepenalty></falsepenalty>
+            <falsenextnode>1</falsenextnode>
+            <falseanswernote>prtB-1-F</falseanswernote>
+            <falsefeedback format="html"><text></text></falsefeedback>
+        </node>
+        <node>
+            <name>1</name>
+            <description>Check within 15% (70% marks)</description>
+            <answertest>NumRelative</answertest>
+            <sans>ansB</sans>
+            <tans>correctB</tans>
+            <testoptions>0.15</testoptions>
+            <quiet>0</quiet>
+            <truescoremode>=</truescoremode>
+            <truescore>0.7</truescore>
+            <truepenalty></truepenalty>
+            <truenextnode>-1</truenextnode>
+            <trueanswernote>prtB-2-T</trueanswernote>
+            <truefeedback format="html"><text><![CDATA[<p>Your answer is close but not precise enough. You received 70% for this part.</p>]]></text></truefeedback>
+            <falsescoremode>=</falsescoremode>
+            <falsescore>0</falsescore>
+            <falsepenalty></falsepenalty>
+            <falsenextnode>2</falsenextnode>
+            <falseanswernote>prtB-2-F</falseanswernote>
+            <falsefeedback format="html"><text></text></falsefeedback>
+        </node>
+        <node>
+            <name>2</name>
+            <description>Check order of magnitude error (60% marks)</description>
+            <answertest>AlgEquiv</answertest>
+            <sans>_mag_err</sans>
+            <tans>true</tans>
+            <testoptions></testoptions>
+            <quiet>0</quiet>
+            <truescoremode>=</truescoremode>
+            <truescore>0.6</truescore>
+            <truepenalty></truepenalty>
+            <truenextnode>-1</truenextnode>
+            <trueanswernote>prtB-3-T</trueanswernote>
+            <truefeedback format="html"><text><![CDATA[<p>Your significant figures appear correct but the order of magnitude is wrong. Check your unit conversions. You received 60% for this part.</p>]]></text></truefeedback>
             <falsescoremode>=</falsescoremode>
             <falsescore>0</falsescore>
             <falsepenalty></falsepenalty>
             <falsenextnode>-1</falsenextnode>
-            <falseanswernote>prtB-1-F</falseanswernote>
-            <falsefeedback format="html">
-                <text><![CDATA[<p>Incorrect. Trace the paths from the capacitor terminals through the resistor network to ground and combine them correctly.</p>]]></text>
-            </falsefeedback>
+            <falseanswernote>prtB-3-F</falseanswernote>
+            <falsefeedback format="html"><text><![CDATA[<p>Incorrect. Trace the paths from the capacitor terminals through the resistor network to ground and combine them correctly.</p>]]></text></falsefeedback>
         </node>
     </prt>
     <prt>
@@ -1234,32 +1550,76 @@ taD: "See model answer in general feedback.";
         <autosimplify>1</autosimplify>
         <feedbackstyle>1</feedbackstyle>
         <feedbackvariables>
-            <text></text>
+            <text><![CDATA[
+/* Order-of-magnitude check for tiered grading */
+_c_ratio: if (correctC = 0 or ansC = 0) then 0 else float(abs(ansC / correctC));
+_c_log10r: if _c_ratio > 0 then float(log(_c_ratio)/log(10)) else -999;
+_c_nearint: round(_c_log10r);
+_c_mag_err: is(_c_ratio > 0 and abs(_c_nearint) >= 1 and abs(_c_log10r - _c_nearint) < 0.2);
+]]></text>
         </feedbackvariables>
         <node>
             <name>0</name>
-            <description>Check time constant tau</description>
+            <description>Check within 5% (full marks)</description>
             <answertest>NumRelative</answertest>
             <sans>ansC</sans>
             <tans>correctC</tans>
-            <testoptions>0.02</testoptions>
+            <testoptions>0.05</testoptions>
             <quiet>0</quiet>
             <truescoremode>=</truescoremode>
             <truescore>1</truescore>
             <truepenalty></truepenalty>
             <truenextnode>-1</truenextnode>
             <trueanswernote>prtC-1-T</trueanswernote>
-            <truefeedback format="html">
-                <text><![CDATA[<p>Correct.</p>]]></text>
-            </truefeedback>
+            <truefeedback format="html"><text><![CDATA[<p>Correct.</p>]]></text></truefeedback>
+            <falsescoremode>=</falsescoremode>
+            <falsescore>0</falsescore>
+            <falsepenalty></falsepenalty>
+            <falsenextnode>1</falsenextnode>
+            <falseanswernote>prtC-1-F</falseanswernote>
+            <falsefeedback format="html"><text></text></falsefeedback>
+        </node>
+        <node>
+            <name>1</name>
+            <description>Check within 15% (70% marks)</description>
+            <answertest>NumRelative</answertest>
+            <sans>ansC</sans>
+            <tans>correctC</tans>
+            <testoptions>0.15</testoptions>
+            <quiet>0</quiet>
+            <truescoremode>=</truescoremode>
+            <truescore>0.7</truescore>
+            <truepenalty></truepenalty>
+            <truenextnode>-1</truenextnode>
+            <trueanswernote>prtC-2-T</trueanswernote>
+            <truefeedback format="html"><text><![CDATA[<p>Your answer is close but not precise enough. You received 70% for this part.</p>]]></text></truefeedback>
+            <falsescoremode>=</falsescoremode>
+            <falsescore>0</falsescore>
+            <falsepenalty></falsepenalty>
+            <falsenextnode>2</falsenextnode>
+            <falseanswernote>prtC-2-F</falseanswernote>
+            <falsefeedback format="html"><text></text></falsefeedback>
+        </node>
+        <node>
+            <name>2</name>
+            <description>Check order of magnitude error (60% marks)</description>
+            <answertest>AlgEquiv</answertest>
+            <sans>_c_mag_err</sans>
+            <tans>true</tans>
+            <testoptions></testoptions>
+            <quiet>0</quiet>
+            <truescoremode>=</truescoremode>
+            <truescore>0.6</truescore>
+            <truepenalty></truepenalty>
+            <truenextnode>-1</truenextnode>
+            <trueanswernote>prtC-3-T</trueanswernote>
+            <truefeedback format="html"><text><![CDATA[<p>Your significant figures appear correct but the order of magnitude is wrong. Check your unit conversions. You received 60% for this part.</p>]]></text></truefeedback>
             <falsescoremode>=</falsescoremode>
             <falsescore>0</falsescore>
             <falsepenalty></falsepenalty>
             <falsenextnode>-1</falsenextnode>
-            <falseanswernote>prtC-1-F</falseanswernote>
-            <falsefeedback format="html">
-                <text><![CDATA[<p>Incorrect. Recall the relationship between the time constant, the equivalent resistance, and the energy storage element.</p>]]></text>
-            </falsefeedback>
+            <falseanswernote>prtC-3-F</falseanswernote>
+            <falsefeedback format="html"><text><![CDATA[<p>Incorrect. Recall the relationship between the time constant, the equivalent resistance, and the energy storage element.</p>]]></text></falsefeedback>
         </node>
     </prt>
     <deployedseed>55555</deployedseed>
