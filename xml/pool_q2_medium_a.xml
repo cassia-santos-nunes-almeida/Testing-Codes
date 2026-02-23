@@ -38,7 +38,7 @@ steady-state current is \(I_{ss} = V_s / R = {@Iss@}\;\text{A}\).</p>
 <p>Which of the following correctly expresses the voltage across an ideal
 inductor in terms of its current?</p>
 <p>[[input:ansA]] [[validation:ansA]]</p>
-<div style="display:none;">[[feedback:prtA]]</div>
+<div>[[feedback:prtA]]</div>
 
 <hr />
 
@@ -47,7 +47,7 @@ inductor in terms of its current?</p>
 <p>Calculate the energy stored in the inductor at steady state.
 Express your answer in <strong>millijoules (mJ)</strong>, rounded to two decimal places.</p>
 <p>\(E_L = \) [[input:ansB]] mJ [[validation:ansB]]</p>
-<div style="display:none;">[[feedback:prtB]]</div>
+<div>[[feedback:prtB]]</div>
 
 <hr />
 
@@ -383,7 +383,7 @@ charged to \(v_C = V_s = {@Vs@}\;\text{V}\).</p>
 <p>Which of the following correctly expresses the energy stored in a
 capacitor charged to voltage \(V\)?</p>
 <p>[[input:ansA]] [[validation:ansA]]</p>
-<div style="display:none;">[[feedback:prtA]]</div>
+<div>[[feedback:prtA]]</div>
 
 <hr />
 
@@ -392,7 +392,7 @@ capacitor charged to voltage \(V\)?</p>
 <p>Calculate the energy stored in the capacitor at steady state.
 Express your answer in <strong>millijoules (mJ)</strong>, rounded to two decimal places.</p>
 <p>\(E_C = \) [[input:ansB]] mJ [[validation:ansB]]</p>
-<div style="display:none;">[[feedback:prtB]]</div>
+<div>[[feedback:prtB]]</div>
 
 <hr />
 
@@ -740,7 +740,7 @@ voltage across the capacitor.  Note the analogy: for an inductor it is
 Which segment of the waveform has the <strong>highest magnitude</strong> of
 inductor voltage \(|v_L|\)?</p>
 <p>[[input:ansA]] [[validation:ansA]]</p>
-<div style="display:none;">[[feedback:prtA]]</div>
+<div>[[feedback:prtA]]</div>
 
 <hr />
 
@@ -751,7 +751,7 @@ inductor voltage \(|v_L|\)?</p>
 its peak value \(I_{peak} = {@Ipeak@}\;\text{A}\).</p>
 <p>Express your answer in <strong>millijoules (mJ)</strong>, rounded to two decimal places.</p>
 <p>\(E_L(t_1) = \) [[input:ansB]] mJ [[validation:ansB]]</p>
-<div style="display:none;">[[feedback:prtB]]</div>
+<div>[[feedback:prtB]]</div>
 
 <hr />
 
@@ -1118,7 +1118,7 @@ fully charged to voltage \(V\).</p>
 <p>What is the total (equivalent) capacitance of two capacitors connected
 in parallel?</p>
 <p>[[input:ansA]] [[validation:ansA]]</p>
-<div style="display:none;">[[feedback:prtA]]</div>
+<div>[[feedback:prtA]]</div>
 
 <hr />
 
@@ -1127,7 +1127,7 @@ in parallel?</p>
 <p>Calculate the <strong>total</strong> energy stored in both capacitors combined.
 Express your answer in <strong>millijoules (mJ)</strong>, rounded to two decimal places.</p>
 <p>\(E_{total} = \) [[input:ansB]] mJ [[validation:ansB]]</p>
-<div style="display:none;">[[feedback:prtB]]</div>
+<div>[[feedback:prtB]]</div>
 
 <hr />
 

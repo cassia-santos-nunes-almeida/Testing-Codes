@@ -73,10 +73,10 @@
   <generalfeedback format="html">
     <text><![CDATA[
 <h4>Solution — Q4-V1</h4>
-<p><b>Part A:</b> At DC steady state with switch closed, C is open. Voltage divider: V<sub>0</sub> = V<sub>s</sub> &middot; R<sub>2</sub>/(R<sub>1</sub>+R<sub>2</sub>) = {@V0@} V</p>
+<p><b>Part A:</b> At DC steady state with switch closed, C is open. Voltage divider: V<sub>0</sub> = V<sub>s</sub> &middot; R<sub>2</sub>/(R<sub>1</sub>+R<sub>2</sub>) = {@V0_rounded@} V</p>
 <p><b>Part B:</b> After switch opens, circuit is V<sub>s</sub> &mdash; R<sub>1</sub> &mdash; C. In s-domain: V<sub>s</sub>/s = I(s)&middot;(R<sub>1</sub> + 1/(sC)) + V<sub>0</sub>/s</p>
 <p><b>Part C:</b> &tau; = R<sub>1</sub>&middot;C = {@tau_ms@} ms. Final value: v<sub>C</sub>(&infin;) = V<sub>s</sub> = {@Vs@} V</p>
-<p><b>Complete response:</b> v<sub>C</sub>(t) = {@Vs@} + ({@V0@} &minus; {@Vs@})&middot;e<sup>&minus;t/{@tau_ms@}ms</sup> for t &gt; 0</p>
+<p><b>Complete response:</b> v<sub>C</sub>(t) = {@Vs@} + ({@V0_rounded@} &minus; {@Vs@})&middot;e<sup>&minus;t/{@tau_ms@}ms</sup> for t &gt; 0</p>
 ]]></text>
   </generalfeedback>
 
@@ -275,7 +275,7 @@ ta5_essay: "See model answer in general feedback.";
       <falsepenalty/>
       <falsenextnode>-1</falsenextnode>
       <falseanswernote>prt2-1-F</falseanswernote>
-      <falsefeedback format="html"><text><![CDATA[<p>Incorrect. After the switch opens, the capacitor sees only R<sub>1</sub>. &tau; = R<sub>1</sub>(k&Omega;) &times; C(&mu;F) = ms.</p>]]></text></falsefeedback>
+      <falsefeedback format="html"><text><![CDATA[<p>Incorrect. After the switch opens, the capacitor sees only R<sub>1</sub>. &tau; = R<sub>1</sub>(k&Omega;) &times; C(&mu;F) = {@tau_ms@} ms.</p>]]></text></falsefeedback>
     </node>
   </prt>
 
@@ -374,10 +374,10 @@ ta5_essay: "See model answer in general feedback.";
   <generalfeedback format="html">
     <text><![CDATA[
 <h4>Solution — Q4-V2</h4>
-<p><b>Part A:</b> At DC steady state, L is short. Parallel combination of R<sub>2</sub> and L(short) = 0. All current from V<sub>s</sub> through R<sub>1</sub>: I<sub>total</sub> = V<sub>s</sub>/R<sub>1</sub>. Since L is short, all current goes through L: I<sub>0</sub> = {@I0@} A.</p>
+<p><b>Part A:</b> At DC steady state, L is short. Parallel combination of R<sub>2</sub> and L(short) = 0. All current from V<sub>s</sub> through R<sub>1</sub>: I<sub>total</sub> = V<sub>s</sub>/R<sub>1</sub>. Since L is short, all current goes through L: I<sub>0</sub> = {@I0_rounded@} A.</p>
 <p><b>Part B:</b> After switch opens: (sL + R<sub>2</sub>)&middot;I(s) = L&middot;I<sub>0</sub> &rarr; I(s) = I<sub>0</sub>/(s + R<sub>2</sub>/L)</p>
-<p><b>Part C:</b> &tau; = L/R<sub>2</sub> = {@tau_ms@} ms. Final value: i<sub>L</sub>(&infin;) = 0 A.</p>
-<p><b>Complete response:</b> i<sub>L</sub>(t) = {@I0@} &middot; e<sup>&minus;t/{@tau_ms@}ms</sup> for t &gt; 0</p>
+<p><b>Part C:</b> &tau; = L/R<sub>2</sub> = {@tau_ms_rounded@} ms. Final value: i<sub>L</sub>(&infin;) = 0 A.</p>
+<p><b>Complete response:</b> i<sub>L</sub>(t) = {@I0_rounded@} &middot; e<sup>&minus;t/{@tau_ms_rounded@}ms</sup> for t &gt; 0</p>
 ]]></text>
   </generalfeedback>
 
@@ -577,7 +577,7 @@ ta5_essay: "See model answer in general feedback.";
       <falsepenalty/>
       <falsenextnode>-1</falsenextnode>
       <falseanswernote>prt2-1-F</falseanswernote>
-      <falsefeedback format="html"><text><![CDATA[<p>Incorrect. After switch opens, L discharges through R<sub>2</sub>. &tau; = L/R<sub>2</sub>. Convert L to Henrys first: L(mH)/1000 / R<sub>2</sub>(&Omega;) &times; 1000 = ms.</p>]]></text></falsefeedback>
+      <falsefeedback format="html"><text><![CDATA[<p>Incorrect. After switch opens, L discharges through R<sub>2</sub>. &tau; = L/R<sub>2</sub>. Since L is in mH and R<sub>2</sub> in &Omega;, L(mH)/R<sub>2</sub>(&Omega;) gives &tau; directly in ms: {@tau_ms_rounded@} ms.</p>]]></text></falsefeedback>
     </node>
   </prt>
 
@@ -676,10 +676,10 @@ ta5_essay: "See model answer in general feedback.";
   <generalfeedback format="html">
     <text><![CDATA[
 <h4>Solution — Q4-V3</h4>
-<p><b>Part A:</b> V<sub>th</sub> = V<sub>s</sub> &middot; R<sub>2</sub>/(R<sub>1</sub>+R<sub>2</sub>) = {@Vth@} V. R<sub>th</sub> = R<sub>1</sub>||R<sub>2</sub> = R<sub>1</sub>&middot;R<sub>2</sub>/(R<sub>1</sub>+R<sub>2</sub>) = {@Rth@} k&Omega;.</p>
+<p><b>Part A:</b> V<sub>th</sub> = V<sub>s</sub> &middot; R<sub>2</sub>/(R<sub>1</sub>+R<sub>2</sub>) = {@Vth_rounded@} V. R<sub>th</sub> = R<sub>1</sub>||R<sub>2</sub> = R<sub>1</sub>&middot;R<sub>2</sub>/(R<sub>1</sub>+R<sub>2</sub>) = {@Rth_rounded@} k&Omega;.</p>
 <p><b>Part B:</b> V<sub>th</sub>/s = I(s)&middot;R<sub>th</sub> + V<sub>C</sub>(s), with V<sub>C</sub>(s) = V<sub>0</sub>/s + I(s)/(sC).</p>
-<p><b>Part C:</b> &tau; = R<sub>th</sub>&middot;C = {@tau_ms@} ms. Final value = V<sub>th</sub> = {@Vth@} V.</p>
-<p><b>Complete response:</b> v<sub>C</sub>(t) = {@Vth@} + ({@V0@} &minus; {@Vth@})&middot;e<sup>&minus;t/{@tau_ms@}ms</sup> for t &gt; 0</p>
+<p><b>Part C:</b> &tau; = R<sub>th</sub>&middot;C = {@tau_ms_rounded@} ms. Final value = V<sub>th</sub> = {@Vth_rounded@} V.</p>
+<p><b>Complete response:</b> v<sub>C</sub>(t) = {@Vth_rounded@} + ({@V0@} &minus; {@Vth_rounded@})&middot;e<sup>&minus;t/{@tau_ms_rounded@}ms</sup> for t &gt; 0</p>
 <p><b>Energy dissipated:</b> &Delta;E = &frac12;C(V<sub>0</sub> &minus; V<sub>th</sub>)&sup2; (energy lost to R<sub>th</sub> during the exponential transient).</p>
 ]]></text>
   </generalfeedback>
