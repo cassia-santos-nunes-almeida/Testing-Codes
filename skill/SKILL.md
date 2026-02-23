@@ -1,3 +1,8 @@
+---
+name: STACK Exam Builder
+description: Generates randomized Moodle STACK exam questions (XML + Maxima) and SVG circuit diagrams for undergraduate electrical circuits courses.
+---
+
 # STACK Exam Builder — Claude Skill Instructions
 
 ## Activation
