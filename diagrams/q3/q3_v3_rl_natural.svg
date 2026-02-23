@@ -1,17 +1,14 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 420" preserveAspectRatio="xMidYMid meet" role="img" aria-label="Q3 Variant 3: RL natural response circuit with inductor initial current">
-  <title>Q3-V3: RL Natural Response — Laplace Domain</title>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 340" preserveAspectRatio="xMidYMid meet" role="img" aria-label="First-order circuit with inductor and four-resistor discharge network">
+  <title>First-Order RL Circuit with Branching Discharge Network</title>
   <style>
     text { font-family: 'Segoe UI', Arial, Helvetica, sans-serif; }
-    .title { font-size: 18px; font-weight: bold; fill: #222; }
     .comp-label { font-size: 16px; font-weight: bold; fill: #0055aa; }
-    .annotation { font-size: 14px; fill: #666; }
     .polarity { font-size: 14px; fill: #333; }
     .wire { stroke: #333; stroke-width: 2.5; fill: none; }
     .component { stroke: #333; stroke-width: 2.5; fill: none; }
     .ref-dir { stroke: #cc0000; stroke-width: 1.8; fill: none; }
-    .find-text { font-size: 16px; fill: #cc0000; font-weight: bold; }
-    .info-text { font-size: 14px; fill: #0055aa; font-style: italic; }
-    .sdomain { font-size: 14px; fill: #006600; font-weight: bold; }
+    .node-dot { fill: #cc0000; stroke: none; }
+    .node-label { font-size: 15px; fill: #cc0000; font-weight: bold; }
     .ic-text { font-size: 15px; fill: #8B0000; font-weight: bold; }
   </style>
   <defs>
@@ -20,47 +17,65 @@
     </marker>
   </defs>
 
-  <text x="300" y="28" text-anchor="middle" class="title">Q3-V3: RL Natural Response (Laplace)</text>
+  <!-- ===== INDUCTOR (vertical, left side) from X to GND ===== -->
+  <line x1="100" y1="90" x2="100" y2="110" class="wire"/>
+  <path d="M 100,110 C 100,120 115,120 115,130 C 115,140 100,140 100,150 C 100,160 115,160 115,170 C 115,180 100,180 100,190 C 100,200 115,200 115,210" class="component" fill="none"/>
+  <text x="68" y="165" text-anchor="end" class="comp-label">L</text>
+  <line x1="100" y1="210" x2="100" y2="280" class="wire"/>
 
-  <text x="300" y="58" text-anchor="middle" class="annotation">No source. Inductor releases stored energy through R.</text>
+  <!-- Polarity across L -->
+  <text x="78" y="125" class="polarity">+</text>
+  <text x="78" y="205" class="polarity">−</text>
 
-  <!-- Simple loop: R on top, L on right -->
-  <!-- Top rail -->
-  <line x1="120" y1="110" x2="200" y2="110" class="wire"/>
-  <rect x="200" y="100" width="120" height="20" class="component" rx="3"/>
-  <text x="260" y="92" text-anchor="middle" class="comp-label">R</text>
-  <line x1="320" y1="110" x2="440" y2="110" class="wire"/>
+  <!-- ===== Node X (top of inductor) ===== -->
+  <circle cx="100" cy="90" r="5" class="node-dot"/>
+  <text x="100" y="75" text-anchor="middle" class="node-label">X</text>
 
-  <!-- Right side: inductor -->
-  <line x1="440" y1="110" x2="440" y2="130" class="wire"/>
-  <path d="M 440,130 C 440,140 455,140 455,150 C 455,160 440,160 440,170 C 440,180 455,180 455,190 C 455,200 440,200 440,210 C 440,220 455,220 455,230" class="component" fill="none"/>
-  <text x="470" y="185" class="comp-label">L</text>
-  <line x1="440" y1="230" x2="440" y2="270" class="wire"/>
+  <!-- ===== Wire from X to the right (branching point) ===== -->
+  <line x1="100" y1="90" x2="230" y2="90" class="wire"/>
 
-  <!-- Bottom rail -->
-  <line x1="120" y1="270" x2="440" y2="270" class="wire"/>
+  <!-- ===== R4 (vertical, from X to GND) — direct shunt ===== -->
+  <line x1="230" y1="90" x2="230" y2="110" class="wire"/>
+  <rect x="220" y="110" width="20" height="80" class="component" rx="3"/>
+  <text x="205" y="155" text-anchor="end" class="comp-label">R₄</text>
+  <line x1="230" y1="190" x2="230" y2="280" class="wire"/>
 
-  <!-- Left side (wire only, no source) -->
-  <line x1="120" y1="110" x2="120" y2="270" class="wire"/>
+  <!-- ===== R1 (horizontal, from X area to node A) ===== -->
+  <line x1="230" y1="90" x2="290" y2="90" class="wire"/>
+  <rect x="290" y="80" width="90" height="20" class="component" rx="3"/>
+  <text x="335" y="72" text-anchor="middle" class="comp-label">R₁</text>
+  <line x1="380" y1="90" x2="440" y2="90" class="wire"/>
 
-  <!-- Current direction arrow -->
-  <line x1="150" y1="100" x2="195" y2="100" class="ref-dir" marker-end="url(#cur-q3v3)"/>
-  <text x="173" y="92" text-anchor="middle" style="font-size:14px; fill:#cc0000; font-weight:bold;">i(t)</text>
+  <!-- ===== Node A ===== -->
+  <circle cx="440" cy="90" r="5" class="node-dot"/>
+  <text x="440" y="75" text-anchor="middle" class="node-label">A</text>
 
-  <!-- Initial condition annotation -->
-  <rect x="130" y="295" width="200" height="35" rx="6" fill="#fff0f0" stroke="#8B0000" stroke-width="1.2"/>
-  <text x="230" y="318" text-anchor="middle" class="ic-text">i(0) = I_0 (given)</text>
+  <!-- ===== R2 (vertical, from A to GND) ===== -->
+  <line x1="440" y1="90" x2="440" y2="110" class="wire"/>
+  <rect x="430" y="110" width="20" height="80" class="component" rx="3"/>
+  <text x="460" y="155" class="comp-label">R₂</text>
+  <line x1="440" y1="190" x2="440" y2="280" class="wire"/>
 
-  <!-- Voltage polarity across R -->
-  <text x="220" y="92" class="polarity">+</text>
-  <text x="300" y="92" class="polarity">&minus;</text>
-  <text x="260" y="145" text-anchor="middle" style="font-size:14px; fill:#cc0000; font-weight:bold;">v_R</text>
+  <!-- ===== R3 (vertical, from A to GND, offset right) ===== -->
+  <line x1="440" y1="90" x2="540" y2="90" class="wire"/>
+  <line x1="540" y1="90" x2="540" y2="110" class="wire"/>
+  <rect x="530" y="110" width="20" height="80" class="component" rx="3"/>
+  <text x="560" y="155" class="comp-label">R₃</text>
+  <line x1="540" y1="190" x2="540" y2="280" class="wire"/>
 
-  <!-- s-domain annotations -->
-  <rect x="40" y="340" width="520" height="48" rx="8" fill="#f0f8f0" stroke="#006600" stroke-width="1.5"/>
-  <text x="300" y="360" text-anchor="middle" class="sdomain">s-Domain: I(s) = I_0 / (s + R/L), &tau; = L/R</text>
-  <text x="300" y="378" text-anchor="middle" class="sdomain">i(t) = I_0 &middot; e^(&minus;Rt/L) &middot; u(t)</text>
+  <!-- ===== BOTTOM RAIL (GND) ===== -->
+  <line x1="100" y1="280" x2="540" y2="280" class="wire"/>
 
-  <!-- Find instruction -->
-  <text x="300" y="410" text-anchor="middle" class="find-text">Find: I(s) and time constant &tau; = L/R</text>
+  <!-- ===== Ground symbol ===== -->
+  <line x1="325" y1="280" x2="335" y2="280" stroke="#333" stroke-width="4"/>
+  <line x1="327" y1="287" x2="333" y2="287" stroke="#333" stroke-width="3"/>
+  <line x1="329" y1="294" x2="331" y2="294" stroke="#333" stroke-width="2"/>
+
+  <!-- ===== Current arrow ===== -->
+  <line x1="130" y1="78" x2="170" y2="78" class="ref-dir" marker-end="url(#cur-q3v3)"/>
+  <text x="150" y="70" text-anchor="middle" style="font-size:13px; fill:#cc0000; font-weight:bold;">i_L(t)</text>
+
+  <!-- ===== Initial condition ===== -->
+  <rect x="30" y="305" width="200" height="30" rx="6" fill="#fff0f0" stroke="#8B0000" stroke-width="1.2"/>
+  <text x="130" y="325" text-anchor="middle" class="ic-text">i_L(0) = I₀ (given)</text>
 </svg>

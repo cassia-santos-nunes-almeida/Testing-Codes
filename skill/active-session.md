@@ -8,7 +8,7 @@
 - [x] Exam overview specification written (`docs/01_exam_overview.md`)
 - [x] Q1 Easy — 4 STACK variants with SVG diagrams (two-node, two-mesh, T-network, bridge)
 - [x] Q2 Medium A — 4 STACK+Essay variants with SVG diagrams (inductor RL, capacitor RC, inductor waveform, capacitor parallel)
-- [x] Q3 Medium B — 4 STACK variants with SVG diagrams (RL step, RC step, RL natural, RC natural)
+- [x] Q3 Medium B — 4 STACK variants with complex resistor networks (3-4 nodes, 3 meshes, 4-5 resistors each). Part B changed from algebraic transfer function to numerical Req. All hints, version IDs, and s-domain annotations stripped from diagrams and question text for AI resistance.
 - [x] Q4 Difficult — 3 STACK variants with SVG diagrams (RC switch, RL switch, Thevenin RC)
 - [x] Upload question with per-question checklists
 - [x] Claude skill package created
