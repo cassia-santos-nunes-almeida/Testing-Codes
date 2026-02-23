@@ -143,5 +143,23 @@ Each entry: `[date] — Decision` followed by reasoning and rejected alternative
 
 ---
 
+### 2026-02-24 — Redesign Q3 circuits with complex resistor networks (3-4 nodes, 3 meshes)
+**Reason:** Original Q3 circuits were trivially simple (single-loop series R+L or R+C, 2 nodes, 1 mesh). For a Medium B question in an unsupervised exam, students could solve them instantly or get full solutions from AI. New circuits require genuine multi-step circuit analysis (Thevenin, series/parallel combinations, node analysis) before applying Laplace.
+**Alternatives rejected:** Adding dependent sources (excluded from Q3 scope, reserved for Q4), adding second energy storage element (would make circuits second-order, violating the RLC exclusion constraint).
+
+---
+
+### 2026-02-24 — Change Q3 Part B from algebraic transfer function to numerical Req
+**Reason:** With complex resistor networks, the transfer function expression becomes unwieldy for algebraic STACK input. Asking for the equivalent resistance (numerical) directly tests the circuit analysis skill and is practical for STACK grading. Part C then uses Req to compute tau.
+**Alternatives rejected:** Keeping algebraic H(s) (messy expressions with substituted numerical values, error-prone Maxima syntax for students), asking for Vth+Rth separately (too many input fields for 4 points).
+
+---
+
+### 2026-02-24 — Strip all hints, version identifiers, and solution annotations from diagrams and questions
+**Reason:** In an unsupervised open-everything exam, any hint narrows the solution space for AI tools. Removed: s-domain annotation boxes, "Find:" instructions, variant labels ("Q3-V1", "Q3-V2"), method hints ("3 nodes, 3 meshes"), placeholder text in textareas. Students must determine the analysis approach themselves.
+**Alternatives rejected:** Keeping generic hints (even method-neutral hints like "use Thevenin" or "find tau" reduce AI resistance).
+
+---
+
 ## Last Updated
 2026-02-24

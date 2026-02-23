@@ -4,33 +4,34 @@
 <!-- ============================================================ -->
 <!-- Q3 Medium B — Laplace Transform Application to First-Order   -->
 <!-- Circuits. 4 variants, 13 pts each, ~30 min.                  -->
-<!-- Subparts: A (2 pts MCQ), B (4 pts Algebraic/Numerical),      -->
-<!--           C (4 pts Numerical), D (3 pts Essay)               -->
+<!-- Complex resistor networks (3-4 nodes, 3 meshes).             -->
+<!-- Subparts: A (2 pts MCQ), B (4 pts Numerical Rth/Req),        -->
+<!--           C (4 pts Numerical tau), D (3 pts Essay)           -->
 <!-- ============================================================ -->
 
 <!-- ============================================================ -->
-<!-- VARIANT 1: RL Step Response                                   -->
+<!-- VARIANT 1: RL Step — Pi-network feeding inductor              -->
+<!-- Vs→R1→(A), R2: A→GND, R3: A→(B), L: B→GND                  -->
+<!-- Rth = R3 + R1||R2, tau = L/Rth                               -->
 <!-- ============================================================ -->
 <question type="stack">
     <name>
-        <text>Q3_Medium_B_V1_RL_Step_Response</text>
+        <text>Q3_Medium_B_V1_RL_Step_Network</text>
     </name>
     <questiontext format="html">
         <text><![CDATA[
-<h3>Q3 — Laplace Transform: RL Step-Response Circuit (13 pts)</h3>
+<h3>Question 3 — First-Order Circuit Analysis Using Laplace Transforms (13 pts)</h3>
 
-<p>A series RL circuit consists of a resistor \(R = {@R@}\;\Omega\) and an inductor \(L = {@L@}\;\text{H}\) connected in series. At \(t = 0\), a DC voltage source \(V_s = {@Vs@}\;\text{V}\) is applied as a step input \(V_s \cdot u(t)\). Assume <strong>zero initial conditions</strong> (no current flowing before \(t=0\)).</p>
+<p>Consider the circuit shown below. At \(t = 0\), a DC voltage source \(V_s = {@Vs@}\;\text{V}\) is applied as a step input \(V_s \cdot u(t)\). The circuit contains resistors \(R_1 = {@R1@}\;\Omega\), \(R_2 = {@R2@}\;\Omega\), \(R_3 = {@R3@}\;\Omega\), and an inductor \(L = {@L@}\;\text{H}\). Assume <strong>zero initial conditions</strong>.</p>
 
 <p><strong>[INSERT DIAGRAM: diagrams/q3/q3_v1_rl_step.svg]</strong></p>
 
 <hr/>
 
-<h4>Part A (2 pts) — S-Domain Component Model (MCQ)</h4>
-<p>When transforming the circuit to the s-domain with zero initial conditions, how is the inductor \(L\) modeled?</p>
-<p>Select the correct s-domain impedance of the inductor:</p>
+<h4>Part A (2 pts)</h4>
+<p>When transforming this circuit to the s-domain with zero initial conditions, what is the s-domain impedance of the inductor \(L\)?</p>
 <p>[[input:ansA]] [[validation:ansA]]</p>
 <div style="margin-left:20px;">
-    <p><strong>Options:</strong></p>
     <ul>
         <li>(a) \(sL\)</li>
         <li>(b) \(\dfrac{1}{sL}\)</li>
@@ -43,48 +44,43 @@
 
 <hr/>
 
-<h4>Part B (4 pts) — Transfer Function</h4>
-<p>Using the s-domain model, the current in the circuit is \(I(s)\) and the input voltage transform is \(V(s)\).</p>
-<p>Determine the transfer function \(H(s) = \dfrac{I(s)}{V(s)}\).</p>
-<p>Express your answer as a rational function of \(s\). Use the variable <code>s</code>.</p>
-<p>For example, if your answer were \(\dfrac{3}{s+5}\), type <code>3/(s+5)</code>.</p>
-<p>\(H(s) = \) [[input:ansB]] [[validation:ansB]]</p>
+<h4>Part B (4 pts)</h4>
+<p>Determine the equivalent resistance \(R_\text{eq}\) that the inductor \(L\) "sees" looking back into the rest of the circuit from its terminals (with the voltage source replaced by its internal impedance).</p>
+<p>Give your answer in ohms as a decimal number.</p>
+<p>\(R_\text{eq} = \) [[input:ansB]] \(\Omega\) [[validation:ansB]]</p>
 [[feedback:prtB]]
 
 <hr/>
 
-<h4>Part C (4 pts) — Time Constant</h4>
-<p>Compute the time constant \(\tau\) of this RL circuit.</p>
-<p>Give your answer in seconds as a decimal number (e.g., <code>0.0005</code>).</p>
+<h4>Part C (4 pts)</h4>
+<p>Using your result from Part B, compute the time constant \(\tau\) of this circuit.</p>
+<p>Give your answer in seconds as a decimal number.</p>
 <p>\(\tau = \) [[input:ansC]] seconds [[validation:ansC]]</p>
 [[feedback:prtC]]
 
 <hr/>
 
-<h4>Part D (3 pts) — Initial/Final Value Check &amp; Physical Meaning (Essay)</h4>
-<p>Using the <strong>Initial Value Theorem</strong> and the <strong>Final Value Theorem</strong>, verify the behaviour of the current \(i(t)\):</p>
+<h4>Part D (3 pts) — Physical Interpretation (Essay)</h4>
+<p>Answer the following:</p>
 <ul>
-    <li>Show that \(i(0^+) = 0\) using the Initial Value Theorem on \(I(s)\).</li>
-    <li>Show that \(i(\infty) = V_s/R = {@Vs/R@}\;\text{A}\) using the Final Value Theorem.</li>
-    <li>Explain the <strong>physical meaning</strong> of the time constant \(\tau = {@tau@}\;\text{s}\) in this circuit. What fraction of the final current is reached at \(t = \tau\)?</li>
+    <li>What is the inductor current at \(t = 0^+\)? What is it as \(t \to \infty\)? Justify both using circuit analysis or the s-domain.</li>
+    <li>Explain the physical meaning of the time constant \(\tau\) you computed. What happens to the current at \(t = \tau\)?</li>
 </ul>
-<p><strong>Write your answer below:</strong></p>
-<p><textarea name="essayD_v1" rows="12" cols="80" style="width:100%; font-family:monospace;">
-</textarea></p>
+<p><textarea name="essayD" rows="10" cols="80" style="width:100%; font-family:monospace;"></textarea></p>
 ]]></text>
     </questiontext>
     <generalfeedback format="html">
         <text><![CDATA[
-<h4>Solution — Variant 1 (RL Step Response)</h4>
+<h4>Solution</h4>
 <p><strong>Part A:</strong> With zero initial conditions, an inductor \(L\) in the s-domain is represented by impedance \(Z_L = sL\). Answer: <strong>(a)</strong>.</p>
-<p><strong>Part B:</strong> KVL in s-domain: \(V(s) = I(s)(R + sL)\), so
-\[H(s) = \frac{I(s)}{V(s)} = \frac{1}{R + sL} = \frac{1}{{@R@} + s \cdot {@L@}}\]</p>
-<p><strong>Part C:</strong> The time constant is \(\tau = L/R = {@L@}/{@R@} = {@tau@}\;\text{s}\).</p>
+<p><strong>Part B:</strong> To find the equivalent resistance seen by L, replace Vs with a short circuit. Looking from the L terminals (node B to ground): R3 is in series with the parallel combination R1‖R2.
+\[R_\text{eq} = R_3 + \frac{R_1 R_2}{R_1 + R_2} = {@R3@} + \frac{{@R1@} \cdot {@R2@}}{{@R1@} + {@R2@}} = {@Req@}\;\Omega\]</p>
+<p><strong>Part C:</strong> \(\tau = L / R_\text{eq} = {@L@} / {@Req@} = {@tau@}\;\text{s}\).</p>
 <p><strong>Part D:</strong></p>
 <ul>
-    <li>Initial Value Theorem: \(\lim_{s\to\infty} s \cdot I(s) = \lim_{s\to\infty} \frac{s \cdot V_s/s}{R+sL} = \lim_{s\to\infty} \frac{V_s}{R+sL} = 0\). So \(i(0^+)=0\). The inductor initially opposes any change in current.</li>
-    <li>Final Value Theorem: \(\lim_{s\to 0} s \cdot I(s) = \lim_{s\to 0} \frac{V_s}{R+sL} = V_s/R = {@Vs/R@}\;\text{A}\). At steady state, the inductor acts as a short circuit.</li>
-    <li>The time constant \(\tau = {@tau@}\;\text{s}\) is the time it takes for the current to reach approximately \(63.2\%\) of its final value. After \(5\tau\), the current is within \(1\%\) of its final value.</li>
+    <li>At \(t=0^+\), \(i_L = 0\) because an inductor opposes instantaneous changes in current (zero initial conditions).</li>
+    <li>As \(t\to\infty\), the inductor acts as a short circuit. The Thevenin voltage at node B is \(V_\text{th} = V_s \cdot R_2/(R_1+R_2) = {@Vth@}\;\text{V}\). The steady-state current is \(i_L(\infty) = V_\text{th}/R_\text{eq} = {@Isteady@}\;\text{A}\).</li>
+    <li>The time constant \(\tau = {@tau@}\;\text{s}\) is the time at which the current reaches approximately 63.2% of its final value. After \(5\tau\), the current is within 1% of steady state.</li>
 </ul>
 ]]></text>
     </generalfeedback>
@@ -96,25 +92,23 @@
         <text>2024120900</text>
     </stackversion>
     <questionvariables>
-        <text><![CDATA[/* Variant 1: RL Step Response */
-Vs: rand([10, 12, 15, 20]);
-R: rand([100, 200, 500, 1000]);
-L: rand([0.01, 0.02, 0.05, 0.1]);
+        <text><![CDATA[/* RL Step with pi-network */
+Vs: rand([8, 10, 12, 15]);
+R1: rand([200, 330, 470, 680]);
+R2: rand([100, 220, 470, 1000]);
+R3: rand([100, 150, 220, 330]);
+L: rand([0.02, 0.05, 0.1, 0.2]);
 
 /* Computed quantities */
-tau: L/R;
-Isteady: Vs/R;
+R1parR2: R1*R2/(R1+R2);
+Req: R3 + R1parR2;
+tau: L/Req;
+Vth: Vs*R2/(R1+R2);
+Isteady: Vth/Req;
 
-/* Transfer function H(s) = I(s)/V(s) = 1/(R + s*L) */
-Hs: 1/(R + s*L);
-
-/* Part A correct answer */
+/* Answers */
 correctA: a;
-
-/* Part B correct answer */
-correctB: 1/(R + s*L);
-
-/* Part C correct answer */
+correctB: Req;
 correctC: tau;
 ]]></text>
     </questionvariables>
@@ -122,10 +116,10 @@ correctC: tau;
         <text></text>
     </specificfeedback>
     <questionnote format="html">
-        <text><![CDATA[V1 RL Step: Vs={@Vs@}, R={@R@}, L={@L@}, tau={@tau@}, H(s)={@Hs@}]]></text>
+        <text><![CDATA[V1 RL Step: Vs={@Vs@}, R1={@R1@}, R2={@R2@}, R3={@R3@}, L={@L@}, Req={@Req@}, tau={@tau@}]]></text>
     </questionnote>
     <questiondescription format="html">
-        <text><![CDATA[Laplace Transform — RL step response. Series RL driven by Vs*u(t). 13 pts total.]]></text>
+        <text><![CDATA[Laplace Transform — RL step response with resistor network. 13 pts total.]]></text>
     </questiondescription>
     <questionsimplify>1</questionsimplify>
     <assumepositive>0</assumepositive>
@@ -168,11 +162,11 @@ correctC: tau;
     </input>
     <input>
         <name>ansB</name>
-        <type>algebraic</type>
+        <type>numerical</type>
         <tans>correctB</tans>
-        <boxsize>25</boxsize>
-        <strictsyntax>0</strictsyntax>
-        <insertstars>1</insertstars>
+        <boxsize>15</boxsize>
+        <strictsyntax>1</strictsyntax>
+        <insertstars>0</insertstars>
         <syntaxhint></syntaxhint>
         <syntaxattribute>0</syntaxattribute>
         <forbidwords></forbidwords>
@@ -224,7 +218,7 @@ correctC: tau;
             <truenextnode>-1</truenextnode>
             <trueanswernote>prtA-1-T</trueanswernote>
             <truefeedback format="html">
-                <text><![CDATA[<p>Correct! An inductor with zero initial conditions is modeled as impedance \(sL\) in the s-domain.</p>]]></text>
+                <text><![CDATA[<p>Correct.</p>]]></text>
             </truefeedback>
             <falsescoremode>=</falsescoremode>
             <falsescore>0</falsescore>
@@ -232,7 +226,7 @@ correctC: tau;
             <falsenextnode>-1</falsenextnode>
             <falseanswernote>prtA-1-F</falseanswernote>
             <falsefeedback format="html">
-                <text><![CDATA[<p>Incorrect. With zero initial conditions, the inductor \(L\) is modeled in the s-domain by its impedance \(Z_L = sL\). The correct answer is <strong>(a)</strong>.</p>]]></text>
+                <text><![CDATA[<p>Incorrect. Review the s-domain impedance models for inductors.</p>]]></text>
             </falsefeedback>
         </node>
     </prt>
@@ -246,11 +240,11 @@ correctC: tau;
         </feedbackvariables>
         <node>
             <name>0</name>
-            <description>Check transfer function H(s)</description>
-            <answertest>AlgEquiv</answertest>
+            <description>Check Req</description>
+            <answertest>NumRelative</answertest>
             <sans>ansB</sans>
             <tans>correctB</tans>
-            <testoptions></testoptions>
+            <testoptions>0.02</testoptions>
             <quiet>0</quiet>
             <truescoremode>=</truescoremode>
             <truescore>1</truescore>
@@ -258,7 +252,7 @@ correctC: tau;
             <truenextnode>-1</truenextnode>
             <trueanswernote>prtB-1-T</trueanswernote>
             <truefeedback format="html">
-                <text><![CDATA[<p>Correct! The transfer function is \(H(s) = \dfrac{1}{R + sL} = {@correctB@}\).</p>]]></text>
+                <text><![CDATA[<p>Correct.</p>]]></text>
             </truefeedback>
             <falsescoremode>=</falsescoremode>
             <falsescore>0</falsescore>
@@ -266,7 +260,7 @@ correctC: tau;
             <falsenextnode>-1</falsenextnode>
             <falseanswernote>prtB-1-F</falseanswernote>
             <falsefeedback format="html">
-                <text><![CDATA[<p>Incorrect. By KVL in the s-domain: \(V(s) = I(s)(R + sL)\), so \(H(s) = \dfrac{I(s)}{V(s)} = \dfrac{1}{R+sL} = {@correctB@}\).</p>]]></text>
+                <text><![CDATA[<p>Incorrect. Think carefully about which resistors are in series and which are in parallel when viewed from the inductor terminals.</p>]]></text>
             </falsefeedback>
         </node>
     </prt>
@@ -281,10 +275,10 @@ correctC: tau;
         <node>
             <name>0</name>
             <description>Check time constant tau</description>
-            <answertest>NumAbsolute</answertest>
+            <answertest>NumRelative</answertest>
             <sans>ansC</sans>
             <tans>correctC</tans>
-            <testoptions>0.0001</testoptions>
+            <testoptions>0.02</testoptions>
             <quiet>0</quiet>
             <truescoremode>=</truescoremode>
             <truescore>1</truescore>
@@ -292,7 +286,7 @@ correctC: tau;
             <truenextnode>-1</truenextnode>
             <trueanswernote>prtC-1-T</trueanswernote>
             <truefeedback format="html">
-                <text><![CDATA[<p>Correct! The time constant is \(\tau = L/R = {@L@}/{@R@} = {@tau@}\;\text{s}\).</p>]]></text>
+                <text><![CDATA[<p>Correct.</p>]]></text>
             </truefeedback>
             <falsescoremode>=</falsescoremode>
             <falsescore>0</falsescore>
@@ -300,7 +294,7 @@ correctC: tau;
             <falsenextnode>-1</falsenextnode>
             <falseanswernote>prtC-1-F</falseanswernote>
             <falsefeedback format="html">
-                <text><![CDATA[<p>Incorrect. For an RL circuit, the time constant is \(\tau = L/R = {@L@}/{@R@} = {@tau@}\;\text{s}\).</p>]]></text>
+                <text><![CDATA[<p>Incorrect. Recall the relationship between the time constant, the equivalent resistance, and the energy storage element.</p>]]></text>
             </falsefeedback>
         </node>
     </prt>
@@ -311,28 +305,28 @@ correctC: tau;
 </question>
 
 <!-- ============================================================ -->
-<!-- VARIANT 2: RC Step Response                                   -->
+<!-- VARIANT 2: RC Step — C bridges two resistor dividers          -->
+<!-- Vs→R1→(A), R2: A→GND, C: A→(B), R3: B→GND(via right),      -->
+<!-- R4: B→GND. Rth = (R1||R2) + (R3||R4), tau = Rth*C           -->
 <!-- ============================================================ -->
 <question type="stack">
     <name>
-        <text>Q3_Medium_B_V2_RC_Step_Response</text>
+        <text>Q3_Medium_B_V2_RC_Step_Bridge</text>
     </name>
     <questiontext format="html">
         <text><![CDATA[
-<h3>Q3 — Laplace Transform: RC Step-Response Circuit (13 pts)</h3>
+<h3>Question 3 — First-Order Circuit Analysis Using Laplace Transforms (13 pts)</h3>
 
-<p>A series RC circuit consists of a resistor \(R = {@R@}\;\Omega\) and a capacitor \(C = {@C@}\;\text{F}\) connected in series. At \(t = 0\), a DC voltage source \(V_s = {@Vs@}\;\text{V}\) is applied as a step input \(V_s \cdot u(t)\). Assume <strong>zero initial conditions</strong> (capacitor initially uncharged).</p>
+<p>Consider the circuit shown below. At \(t = 0\), a DC voltage source \(V_s = {@Vs@}\;\text{V}\) is applied as a step input \(V_s \cdot u(t)\). The circuit contains resistors \(R_1 = {@R1@}\;\Omega\), \(R_2 = {@R2@}\;\Omega\), \(R_3 = {@R3@}\;\Omega\), \(R_4 = {@R4@}\;\Omega\), and a capacitor \(C = {@Cval@}\;\text{F}\). Assume <strong>zero initial conditions</strong>.</p>
 
 <p><strong>[INSERT DIAGRAM: diagrams/q3/q3_v2_rc_step.svg]</strong></p>
 
 <hr/>
 
-<h4>Part A (2 pts) — S-Domain Component Model (MCQ)</h4>
-<p>When transforming the circuit to the s-domain with zero initial conditions, how is the capacitor \(C\) modeled?</p>
-<p>Select the correct s-domain impedance of the capacitor:</p>
+<h4>Part A (2 pts)</h4>
+<p>When transforming this circuit to the s-domain with zero initial conditions, what is the s-domain impedance of the capacitor \(C\)?</p>
 <p>[[input:ansA]] [[validation:ansA]]</p>
 <div style="margin-left:20px;">
-    <p><strong>Options:</strong></p>
     <ul>
         <li>(a) \(sC\)</li>
         <li>(b) \(\dfrac{1}{sC}\)</li>
@@ -345,48 +339,43 @@ correctC: tau;
 
 <hr/>
 
-<h4>Part B (4 pts) — Transfer Function</h4>
-<p>Determine the transfer function relating the voltage across the capacitor to the input voltage:</p>
-\[H(s) = \frac{V_C(s)}{V_s(s)}\]
-<p>Express your answer as a rational function of \(s\). Use the variable <code>s</code>.</p>
-<p>For example, if your answer were \(\dfrac{1}{1+0.5 s}\), type <code>1/(1+0.5*s)</code>.</p>
-<p>\(H(s) = \) [[input:ansB]] [[validation:ansB]]</p>
+<h4>Part B (4 pts)</h4>
+<p>Determine the equivalent resistance \(R_\text{eq}\) that the capacitor \(C\) "sees" looking out from its terminals into the rest of the circuit (with the voltage source replaced by its internal impedance).</p>
+<p>Give your answer in ohms as a decimal number.</p>
+<p>\(R_\text{eq} = \) [[input:ansB]] \(\Omega\) [[validation:ansB]]</p>
 [[feedback:prtB]]
 
 <hr/>
 
-<h4>Part C (4 pts) — Time Constant</h4>
-<p>Compute the time constant \(\tau\) of this RC circuit.</p>
-<p>Give your answer in seconds as a decimal number (e.g., <code>0.047</code>).</p>
+<h4>Part C (4 pts)</h4>
+<p>Using your result from Part B, compute the time constant \(\tau\) of this circuit.</p>
+<p>Give your answer in seconds as a decimal number.</p>
 <p>\(\tau = \) [[input:ansC]] seconds [[validation:ansC]]</p>
 [[feedback:prtC]]
 
 <hr/>
 
-<h4>Part D (3 pts) — Physical Meaning of Time Constant (Essay)</h4>
+<h4>Part D (3 pts) — Physical Interpretation (Essay)</h4>
 <p>Answer the following:</p>
 <ul>
-    <li>Use the <strong>Initial Value Theorem</strong> to find \(v_C(0^+)\).</li>
-    <li>Use the <strong>Final Value Theorem</strong> to find \(v_C(\infty)\).</li>
-    <li>Explain the <strong>physical meaning</strong> of the time constant \(\tau = {@tau@}\;\text{s}\) in this circuit. At \(t = \tau\), what percentage of the final voltage has the capacitor reached?</li>
+    <li>What is the voltage across the capacitor at \(t = 0^+\)? What is it as \(t \to \infty\)? Justify both answers.</li>
+    <li>Explain the physical meaning of the time constant \(\tau\) you computed. At \(t = \tau\), what fraction of the final voltage has the capacitor reached?</li>
 </ul>
-<p><strong>Write your answer below:</strong></p>
-<p><textarea name="essayD_v2" rows="12" cols="80" style="width:100%; font-family:monospace;">
-</textarea></p>
+<p><textarea name="essayD" rows="10" cols="80" style="width:100%; font-family:monospace;"></textarea></p>
 ]]></text>
     </questiontext>
     <generalfeedback format="html">
         <text><![CDATA[
-<h4>Solution — Variant 2 (RC Step Response)</h4>
-<p><strong>Part A:</strong> With zero initial conditions, a capacitor \(C\) in the s-domain is represented by impedance \(Z_C = \dfrac{1}{sC}\). Answer: <strong>(b)</strong>.</p>
-<p><strong>Part B:</strong> By voltage divider:
-\[H(s) = \frac{V_C(s)}{V_s(s)} = \frac{1/(sC)}{R + 1/(sC)} = \frac{1}{1 + sRC} = {@correctB@}\]</p>
-<p><strong>Part C:</strong> The time constant is \(\tau = RC = {@R@} \times {@C@} = {@tau@}\;\text{s}\).</p>
+<h4>Solution</h4>
+<p><strong>Part A:</strong> With zero initial conditions, a capacitor \(C\) in the s-domain has impedance \(Z_C = 1/(sC)\). Answer: <strong>(b)</strong>.</p>
+<p><strong>Part B:</strong> Remove C and short the voltage source. From the A-side terminal: R1‖R2. From the B-side terminal: R3‖R4. Since these are in series:
+\[R_\text{eq} = \frac{R_1 R_2}{R_1+R_2} + \frac{R_3 R_4}{R_3+R_4} = {@Req@}\;\Omega\]</p>
+<p><strong>Part C:</strong> \(\tau = R_\text{eq} \cdot C = {@Req@} \times {@Cval@} = {@tau@}\;\text{s}\).</p>
 <p><strong>Part D:</strong></p>
 <ul>
-    <li>Initial Value Theorem: \(v_C(0^+) = \lim_{s\to\infty} s \cdot V_C(s) = \lim_{s\to\infty} \frac{s \cdot V_s/s}{1+sRC} = \lim_{s\to\infty} \frac{V_s}{1+sRC} = 0\). The capacitor voltage starts at zero.</li>
-    <li>Final Value Theorem: \(v_C(\infty) = \lim_{s\to 0} s \cdot V_C(s) = \lim_{s\to 0} \frac{V_s}{1+sRC} = V_s = {@Vs@}\;\text{V}\). The capacitor charges fully to the source voltage.</li>
-    <li>The time constant \(\tau = {@tau@}\;\text{s}\) represents the time at which the capacitor reaches approximately \(63.2\%\) of its final voltage (\(1 - e^{-1} \approx 0.632\)). After \(5\tau\), the capacitor is within \(1\%\) of its final value.</li>
+    <li>At \(t=0^+\), \(v_C = 0\) because a capacitor opposes instantaneous changes in voltage (zero initial conditions).</li>
+    <li>As \(t\to\infty\), the capacitor is fully charged and no current flows through it. The Thevenin voltage is \(V_\text{th} = V_s \cdot R_2/(R_1+R_2) = {@Vth@}\;\text{V}\) (only the A-side divider contributes since no current flows through R3/R4 at steady state).</li>
+    <li>At \(t = \tau\), the capacitor has reached approximately 63.2% of its final voltage (\(1-e^{-1}\)).</li>
 </ul>
 ]]></text>
     </generalfeedback>
@@ -398,21 +387,24 @@ correctC: tau;
         <text>2024120900</text>
     </stackversion>
     <questionvariables>
-        <text><![CDATA[/* Variant 2: RC Step Response */
+        <text><![CDATA[/* RC Step with bridging capacitor */
 Vs: rand([5, 10, 12, 15]);
-R: rand([1000, 2200, 3300, 4700]);
-C: rand([10*10^(-6), 22*10^(-6), 47*10^(-6), 100*10^(-6)]);
+R1: rand([1000, 2200, 3300, 4700]);
+R2: rand([1000, 2200, 4700, 6800]);
+R3: rand([470, 1000, 1500, 2200]);
+R4: rand([680, 1000, 1500, 3300]);
+Cval: rand([10*10^(-6), 22*10^(-6), 47*10^(-6), 100*10^(-6)]);
 
 /* Computed quantities */
-tau: R*C;
+R1parR2: R1*R2/(R1+R2);
+R3parR4: R3*R4/(R3+R4);
+Req: R1parR2 + R3parR4;
+tau: Req*Cval;
+Vth: Vs*R2/(R1+R2);
 
-/* Transfer function H(s) = Vc(s)/Vs(s) = 1/(1 + s*R*C) */
-correctB: 1/(1 + s*R*C);
-
-/* Part A correct answer */
+/* Answers */
 correctA: b;
-
-/* Part C correct answer */
+correctB: Req;
 correctC: tau;
 ]]></text>
     </questionvariables>
@@ -420,10 +412,10 @@ correctC: tau;
         <text></text>
     </specificfeedback>
     <questionnote format="html">
-        <text><![CDATA[V2 RC Step: Vs={@Vs@}, R={@R@}, C={@C@}, tau={@tau@}, H(s)={@correctB@}]]></text>
+        <text><![CDATA[V2 RC Step Bridge: Vs={@Vs@}, R1={@R1@}, R2={@R2@}, R3={@R3@}, R4={@R4@}, C={@Cval@}, Req={@Req@}, tau={@tau@}]]></text>
     </questionnote>
     <questiondescription format="html">
-        <text><![CDATA[Laplace Transform — RC step response. Series RC driven by Vs*u(t). 13 pts total.]]></text>
+        <text><![CDATA[Laplace Transform — RC step response with bridging capacitor. 13 pts total.]]></text>
     </questiondescription>
     <questionsimplify>1</questionsimplify>
     <assumepositive>0</assumepositive>
@@ -466,11 +458,11 @@ correctC: tau;
     </input>
     <input>
         <name>ansB</name>
-        <type>algebraic</type>
+        <type>numerical</type>
         <tans>correctB</tans>
-        <boxsize>25</boxsize>
-        <strictsyntax>0</strictsyntax>
-        <insertstars>1</insertstars>
+        <boxsize>15</boxsize>
+        <strictsyntax>1</strictsyntax>
+        <insertstars>0</insertstars>
         <syntaxhint></syntaxhint>
         <syntaxattribute>0</syntaxattribute>
         <forbidwords></forbidwords>
@@ -522,7 +514,7 @@ correctC: tau;
             <truenextnode>-1</truenextnode>
             <trueanswernote>prtA-1-T</trueanswernote>
             <truefeedback format="html">
-                <text><![CDATA[<p>Correct! A capacitor with zero initial conditions is modeled as impedance \(\dfrac{1}{sC}\) in the s-domain.</p>]]></text>
+                <text><![CDATA[<p>Correct.</p>]]></text>
             </truefeedback>
             <falsescoremode>=</falsescoremode>
             <falsescore>0</falsescore>
@@ -530,7 +522,7 @@ correctC: tau;
             <falsenextnode>-1</falsenextnode>
             <falseanswernote>prtA-1-F</falseanswernote>
             <falsefeedback format="html">
-                <text><![CDATA[<p>Incorrect. With zero initial conditions, the capacitor \(C\) is modeled in the s-domain by its impedance \(Z_C = \dfrac{1}{sC}\). The correct answer is <strong>(b)</strong>.</p>]]></text>
+                <text><![CDATA[<p>Incorrect. Review the s-domain impedance models for capacitors.</p>]]></text>
             </falsefeedback>
         </node>
     </prt>
@@ -544,11 +536,11 @@ correctC: tau;
         </feedbackvariables>
         <node>
             <name>0</name>
-            <description>Check transfer function H(s)</description>
-            <answertest>AlgEquiv</answertest>
+            <description>Check Req</description>
+            <answertest>NumRelative</answertest>
             <sans>ansB</sans>
             <tans>correctB</tans>
-            <testoptions></testoptions>
+            <testoptions>0.02</testoptions>
             <quiet>0</quiet>
             <truescoremode>=</truescoremode>
             <truescore>1</truescore>
@@ -556,7 +548,7 @@ correctC: tau;
             <truenextnode>-1</truenextnode>
             <trueanswernote>prtB-1-T</trueanswernote>
             <truefeedback format="html">
-                <text><![CDATA[<p>Correct! The transfer function is \(H(s) = \dfrac{1}{1+sRC} = {@correctB@}\).</p>]]></text>
+                <text><![CDATA[<p>Correct.</p>]]></text>
             </truefeedback>
             <falsescoremode>=</falsescoremode>
             <falsescore>0</falsescore>
@@ -564,7 +556,7 @@ correctC: tau;
             <falsenextnode>-1</falsenextnode>
             <falseanswernote>prtB-1-F</falseanswernote>
             <falsefeedback format="html">
-                <text><![CDATA[<p>Incorrect. Using voltage divider in the s-domain: \(H(s) = \dfrac{1/(sC)}{R+1/(sC)} = \dfrac{1}{1+sRC} = {@correctB@}\).</p>]]></text>
+                <text><![CDATA[<p>Incorrect. Consider what the capacitor sees from each of its terminals independently.</p>]]></text>
             </falsefeedback>
         </node>
     </prt>
@@ -579,10 +571,10 @@ correctC: tau;
         <node>
             <name>0</name>
             <description>Check time constant tau</description>
-            <answertest>NumAbsolute</answertest>
+            <answertest>NumRelative</answertest>
             <sans>ansC</sans>
             <tans>correctC</tans>
-            <testoptions>0.0001</testoptions>
+            <testoptions>0.02</testoptions>
             <quiet>0</quiet>
             <truescoremode>=</truescoremode>
             <truescore>1</truescore>
@@ -590,7 +582,7 @@ correctC: tau;
             <truenextnode>-1</truenextnode>
             <trueanswernote>prtC-1-T</trueanswernote>
             <truefeedback format="html">
-                <text><![CDATA[<p>Correct! The time constant is \(\tau = RC = {@R@} \times {@C@} = {@tau@}\;\text{s}\).</p>]]></text>
+                <text><![CDATA[<p>Correct.</p>]]></text>
             </truefeedback>
             <falsescoremode>=</falsescoremode>
             <falsescore>0</falsescore>
@@ -598,7 +590,7 @@ correctC: tau;
             <falsenextnode>-1</falsenextnode>
             <falseanswernote>prtC-1-F</falseanswernote>
             <falsefeedback format="html">
-                <text><![CDATA[<p>Incorrect. For an RC circuit, the time constant is \(\tau = RC = {@R@} \times {@C@} = {@tau@}\;\text{s}\).</p>]]></text>
+                <text><![CDATA[<p>Incorrect. Recall the relationship between the time constant, the equivalent resistance, and the energy storage element.</p>]]></text>
             </falsefeedback>
         </node>
     </prt>
@@ -609,31 +601,31 @@ correctC: tau;
 </question>
 
 <!-- ============================================================ -->
-<!-- VARIANT 3: RL Natural Response                                -->
+<!-- VARIANT 3: RL Natural — Inductor with branching discharge     -->
+<!-- L(I0) at X, R4: X→GND, R1: X→(A), R2: A→GND, R3: A→GND    -->
+<!-- Req = R4 || [R1 + R2||R3], tau = L/Req                      -->
 <!-- ============================================================ -->
 <question type="stack">
     <name>
-        <text>Q3_Medium_B_V3_RL_Natural_Response</text>
+        <text>Q3_Medium_B_V3_RL_Natural_Network</text>
     </name>
     <questiontext format="html">
         <text><![CDATA[
-<h3>Q3 — Laplace Transform: RL Natural Response Circuit (13 pts)</h3>
+<h3>Question 3 — First-Order Circuit Analysis Using Laplace Transforms (13 pts)</h3>
 
-<p>An inductor \(L = {@L@}\;\text{H}\) carries an initial current \(I_0 = {@I0@}\;\text{A}\) at \(t = 0\). At \(t = 0\), the source is removed and the inductor is connected across a resistor \(R = {@R@}\;\Omega\). There is <strong>no external source</strong> — this is a natural (source-free) response.</p>
+<p>In the circuit shown below, an inductor \(L = {@L@}\;\text{H}\) carries an initial current \(I_0 = {@I0@}\;\text{A}\) at \(t = 0\). At \(t = 0\), the inductor is connected to the resistor network consisting of \(R_1 = {@R1@}\;\Omega\), \(R_2 = {@R2@}\;\Omega\), \(R_3 = {@R3@}\;\Omega\), and \(R_4 = {@R4@}\;\Omega\). There is <strong>no external source</strong>.</p>
 
 <p><strong>[INSERT DIAGRAM: diagrams/q3/q3_v3_rl_natural.svg]</strong></p>
 
 <hr/>
 
-<h4>Part A (2 pts) — S-Domain Component Model (MCQ)</h4>
+<h4>Part A (2 pts)</h4>
 <p>In the s-domain, how is an inductor \(L\) with a nonzero initial current \(I_0\) modeled?</p>
-<p>Select the correct s-domain model:</p>
 <p>[[input:ansA]] [[validation:ansA]]</p>
 <div style="margin-left:20px;">
-    <p><strong>Options:</strong></p>
     <ul>
-        <li>(a) Impedance \(sL\) only (no initial condition source)</li>
-        <li>(b) Impedance \(sL\) in series with a voltage source \(LI_0\) (representing the initial condition)</li>
+        <li>(a) Impedance \(sL\) only</li>
+        <li>(b) Impedance \(sL\) in series with a voltage source \(LI_0\)</li>
         <li>(c) Impedance \(\dfrac{1}{sL}\) in parallel with a current source \(I_0/s\)</li>
         <li>(d) Impedance \(sL\) in series with a voltage source \(I_0/s\)</li>
     </ul>
@@ -643,47 +635,43 @@ correctC: tau;
 
 <hr/>
 
-<h4>Part B (4 pts) — S-Domain Current Expression</h4>
-<p>Using the s-domain circuit model with the initial condition, find the expression for \(I(s)\), the Laplace transform of the inductor current \(i(t)\).</p>
-<p>Express your answer as a function of \(s\). Use the variable <code>s</code>.</p>
-<p>For example, if your answer were \(\dfrac{2}{s+100}\), type <code>2/(s+100)</code>.</p>
-<p>\(I(s) = \) [[input:ansB]] [[validation:ansB]]</p>
+<h4>Part B (4 pts)</h4>
+<p>Determine the equivalent resistance \(R_\text{eq}\) that the inductor "sees" looking into the resistor network from its terminals.</p>
+<p>Give your answer in ohms as a decimal number.</p>
+<p>\(R_\text{eq} = \) [[input:ansB]] \(\Omega\) [[validation:ansB]]</p>
 [[feedback:prtB]]
 
 <hr/>
 
-<h4>Part C (4 pts) — Time Constant</h4>
-<p>Compute the time constant \(\tau\) of this RL natural response.</p>
-<p>Give your answer in seconds as a decimal number (e.g., <code>0.0002</code>).</p>
+<h4>Part C (4 pts)</h4>
+<p>Using your result from Part B, compute the time constant \(\tau\) of this circuit.</p>
+<p>Give your answer in seconds as a decimal number.</p>
 <p>\(\tau = \) [[input:ansC]] seconds [[validation:ansC]]</p>
 [[feedback:prtC]]
 
 <hr/>
 
-<h4>Part D (3 pts) — Energy Dissipation (Essay)</h4>
+<h4>Part D (3 pts) — Physical Interpretation (Essay)</h4>
 <p>Answer the following:</p>
 <ul>
-    <li>Use the <strong>Initial Value Theorem</strong> to verify that \(i(0^+) = I_0 = {@I0@}\;\text{A}\).</li>
-    <li>Use the <strong>Final Value Theorem</strong> to verify that \(i(\infty) = 0\).</li>
-    <li>The initial energy stored in the inductor is \(W_0 = \frac{1}{2}LI_0^2 = {@W0@}\;\text{J}\). Where does this energy go as \(t \to \infty\)? Explain the physical process.</li>
+    <li>What is the inductor current at \(t = 0^+\)? What is it as \(t \to \infty\)? Justify both answers.</li>
+    <li>The initial energy stored in the inductor is \(W_0 = \frac{1}{2}LI_0^2\). Where does this energy go? Explain how it is distributed among the resistors in the network.</li>
 </ul>
-<p><strong>Write your answer below:</strong></p>
-<p><textarea name="essayD_v3" rows="12" cols="80" style="width:100%; font-family:monospace;">
-</textarea></p>
+<p><textarea name="essayD" rows="10" cols="80" style="width:100%; font-family:monospace;"></textarea></p>
 ]]></text>
     </questiontext>
     <generalfeedback format="html">
         <text><![CDATA[
-<h4>Solution — Variant 3 (RL Natural Response)</h4>
-<p><strong>Part A:</strong> An inductor with initial current \(I_0\) is modeled in the s-domain as impedance \(sL\) in series with a voltage source \(LI_0\) (with polarity such that it drives current in the direction of \(I_0\)). This arises from \(\mathcal{L}\{L\,di/dt\} = sL \cdot I(s) - LI_0\). Answer: <strong>(b)</strong>.</p>
-<p><strong>Part B:</strong> KVL around the loop: \(sL \cdot I(s) - LI_0 + R \cdot I(s) = 0\), so:
-\[I(s) = \frac{LI_0}{sL + R} = \frac{I_0}{s + R/L} = {@correctB@}\]</p>
-<p><strong>Part C:</strong> The time constant is \(\tau = L/R = {@L@}/{@R@} = {@tau@}\;\text{s}\).</p>
+<h4>Solution</h4>
+<p><strong>Part A:</strong> An inductor with initial current \(I_0\) is modeled as impedance \(sL\) in series with a voltage source \(LI_0\). This arises from \(\mathcal{L}\{L\,di/dt\} = sL \cdot I(s) - LI_0\). Answer: <strong>(b)</strong>.</p>
+<p><strong>Part B:</strong> Looking from the inductor terminals (node X to ground): R4 is directly from X to ground. In parallel with that path, R1 goes from X to node A, where R2 and R3 are both connected to ground (R2‖R3). So:
+\[R_\text{eq} = R_4 \;\|\; \left[R_1 + (R_2 \| R_3)\right] = R_4 \;\|\; \left[R_1 + \frac{R_2 R_3}{R_2+R_3}\right] = {@Req@}\;\Omega\]</p>
+<p><strong>Part C:</strong> \(\tau = L / R_\text{eq} = {@L@} / {@Req@} = {@tau@}\;\text{s}\).</p>
 <p><strong>Part D:</strong></p>
 <ul>
-    <li>Initial Value Theorem: \(\lim_{s\to\infty} s \cdot I(s) = \lim_{s\to\infty} \frac{s \cdot I_0}{s + R/L} = I_0 = {@I0@}\;\text{A}\). Confirmed.</li>
-    <li>Final Value Theorem: \(\lim_{s\to 0} s \cdot I(s) = \lim_{s\to 0} \frac{s \cdot I_0}{s + R/L} = 0\). The current decays to zero.</li>
-    <li>The initial energy \(W_0 = \frac{1}{2}({@L@})({@I0@})^2 = {@W0@}\;\text{J}\) is entirely dissipated as heat in the resistor \(R\). As the current decays exponentially, the instantaneous power \(p(t) = i^2(t)R\) is dissipated in the resistor, and integrating over all time gives \(\int_0^\infty i^2 R\,dt = W_0\).</li>
+    <li>At \(t=0^+\), \(i_L = I_0 = {@I0@}\;\text{A}\) because an inductor opposes instantaneous changes in current.</li>
+    <li>As \(t\to\infty\), \(i_L = 0\) because there is no source to sustain the current.</li>
+    <li>The stored energy \(W_0 = \frac{1}{2}({@L@})({@I0@})^2 = {@W0@}\;\text{J}\) is entirely dissipated as heat in the four resistors. The energy splits among R1, R2, R3, and R4 according to the current distribution through each path.</li>
 </ul>
 ]]></text>
     </generalfeedback>
@@ -695,22 +683,24 @@ correctC: tau;
         <text>2024120900</text>
     </stackversion>
     <questionvariables>
-        <text><![CDATA[/* Variant 3: RL Natural Response */
-I0: rand([0.5, 1, 2, 3, 5]);
-R: rand([50, 100, 200, 500]);
+        <text><![CDATA[/* RL Natural with branching discharge */
+I0: rand([0.5, 1, 2, 3]);
+R1: rand([100, 220, 330, 470]);
+R2: rand([220, 470, 680, 1000]);
+R3: rand([150, 330, 560, 820]);
+R4: rand([100, 270, 470, 680]);
 L: rand([0.01, 0.02, 0.05, 0.1]);
 
 /* Computed quantities */
-tau: L/R;
+R2parR3: R2*R3/(R2+R3);
+R1plusR2parR3: R1 + R2parR3;
+Req: R4*R1plusR2parR3/(R4+R1plusR2parR3);
+tau: L/Req;
 W0: (1/2)*L*I0^2;
 
-/* I(s) = I0/(s + R/L) = L*I0/(s*L + R) */
-correctB: I0/(s + R/L);
-
-/* Part A correct answer */
+/* Answers */
 correctA: b;
-
-/* Part C correct answer */
+correctB: Req;
 correctC: tau;
 ]]></text>
     </questionvariables>
@@ -718,10 +708,10 @@ correctC: tau;
         <text></text>
     </specificfeedback>
     <questionnote format="html">
-        <text><![CDATA[V3 RL Natural: I0={@I0@}, R={@R@}, L={@L@}, tau={@tau@}, I(s)={@correctB@}, W0={@W0@}]]></text>
+        <text><![CDATA[V3 RL Natural Network: I0={@I0@}, R1={@R1@}, R2={@R2@}, R3={@R3@}, R4={@R4@}, L={@L@}, Req={@Req@}, tau={@tau@}]]></text>
     </questionnote>
     <questiondescription format="html">
-        <text><![CDATA[Laplace Transform — RL natural response. Inductor with initial current, resistor. 13 pts total.]]></text>
+        <text><![CDATA[Laplace Transform — RL natural response with branching resistor network. 13 pts total.]]></text>
     </questiondescription>
     <questionsimplify>1</questionsimplify>
     <assumepositive>0</assumepositive>
@@ -764,11 +754,11 @@ correctC: tau;
     </input>
     <input>
         <name>ansB</name>
-        <type>algebraic</type>
+        <type>numerical</type>
         <tans>correctB</tans>
-        <boxsize>25</boxsize>
-        <strictsyntax>0</strictsyntax>
-        <insertstars>1</insertstars>
+        <boxsize>15</boxsize>
+        <strictsyntax>1</strictsyntax>
+        <insertstars>0</insertstars>
         <syntaxhint></syntaxhint>
         <syntaxattribute>0</syntaxattribute>
         <forbidwords></forbidwords>
@@ -820,7 +810,7 @@ correctC: tau;
             <truenextnode>-1</truenextnode>
             <trueanswernote>prtA-1-T</trueanswernote>
             <truefeedback format="html">
-                <text><![CDATA[<p>Correct! An inductor with initial current \(I_0\) is modeled as impedance \(sL\) in series with a voltage source \(LI_0\).</p>]]></text>
+                <text><![CDATA[<p>Correct.</p>]]></text>
             </truefeedback>
             <falsescoremode>=</falsescoremode>
             <falsescore>0</falsescore>
@@ -828,7 +818,7 @@ correctC: tau;
             <falsenextnode>-1</falsenextnode>
             <falseanswernote>prtA-1-F</falseanswernote>
             <falsefeedback format="html">
-                <text><![CDATA[<p>Incorrect. The s-domain model of an inductor with initial current \(I_0\) includes impedance \(sL\) in series with a voltage source \(LI_0\). This comes from \(\mathcal{L}\{L\,di/dt\} = sL \cdot I(s) - LI_0\). The correct answer is <strong>(b)</strong>.</p>]]></text>
+                <text><![CDATA[<p>Incorrect. Review the s-domain model for an inductor with nonzero initial current.</p>]]></text>
             </falsefeedback>
         </node>
     </prt>
@@ -842,11 +832,11 @@ correctC: tau;
         </feedbackvariables>
         <node>
             <name>0</name>
-            <description>Check I(s) expression</description>
-            <answertest>AlgEquiv</answertest>
+            <description>Check Req</description>
+            <answertest>NumRelative</answertest>
             <sans>ansB</sans>
             <tans>correctB</tans>
-            <testoptions></testoptions>
+            <testoptions>0.02</testoptions>
             <quiet>0</quiet>
             <truescoremode>=</truescoremode>
             <truescore>1</truescore>
@@ -854,7 +844,7 @@ correctC: tau;
             <truenextnode>-1</truenextnode>
             <trueanswernote>prtB-1-T</trueanswernote>
             <truefeedback format="html">
-                <text><![CDATA[<p>Correct! \(I(s) = \dfrac{I_0}{s + R/L} = {@correctB@}\).</p>]]></text>
+                <text><![CDATA[<p>Correct.</p>]]></text>
             </truefeedback>
             <falsescoremode>=</falsescoremode>
             <falsescore>0</falsescore>
@@ -862,7 +852,7 @@ correctC: tau;
             <falsenextnode>-1</falsenextnode>
             <falseanswernote>prtB-1-F</falseanswernote>
             <falsefeedback format="html">
-                <text><![CDATA[<p>Incorrect. From KVL: \(sL \cdot I(s) - LI_0 + R \cdot I(s) = 0\), giving \(I(s) = \dfrac{LI_0}{sL+R} = \dfrac{I_0}{s+R/L} = {@correctB@}\).</p>]]></text>
+                <text><![CDATA[<p>Incorrect. Identify the different current paths from the inductor terminals to ground and combine them correctly.</p>]]></text>
             </falsefeedback>
         </node>
     </prt>
@@ -877,10 +867,10 @@ correctC: tau;
         <node>
             <name>0</name>
             <description>Check time constant tau</description>
-            <answertest>NumAbsolute</answertest>
+            <answertest>NumRelative</answertest>
             <sans>ansC</sans>
             <tans>correctC</tans>
-            <testoptions>0.0001</testoptions>
+            <testoptions>0.02</testoptions>
             <quiet>0</quiet>
             <truescoremode>=</truescoremode>
             <truescore>1</truescore>
@@ -888,7 +878,7 @@ correctC: tau;
             <truenextnode>-1</truenextnode>
             <trueanswernote>prtC-1-T</trueanswernote>
             <truefeedback format="html">
-                <text><![CDATA[<p>Correct! The time constant is \(\tau = L/R = {@L@}/{@R@} = {@tau@}\;\text{s}\).</p>]]></text>
+                <text><![CDATA[<p>Correct.</p>]]></text>
             </truefeedback>
             <falsescoremode>=</falsescoremode>
             <falsescore>0</falsescore>
@@ -896,7 +886,7 @@ correctC: tau;
             <falsenextnode>-1</falsenextnode>
             <falseanswernote>prtC-1-F</falseanswernote>
             <falsefeedback format="html">
-                <text><![CDATA[<p>Incorrect. For an RL circuit, the time constant is \(\tau = L/R = {@L@}/{@R@} = {@tau@}\;\text{s}\).</p>]]></text>
+                <text><![CDATA[<p>Incorrect. Recall the relationship between the time constant, the equivalent resistance, and the energy storage element.</p>]]></text>
             </falsefeedback>
         </node>
     </prt>
@@ -907,33 +897,33 @@ correctC: tau;
 </question>
 
 <!-- ============================================================ -->
-<!-- VARIANT 4: RC Natural Response                                -->
+<!-- VARIANT 4: RC Natural — T-network discharge                   -->
+<!-- C(V0) at X, R1: X→(A), R3: A→GND, R2: A→(B), R4: B→GND    -->
+<!-- Req = R1 + R3||(R2+R4), tau = Req*C                         -->
 <!-- ============================================================ -->
 <question type="stack">
     <name>
-        <text>Q3_Medium_B_V4_RC_Natural_Response</text>
+        <text>Q3_Medium_B_V4_RC_Natural_Network</text>
     </name>
     <questiontext format="html">
         <text><![CDATA[
-<h3>Q3 — Laplace Transform: RC Natural Response Circuit (13 pts)</h3>
+<h3>Question 3 — First-Order Circuit Analysis Using Laplace Transforms (13 pts)</h3>
 
-<p>A capacitor \(C = {@C@}\;\text{F}\) is initially charged to a voltage \(V_0 = {@V0@}\;\text{V}\). At \(t = 0\), the capacitor is connected across a resistor \(R = {@R@}\;\Omega\). There is <strong>no external source</strong> — this is a natural (source-free) response.</p>
+<p>In the circuit shown below, a capacitor \(C = {@Cval@}\;\text{F}\) is initially charged to a voltage \(V_0 = {@V0@}\;\text{V}\). At \(t = 0\), the capacitor is connected to the resistor network consisting of \(R_1 = {@R1@}\;\Omega\), \(R_2 = {@R2@}\;\Omega\), \(R_3 = {@R3@}\;\Omega\), and \(R_4 = {@R4@}\;\Omega\). There is <strong>no external source</strong>.</p>
 
 <p><strong>[INSERT DIAGRAM: diagrams/q3/q3_v4_rc_natural.svg]</strong></p>
 
 <hr/>
 
-<h4>Part A (2 pts) — S-Domain Component Model (MCQ)</h4>
+<h4>Part A (2 pts)</h4>
 <p>In the s-domain, how is a capacitor \(C\) with an initial voltage \(V_0\) modeled?</p>
-<p>Select the correct s-domain model:</p>
 <p>[[input:ansA]] [[validation:ansA]]</p>
 <div style="margin-left:20px;">
-    <p><strong>Options:</strong></p>
     <ul>
-        <li>(a) Impedance \(\dfrac{1}{sC}\) only (no initial condition source)</li>
-        <li>(b) Impedance \(\dfrac{1}{sC}\) in series with a voltage source \(\dfrac{V_0}{s}\) (representing the initial condition)</li>
+        <li>(a) Impedance \(\dfrac{1}{sC}\) only</li>
+        <li>(b) Impedance \(\dfrac{1}{sC}\) in series with a voltage source \(\dfrac{V_0}{s}\)</li>
         <li>(c) Impedance \(sC\) in series with a voltage source \(V_0 \cdot s\)</li>
-        <li>(d) Impedance \(\dfrac{1}{sC}\) in parallel with a current source \(\dfrac{V_0}{R}\)</li>
+        <li>(d) Impedance \(\dfrac{1}{sC}\) in parallel with a current source \(\dfrac{V_0}{R_1}\)</li>
     </ul>
 </div>
 <p>Enter the letter of your choice: <strong>a</strong>, <strong>b</strong>, <strong>c</strong>, or <strong>d</strong>.</p>
@@ -941,49 +931,43 @@ correctC: tau;
 
 <hr/>
 
-<h4>Part B (4 pts) — S-Domain Voltage Expression</h4>
-<p>Using the s-domain circuit model with the initial condition, find the expression for \(V_C(s)\), the Laplace transform of the capacitor voltage \(v_C(t)\).</p>
-<p>Express your answer as a function of \(s\). Use the variable <code>s</code>.</p>
-<p>For example, if your answer were \(\dfrac{10}{s+50}\), type <code>10/(s+50)</code>.</p>
-<p>\(V_C(s) = \) [[input:ansB]] [[validation:ansB]]</p>
+<h4>Part B (4 pts)</h4>
+<p>Determine the equivalent resistance \(R_\text{eq}\) that the capacitor "sees" looking into the resistor network from its terminals.</p>
+<p>Give your answer in ohms as a decimal number.</p>
+<p>\(R_\text{eq} = \) [[input:ansB]] \(\Omega\) [[validation:ansB]]</p>
 [[feedback:prtB]]
 
 <hr/>
 
-<h4>Part C (4 pts) — Time Constant</h4>
-<p>Compute the time constant \(\tau\) of this RC natural response.</p>
-<p>Give your answer in seconds as a decimal number (e.g., <code>0.047</code>).</p>
+<h4>Part C (4 pts)</h4>
+<p>Using your result from Part B, compute the time constant \(\tau\) of this circuit.</p>
+<p>Give your answer in seconds as a decimal number.</p>
 <p>\(\tau = \) [[input:ansC]] seconds [[validation:ansC]]</p>
 [[feedback:prtC]]
 
 <hr/>
 
-<h4>Part D (3 pts) — Initial/Final Value Check &amp; Energy Dissipation (Essay)</h4>
+<h4>Part D (3 pts) — Physical Interpretation (Essay)</h4>
 <p>Answer the following:</p>
 <ul>
-    <li>Use the <strong>Initial Value Theorem</strong> to verify that \(v_C(0^+) = V_0 = {@V0@}\;\text{V}\).</li>
-    <li>Use the <strong>Final Value Theorem</strong> to verify that \(v_C(\infty) = 0\).</li>
-    <li>The initial energy stored in the capacitor is \(W_0 = \frac{1}{2}CV_0^2 = {@W0@}\;\text{J}\). Explain where this energy goes as \(t \to \infty\) and describe the physical process of energy dissipation.</li>
+    <li>What is the capacitor voltage at \(t = 0^+\)? What is it as \(t \to \infty\)? Justify both answers.</li>
+    <li>The initial energy stored in the capacitor is \(W_0 = \frac{1}{2}CV_0^2\). Where does this energy go? Explain how it is distributed among the resistors in the network.</li>
 </ul>
-<p><strong>Write your answer below:</strong></p>
-<p><textarea name="essayD_v4" rows="12" cols="80" style="width:100%; font-family:monospace;">
-</textarea></p>
+<p><textarea name="essayD" rows="10" cols="80" style="width:100%; font-family:monospace;"></textarea></p>
 ]]></text>
     </questiontext>
     <generalfeedback format="html">
         <text><![CDATA[
-<h4>Solution — Variant 4 (RC Natural Response)</h4>
-<p><strong>Part A:</strong> A capacitor with initial voltage \(V_0\) is modeled in the s-domain as impedance \(\dfrac{1}{sC}\) in series with a voltage source \(\dfrac{V_0}{s}\). This comes from the Laplace transform of the capacitor constitutive relation: \(V_C(s) = \dfrac{1}{sC}I(s) + \dfrac{V_0}{s}\). Answer: <strong>(b)</strong>.</p>
-<p><strong>Part B:</strong> The current flowing through the resistor is \(I(s)\), and KVL gives:
-\[\frac{V_0}{s} + \frac{1}{sC}I(s) = R \cdot I(s) \quad \Rightarrow \quad \text{(or using node voltage directly)}\]
-Actually, the capacitor voltage satisfies \(V_C(s) = \dfrac{V_0}{s + 1/(RC)}\) because the discharge equation transforms to:
-\[RC \cdot sV_C(s) - RC \cdot V_0 + V_C(s) = 0 \implies V_C(s)(sRC+1) = RCV_0 \implies V_C(s) = \frac{V_0}{s+1/(RC)} = {@correctB@}\]</p>
-<p><strong>Part C:</strong> The time constant is \(\tau = RC = {@R@} \times {@C@} = {@tau@}\;\text{s}\).</p>
+<h4>Solution</h4>
+<p><strong>Part A:</strong> A capacitor with initial voltage \(V_0\) is modeled as impedance \(1/(sC)\) in series with a voltage source \(V_0/s\). This arises from \(V_C(s) = \frac{1}{sC}I(s) + \frac{V_0}{s}\). Answer: <strong>(b)</strong>.</p>
+<p><strong>Part B:</strong> Looking from the capacitor terminals (node X to ground): R1 goes from X to node A. From node A, there are two paths to ground: R3 directly, and R2+R4 in series through node B. So:
+\[R_\text{eq} = R_1 + R_3 \;\|\; (R_2 + R_4) = R_1 + \frac{R_3(R_2+R_4)}{R_3+R_2+R_4} = {@Req@}\;\Omega\]</p>
+<p><strong>Part C:</strong> \(\tau = R_\text{eq} \cdot C = {@Req@} \times {@Cval@} = {@tau@}\;\text{s}\).</p>
 <p><strong>Part D:</strong></p>
 <ul>
-    <li>Initial Value Theorem: \(\lim_{s\to\infty} s \cdot V_C(s) = \lim_{s\to\infty} \frac{s \cdot V_0}{s + 1/(RC)} = V_0 = {@V0@}\;\text{V}\). Confirmed.</li>
-    <li>Final Value Theorem: \(\lim_{s\to 0} s \cdot V_C(s) = \lim_{s\to 0} \frac{s \cdot V_0}{s + 1/(RC)} = 0\). The voltage decays to zero.</li>
-    <li>The initial energy \(W_0 = \frac{1}{2}({@C@})({@V0@})^2 = {@W0@}\;\text{J}\) is entirely dissipated as heat in the resistor \(R\). As the capacitor discharges, current flows through \(R\), and the power \(p(t) = v_C^2(t)/R\) is converted to thermal energy. The total energy dissipated is \(\int_0^\infty v_C^2/R\,dt = W_0\).</li>
+    <li>At \(t=0^+\), \(v_C = V_0 = {@V0@}\;\text{V}\) because a capacitor opposes instantaneous changes in voltage.</li>
+    <li>As \(t\to\infty\), \(v_C = 0\) because there is no source to maintain the voltage and all energy is dissipated.</li>
+    <li>The stored energy \(W_0 = \frac{1}{2}({@Cval@})({@V0@})^2 = {@W0@}\;\text{J}\) is entirely dissipated as heat in the four resistors. The distribution depends on the current paths: more energy goes to resistors carrying more current.</li>
 </ul>
 ]]></text>
     </generalfeedback>
@@ -995,22 +979,24 @@ Actually, the capacitor voltage satisfies \(V_C(s) = \dfrac{V_0}{s + 1/(RC)}\) b
         <text>2024120900</text>
     </stackversion>
     <questionvariables>
-        <text><![CDATA[/* Variant 4: RC Natural Response */
-V0: rand([5, 10, 12, 15, 20]);
-R: rand([1000, 2200, 4700, 10000]);
-C: rand([10*10^(-6), 22*10^(-6), 47*10^(-6), 100*10^(-6)]);
+        <text><![CDATA[/* RC Natural with T-network discharge */
+V0: rand([5, 10, 12, 15]);
+R1: rand([470, 1000, 1500, 2200]);
+R2: rand([330, 680, 1000, 1500]);
+R3: rand([1000, 2200, 3300, 4700]);
+R4: rand([470, 1000, 1500, 2200]);
+Cval: rand([10*10^(-6), 22*10^(-6), 47*10^(-6), 100*10^(-6)]);
 
 /* Computed quantities */
-tau: R*C;
-W0: (1/2)*C*V0^2;
+R2plusR4: R2 + R4;
+R3parR2R4: R3*R2plusR4/(R3+R2plusR4);
+Req: R1 + R3parR2R4;
+tau: Req*Cval;
+W0: (1/2)*Cval*V0^2;
 
-/* Vc(s) = V0/(s + 1/(R*C)) */
-correctB: V0/(s + 1/(R*C));
-
-/* Part A correct answer */
+/* Answers */
 correctA: b;
-
-/* Part C correct answer */
+correctB: Req;
 correctC: tau;
 ]]></text>
     </questionvariables>
@@ -1018,10 +1004,10 @@ correctC: tau;
         <text></text>
     </specificfeedback>
     <questionnote format="html">
-        <text><![CDATA[V4 RC Natural: V0={@V0@}, R={@R@}, C={@C@}, tau={@tau@}, Vc(s)={@correctB@}, W0={@W0@}]]></text>
+        <text><![CDATA[V4 RC Natural Network: V0={@V0@}, R1={@R1@}, R2={@R2@}, R3={@R3@}, R4={@R4@}, C={@Cval@}, Req={@Req@}, tau={@tau@}]]></text>
     </questionnote>
     <questiondescription format="html">
-        <text><![CDATA[Laplace Transform — RC natural response. Capacitor with initial voltage, resistor. 13 pts total.]]></text>
+        <text><![CDATA[Laplace Transform — RC natural response with T-network discharge. 13 pts total.]]></text>
     </questiondescription>
     <questionsimplify>1</questionsimplify>
     <assumepositive>0</assumepositive>
@@ -1064,11 +1050,11 @@ correctC: tau;
     </input>
     <input>
         <name>ansB</name>
-        <type>algebraic</type>
+        <type>numerical</type>
         <tans>correctB</tans>
-        <boxsize>25</boxsize>
-        <strictsyntax>0</strictsyntax>
-        <insertstars>1</insertstars>
+        <boxsize>15</boxsize>
+        <strictsyntax>1</strictsyntax>
+        <insertstars>0</insertstars>
         <syntaxhint></syntaxhint>
         <syntaxattribute>0</syntaxattribute>
         <forbidwords></forbidwords>
@@ -1120,7 +1106,7 @@ correctC: tau;
             <truenextnode>-1</truenextnode>
             <trueanswernote>prtA-1-T</trueanswernote>
             <truefeedback format="html">
-                <text><![CDATA[<p>Correct! A capacitor with initial voltage \(V_0\) is modeled as impedance \(\dfrac{1}{sC}\) in series with a voltage source \(\dfrac{V_0}{s}\).</p>]]></text>
+                <text><![CDATA[<p>Correct.</p>]]></text>
             </truefeedback>
             <falsescoremode>=</falsescoremode>
             <falsescore>0</falsescore>
@@ -1128,7 +1114,7 @@ correctC: tau;
             <falsenextnode>-1</falsenextnode>
             <falseanswernote>prtA-1-F</falseanswernote>
             <falsefeedback format="html">
-                <text><![CDATA[<p>Incorrect. The s-domain model of a capacitor with initial voltage \(V_0\) includes impedance \(\dfrac{1}{sC}\) in series with a voltage source \(\dfrac{V_0}{s}\). This arises from \(V_C(s) = \dfrac{1}{sC}I(s) + \dfrac{V_0}{s}\). The correct answer is <strong>(b)</strong>.</p>]]></text>
+                <text><![CDATA[<p>Incorrect. Review the s-domain model for a capacitor with nonzero initial voltage.</p>]]></text>
             </falsefeedback>
         </node>
     </prt>
@@ -1142,11 +1128,11 @@ correctC: tau;
         </feedbackvariables>
         <node>
             <name>0</name>
-            <description>Check Vc(s) expression</description>
-            <answertest>AlgEquiv</answertest>
+            <description>Check Req</description>
+            <answertest>NumRelative</answertest>
             <sans>ansB</sans>
             <tans>correctB</tans>
-            <testoptions></testoptions>
+            <testoptions>0.02</testoptions>
             <quiet>0</quiet>
             <truescoremode>=</truescoremode>
             <truescore>1</truescore>
@@ -1154,7 +1140,7 @@ correctC: tau;
             <truenextnode>-1</truenextnode>
             <trueanswernote>prtB-1-T</trueanswernote>
             <truefeedback format="html">
-                <text><![CDATA[<p>Correct! \(V_C(s) = \dfrac{V_0}{s + 1/(RC)} = {@correctB@}\).</p>]]></text>
+                <text><![CDATA[<p>Correct.</p>]]></text>
             </truefeedback>
             <falsescoremode>=</falsescoremode>
             <falsescore>0</falsescore>
@@ -1162,7 +1148,7 @@ correctC: tau;
             <falsenextnode>-1</falsenextnode>
             <falseanswernote>prtB-1-F</falseanswernote>
             <falsefeedback format="html">
-                <text><![CDATA[<p>Incorrect. The RC discharge transforms to \(V_C(s)(sRC+1) = RCV_0\), giving \(V_C(s) = \dfrac{V_0}{s+1/(RC)} = {@correctB@}\).</p>]]></text>
+                <text><![CDATA[<p>Incorrect. Trace the paths from the capacitor terminals through the resistor network to ground and combine them correctly.</p>]]></text>
             </falsefeedback>
         </node>
     </prt>
@@ -1177,10 +1163,10 @@ correctC: tau;
         <node>
             <name>0</name>
             <description>Check time constant tau</description>
-            <answertest>NumAbsolute</answertest>
+            <answertest>NumRelative</answertest>
             <sans>ansC</sans>
             <tans>correctC</tans>
-            <testoptions>0.0001</testoptions>
+            <testoptions>0.02</testoptions>
             <quiet>0</quiet>
             <truescoremode>=</truescoremode>
             <truescore>1</truescore>
@@ -1188,7 +1174,7 @@ correctC: tau;
             <truenextnode>-1</truenextnode>
             <trueanswernote>prtC-1-T</trueanswernote>
             <truefeedback format="html">
-                <text><![CDATA[<p>Correct! The time constant is \(\tau = RC = {@R@} \times {@C@} = {@tau@}\;\text{s}\).</p>]]></text>
+                <text><![CDATA[<p>Correct.</p>]]></text>
             </truefeedback>
             <falsescoremode>=</falsescoremode>
             <falsescore>0</falsescore>
@@ -1196,7 +1182,7 @@ correctC: tau;
             <falsenextnode>-1</falsenextnode>
             <falseanswernote>prtC-1-F</falseanswernote>
             <falsefeedback format="html">
-                <text><![CDATA[<p>Incorrect. For an RC circuit, the time constant is \(\tau = RC = {@R@} \times {@C@} = {@tau@}\;\text{s}\).</p>]]></text>
+                <text><![CDATA[<p>Incorrect. Recall the relationship between the time constant, the equivalent resistance, and the energy storage element.</p>]]></text>
             </falsefeedback>
         </node>
     </prt>

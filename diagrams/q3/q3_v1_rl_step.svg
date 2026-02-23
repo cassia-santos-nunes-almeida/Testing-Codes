@@ -1,8 +1,7 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 620 440" preserveAspectRatio="xMidYMid meet" role="img" aria-label="Q3 Variant 1: RL step response with resistor network — Vs drives R1 to node A, R2 shunt to ground, R3 series to node B, inductor L to ground">
-  <title>Q3-V1: RL Step Response — Resistor Network + Inductor</title>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 580 310" preserveAspectRatio="xMidYMid meet" role="img" aria-label="First-order circuit with voltage source, three resistors, and inductor">
+  <title>First-Order RL Circuit with Resistor Network</title>
   <style>
     text { font-family: 'Segoe UI', Arial, Helvetica, sans-serif; }
-    .title { font-size: 18px; font-weight: bold; fill: #222; }
     .comp-label { font-size: 16px; font-weight: bold; fill: #0055aa; }
     .annotation { font-size: 14px; fill: #666; }
     .polarity { font-size: 14px; fill: #333; }
@@ -11,16 +10,12 @@
     .ref-dir { stroke: #cc0000; stroke-width: 1.8; fill: none; }
     .node-dot { fill: #cc0000; stroke: none; }
     .node-label { font-size: 15px; fill: #cc0000; font-weight: bold; }
-    .find-text { font-size: 16px; fill: #cc0000; font-weight: bold; }
-    .sdomain { font-size: 13px; fill: #006600; font-weight: bold; }
   </style>
   <defs>
     <marker id="cur-q3v1" markerWidth="8" markerHeight="6" refX="8" refY="3" orient="auto">
       <polygon points="0 0, 8 3, 0 6" fill="#cc0000"/>
     </marker>
   </defs>
-
-  <text x="310" y="28" text-anchor="middle" class="title">Q3-V1: RL Step Response (3 nodes, 3 meshes)</text>
 
   <!-- ===== TOP RAIL ===== -->
   <!-- Wire from Vs+ to R1 -->
@@ -85,12 +80,4 @@
   <line x1="273" y1="287" x2="287" y2="287" stroke="#333" stroke-width="3"/>
   <line x1="276" y1="294" x2="284" y2="294" stroke="#333" stroke-width="2"/>
 
-  <!-- ===== s-Domain annotation ===== -->
-  <rect x="30" y="310" width="560" height="80" rx="8" fill="#f0f8f0" stroke="#006600" stroke-width="1.5"/>
-  <text x="310" y="335" text-anchor="middle" class="sdomain">Thevenin at L terminals: V_th = V_s · R₂/(R₁+R₂),  R_th = R₃ + R₁‖R₂</text>
-  <text x="310" y="358" text-anchor="middle" class="sdomain">τ = L / R_th = L / [R₃ + R₁R₂/(R₁+R₂)]</text>
-  <text x="310" y="378" text-anchor="middle" class="sdomain">I_L(s) = V_th / [s · (R_th + sL)]</text>
-
-  <!-- Find instruction -->
-  <text x="310" y="420" text-anchor="middle" class="find-text">Find: R_th seen by L, then τ = L/R_th</text>
 </svg>

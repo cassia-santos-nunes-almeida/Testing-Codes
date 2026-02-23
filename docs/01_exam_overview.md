@@ -54,16 +54,16 @@ Pool: 4 variants (mix of L-focus and C-focus, different debug/compare scenarios)
 ---
 
 #### Q3 — Medium (13 points) · ~30 min
-**Topic**: Laplace Transform Application to First-Order Circuits
+**Topic**: Laplace Transform Application to First-Order Circuits (Complex Networks)
 
 | Subpart | Points | Type | Description |
 |---------|--------|------|-------------|
-| A | 2 | STACK MCQ | Identify correct s-domain component models |
-| B | 4 | STACK Algebraic/Num | Write or identify s-domain transfer function |
-| C | 4 | STACK Numerical | Solve: inverse transform, give time constant |
-| D | 3 | Essay | Initial/final value check + physical meaning of τ |
+| A | 2 | STACK MCQ | Identify correct s-domain component model |
+| B | 4 | STACK Numerical | Find equivalent resistance seen by energy storage element |
+| C | 4 | STACK Numerical | Compute time constant τ from Req |
+| D | 3 | Essay | Physical interpretation: initial/final values, energy, meaning of τ |
 
-Pool: 4 variants (RL step, RC step, RL natural, RC natural)
+Pool: 4 variants (RL step + resistor network, RC step + bridge network, RL natural + branching discharge, RC natural + T-network discharge). Each variant has 3-4 essential nodes, 3 meshes, and 4-5 resistors.
 
 ---
 
