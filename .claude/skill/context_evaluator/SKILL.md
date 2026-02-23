@@ -1,5 +1,5 @@
 ---
-name: stack-exam-builder
+name: contex-evaluator
 description: Generates randomized Moodle STACK exam questions (XML + Maxima) and SVG circuit diagrams for undergraduate electrical circuits courses.
 ---
 
