@@ -26,9 +26,7 @@
 \(R = {@R@}\;\Omega\) and an inductor \(L = {@L_mH@}\;\text{mH}\).
 The switch S closes at \(t = 0\). Before the switch closes, the current is zero.</p>
 
-<p style="text-align:center;">
-<img src="@@PLUGINFILE@@/q2_v1_inductor_rl.svg" alt="Series RL circuit with voltage source Vs, resistor R, inductor L, and switch S" style="max-width:420px;" />
-</p>
+<p><strong>[INSERT DIAGRAM: diagrams/q2/q2_v1_inductor_rl.svg]</strong></p>
 
 <p>At steady state the inductor acts as a short circuit (dc), so the
 steady-state current is \(I_{ss} = V_s / R = {@Iss@}\;\text{A}\).</p>
@@ -95,7 +93,6 @@ correct calculation.  Specifically address:</p>
 <p><textarea name="essayD" rows="10" cols="80"
     placeholder="Write your debugging analysis here (3 pts)..."></textarea></p>
 ]]></text>
-    <file name="q2_v1_inductor_rl.svg" path="/" encoding="base64">PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA1NjAgNDAwIiBwcmVzZXJ2ZUFzcGVjdFJhdGlvPSJ4TWlkWU1pZCBtZWV0IiByb2xlPSJpbWciIGFyaWEtbGFiZWw9IlEyIFZhcmlhbnQgMTogUkwgY2lyY3VpdCB3aXRoIHN3aXRjaCwgaW5kdWN0b3IgYW5kIHJlc2lzdG9yIGluIHNlcmllcyB3aXRoIERDIHNvdXJjZSI+CiAgPHRpdGxlPlEyLVYxOiBSTCBDaXJjdWl0IOKAlCBJbmR1Y3RvciBFbmVyZ3kgJmFtcDsgS1ZMLUZhcmFkYXkgQ29ubmVjdGlvbjwvdGl0bGU+CiAgPHN0eWxlPgogICAgdGV4dCB7IGZvbnQtZmFtaWx5OiAnU2Vnb2UgVUknLCBBcmlhbCwgSGVsdmV0aWNhLCBzYW5zLXNlcmlmOyB9CiAgICAudGl0bGUgeyBmb250LXNpemU6IDE4cHg7IGZvbnQtd2VpZ2h0OiBib2xkOyBmaWxsOiAjMjIyOyB9CiAgICAuY29tcC1sYWJlbCB7IGZvbnQtc2l6ZTogMTZweDsgZm9udC13ZWlnaHQ6IGJvbGQ7IGZpbGw6ICMwMDU1YWE7IH0KICAgIC5hbm5vdGF0aW9uIHsgZm9udC1zaXplOiAxNHB4OyBmaWxsOiAjNjY2OyB9CiAgICAucG9sYXJpdHkgeyBmb250LXNpemU6IDE0cHg7IGZpbGw6ICMzMzM7IH0KICAgIC53aXJlIHsgc3Ryb2tlOiAjMzMzOyBzdHJva2Utd2lkdGg6IDIuNTsgZmlsbDogbm9uZTsgfQogICAgLmNvbXBvbmVudCB7IHN0cm9rZTogIzMzMzsgc3Ryb2tlLXdpZHRoOiAyLjU7IGZpbGw6IG5vbmU7IH0KICAgIC5yZWYtZGlyIHsgc3Ryb2tlOiAjY2MwMDAwOyBzdHJva2Utd2lkdGg6IDEuODsgZmlsbDogbm9uZTsgfQogICAgLmZpbmQtdGV4dCB7IGZvbnQtc2l6ZTogMTZweDsgZmlsbDogI2NjMDAwMDsgZm9udC13ZWlnaHQ6IGJvbGQ7IH0KICAgIC5pbmZvLXRleHQgeyBmb250LXNpemU6IDE0cHg7IGZpbGw6ICMwMDU1YWE7IGZvbnQtc3R5bGU6IGl0YWxpYzsgfQogIDwvc3R5bGU+CiAgPGRlZnM+CiAgICA8bWFya2VyIGlkPSJjdXItYXJyIiBtYXJrZXJXaWR0aD0iOCIgbWFya2VySGVpZ2h0PSI2IiByZWZYPSI4IiByZWZZPSIzIiBvcmllbnQ9ImF1dG8iPgogICAgICA8cG9seWdvbiBwb2ludHM9IjAgMCwgOCAzLCAwIDYiIGZpbGw9IiNjYzAwMDAiLz4KICAgIDwvbWFya2VyPgogIDwvZGVmcz4KCiAgPHRleHQgeD0iMjgwIiB5PSIyOCIgdGV4dC1hbmNob3I9Im1pZGRsZSIgY2xhc3M9InRpdGxlIj5RMi1WMTogUkwgQ2lyY3VpdCDigJQgSW5kdWN0b3IgRW5lcmd5ICZhbXA7IEZpZWxkczwvdGV4dD4KCiAgPCEtLSBDaXJjdWl0OiBWcyAtIFN3aXRjaCAtIFIgLSBMIGxvb3AgLS0+CiAgPCEtLSBUb3AgcmFpbCAtLT4KICA8bGluZSB4MT0iODAiIHkxPSI5MCIgeDI9IjIwMCIgeTI9IjkwIiBjbGFzcz0id2lyZSIvPgogIDwhLS0gU3dpdGNoIGdhcCAtLT4KICA8bGluZSB4MT0iMjAwIiB5MT0iOTAiIHgyPSIyMjAiIHkyPSI4MCIgY2xhc3M9IndpcmUiLz4KICA8Y2lyY2xlIGN4PSIyMDAiIGN5PSI5MCIgcj0iMyIgZmlsbD0iIzMzMyIvPgogIDxjaXJjbGUgY3g9IjI0MCIgY3k9IjkwIiByPSIzIiBmaWxsPSIjMzMzIi8+CiAgPHRleHQgeD0iMjIwIiB5PSI3MiIgdGV4dC1hbmNob3I9Im1pZGRsZSIgY2xhc3M9ImFubm90YXRpb24iPlMgKHQ9MCk8L3RleHQ+CiAgPGxpbmUgeDE9IjI0MCIgeTE9IjkwIiB4Mj0iMzIwIiB5Mj0iOTAiIGNsYXNzPSJ3aXJlIi8+CiAgPCEtLSBSIG9uIHRvcCAtLT4KICA8cmVjdCB4PSIzMjAiIHk9IjgwIiB3aWR0aD0iOTAiIGhlaWdodD0iMjAiIGNsYXNzPSJjb21wb25lbnQiIHJ4PSIzIi8+CiAgPHRleHQgeD0iMzY1IiB5PSI3MiIgdGV4dC1hbmNob3I9Im1pZGRsZSIgY2xhc3M9ImNvbXAtbGFiZWwiPlI8L3RleHQ+CiAgPGxpbmUgeDE9IjQxMCIgeTE9IjkwIiB4Mj0iNDgwIiB5Mj0iOTAiIGNsYXNzPSJ3aXJlIi8+CgogIDwhLS0gUmlnaHQgc2lkZSBkb3duIC0tPgogIDxsaW5lIHgxPSI0ODAiIHkxPSI5MCIgeDI9IjQ4MCIgeTI9IjE1MCIgY2xhc3M9IndpcmUiLz4KICA8IS0tIEwgb24gcmlnaHQgKHZlcnRpY2FsKSAtIGRyYXduIGFzIGNvaWwgc3ltYm9sIC0tPgogIDxwYXRoIGQ9Ik0gNDgwLDE1MCBDIDQ4MCwxNjAgNDk1LDE2MCA0OTUsMTcwIEMgNDk1LDE4MCA0ODAsMTgwIDQ4MCwxOTAgQyA0ODAsMjAwIDQ5NSwyMDAgNDk1LDIxMCBDIDQ5NSwyMjAgNDgwLDIyMCA0ODAsMjMwIEMgNDgwLDI0MCA0OTUsMjQwIDQ5NSwyNTAgQyA0OTUsMjYwIDQ4MCwyNjAgNDgwLDI3MCIgY2xhc3M9ImNvbXBvbmVudCIgZmlsbD0ibm9uZSIvPgogIDx0ZXh0IHg9IjUxMCIgeT0iMjE1IiBjbGFzcz0iY29tcC1sYWJlbCI+TDwvdGV4dD4KICA8bGluZSB4MT0iNDgwIiB5MT0iMjcwIiB4Mj0iNDgwIiB5Mj0iMzIwIiBjbGFzcz0id2lyZSIvPgoKICA8IS0tIEJvdHRvbSByYWlsIC0tPgogIDxsaW5lIHgxPSI4MCIgeTE9IjMyMCIgeDI9IjQ4MCIgeTI9IjMyMCIgY2xhc3M9IndpcmUiLz4KCiAgPCEtLSBWcyBvbiBsZWZ0IC0tPgogIDxsaW5lIHgxPSI4MCIgeTE9IjkwIiB4Mj0iODAiIHkyPSIxNjAiIGNsYXNzPSJ3aXJlIi8+CiAgPGNpcmNsZSBjeD0iODAiIGN5PSIyMDUiIHI9IjI4IiBjbGFzcz0iY29tcG9uZW50Ii8+CiAgPHRleHQgeD0iNzIiIHk9IjE5OCIgY2xhc3M9InBvbGFyaXR5Ij4rPC90ZXh0PgogIDx0ZXh0IHg9Ijc1IiB5PSIyMjIiIGNsYXNzPSJwb2xhcml0eSI+Jm1pbnVzOzwvdGV4dD4KICA8dGV4dCB4PSIzNSIgeT0iMjEwIiBjbGFzcz0iY29tcC1sYWJlbCI+Vl9zPC90ZXh0PgogIDxsaW5lIHgxPSI4MCIgeTE9IjIzMyIgeDI9IjgwIiB5Mj0iMzIwIiBjbGFzcz0id2lyZSIvPgoKICA8IS0tIEN1cnJlbnQgZGlyZWN0aW9uIGFycm93IC0tPgogIDxsaW5lIHgxPSIyNzAiIHkxPSI4MCIgeDI9IjMxMCIgeTI9IjgwIiBjbGFzcz0icmVmLWRpciIgbWFya2VyLWVuZD0idXJsKCNjdXItYXJyKSIvPgogIDx0ZXh0IHg9IjI5MCIgeT0iNzIiIHRleHQtYW5jaG9yPSJtaWRkbGUiIHN0eWxlPSJmb250LXNpemU6MTRweDsgZmlsbDojY2MwMDAwOyBmb250LXdlaWdodDpib2xkOyI+aSh0KTwvdGV4dD4KCiAgPCEtLSBWb2x0YWdlIHBvbGFyaXR5IGFjcm9zcyBMIC0tPgogIDx0ZXh0IHg9IjUyMCIgeT0iMTc1IiBjbGFzcz0icG9sYXJpdHkiPis8L3RleHQ+CiAgPHRleHQgeD0iNTIwIiB5PSIyNjAiIGNsYXNzPSJwb2xhcml0eSI+Jm1pbnVzOzwvdGV4dD4KICA8dGV4dCB4PSI1NDAiIHk9IjIxNSIgc3R5bGU9ImZvbnQtc2l6ZToxNHB4OyBmaWxsOiNjYzAwMDA7IGZvbnQtd2VpZ2h0OmJvbGQ7Ij52X0w8L3RleHQ+CgogIDwhLS0gSW5mbyAtLT4KICA8dGV4dCB4PSIyODAiIHk9IjM2NSIgdGV4dC1hbmNob3I9Im1pZGRsZSIgY2xhc3M9ImluZm8tdGV4dCI+VGhlIHN3aXRjaCBTIGNsb3NlcyBhdCB0ID0gMC4gQmVmb3JlIGNsb3NpbmcsIGkoMCkgPSAwLjwvdGV4dD4KICA8dGV4dCB4PSIyODAiIHk9IjM5MCIgdGV4dC1hbmNob3I9Im1pZGRsZSIgY2xhc3M9ImZpbmQtdGV4dCI+QW5hbHl6ZSBpbmR1Y3RvciBlbmVyZ3kgYW5kIHRoZSBwaHlzaWNhbCBiYXNpcyBvZiBLVkwuPC90ZXh0Pgo8L3N2Zz4K</file>
     </questiontext>
     <generalfeedback format="html">
         <text><![CDATA[
@@ -159,9 +156,8 @@ E_mJ : E_J * 1000;
 /* Teacher answer for Part B */
 taB : E_mJ;
 
-/* MCQ options for Part A — correct answer is option 1 */
-/* Using STACK MCQ framework with dropdown */
-taA : 1;
+/* Part A: inductor v-i relationship, correct answer is option 1 */
+taA: [[1, true, "v = L di/dt (voltage proportional to rate of change of current)"], [2, false, "v = (1/L) integral of i dt (voltage proportional to integral of current)"], [3, false, "v = L * i (voltage proportional to current)"], [4, false, "v = L / i (voltage inversely proportional to current)"]];
 ]]></text>
     </questionvariables>
     <specificfeedback format="html">
@@ -214,7 +210,7 @@ connection, and debug an incorrect student solution.</p>
         <checkanswertype>0</checkanswertype>
         <mustverify>0</mustverify>
         <showvalidation>0</showvalidation>
-        <options>[[1,"\\(v = L \\frac{di}{dt}\\) (voltage proportional to rate of change of current)"],[2,"\\(v = \\frac{1}{L} \\int i\\,dt\\) (voltage proportional to integral of current)"],[3,"\\(v = L \\cdot i\\) (voltage proportional to current)"],[4,"\\(v = \\frac{L}{i}\\) (voltage inversely proportional to current)"]]</options>
+        <options/>
     </input>
     <input>
         <name>ansB</name>
@@ -246,7 +242,7 @@ connection, and debug an incorrect student solution.</p>
             <name>0</name>
             <answertest>AlgEquiv</answertest>
             <sans>ansA</sans>
-            <tans>taA</tans>
+            <tans>1</tans>
             <testoptions></testoptions>
             <quiet>0</quiet>
             <truescoremode>=</truescoremode>
@@ -285,7 +281,7 @@ or its integral.</p>
         </feedbackvariables>
         <node>
             <name>0</name>
-            <answertest>NumAbsolute</answertest>
+            <answertest>NumRelative</answertest>
             <sans>ansB</sans>
             <tans>taB</tans>
             <testoptions>0.05</testoptions>
@@ -340,9 +336,7 @@ or its integral.</p>
 The capacitor is initially uncharged. At steady state the capacitor is fully
 charged to \(v_C = V_s = {@Vs@}\;\text{V}\).</p>
 
-<p style="text-align:center;">
-<img src="@@PLUGINFILE@@/q2_v2_capacitor_rc.svg" alt="Series RC circuit with voltage source Vs, resistor R, and capacitor C" style="max-width:420px;" />
-</p>
+<p><strong>[INSERT DIAGRAM: diagrams/q2/q2_v2_capacitor_rc.svg]</strong></p>
 
 <hr />
 
@@ -404,7 +398,6 @@ result, and discuss under what general principle this equivalence holds.</p>
 <p><textarea name="essayD" rows="10" cols="80"
     placeholder="Write your comparison here (3 pts)..."></textarea></p>
 ]]></text>
-    <file name="q2_v2_capacitor_rc.svg" path="/" encoding="base64">PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA1NjAgNDAwIiBwcmVzZXJ2ZUFzcGVjdFJhdGlvPSJ4TWlkWU1pZCBtZWV0IiByb2xlPSJpbWciIGFyaWEtbGFiZWw9IlEyIFZhcmlhbnQgMjogUkMgY2lyY3VpdCB3aXRoIHJlc2lzdG9yIGFuZCBjYXBhY2l0b3IgaW4gc2VyaWVzIHdpdGggREMgc291cmNlIj4KICA8dGl0bGU+UTItVjI6IFJDIENpcmN1aXQg4oCUIENhcGFjaXRvciBFbmVyZ3kgJmFtcDsgS0NMLUNoYXJnZSBDb25zZXJ2YXRpb248L3RpdGxlPgogIDxzdHlsZT4KICAgIHRleHQgeyBmb250LWZhbWlseTogJ1NlZ29lIFVJJywgQXJpYWwsIEhlbHZldGljYSwgc2Fucy1zZXJpZjsgfQogICAgLnRpdGxlIHsgZm9udC1zaXplOiAxOHB4OyBmb250LXdlaWdodDogYm9sZDsgZmlsbDogIzIyMjsgfQogICAgLmNvbXAtbGFiZWwgeyBmb250LXNpemU6IDE2cHg7IGZvbnQtd2VpZ2h0OiBib2xkOyBmaWxsOiAjMDA1NWFhOyB9CiAgICAuYW5ub3RhdGlvbiB7IGZvbnQtc2l6ZTogMTRweDsgZmlsbDogIzY2NjsgfQogICAgLnBvbGFyaXR5IHsgZm9udC1zaXplOiAxNHB4OyBmaWxsOiAjMzMzOyB9CiAgICAud2lyZSB7IHN0cm9rZTogIzMzMzsgc3Ryb2tlLXdpZHRoOiAyLjU7IGZpbGw6IG5vbmU7IH0KICAgIC5jb21wb25lbnQgeyBzdHJva2U6ICMzMzM7IHN0cm9rZS13aWR0aDogMi41OyBmaWxsOiBub25lOyB9CiAgICAucmVmLWRpciB7IHN0cm9rZTogI2NjMDAwMDsgc3Ryb2tlLXdpZHRoOiAxLjg7IGZpbGw6IG5vbmU7IH0KICAgIC5maW5kLXRleHQgeyBmb250LXNpemU6IDE2cHg7IGZpbGw6ICNjYzAwMDA7IGZvbnQtd2VpZ2h0OiBib2xkOyB9CiAgICAuaW5mby10ZXh0IHsgZm9udC1zaXplOiAxNHB4OyBmaWxsOiAjMDA1NWFhOyBmb250LXN0eWxlOiBpdGFsaWM7IH0KICA8L3N0eWxlPgogIDxkZWZzPgogICAgPG1hcmtlciBpZD0iY3VyLWFycjIiIG1hcmtlcldpZHRoPSI4IiBtYXJrZXJIZWlnaHQ9IjYiIHJlZlg9IjgiIHJlZlk9IjMiIG9yaWVudD0iYXV0byI+CiAgICAgIDxwb2x5Z29uIHBvaW50cz0iMCAwLCA4IDMsIDAgNiIgZmlsbD0iI2NjMDAwMCIvPgogICAgPC9tYXJrZXI+CiAgPC9kZWZzPgoKICA8dGV4dCB4PSIyODAiIHk9IjI4IiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBjbGFzcz0idGl0bGUiPlEyLVYyOiBSQyBDaXJjdWl0IOKAlCBDYXBhY2l0b3IgRW5lcmd5ICZhbXA7IEZpZWxkczwvdGV4dD4KCiAgPCEtLSBDaXJjdWl0OiBWcyAtIFIgLSBDIGxvb3AgLS0+CiAgPCEtLSBUb3AgcmFpbCAtLT4KICA8bGluZSB4MT0iODAiIHkxPSI5MCIgeDI9IjIzMCIgeTI9IjkwIiBjbGFzcz0id2lyZSIvPgogIDwhLS0gUiBvbiB0b3AgLS0+CiAgPHJlY3QgeD0iMjMwIiB5PSI4MCIgd2lkdGg9IjEwMCIgaGVpZ2h0PSIyMCIgY2xhc3M9ImNvbXBvbmVudCIgcng9IjMiLz4KICA8dGV4dCB4PSIyODAiIHk9IjcyIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBjbGFzcz0iY29tcC1sYWJlbCI+UjwvdGV4dD4KICA8bGluZSB4MT0iMzMwIiB5MT0iOTAiIHgyPSI0ODAiIHkyPSI5MCIgY2xhc3M9IndpcmUiLz4KCiAgPCEtLSBSaWdodCBzaWRlOiBjYXBhY2l0b3IgKHZlcnRpY2FsKSAtLT4KICA8bGluZSB4MT0iNDgwIiB5MT0iOTAiIHgyPSI0ODAiIHkyPSIxNzUiIGNsYXNzPSJ3aXJlIi8+CiAgPCEtLSBDYXBhY2l0b3IgcGxhdGVzIC0tPgogIDxsaW5lIHgxPSI0NjAiIHkxPSIxNzUiIHgyPSI1MDAiIHkyPSIxNzUiIGNsYXNzPSJ3aXJlIiBzdHJva2Utd2lkdGg9IjMiLz4KICA8bGluZSB4MT0iNDYwIiB5MT0iMTk1IiB4Mj0iNTAwIiB5Mj0iMTk1IiBjbGFzcz0id2lyZSIgc3Ryb2tlLXdpZHRoPSIzIi8+CiAgPGxpbmUgeDE9IjQ4MCIgeTE9IjE5NSIgeDI9IjQ4MCIgeTI9IjMyMCIgY2xhc3M9IndpcmUiLz4KICA8dGV4dCB4PSI1MTUiIHk9IjE5MCIgY2xhc3M9ImNvbXAtbGFiZWwiPkM8L3RleHQ+CgogIDwhLS0gQm90dG9tIHJhaWwgLS0+CiAgPGxpbmUgeDE9IjgwIiB5MT0iMzIwIiB4Mj0iNDgwIiB5Mj0iMzIwIiBjbGFzcz0id2lyZSIvPgoKICA8IS0tIFZzIG9uIGxlZnQgLS0+CiAgPGxpbmUgeDE9IjgwIiB5MT0iOTAiIHgyPSI4MCIgeTI9IjE2MCIgY2xhc3M9IndpcmUiLz4KICA8Y2lyY2xlIGN4PSI4MCIgY3k9IjIwNSIgcj0iMjgiIGNsYXNzPSJjb21wb25lbnQiLz4KICA8dGV4dCB4PSI3MiIgeT0iMTk4IiBjbGFzcz0icG9sYXJpdHkiPis8L3RleHQ+CiAgPHRleHQgeD0iNzUiIHk9IjIyMiIgY2xhc3M9InBvbGFyaXR5Ij4mbWludXM7PC90ZXh0PgogIDx0ZXh0IHg9IjM1IiB5PSIyMTAiIGNsYXNzPSJjb21wLWxhYmVsIj5WX3M8L3RleHQ+CiAgPGxpbmUgeDE9IjgwIiB5MT0iMjMzIiB4Mj0iODAiIHkyPSIzMjAiIGNsYXNzPSJ3aXJlIi8+CgogIDwhLS0gQ3VycmVudCBkaXJlY3Rpb24gYXJyb3cgLS0+CiAgPGxpbmUgeDE9IjE3MCIgeTE9IjgwIiB4Mj0iMjIwIiB5Mj0iODAiIGNsYXNzPSJyZWYtZGlyIiBtYXJrZXItZW5kPSJ1cmwoI2N1ci1hcnIyKSIvPgogIDx0ZXh0IHg9IjE5NSIgeT0iNzIiIHRleHQtYW5jaG9yPSJtaWRkbGUiIHN0eWxlPSJmb250LXNpemU6MTRweDsgZmlsbDojY2MwMDAwOyBmb250LXdlaWdodDpib2xkOyI+aSh0KTwvdGV4dD4KCiAgPCEtLSBWb2x0YWdlIHBvbGFyaXR5IGFjcm9zcyBDIC0tPgogIDx0ZXh0IHg9IjUyNSIgeT0iMTcyIiBjbGFzcz0icG9sYXJpdHkiPis8L3RleHQ+CiAgPHRleHQgeD0iNTI1IiB5PSIyMDUiIGNsYXNzPSJwb2xhcml0eSI+Jm1pbnVzOzwvdGV4dD4KICA8dGV4dCB4PSI1NDUiIHk9IjE5MCIgc3R5bGU9ImZvbnQtc2l6ZToxNHB4OyBmaWxsOiNjYzAwMDA7IGZvbnQtd2VpZ2h0OmJvbGQ7Ij52X0M8L3RleHQ+CgogIDwhLS0gTm9kZSBsYWJlbCAtLT4KICA8Y2lyY2xlIGN4PSI0ODAiIGN5PSI5MCIgcj0iNCIgZmlsbD0iI2NjMDAwMCIvPgogIDx0ZXh0IHg9IjQ4NSIgeT0iNzIiIHN0eWxlPSJmb250LXNpemU6MTRweDsgZmlsbDojY2MwMDAwOyBmb250LXdlaWdodDpib2xkOyI+Tm9kZSBYPC90ZXh0PgoKICA8IS0tIEluZm8gLS0+CiAgPHRleHQgeD0iMjgwIiB5PSIzNjUiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGNsYXNzPSJpbmZvLXRleHQiPkF0IHN0ZWFkeSBzdGF0ZSwgdl9DID0gVl9zIGFuZCBpID0gMC48L3RleHQ+CiAgPHRleHQgeD0iMjgwIiB5PSIzOTAiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGNsYXNzPSJmaW5kLXRleHQiPkFuYWx5emUgY2FwYWNpdG9yIGVuZXJneSBhbmQgdGhlIHBoeXNpY2FsIGJhc2lzIG9mIEtDTC48L3RleHQ+Cjwvc3ZnPgo=</file>
     </questiontext>
     <generalfeedback format="html">
         <text><![CDATA[
@@ -468,8 +461,8 @@ E_mJ : E_J * 1000;
 /* Teacher answer for Part B */
 taB : E_mJ;
 
-/* MCQ correct answer is option 1 */
-taA : 1;
+/* Part A: capacitor energy formula, correct answer is option 1 */
+taA: [[1, true, "E = (1/2) C V^2 (energy proportional to capacitance and voltage squared)"], [2, false, "E = (1/2) C I^2 (energy proportional to capacitance and current squared)"], [3, false, "E = C V (energy proportional to capacitance times voltage)"], [4, false, "E = (1/2) V^2 / C (energy inversely proportional to capacitance)"]];
 ]]></text>
     </questionvariables>
     <specificfeedback format="html">
@@ -522,7 +515,7 @@ conservation connection, and compare two energy calculation approaches.</p>
         <checkanswertype>0</checkanswertype>
         <mustverify>0</mustverify>
         <showvalidation>0</showvalidation>
-        <options>[[1,"\\(E = \\frac{1}{2}C V^2\\) (energy proportional to capacitance and voltage squared)"],[2,"\\(E = \\frac{1}{2}C I^2\\) (energy proportional to capacitance and current squared)"],[3,"\\(E = C V\\) (energy proportional to capacitance times voltage)"],[4,"\\(E = \\frac{1}{2} \\frac{V^2}{C}\\) (energy inversely proportional to capacitance)"]]</options>
+        <options/>
     </input>
     <input>
         <name>ansB</name>
@@ -554,7 +547,7 @@ conservation connection, and compare two energy calculation approaches.</p>
             <name>0</name>
             <answertest>AlgEquiv</answertest>
             <sans>ansA</sans>
-            <tans>taA</tans>
+            <tans>1</tans>
             <testoptions></testoptions>
             <quiet>0</quiet>
             <truescoremode>=</truescoremode>
@@ -594,7 +587,7 @@ voltage across the capacitor.  Note the analogy: for an inductor it is
         </feedbackvariables>
         <node>
             <name>0</name>
-            <answertest>NumAbsolute</answertest>
+            <answertest>NumRelative</answertest>
             <sans>ansB</sans>
             <tans>taB</tans>
             <testoptions>0.05</testoptions>
@@ -648,7 +641,7 @@ voltage across the capacitor.  Note the analogy: for an inductor it is
 \(L = {@L_mH@}\;\text{mH}\) carries a piecewise-linear current waveform
 \(i(t)\) described as follows:</p>
 
-<p style="text-align:center;"><img src="@@PLUGINFILE@@/q2_v3_inductor_waveform.svg" alt="Inductor with piecewise-linear current waveform showing three segments" style="max-width:420px;" /></p>
+<p><strong>[INSERT DIAGRAM: diagrams/q2/q2_v3_inductor_waveform.svg]</strong></p>
 
 <table border="1" cellpadding="8" cellspacing="0" style="border-collapse:collapse; text-align:center;">
 <tr><th>Segment</th><th>Time Interval</th><th>Current</th><th>\(di/dt\)</th></tr>
@@ -727,7 +720,6 @@ correct result.  Specifically address:</p>
 <p><textarea name="essayD" rows="10" cols="80"
     placeholder="Write your debugging analysis here (3 pts)..."></textarea></p>
 ]]></text>
-    <file name="q2_v3_inductor_waveform.svg" path="/" encoding="base64">PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA2MDAgNDIwIiBwcmVzZXJ2ZUFzcGVjdFJhdGlvPSJ4TWlkWU1pZCBtZWV0IiByb2xlPSJpbWciIGFyaWEtbGFiZWw9IlEyIFZhcmlhbnQgMzogSW5kdWN0b3Igd2l0aCBwaWVjZXdpc2UtbGluZWFyIGN1cnJlbnQgd2F2ZWZvcm0gZm9yIGVuZXJneSBhbmFseXNpcyI+CiAgPHRpdGxlPlEyLVYzOiBJbmR1Y3RvciBFbmVyZ3kgZnJvbSBDdXJyZW50IFdhdmVmb3JtPC90aXRsZT4KICA8c3R5bGU+CiAgICB0ZXh0IHsgZm9udC1mYW1pbHk6ICdTZWdvZSBVSScsIEFyaWFsLCBIZWx2ZXRpY2EsIHNhbnMtc2VyaWY7IH0KICAgIC50aXRsZSB7IGZvbnQtc2l6ZTogMThweDsgZm9udC13ZWlnaHQ6IGJvbGQ7IGZpbGw6ICMyMjI7IH0KICAgIC5jb21wLWxhYmVsIHsgZm9udC1zaXplOiAxNnB4OyBmb250LXdlaWdodDogYm9sZDsgZmlsbDogIzAwNTVhYTsgfQogICAgLmFubm90YXRpb24geyBmb250LXNpemU6IDE0cHg7IGZpbGw6ICM2NjY7IH0KICAgIC53aXJlIHsgc3Ryb2tlOiAjMzMzOyBzdHJva2Utd2lkdGg6IDIuNTsgZmlsbDogbm9uZTsgfQogICAgLmNvbXBvbmVudCB7IHN0cm9rZTogIzMzMzsgc3Ryb2tlLXdpZHRoOiAyLjU7IGZpbGw6IG5vbmU7IH0KICAgIC5maW5kLXRleHQgeyBmb250LXNpemU6IDE2cHg7IGZpbGw6ICNjYzAwMDA7IGZvbnQtd2VpZ2h0OiBib2xkOyB9CiAgICAuaW5mby10ZXh0IHsgZm9udC1zaXplOiAxNHB4OyBmaWxsOiAjMDA1NWFhOyBmb250LXN0eWxlOiBpdGFsaWM7IH0KICAgIC5heGlzIHsgc3Ryb2tlOiAjMzMzOyBzdHJva2Utd2lkdGg6IDEuNTsgfQogICAgLndhdmVmb3JtIHsgc3Ryb2tlOiAjMDA1NWFhOyBzdHJva2Utd2lkdGg6IDIuNTsgZmlsbDogbm9uZTsgfQogICAgLmdyaWQgeyBzdHJva2U6ICNkZGQ7IHN0cm9rZS13aWR0aDogMC41OyB9CiAgPC9zdHlsZT4KICA8ZGVmcz4KICAgIDxtYXJrZXIgaWQ9ImF4aXMtYXJyIiBtYXJrZXJXaWR0aD0iOCIgbWFya2VySGVpZ2h0PSI2IiByZWZYPSI4IiByZWZZPSIzIiBvcmllbnQ9ImF1dG8iPgogICAgICA8cG9seWdvbiBwb2ludHM9IjAgMCwgOCAzLCAwIDYiIGZpbGw9IiMzMzMiLz4KICAgIDwvbWFya2VyPgogIDwvZGVmcz4KCiAgPHRleHQgeD0iMzAwIiB5PSIyOCIgdGV4dC1hbmNob3I9Im1pZGRsZSIgY2xhc3M9InRpdGxlIj5RMi1WMzogSW5kdWN0b3IgRW5lcmd5IGZyb20gQ3VycmVudCBXYXZlZm9ybTwvdGV4dD4KCiAgPCEtLSBJbmR1Y3RvciBzeW1ib2wgKHRvcC1jZW50ZXIpIC0tPgogIDxyZWN0IHg9IjIyMCIgeT0iNDUiIHdpZHRoPSIxNjAiIGhlaWdodD0iNTAiIHJ4PSI4IiBmaWxsPSIjZjVmNWZmIiBzdHJva2U9IiMwMDU1YWEiIHN0cm9rZS13aWR0aD0iMS41Ii8+CiAgPHBhdGggZD0iTSAyNDAsNzAgQyAyNDAsNjAgMjU1LDYwIDI1NSw3MCBDIDI1NSw4MCAyNzAsODAgMjcwLDcwIEMgMjcwLDYwIDI4NSw2MCAyODUsNzAgQyAyODUsODAgMzAwLDgwIDMwMCw3MCIgY2xhc3M9ImNvbXBvbmVudCIgZmlsbD0ibm9uZSIgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoMTAsMCkiLz4KICA8dGV4dCB4PSIzNDAiIHk9Ijc1IiBjbGFzcz0iY29tcC1sYWJlbCIgc3R5bGU9ImZvbnQtc2l6ZToxNXB4OyI+TDwvdGV4dD4KCiAgPCEtLSBDdXJyZW50IHdhdmVmb3JtIHBsb3QgLS0+CiAgPCEtLSBBeGVzIC0tPgogIDxsaW5lIHgxPSI4MCIgeTE9IjMwMCIgeDI9IjU0MCIgeTI9IjMwMCIgY2xhc3M9ImF4aXMiIG1hcmtlci1lbmQ9InVybCgjYXhpcy1hcnIpIi8+CiAgPGxpbmUgeDE9IjgwIiB5MT0iMzEwIiB4Mj0iODAiIHkyPSIxMTUiIGNsYXNzPSJheGlzIiBtYXJrZXItZW5kPSJ1cmwoI2F4aXMtYXJyKSIvPgogIDx0ZXh0IHg9IjU1NSIgeT0iMzA1IiBjbGFzcz0iYW5ub3RhdGlvbiI+dCAobXMpPC90ZXh0PgogIDx0ZXh0IHg9Ijc1IiB5PSIxMTAiIHRleHQtYW5jaG9yPSJlbmQiIGNsYXNzPSJhbm5vdGF0aW9uIj5pKHQpPC90ZXh0PgoKICA8IS0tIEdyaWQgbGluZXMgLS0+CiAgPGxpbmUgeDE9IjgwIiB5MT0iMjUwIiB4Mj0iNTIwIiB5Mj0iMjUwIiBjbGFzcz0iZ3JpZCIvPgogIDxsaW5lIHgxPSI4MCIgeTE9IjIwMCIgeDI9IjUyMCIgeTI9IjIwMCIgY2xhc3M9ImdyaWQiLz4KICA8bGluZSB4MT0iODAiIHkxPSIxNTAiIHgyPSI1MjAiIHkyPSIxNTAiIGNsYXNzPSJncmlkIi8+CiAgPGxpbmUgeDE9IjE5MCIgeTE9IjMwMCIgeDI9IjE5MCIgeTI9IjEyMCIgY2xhc3M9ImdyaWQiLz4KICA8bGluZSB4MT0iMzAwIiB5MT0iMzAwIiB4Mj0iMzAwIiB5Mj0iMTIwIiBjbGFzcz0iZ3JpZCIvPgogIDxsaW5lIHgxPSI0MTAiIHkxPSIzMDAiIHgyPSI0MTAiIHkyPSIxMjAiIGNsYXNzPSJncmlkIi8+CiAgPGxpbmUgeDE9IjUyMCIgeTE9IjMwMCIgeDI9IjUyMCIgeTI9IjEyMCIgY2xhc3M9ImdyaWQiLz4KCiAgPCEtLSBBeGlzIGxhYmVscyAtLT4KICA8dGV4dCB4PSI4MCIgeT0iMzE4IiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBjbGFzcz0iYW5ub3RhdGlvbiI+MDwvdGV4dD4KICA8dGV4dCB4PSIxOTAiIHk9IjMxOCIgdGV4dC1hbmNob3I9Im1pZGRsZSIgY2xhc3M9ImFubm90YXRpb24iPnQmI3gyMDgxOzwvdGV4dD4KICA8dGV4dCB4PSIzMDAiIHk9IjMxOCIgdGV4dC1hbmNob3I9Im1pZGRsZSIgY2xhc3M9ImFubm90YXRpb24iPnQmI3gyMDgyOzwvdGV4dD4KICA8dGV4dCB4PSI0MTAiIHk9IjMxOCIgdGV4dC1hbmNob3I9Im1pZGRsZSIgY2xhc3M9ImFubm90YXRpb24iPnQmI3gyMDgzOzwvdGV4dD4KICA8dGV4dCB4PSI1MjAiIHk9IjMxOCIgdGV4dC1hbmNob3I9Im1pZGRsZSIgY2xhc3M9ImFubm90YXRpb24iPnQmI3gyMDg0OzwvdGV4dD4KCiAgPCEtLSBZLWF4aXMgbGFiZWxzIC0tPgogIDx0ZXh0IHg9IjcyIiB5PSIyNTQiIHRleHQtYW5jaG9yPSJlbmQiIGNsYXNzPSJhbm5vdGF0aW9uIiBzdHlsZT0iZm9udC1zaXplOjEycHg7Ij5JJiN4MjA4MTs8L3RleHQ+CiAgPHRleHQgeD0iNzIiIHk9IjE1NCIgdGV4dC1hbmNob3I9ImVuZCIgY2xhc3M9ImFubm90YXRpb24iIHN0eWxlPSJmb250LXNpemU6MTJweDsiPklfcGVhazwvdGV4dD4KCiAgPCEtLSBQaWVjZXdpc2UgbGluZWFyIHdhdmVmb3JtOiByaXNlIC0gZmxhdCAtIGZhbGwgLSB6ZXJvIC0tPgogIDxwb2x5bGluZSBwb2ludHM9IjgwLDMwMCAxOTAsMTUwIDMwMCwxNTAgNDEwLDI1MCA1MjAsMjUwIiBjbGFzcz0id2F2ZWZvcm0iLz4KCiAgPCEtLSBTZWdtZW50IGxhYmVscyAtLT4KICA8dGV4dCB4PSIxMzUiIHk9IjIxMCIgdGV4dC1hbmNob3I9Im1pZGRsZSIgc3R5bGU9ImZvbnQtc2l6ZToxM3B4OyBmaWxsOiMwMDU1YWE7IGZvbnQtd2VpZ2h0OmJvbGQ7Ij5TZWcgMTwvdGV4dD4KICA8dGV4dCB4PSIyNDUiIHk9IjE0MCIgdGV4dC1hbmNob3I9Im1pZGRsZSIgc3R5bGU9ImZvbnQtc2l6ZToxM3B4OyBmaWxsOiMwMDU1YWE7IGZvbnQtd2VpZ2h0OmJvbGQ7Ij5TZWcgMjwvdGV4dD4KICA8dGV4dCB4PSIzNTUiIHk9IjE4OCIgdGV4dC1hbmNob3I9Im1pZGRsZSIgc3R5bGU9ImZvbnQtc2l6ZToxM3B4OyBmaWxsOiMwMDU1YWE7IGZvbnQtd2VpZ2h0OmJvbGQ7Ij5TZWcgMzwvdGV4dD4KICA8dGV4dCB4PSI0NjUiIHk9IjI0MiIgdGV4dC1hbmNob3I9Im1pZGRsZSIgc3R5bGU9ImZvbnQtc2l6ZToxM3B4OyBmaWxsOiMwMDU1YWE7IGZvbnQtd2VpZ2h0OmJvbGQ7Ij5TZWcgNDwvdGV4dD4KCiAgPCEtLSBEb3QgYXQgZXZhbHVhdGlvbiBwb2ludCAtLT4KICA8Y2lyY2xlIGN4PSIzMDAiIGN5PSIxNTAiIHI9IjUiIGZpbGw9IiNjYzAwMDAiLz4KICA8dGV4dCB4PSIzMTAiIHk9IjE0MCIgY2xhc3M9ImZpbmQtdGV4dCIgc3R5bGU9ImZvbnQtc2l6ZToxNHB4OyI+aSh0JiN4MjA4MjspID0gSV9wZWFrPC90ZXh0PgoKICA8IS0tIEFubm90YXRpb25zIC0tPgogIDx0ZXh0IHg9IjEzNSIgeT0iMzUwIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBjbGFzcz0iYW5ub3RhdGlvbiIgc3R5bGU9ImZvbnQtc2l6ZToxM3B4OyI+dl9MID0gTCAmbWlkZG90OyBkaS9kdDwvdGV4dD4KICA8dGV4dCB4PSIxMzUiIHk9IjM2OCIgdGV4dC1hbmNob3I9Im1pZGRsZSIgY2xhc3M9ImFubm90YXRpb24iIHN0eWxlPSJmb250LXNpemU6MTNweDsiPlNlZyAxOiBoaWdoZXN0IHx2X0x8PC90ZXh0PgoKICA8IS0tIEVuZXJneSBmb3JtdWxhIC0tPgogIDxyZWN0IHg9IjMwMCIgeT0iMzQwIiB3aWR0aD0iMjMwIiBoZWlnaHQ9IjM1IiByeD0iNiIgZmlsbD0iI2YwZjhmMCIgc3Ryb2tlPSIjMDA2NjAwIiBzdHJva2Utd2lkdGg9IjEuMiIvPgogIDx0ZXh0IHg9IjQxNSIgeT0iMzYzIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBzdHlsZT0iZm9udC1zaXplOjE0cHg7IGZpbGw6IzAwNjYwMDsgZm9udC13ZWlnaHQ6Ym9sZDsiPkUgPSAmZnJhYzEyOyBMICZtaWRkb3Q7IGkodCkmc3VwMjs8L3RleHQ+CgogIDwhLS0gRmluZCBpbnN0cnVjdGlvbiAtLT4KICA8dGV4dCB4PSIzMDAiIHk9IjQxMCIgdGV4dC1hbmNob3I9Im1pZGRsZSIgY2xhc3M9ImZpbmQtdGV4dCI+RmluZDogRW5lcmd5IGF0IHQmI3gyMDgyOyBhbmQgaWRlbnRpZnkgc2VnbWVudCB3aXRoIGhpZ2hlc3Qgdl9MPC90ZXh0Pgo8L3N2Zz4K</file>
     </questiontext>
     <generalfeedback format="html">
         <text><![CDATA[
@@ -815,8 +807,8 @@ E_mJ : E_J * 1000;
 /* Teacher answers */
 taB : E_mJ;
 
-/* MCQ: correct answer is the segment number with highest |v| */
-taA : max_seg;
+/* Part A: which segment has highest |v_L|, correct answer is max_seg (1 or 3) */
+taA: [[1, is(max_seg = 1), "Segment 1 (ramp up from 0 to Ipeak)"], [2, false, "Segment 2 (constant at Ipeak)"], [3, is(max_seg = 3), "Segment 3 (ramp down from Ipeak to 0)"]];
 ]]></text>
     </questionvariables>
     <specificfeedback format="html">
@@ -870,7 +862,7 @@ confusion error.</p>
         <checkanswertype>0</checkanswertype>
         <mustverify>0</mustverify>
         <showvalidation>0</showvalidation>
-        <options>[[1,"Segment 1 (ramp up from 0 to Ipeak)"],[2,"Segment 2 (constant at Ipeak)"],[3,"Segment 3 (ramp down from Ipeak to 0)"]]</options>
+        <options/>
     </input>
     <input>
         <name>ansB</name>
@@ -902,7 +894,7 @@ confusion error.</p>
             <name>0</name>
             <answertest>AlgEquiv</answertest>
             <sans>ansA</sans>
-            <tans>taA</tans>
+            <tans>max_seg</tans>
             <testoptions></testoptions>
             <quiet>0</quiet>
             <truescoremode>=</truescoremode>
@@ -948,7 +940,7 @@ voltage magnitude.</p>
         </feedbackvariables>
         <node>
             <name>0</name>
-            <answertest>NumAbsolute</answertest>
+            <answertest>NumRelative</answertest>
             <sans>ansB</sans>
             <tans>taB</tans>
             <testoptions>0.05</testoptions>
@@ -1003,7 +995,7 @@ answer in mJ by multiplying joules by 1000.</p>
 across a voltage source of \(V = {@V@}\;\text{V}\).  Both capacitors are
 fully charged to voltage \(V\).</p>
 
-<p style="text-align:center;"><img src="@@PLUGINFILE@@/q2_v4_capacitor_parallel.svg" alt="Parallel capacitor circuit with two capacitors and voltage source" style="max-width:420px;" /></p>
+<p><strong>[INSERT DIAGRAM: diagrams/q2/q2_v4_capacitor_parallel.svg]</strong></p>
 
 <hr />
 
@@ -1078,7 +1070,6 @@ and add:</p>
 <p><textarea name="essayD" rows="10" cols="80"
     placeholder="Write your comparison here (3 pts)..."></textarea></p>
 ]]></text>
-    <file name="q2_v4_capacitor_parallel.svg" path="/" encoding="base64">PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA1NjAgMzgwIiBwcmVzZXJ2ZUFzcGVjdFJhdGlvPSJ4TWlkWU1pZCBtZWV0IiByb2xlPSJpbWciIGFyaWEtbGFiZWw9IlEyIFZhcmlhbnQgNDogVHdvIGNhcGFjaXRvcnMgaW4gcGFyYWxsZWwgY2hhcmdlZCB0byB2b2x0YWdlIFYgZm9yIGVuZXJneSBhbmFseXNpcyI+CiAgPHRpdGxlPlEyLVY0OiBQYXJhbGxlbCBDYXBhY2l0b3JzIOKAlCBUb3RhbCBFbmVyZ3kgJmFtcDsgS0NMPC90aXRsZT4KICA8c3R5bGU+CiAgICB0ZXh0IHsgZm9udC1mYW1pbHk6ICdTZWdvZSBVSScsIEFyaWFsLCBIZWx2ZXRpY2EsIHNhbnMtc2VyaWY7IH0KICAgIC50aXRsZSB7IGZvbnQtc2l6ZTogMThweDsgZm9udC13ZWlnaHQ6IGJvbGQ7IGZpbGw6ICMyMjI7IH0KICAgIC5jb21wLWxhYmVsIHsgZm9udC1zaXplOiAxNnB4OyBmb250LXdlaWdodDogYm9sZDsgZmlsbDogIzAwNTVhYTsgfQogICAgLmFubm90YXRpb24geyBmb250LXNpemU6IDE0cHg7IGZpbGw6ICM2NjY7IH0KICAgIC5wb2xhcml0eSB7IGZvbnQtc2l6ZTogMTRweDsgZmlsbDogIzMzMzsgfQogICAgLndpcmUgeyBzdHJva2U6ICMzMzM7IHN0cm9rZS13aWR0aDogMi41OyBmaWxsOiBub25lOyB9CiAgICAuY29tcG9uZW50IHsgc3Ryb2tlOiAjMzMzOyBzdHJva2Utd2lkdGg6IDIuNTsgZmlsbDogbm9uZTsgfQogICAgLnJlZi1kaXIgeyBzdHJva2U6ICNjYzAwMDA7IHN0cm9rZS13aWR0aDogMS44OyBmaWxsOiBub25lOyB9CiAgICAuZmluZC10ZXh0IHsgZm9udC1zaXplOiAxNnB4OyBmaWxsOiAjY2MwMDAwOyBmb250LXdlaWdodDogYm9sZDsgfQogICAgLmluZm8tdGV4dCB7IGZvbnQtc2l6ZTogMTRweDsgZmlsbDogIzAwNTVhYTsgZm9udC1zdHlsZTogaXRhbGljOyB9CiAgICAubm9kZS1sYWJlbCB7IGZvbnQtc2l6ZTogMTRweDsgZmlsbDogI2NjMDAwMDsgZm9udC13ZWlnaHQ6IGJvbGQ7IH0KICA8L3N0eWxlPgogIDxkZWZzPgogICAgPG1hcmtlciBpZD0iY3VyLXEydjQiIG1hcmtlcldpZHRoPSI4IiBtYXJrZXJIZWlnaHQ9IjYiIHJlZlg9IjgiIHJlZlk9IjMiIG9yaWVudD0iYXV0byI+CiAgICAgIDxwb2x5Z29uIHBvaW50cz0iMCAwLCA4IDMsIDAgNiIgZmlsbD0iI2NjMDAwMCIvPgogICAgPC9tYXJrZXI+CiAgPC9kZWZzPgoKICA8dGV4dCB4PSIyODAiIHk9IjI4IiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBjbGFzcz0idGl0bGUiPlEyLVY0OiBQYXJhbGxlbCBDYXBhY2l0b3JzIOKAlCBFbmVyZ3kgJmFtcDsgS0NMPC90ZXh0PgoKICA8IS0tIFRvcCByYWlsIC0tPgogIDxsaW5lIHgxPSI4MCIgeTE9IjgwIiB4Mj0iNDgwIiB5Mj0iODAiIGNsYXNzPSJ3aXJlIi8+CiAgPCEtLSBCb3R0b20gcmFpbCAtLT4KICA8bGluZSB4MT0iODAiIHkxPSIyODAiIHgyPSI0ODAiIHkyPSIyODAiIGNsYXNzPSJ3aXJlIi8+CgogIDwhLS0gVnMgb24gbGVmdCAtLT4KICA8bGluZSB4MT0iODAiIHkxPSI4MCIgeDI9IjgwIiB5Mj0iMTMwIiBjbGFzcz0id2lyZSIvPgogIDxjaXJjbGUgY3g9IjgwIiBjeT0iMTgwIiByPSIyOCIgY2xhc3M9ImNvbXBvbmVudCIvPgogIDx0ZXh0IHg9IjcyIiB5PSIxNzMiIGNsYXNzPSJwb2xhcml0eSI+KzwvdGV4dD4KICA8dGV4dCB4PSI3NSIgeT0iMTk3IiBjbGFzcz0icG9sYXJpdHkiPiZtaW51czs8L3RleHQ+CiAgPHRleHQgeD0iMzUiIHk9IjE4NSIgY2xhc3M9ImNvbXAtbGFiZWwiPlY8L3RleHQ+CiAgPGxpbmUgeDE9IjgwIiB5MT0iMjA4IiB4Mj0iODAiIHkyPSIyODAiIGNsYXNzPSJ3aXJlIi8+CgogIDwhLS0gSnVuY3Rpb24gbm9kZSB0b3AgLS0+CiAgPGNpcmNsZSBjeD0iMjUwIiBjeT0iODAiIHI9IjQiIGZpbGw9IiNjYzAwMDAiLz4KICA8dGV4dCB4PSIyNTAiIHk9IjY1IiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBjbGFzcz0ibm9kZS1sYWJlbCI+Tm9kZSBQPC90ZXh0PgoKICA8IS0tIEMxIChsZWZ0IGNhcGFjaXRvcikgLS0+CiAgPGxpbmUgeDE9IjI1MCIgeTE9IjgwIiB4Mj0iMjUwIiB5Mj0iMTQwIiBjbGFzcz0id2lyZSIvPgogIDxsaW5lIHgxPSIyMzAiIHkxPSIxNDAiIHgyPSIyNzAiIHkyPSIxNDAiIHN0cm9rZT0iIzMzMyIgc3Ryb2tlLXdpZHRoPSIzIiBmaWxsPSJub25lIi8+CiAgPGxpbmUgeDE9IjIzMCIgeTE9IjE2MCIgeDI9IjI3MCIgeTI9IjE2MCIgc3Ryb2tlPSIjMzMzIiBzdHJva2Utd2lkdGg9IjMiIGZpbGw9Im5vbmUiLz4KICA8bGluZSB4MT0iMjUwIiB5MT0iMTYwIiB4Mj0iMjUwIiB5Mj0iMjgwIiBjbGFzcz0id2lyZSIvPgogIDx0ZXh0IHg9IjIxMCIgeT0iMTU1IiB0ZXh0LWFuY2hvcj0iZW5kIiBjbGFzcz0iY29tcC1sYWJlbCI+QyYjeDIwODE7PC90ZXh0PgoKICA8IS0tIEMyIChyaWdodCBjYXBhY2l0b3IpIC0tPgogIDxsaW5lIHgxPSI0MDAiIHkxPSI4MCIgeDI9IjQwMCIgeTI9IjE0MCIgY2xhc3M9IndpcmUiLz4KICA8bGluZSB4MT0iMzgwIiB5MT0iMTQwIiB4Mj0iNDIwIiB5Mj0iMTQwIiBzdHJva2U9IiMzMzMiIHN0cm9rZS13aWR0aD0iMyIgZmlsbD0ibm9uZSIvPgogIDxsaW5lIHgxPSIzODAiIHkxPSIxNjAiIHgyPSI0MjAiIHkyPSIxNjAiIHN0cm9rZT0iIzMzMyIgc3Ryb2tlLXdpZHRoPSIzIiBmaWxsPSJub25lIi8+CiAgPGxpbmUgeDE9IjQwMCIgeTE9IjE2MCIgeDI9IjQwMCIgeTI9IjI4MCIgY2xhc3M9IndpcmUiLz4KICA8dGV4dCB4PSI0NDAiIHk9IjE1NSIgY2xhc3M9ImNvbXAtbGFiZWwiPkMmI3gyMDgyOzwvdGV4dD4KCiAgPCEtLSBWb2x0YWdlIHBvbGFyaXR5IGFjcm9zcyBib3RoIC0tPgogIDx0ZXh0IHg9IjQ5MCIgeT0iMTMwIiBjbGFzcz0icG9sYXJpdHkiPis8L3RleHQ+CiAgPHRleHQgeD0iNDkwIiB5PSIyMTAiIGNsYXNzPSJwb2xhcml0eSI+Jm1pbnVzOzwvdGV4dD4KICA8bGluZSB4MT0iNDg4IiB5MT0iMTQwIiB4Mj0iNDg4IiB5Mj0iMjAwIiBzdHJva2U9IiNjYzAwMDAiIHN0cm9rZS13aWR0aD0iMS4yIiBzdHJva2UtZGFzaGFycmF5PSI1LDMiLz4KICA8dGV4dCB4PSI1MTAiIHk9IjE3NSIgc3R5bGU9ImZvbnQtc2l6ZToxNHB4OyBmaWxsOiNjYzAwMDA7IGZvbnQtd2VpZ2h0OmJvbGQ7Ij5WPC90ZXh0PgoKICA8IS0tIEN1cnJlbnQgYXJyb3dzIC0tPgogIDxsaW5lIHgxPSIxNjAiIHkxPSI3MCIgeDI9IjIwMCIgeTI9IjcwIiBjbGFzcz0icmVmLWRpciIgbWFya2VyLWVuZD0idXJsKCNjdXItcTJ2NCkiLz4KICA8dGV4dCB4PSIxODAiIHk9IjYyIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBzdHlsZT0iZm9udC1zaXplOjEzcHg7IGZpbGw6I2NjMDAwMDsgZm9udC13ZWlnaHQ6Ym9sZDsiPmk8L3RleHQ+CiAgPGxpbmUgeDE9IjI1MCIgeTE9Ijk1IiB4Mj0iMjUwIiB5Mj0iMTMwIiBjbGFzcz0icmVmLWRpciIgbWFya2VyLWVuZD0idXJsKCNjdXItcTJ2NCkiLz4KICA8dGV4dCB4PSIyMzUiIHk9IjExNSIgc3R5bGU9ImZvbnQtc2l6ZToxM3B4OyBmaWxsOiNjYzAwMDA7IGZvbnQtd2VpZ2h0OmJvbGQ7Ij5pJiN4MjA4MTs8L3RleHQ+CiAgPGxpbmUgeDE9IjQwMCIgeTE9Ijk1IiB4Mj0iNDAwIiB5Mj0iMTMwIiBjbGFzcz0icmVmLWRpciIgbWFya2VyLWVuZD0idXJsKCNjdXItcTJ2NCkiLz4KICA8dGV4dCB4PSI0MTUiIHk9IjExNSIgc3R5bGU9ImZvbnQtc2l6ZToxM3B4OyBmaWxsOiNjYzAwMDA7IGZvbnQtd2VpZ2h0OmJvbGQ7Ij5pJiN4MjA4Mjs8L3RleHQ+CgogIDwhLS0gS0NMIGFubm90YXRpb24gLS0+CiAgPHRleHQgeD0iMzIwIiB5PSIxMTUiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGNsYXNzPSJhbm5vdGF0aW9uIj5LQ0w6IGkgPSBpJiN4MjA4MTsgKyBpJiN4MjA4Mjs8L3RleHQ+CgogIDwhLS0gR3JvdW5kIC0tPgogIDxsaW5lIHgxPSIzMTUiIHkxPSIyODAiIHgyPSIzMjUiIHkyPSIyODAiIHN0cm9rZT0iIzMzMyIgc3Ryb2tlLXdpZHRoPSI0Ii8+CiAgPGxpbmUgeDE9IjMxNyIgeTE9IjI4NyIgeDI9IjMyMyIgeTI9IjI4NyIgc3Ryb2tlPSIjMzMzIiBzdHJva2Utd2lkdGg9IjMiLz4KICA8bGluZSB4MT0iMzE5IiB5MT0iMjk0IiB4Mj0iMzIxIiB5Mj0iMjk0IiBzdHJva2U9IiMzMzMiIHN0cm9rZS13aWR0aD0iMiIvPgoKICA8IS0tIEVuZXJneSBmb3JtdWxhcyAtLT4KICA8cmVjdCB4PSIxMDAiIHk9IjMxMCIgd2lkdGg9IjM2MCIgaGVpZ2h0PSIzNSIgcng9IjYiIGZpbGw9IiNmMGY4ZjAiIHN0cm9rZT0iIzAwNjYwMCIgc3Ryb2tlLXdpZHRoPSIxLjIiLz4KICA8dGV4dCB4PSIyODAiIHk9IjMzMyIgdGV4dC1hbmNob3I9Im1pZGRsZSIgc3R5bGU9ImZvbnQtc2l6ZToxNHB4OyBmaWxsOiMwMDY2MDA7IGZvbnQtd2VpZ2h0OmJvbGQ7Ij5FX3RvdGFsID0gJmZyYWMxMjsoQyYjeDIwODE7ICsgQyYjeDIwODI7KVYmc3VwMjsgPSAmZnJhYzEyO0MmI3gyMDgxO1Ymc3VwMjsgKyAmZnJhYzEyO0MmI3gyMDgyO1Ymc3VwMjs8L3RleHQ+CgogIDwhLS0gRmluZCBpbnN0cnVjdGlvbiAtLT4KICA8dGV4dCB4PSIyODAiIHk9IjM3MCIgdGV4dC1hbmNob3I9Im1pZGRsZSIgY2xhc3M9ImZpbmQtdGV4dCI+RmluZDogVG90YWwgZW5lcmd5IGFuZCBleHBsYWluIEtDTCBhdCBOb2RlIFA8L3RleHQ+Cjwvc3ZnPgo=</file>
     </questiontext>
     <generalfeedback format="html">
         <text><![CDATA[
@@ -1156,8 +1147,8 @@ E_mJ : E_J * 1000;
 /* Teacher answers */
 taB : E_mJ;
 
-/* MCQ correct answer: option 1 (C1+C2) */
-taA : 1;
+/* Part A: parallel capacitor combination, correct answer is option 1 */
+taA: [[1, true, "C_total = C1 + C2 (capacitances add in parallel)"], [2, false, "1/C_total = 1/C1 + 1/C2 (reciprocals add in parallel)"], [3, false, "C_total = C1 * C2 (capacitances multiply in parallel)"], [4, false, "C_total = C1*C2/(C1+C2) (product over sum in parallel)"]];
 ]]></text>
     </questionvariables>
     <specificfeedback format="html">
@@ -1211,7 +1202,7 @@ approaches to energy calculation.</p>
         <checkanswertype>0</checkanswertype>
         <mustverify>0</mustverify>
         <showvalidation>0</showvalidation>
-        <options>[[1,"\\(C_{total} = C_1 + C_2\\) (capacitances add in parallel)"],[2,"\\(\\frac{1}{C_{total}} = \\frac{1}{C_1} + \\frac{1}{C_2}\\) (reciprocals add in parallel)"],[3,"\\(C_{total} = C_1 \\cdot C_2\\) (capacitances multiply in parallel)"],[4,"\\(C_{total} = \\frac{C_1 \\cdot C_2}{C_1 + C_2}\\) (product over sum in parallel)"]]</options>
+        <options/>
     </input>
     <input>
         <name>ansB</name>
@@ -1243,7 +1234,7 @@ approaches to energy calculation.</p>
             <name>0</name>
             <answertest>AlgEquiv</answertest>
             <sans>ansA</sans>
-            <tans>taA</tans>
+            <tans>1</tans>
             <testoptions></testoptions>
             <quiet>0</quiet>
             <truescoremode>=</truescoremode>
@@ -1285,7 +1276,7 @@ resistor convention where resistances add in series.)</p>
         </feedbackvariables>
         <node>
             <name>0</name>
-            <answertest>NumAbsolute</answertest>
+            <answertest>NumRelative</answertest>
             <sans>ansB</sans>
             <tans>taB</tans>
             <testoptions>0.05</testoptions>
