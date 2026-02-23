@@ -33,23 +33,26 @@ ax_circuit.set_title('Inductor with Piecewise Linear Current', fontsize=14, font
 # Bottom: Current waveform plot
 ax_wave = fig.add_subplot(gs[1])
 
-# Piecewise linear waveform
-t = [0, 1, 2, 3, 4]
-i_vals = [0, 3, 3, 1, 1]
+# Piecewise linear waveform (3 segments matching XML):
+# Seg 1: 0→t1, ramp from 0 to Ipeak
+# Seg 2: t1→t2, constant at Ipeak
+# Seg 3: t2→t3, ramp from Ipeak down to 0
+t = [0, 1, 2.5, 4]
+i_vals = [0, 3, 3, 0]
 
 ax_wave.plot(t, i_vals, 'b-', linewidth=2.5)
 ax_wave.set_xlabel('t (ms)', fontsize=13)
 ax_wave.set_ylabel('i(t)', fontsize=13)
 ax_wave.set_xticks(t)
-ax_wave.set_xticklabels(['0', 't₁', 't₂', 't₃', 't₄'], fontsize=12)
-ax_wave.set_yticks([0, 1, 3])
-ax_wave.set_yticklabels(['0', 'I₁', 'I_peak'], fontsize=12)
+ax_wave.set_xticklabels(['0', 't₁', 't₂', 't₃'], fontsize=12)
+ax_wave.set_yticks([0, 3])
+ax_wave.set_yticklabels(['0', 'I_peak'], fontsize=12)
 ax_wave.grid(True, alpha=0.3)
 ax_wave.set_xlim(-0.2, 4.5)
 ax_wave.set_ylim(-0.3, 3.8)
 
-# Mark key point at t2
-ax_wave.plot(2, 3, 'ro', markersize=8, zorder=5)
+# Mark key point at t1 (end of Segment 1, where i = Ipeak)
+ax_wave.plot(1, 3, 'ro', markersize=8, zorder=5)
 
 # Energy formula box
 textstr = r'$E = \frac{1}{2} L \cdot i(t)^2$'

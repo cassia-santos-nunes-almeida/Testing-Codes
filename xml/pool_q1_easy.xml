@@ -247,7 +247,7 @@ ta2: float(VA);
 <h3>Q1 &mdash; DC Resistive Circuit Analysis (Variant 2: Two Meshes)</h3>
 <p><strong>Total: 12 points | Estimated time: ~20 minutes</strong></p>
 
-<p>Consider the circuit shown below. The circuit contains two voltage sources \(V_{s1} = {@Vs1@}\;\text{V}\) and \(V_{s2} = {@Vs2@}\;\text{V}\), and four resistors: \(R_1 = {@R1@}\;\text{k}\Omega\) (top-left branch), \(R_2 = {@R2@}\;\text{k}\Omega\) (center shared branch), \(R_3 = {@R3@}\;\text{k}\Omega\) (top-right branch), and \(R_4 = {@R4@}\;\text{k}\Omega\) (bottom-left branch).</p>
+<p>Consider the circuit shown below. The circuit contains two voltage sources \(V_{s1} = {@Vs1@}\;\text{V}\) (left, positive terminal on top) and \(V_{s2} = {@Vs2@}\;\text{V}\) (right, positive terminal on bottom), and four resistors: \(R_1 = {@R1@}\;\text{k}\Omega\) (top-left branch), \(R_2 = {@R2@}\;\text{k}\Omega\) (center shared branch), \(R_3 = {@R3@}\;\text{k}\Omega\) (top-right branch), and \(R_4 = {@R4@}\;\text{k}\Omega\) (bottom-right branch, in the right mesh).</p>
 
 <p>\(V_{s1}\) is in the left loop and \(V_{s2}\) is in the right loop. Two clockwise mesh currents \(i_1\) (left mesh) and \(i_2\) (right mesh) are defined. \(R_2\) is the shared branch between the two meshes.</p>
 
@@ -291,12 +291,12 @@ ta2: float(VA);
 <h4>Solution for Variant 2 (Two Meshes)</h4>
 <p><strong>Part A:</strong> The mesh-current method is most efficient. There are 2 meshes, so <strong>2 equations</strong> are needed.</p>
 <p><strong>Part B:</strong> KVL equations (CW mesh currents):</p>
-<p>Mesh 1: \(-V_{s1} + R_1 \cdot i_1 + R_2 \cdot (i_1 - i_2) + R_4 \cdot i_1 = 0\)</p>
-<p>Mesh 2: \(R_3 \cdot i_2 + V_{s2} + R_2 \cdot (i_2 - i_1) = 0\)</p>
+<p>Mesh 1: \(-V_{s1} + R_1 \cdot i_1 + R_2 \cdot (i_1 - i_2) = 0\)</p>
+<p>Mesh 2: \(R_2 \cdot (i_2 - i_1) + R_3 \cdot i_2 - V_{s2} + R_4 \cdot i_2 = 0\)</p>
 <p><strong>Part C:</strong></p>
 <p>Rewriting in matrix form and solving:</p>
-<p>Mesh 1: \((R_1 + R_2 + R_4) \cdot i_1 - R_2 \cdot i_2 = V_{s1}\)</p>
-<p>Mesh 2: \(-R_2 \cdot i_1 + (R_2 + R_3) \cdot i_2 = -V_{s2}\)</p>
+<p>Mesh 1: \((R_1 + R_2) \cdot i_1 - R_2 \cdot i_2 = V_{s1}\)</p>
+<p>Mesh 2: \(-R_2 \cdot i_1 + (R_2 + R_3 + R_4) \cdot i_2 = V_{s2}\)</p>
 <p>\(i_{R2} = i_1 - i_2 = {@ta2@}\;\text{mA}\)</p>
 <p><strong>Part D:</strong> Verify by substituting \(i_1\) and \(i_2\) back into both KVL equations. Mesh-current is preferred because the circuit has only voltage sources and exactly 2 independent meshes, giving a clean system of 2 equations.</p>
 ]]></text>
@@ -325,15 +325,17 @@ R3_ohm: R3 * 1000;
 R4_ohm: R4 * 1000;
 
 /* Mesh equations (CW currents):
-   Mesh 1: (R1+R2+R4)*i1 - R2*i2 = Vs1
-   Mesh 2: -R2*i1 + (R2+R3)*i2 = -Vs2
+   Mesh 1: (R1+R2)*i1 - R2*i2 = Vs1
+   Mesh 2: -R2*i1 + (R2+R3+R4)*i2 = Vs2
+   Note: Vs2 has + at bottom, so going CW down through Vs2
+   is a rise (- to +), giving +Vs2 on the RHS.
 */
-a11: R1_ohm + R2_ohm + R4_ohm;
+a11: R1_ohm + R2_ohm;
 a12: -R2_ohm;
 a21: -R2_ohm;
-a22: R2_ohm + R3_ohm;
+a22: R2_ohm + R3_ohm + R4_ohm;
 b1: Vs1;
-b2: -Vs2;
+b2: Vs2;
 
 det: a11*a22 - a12*a21;
 i1: (b1*a22 - b2*a12) / det;
@@ -498,7 +500,7 @@ ta2: float(iR2);
 
 <p>Consider the T-network circuit shown below. The circuit contains a voltage source \(V_s = {@Vs@}\;\text{V}\) on the left and a current source \(I_s = {@Is@}\;\text{A}\) on the right. The resistors are: \(R_1 = {@R1@}\;\text{k}\Omega\) (horizontal, left-to-center), \(R_2 = {@R2@}\;\text{k}\Omega\) (horizontal, center-to-right), and \(R_3 = {@R3@}\;\text{k}\Omega\) (vertical, center to ground).</p>
 
-<p>The nodes are: Node&nbsp;A (left, connected to \(V_s\), so \(V_A = V_s\)), Node&nbsp;B (center junction of \(R_1\), \(R_2\), and \(R_3\)), and Node&nbsp;C (right, where \(I_s\) connects). The reference (ground) is at the bottom.</p>
+<p>The nodes are: Node&nbsp;A (left, connected to \(V_s\), so \(V_A = V_s\)), Node&nbsp;B (center junction of \(R_1\), \(R_2\), and \(R_3\)), and Node&nbsp;C (right, where \(I_s\) connects). The current source \(I_s\) is on the far right, connected between ground and the top rail; its arrow points <strong>upward</strong>, meaning \(I_s\) delivers current <strong>into</strong> Node&nbsp;C. The reference (ground) is at the bottom.</p>
 
 <p><strong>[INSERT DIAGRAM: diagrams/q1/q1_v3_t_network.svg]</strong></p>
 

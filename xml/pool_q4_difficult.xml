@@ -477,10 +477,10 @@ ta3: 0;
     <feedbackstyle>1</feedbackstyle>
     <node>
       <name>0</name>
-      <answertest>NumAbsolute</answertest>
+      <answertest>NumRelative</answertest>
       <sans>ans2</sans>
       <tans>ta2</tans>
-      <testoptions>0.01</testoptions>
+      <testoptions>0.05</testoptions>
       <quiet>0</quiet>
       <truescoremode>=</truescoremode>
       <truescore>1.0000000</truescore>
