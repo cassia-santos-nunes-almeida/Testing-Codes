@@ -8,6 +8,8 @@ The exam consists of **4 question pools** (15 total variants) plus a file upload
 
 **This is NOT a coding project.** It is an educational assessment design project. The "code" is Moodle STACK XML (containing embedded Maxima CAS code) and SVG circuit diagrams.
 
+**Repository:** `https://github.com/cassia-santos-nunes-almeida/Testing-Codes`
+
 ## Tech Stack and Tools
 
 | Tool | Purpose |

@@ -20,6 +20,14 @@ These preferences apply across ALL projects, not just a specific one.
 - **Version-controllable formats.** Prefer text-based formats (SVG over PNG, Markdown over Word, XML over proprietary).
 - **No over-engineering.** Solve the current problem; don't build abstractions for hypothetical future needs.
 
+## Things Claude Tends to Get Wrong With Me
+<!-- Review and edit these — they're inferred from limited interaction. Add your own. -->
+- Assumes I want iterative drafts when I want a finished product on the first pass.
+- Asks for confirmation too often instead of using judgment and proceeding.
+- Produces generic/template content when I explicitly asked for populated, project-specific output.
+- Underestimates the scope I'm comfortable with — I give large, multi-deliverable prompts intentionally.
+- Stops partway through multi-part requests ("shall I continue?") instead of completing everything.
+
 ## Things to Avoid
 - Do not add emoji to files or responses unless explicitly asked.
 - Do not ask for confirmation before every step. Use judgment and proceed; flag decisions after the fact.

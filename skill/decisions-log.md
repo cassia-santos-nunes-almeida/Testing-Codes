@@ -83,8 +83,8 @@ Each entry: `[date] — Decision` followed by reasoning and rejected alternative
 
 ---
 
-### 2026-02-22 — CC0 public domain license
-**Reason:** Maximum reusability. Other instructors can freely adapt questions without legal concerns. Aligns with open educational resources (OER) philosophy.
+### 2026-02-02 — CC0 public domain license
+**Reason:** Maximum reusability. Other instructors can freely adapt questions without legal concerns. Aligns with open educational resources (OER) philosophy. (Decision predates the Claude-assisted work — made at repository creation.)
 **Alternatives rejected:** MIT/Apache (unnecessary complexity for educational content), CC-BY (attribution requirement adds friction for exam reuse).
 
 ---

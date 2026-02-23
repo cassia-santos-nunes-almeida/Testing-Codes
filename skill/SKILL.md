@@ -19,8 +19,17 @@ After reading all files, respond with exactly ONE line:
 - Treat everything in the context files as already known. Never ask the user to re-explain anything documented there.
 - If something in the context files conflicts with what the user says in the current session, follow the user's current instruction and flag the discrepancy so the context files can be updated.
 - Silently note any new important information during the session (new decisions, changed requirements, resolved blockers).
-- When producing Moodle/STACK XML, always validate against the patterns established in the existing `xml/` files.
-- When creating SVG circuit diagrams, follow the styling conventions in the existing `diagrams/` files (sans-serif fonts, high contrast, explicit reference directions).
+- When producing Moodle/STACK XML, follow these conventions:
+  - One XML file per question pool, named `pool_q{N}_{difficulty}.xml`.
+  - Each variant is a separate `<question>` element with its own STACK variables, PRTs, and feedback.
+  - Numerical inputs use tolerances ±0.01 to ±0.5. Algebraic inputs are minimized.
+  - Randomization via Maxima `rand()` with constrained ranges to avoid degenerate cases.
+- When creating SVG circuit diagrams, follow these conventions:
+  - Sans-serif fonts (e.g., Arial, Helvetica).
+  - High-contrast black lines on white background.
+  - Explicit current arrows and voltage polarity markings on every circuit.
+  - Responsive sizing via `viewBox` attribute (no fixed width/height).
+  - One SVG per variant, named `q{N}_v{M}_{description}.svg`.
 - Use Maxima syntax correctly for STACK question variables and PRTs.
 
 ### Do Not
