@@ -18,7 +18,7 @@ The exam consists of **4 question pools** (15 total variants) plus a file upload
 | **STACK plugin** | Auto-grading engine for mathematical questions (numerical, algebraic, MCQ) |
 | **Maxima CAS** | Computer algebra system embedded in STACK for randomization and grading |
 | **Moodle XML** | Import format for all questions (STACK, Essay, File Upload) |
-| **SVG** | Circuit diagram format — scalable, accessible, embeddable in STACK question text |
+| **SVG + PNG** | Circuit diagram formats — SVG as source, PNG exports for Moodle upload |
 | **Git** | Version control for all exam artifacts |
 | **CC0 License** | Public domain dedication — no restrictions on reuse |
 
@@ -29,11 +29,11 @@ Testing-Codes/
 ├── docs/                          # Human-readable exam documentation
 │   ├── 00_prompt_evaluation.md    # Analysis of original exam prompt + corrections
 │   └── 01_exam_overview.md        # Complete exam specification
-├── diagrams/                      # SVG circuit diagrams (one subfolder per question pool)
-│   ├── q1/  (4 variants)          # DC resistive circuits
-│   ├── q2/  (4 variants)          # Energy storage circuits
-│   ├── q3/  (4 variants)          # Laplace transform circuits
-│   └── q4/  (3 variants)          # Transient analysis circuits
+├── diagrams/                      # Circuit diagrams (one subfolder per question pool)
+│   ├── q1/  (4 variants)          # DC resistive circuits — SVG + PNG
+│   ├── q2/  (4 variants)          # Energy storage circuits — SVG + PNG
+│   ├── q3/  (4 variants)          # Laplace transform circuits — SVG + PNG
+│   └── q4/  (3 variants)          # Transient analysis circuits — SVG + PNG
 ├── xml/                           # Moodle-importable question files
 │   ├── pool_q1_easy.xml           # Q1: 4 STACK variants (12 pts)
 │   ├── pool_q2_medium_a.xml       # Q2: 4 STACK+Essay variants (13 pts)
@@ -43,6 +43,10 @@ Testing-Codes/
 ├── skill/                         # Claude skill files (this folder)
 └── LICENSE                        # CC0 1.0 Universal
 ```
+
+### Diagram Embedding Strategy
+
+Diagrams are **not** embedded in the XML files. After iterating through multiple approaches (base64 data URIs, `@@PLUGINFILE@@` references), the final approach uses **text placeholders** like `[INSERT DIAGRAM: diagrams/q1/q1_v1_two_node.svg]` in the XML. The instructor manually uploads each diagram via Moodle's editor after import. Both SVG (source) and PNG (1200px, 150 DPI exports) are available in the `diagrams/` folder.
 
 ## Exam Structure (50 Points Total, 120 Minutes)
 
@@ -63,7 +67,7 @@ Each question has 4 scaffolded subparts (A-D) mixing STACK auto-graded and Essay
 - Maxima syntax required for all STACK question variables, PRTs, and feedback.
 - Algebraic input kept minimal — students find Maxima syntax frustrating. Prefer numerical inputs.
 - Numerical tolerances: ±0.01 to ±0.5 depending on question context.
-- SVG diagrams must be inline-embeddable in STACK question text (no external file references in production).
+- SVG/PNG diagrams must be manually uploaded via Moodle's editor after XML import (text placeholders mark where each goes).
 - Variable randomization ranges must avoid degenerate cases (division by zero, negative R/L/C, unrealistic values).
 
 ### Pedagogical
@@ -90,4 +94,4 @@ Each question has 4 scaffolded subparts (A-D) mixing STACK auto-graded and Essay
 - Reducing the pool to fewer than 15 variants (instructor requirement).
 
 ## Last Updated
-2026-02-23
+2026-02-24
