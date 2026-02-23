@@ -1,0 +1,67 @@
+"""
+Q4-V2: RL Circuit with Switch Opening
+Pre-switch (t<0): Vs → S → R1 → Node A, R2 and L in parallel to ground.
+Post-switch (t>0): Switch opens, source disconnected. R2 and L in series loop.
+Shows both circuit states side by side.
+"""
+import matplotlib
+matplotlib.use('Agg')
+import matplotlib.pyplot as plt
+import schemdraw
+import schemdraw.elements as elm
+
+fig, (ax1, ax2) = plt.subplots(1, 2, figsize=(14, 5))
+
+# Pre-switch circuit (t < 0)
+ax1.set_title('t < 0  (switch closed)', fontsize=14, fontweight='bold')
+with schemdraw.Drawing(canvas=ax1) as d:
+    d.config(unit=3, fontsize=13, font='sans-serif')
+
+    source = d.add(elm.SourceV().up().label('Vs'))
+    d += elm.Line().right().length(0.5).at(source.end)
+    sw = d.add(elm.Switch().right().label('S'))
+    d += elm.Resistor().right().label('R₁')
+
+    nodeA = d.add(elm.Dot())
+    d.add(elm.Annotate().at(nodeA.center).delta(0.5, 0.5).label('A', color='red', fontsize=13))
+
+    # R2 branch
+    d.push()
+    d += elm.Resistor().down().label('R₂')
+    d += elm.Line().down().length(0.5)
+    d.pop()
+
+    # L branch in parallel
+    d += elm.Line().right().length(2)
+    d += elm.Inductor().down().label('L')
+    d += elm.Line().down().length(0.5)
+
+    d += elm.Line().left().length(2)
+    d += elm.Ground()
+    d += elm.Line().left().tox(source.start)
+    d += elm.Line().up().toy(source.start)
+
+ax1.axis('off')
+
+# Post-switch circuit (t > 0)
+ax2.set_title('t > 0  (switch opens)', fontsize=14, fontweight='bold')
+with schemdraw.Drawing(canvas=ax2) as d:
+    d.config(unit=3, fontsize=13, font='sans-serif')
+
+    # No source — just R2 and L in a loop
+    r2 = d.add(elm.Resistor().right().label('R₂'))
+    d += elm.Line().right().length(0.5)
+    ind = d.add(elm.Inductor().down().label('L'))
+    d += elm.Line().left().length(3.5)
+    d += elm.Line().up().toy(r2.start)
+
+    d.add(elm.CurrentLabelInline(direction='in').at(r2.center).label('i(t)', fontsize=12))
+
+    d += elm.Ground().at(ind.end)
+
+ax2.axis('off')
+
+plt.tight_layout()
+plt.savefig('q4_v2_rl_switch.svg', format='svg', bbox_inches='tight')
+plt.savefig('q4_v2_rl_switch.png', format='png', dpi=150, bbox_inches='tight')
+plt.close()
