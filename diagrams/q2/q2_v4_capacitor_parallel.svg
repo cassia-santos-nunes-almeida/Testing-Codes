@@ -1,0 +1,83 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 560 380" preserveAspectRatio="xMidYMid meet" role="img" aria-label="Q2 Variant 4: Two capacitors in parallel charged to voltage V for energy analysis">
+  <title>Q2-V4: Parallel Capacitors — Total Energy &amp; KCL</title>
+  <style>
+    text { font-family: 'Segoe UI', Arial, Helvetica, sans-serif; }
+    .title { font-size: 18px; font-weight: bold; fill: #222; }
+    .comp-label { font-size: 16px; font-weight: bold; fill: #0055aa; }
+    .annotation { font-size: 14px; fill: #666; }
+    .polarity { font-size: 14px; fill: #333; }
+    .wire { stroke: #333; stroke-width: 2.5; fill: none; }
+    .component { stroke: #333; stroke-width: 2.5; fill: none; }
+    .ref-dir { stroke: #cc0000; stroke-width: 1.8; fill: none; }
+    .find-text { font-size: 16px; fill: #cc0000; font-weight: bold; }
+    .info-text { font-size: 14px; fill: #0055aa; font-style: italic; }
+    .node-label { font-size: 14px; fill: #cc0000; font-weight: bold; }
+  </style>
+  <defs>
+    <marker id="cur-q2v4" markerWidth="8" markerHeight="6" refX="8" refY="3" orient="auto">
+      <polygon points="0 0, 8 3, 0 6" fill="#cc0000"/>
+    </marker>
+  </defs>
+
+  <text x="280" y="28" text-anchor="middle" class="title">Q2-V4: Parallel Capacitors — Energy &amp; KCL</text>
+
+  <!-- Top rail -->
+  <line x1="80" y1="80" x2="480" y2="80" class="wire"/>
+  <!-- Bottom rail -->
+  <line x1="80" y1="280" x2="480" y2="280" class="wire"/>
+
+  <!-- Vs on left -->
+  <line x1="80" y1="80" x2="80" y2="130" class="wire"/>
+  <circle cx="80" cy="180" r="28" class="component"/>
+  <text x="72" y="173" class="polarity">+</text>
+  <text x="75" y="197" class="polarity">&minus;</text>
+  <text x="35" y="185" class="comp-label">V</text>
+  <line x1="80" y1="208" x2="80" y2="280" class="wire"/>
+
+  <!-- Junction node top -->
+  <circle cx="250" cy="80" r="4" fill="#cc0000"/>
+  <text x="250" y="65" text-anchor="middle" class="node-label">Node P</text>
+
+  <!-- C1 (left capacitor) -->
+  <line x1="250" y1="80" x2="250" y2="140" class="wire"/>
+  <line x1="230" y1="140" x2="270" y2="140" stroke="#333" stroke-width="3" fill="none"/>
+  <line x1="230" y1="160" x2="270" y2="160" stroke="#333" stroke-width="3" fill="none"/>
+  <line x1="250" y1="160" x2="250" y2="280" class="wire"/>
+  <text x="210" y="155" text-anchor="end" class="comp-label">C&#x2081;</text>
+
+  <!-- C2 (right capacitor) -->
+  <line x1="400" y1="80" x2="400" y2="140" class="wire"/>
+  <line x1="380" y1="140" x2="420" y2="140" stroke="#333" stroke-width="3" fill="none"/>
+  <line x1="380" y1="160" x2="420" y2="160" stroke="#333" stroke-width="3" fill="none"/>
+  <line x1="400" y1="160" x2="400" y2="280" class="wire"/>
+  <text x="440" y="155" class="comp-label">C&#x2082;</text>
+
+  <!-- Voltage polarity across both -->
+  <text x="490" y="130" class="polarity">+</text>
+  <text x="490" y="210" class="polarity">&minus;</text>
+  <line x1="488" y1="140" x2="488" y2="200" stroke="#cc0000" stroke-width="1.2" stroke-dasharray="5,3"/>
+  <text x="510" y="175" style="font-size:14px; fill:#cc0000; font-weight:bold;">V</text>
+
+  <!-- Current arrows -->
+  <line x1="160" y1="70" x2="200" y2="70" class="ref-dir" marker-end="url(#cur-q2v4)"/>
+  <text x="180" y="62" text-anchor="middle" style="font-size:13px; fill:#cc0000; font-weight:bold;">i</text>
+  <line x1="250" y1="95" x2="250" y2="130" class="ref-dir" marker-end="url(#cur-q2v4)"/>
+  <text x="235" y="115" style="font-size:13px; fill:#cc0000; font-weight:bold;">i&#x2081;</text>
+  <line x1="400" y1="95" x2="400" y2="130" class="ref-dir" marker-end="url(#cur-q2v4)"/>
+  <text x="415" y="115" style="font-size:13px; fill:#cc0000; font-weight:bold;">i&#x2082;</text>
+
+  <!-- KCL annotation -->
+  <text x="320" y="115" text-anchor="middle" class="annotation">KCL: i = i&#x2081; + i&#x2082;</text>
+
+  <!-- Ground -->
+  <line x1="315" y1="280" x2="325" y2="280" stroke="#333" stroke-width="4"/>
+  <line x1="317" y1="287" x2="323" y2="287" stroke="#333" stroke-width="3"/>
+  <line x1="319" y1="294" x2="321" y2="294" stroke="#333" stroke-width="2"/>
+
+  <!-- Energy formulas -->
+  <rect x="100" y="310" width="360" height="35" rx="6" fill="#f0f8f0" stroke="#006600" stroke-width="1.2"/>
+  <text x="280" y="333" text-anchor="middle" style="font-size:14px; fill:#006600; font-weight:bold;">E_total = &frac12;(C&#x2081; + C&#x2082;)V&sup2; = &frac12;C&#x2081;V&sup2; + &frac12;C&#x2082;V&sup2;</text>
+
+  <!-- Find instruction -->
+  <text x="280" y="370" text-anchor="middle" class="find-text">Find: Total energy and explain KCL at Node P</text>
+</svg>

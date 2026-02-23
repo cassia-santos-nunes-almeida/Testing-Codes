@@ -1,0 +1,1320 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<quiz>
+
+<!-- ============================================================== -->
+<!-- Q2 Medium (13 pts, ~30 min) — Pool A                           -->
+<!-- Topic: Component Physics, Energy Storage, Fields, Debug/Critique -->
+<!-- 4 Variants: V1 Inductor RL, V2 Capacitor RC,                   -->
+<!--             V3 Inductor Waveform, V4 Capacitor Parallel        -->
+<!-- ============================================================== -->
+
+
+<!-- ============================================================== -->
+<!-- VARIANT 1 — Inductor RL Circuit                                -->
+<!-- Diagram: q2_v1_inductor_rl.svg                                 -->
+<!-- ============================================================== -->
+<question type="stack">
+    <name>
+        <text>Q2 Medium A — V1: Inductor RL Circuit (Energy, KVL-Faraday, Debug)</text>
+    </name>
+    <questiontext format="html">
+        <text><![CDATA[
+<h3>Question 2 — Inductor in a Series RL Circuit (13 pts, ~30 min)</h3>
+
+<p><strong>Context:</strong> Consider the series RL circuit shown below. A DC voltage source
+\(V_s = {@Vs@}\;\text{V}\) is connected in series with a resistor
+\(R = {@R@}\;\Omega\) and an inductor \(L = {@L_mH@}\;\text{mH}\).
+The switch S closes at \(t = 0\). Before the switch closes, the current is zero.</p>
+
+<p style="text-align:center;">
+<img src="@@PLUGINFILE@@/q2_v1_inductor_rl.svg" alt="Series RL circuit with voltage source Vs, resistor R, inductor L, and switch S" style="max-width:420px;" />
+</p>
+
+<p>At steady state the inductor acts as a short circuit (dc), so the
+steady-state current is \(I_{ss} = V_s / R = {@Iss@}\;\text{A}\).</p>
+
+<hr />
+
+<!-- ======== Part A (2 pts) — STACK MCQ ======== -->
+<h4>Part A (2 pts) — Inductor Voltage-Current Relationship</h4>
+<p>Which of the following correctly expresses the voltage across an ideal
+inductor in terms of its current?</p>
+<p>[[input:ansA]] [[validation:ansA]]</p>
+<div style="display:none;">[[feedback:prtA]]</div>
+
+<hr />
+
+<!-- ======== Part B (4 pts) — STACK Numerical ======== -->
+<h4>Part B (4 pts) — Energy Stored at Steady State</h4>
+<p>Calculate the energy stored in the inductor at steady state.
+Express your answer in <strong>millijoules (mJ)</strong>, rounded to two decimal places.</p>
+<p>\(E_L = \) [[input:ansB]] mJ [[validation:ansB]]</p>
+<div style="display:none;">[[feedback:prtB]]</div>
+
+<hr />
+
+<!-- ======== Part C (4 pts) — Essay ======== -->
+<h4>Part C (4 pts) — KVL and Faraday's Law</h4>
+<p>Kirchhoff's Voltage Law (KVL) states that the sum of voltage drops around
+any closed loop is zero.  Faraday's Law states that the EMF induced around
+a closed loop equals the negative rate of change of magnetic flux through
+the loop.</p>
+<p><strong>Explain</strong> how KVL in this RL circuit is a direct consequence of
+Faraday's Law.  In your answer, discuss:</p>
+<ul>
+    <li>How the electric field line integral around the loop relates to the
+        sum of voltage drops.</li>
+    <li>Why the inductor voltage \(v_L = L\,di/dt\) corresponds to the
+        Faraday EMF term.</li>
+    <li>What assumptions (lumped-circuit) make KVL valid here.</li>
+</ul>
+<p><textarea name="essayC" rows="10" cols="80"
+    placeholder="Write your explanation here (4 pts)..."></textarea></p>
+
+<hr />
+
+<!-- ======== Part D (3 pts) — Debug ======== -->
+<h4>Part D (3 pts) — Debug a Student Solution</h4>
+<p>A student attempts to find the energy stored in the inductor at steady
+state and writes the following:</p>
+
+<blockquote style="background:#f9f0f0; padding:12px; border-left:4px solid #c00;">
+<p><em>"At steady state, \(v_L = 0\) because \(di/dt = 0\).
+The energy stored is:</em></p>
+<p style="text-align:center;">\(E_L = \frac{1}{2}\,L\,v_L^2 = \frac{1}{2} \times {@L_mH@}\times 10^{-3} \times 0^2 = 0\;\text{J}\)</p>
+<p><em>Therefore no energy is stored in the inductor at steady state."</em></p>
+</blockquote>
+
+<p><strong>Identify the error(s)</strong> in the student's reasoning and provide the
+correct calculation.  Specifically address:</p>
+<ul>
+    <li>What is wrong with the formula used?</li>
+    <li>What is the correct formula and the correct numerical result?</li>
+    <li>Why does zero voltage across the inductor <em>not</em> imply zero stored energy?</li>
+</ul>
+<p><textarea name="essayD" rows="10" cols="80"
+    placeholder="Write your debugging analysis here (3 pts)..."></textarea></p>
+]]></text>
+    </questiontext>
+    <generalfeedback format="html">
+        <text><![CDATA[
+<h4>Model Answers</h4>
+<p><strong>Part A:</strong> The correct inductor v-i relationship is
+\(v = L\,\frac{di}{dt}\).</p>
+
+<p><strong>Part B:</strong> At steady state \(I_{ss} = V_s/R = {@Iss@}\;\text{A}\).
+The energy is \(E_L = \tfrac{1}{2}L\,I_{ss}^2 = {@E_mJ@}\;\text{mJ}\).</p>
+
+<p><strong>Part C:</strong> KVL follows from Faraday's Law under the lumped-circuit
+assumption.  The line integral of the electric field around the circuit loop
+equals the sum of voltage drops: \(V_s - R\,i - L\,di/dt = 0\).
+Faraday's Law says \(\oint \mathbf{E}\cdot d\mathbf{l} = -d\Phi_B/dt\).
+For a lumped inductor, \(-d\Phi_B/dt = -L\,di/dt\), which is exactly the
+inductor voltage term in KVL.  The lumped assumption requires that the
+circuit dimensions are small compared to the electromagnetic wavelength so
+that radiation and propagation effects are negligible.</p>
+
+<p><strong>Part D:</strong> The student used \(E = \tfrac{1}{2}L v_L^2\), which is
+<em>wrong</em> — that formula does not exist.  The correct energy formula is
+\(E = \tfrac{1}{2}L I^2\).  Although \(v_L = 0\) at steady state, the
+current is \(I_{ss} = {@Iss@}\;\text{A}\), so
+\(E = \tfrac{1}{2}\times{@L_val@}\times{@Iss@}^2 = {@E_J@}\;\text{J}
+= {@E_mJ@}\;\text{mJ}\).
+Zero voltage merely means the current is no longer changing; the inductor
+stores energy in its magnetic field as long as current flows.</p>
+]]></text>
+    </generalfeedback>
+    <defaultgrade>13</defaultgrade>
+    <penalty>0.1</penalty>
+    <hidden>0</hidden>
+    <idnumber></idnumber>
+    <stackversion>
+        <text>2024120900</text>
+    </stackversion>
+    <questionvariables>
+        <text><![CDATA[
+/* --- V1: Series RL Circuit --- */
+/* Randomised source voltage (V) */
+Vs : rand([10, 12, 15, 20, 24]);
+
+/* Randomised resistance (ohms) */
+R : rand([100, 200, 330, 470]);
+
+/* Randomised inductance in mH */
+L_mH : rand([10, 20, 47, 100]);
+
+/* Inductance in henries for calculation */
+L_val : L_mH / 1000;
+
+/* Steady-state current (A) */
+Iss : Vs / R;
+
+/* Energy in joules */
+E_J : (1/2) * L_val * Iss^2;
+
+/* Energy in millijoules for answer */
+E_mJ : E_J * 1000;
+
+/* Teacher answer for Part B */
+taB : E_mJ;
+
+/* MCQ options for Part A — correct answer is option 1 */
+/* Using STACK MCQ framework with dropdown */
+taA : 1;
+]]></text>
+    </questionvariables>
+    <specificfeedback format="html">
+        <text></text>
+    </specificfeedback>
+    <questionnote>
+        <text>V1 Inductor RL: Vs={@Vs@} V, R={@R@} ohm, L={@L_mH@} mH, Iss={@Iss@} A, E={@E_mJ@} mJ</text>
+    </questionnote>
+    <questiondescription format="html">
+        <text><![CDATA[
+<p>Q2 Medium Pool A — Variant 1: Series RL circuit. Students identify the
+inductor v-i relationship, calculate stored energy, explain KVL-Faraday
+connection, and debug an incorrect student solution.</p>
+]]></text>
+    </questiondescription>
+    <questionsimplify>1</questionsimplify>
+    <assumepositive>0</assumepositive>
+    <assumereal>0</assumereal>
+    <prtcorrect format="html">
+        <text><![CDATA[<span style="font-size: 1.5em; color:green;"><strong>Correct!</strong></span>]]></text>
+    </prtcorrect>
+    <prtpartiallycorrect format="html">
+        <text><![CDATA[<span style="font-size: 1.5em; color:orange;"><strong>Partially correct.</strong></span>]]></text>
+    </prtpartiallycorrect>
+    <prtincorrect format="html">
+        <text><![CDATA[<span style="font-size: 1.5em; color:red;"><strong>Incorrect.</strong></span>]]></text>
+    </prtincorrect>
+    <decimals>.</decimals>
+    <scientificnotation>*10</scientificnotation>
+    <multiplicationsign>dot</multiplicationsign>
+    <sqrtsign>1</sqrtsign>
+    <complexno>i</complexno>
+    <inversetrig>cos-1</inversetrig>
+    <logicsymbol>lang</logicsymbol>
+    <matrixparens>[</matrixparens>
+    <variantsselectionseed></variantsselectionseed>
+    <input>
+        <name>ansA</name>
+        <type>dropdown</type>
+        <tans>taA</tans>
+        <boxsize>15</boxsize>
+        <strictsyntax>1</strictsyntax>
+        <insertstars>0</insertstars>
+        <syntaxhint></syntaxhint>
+        <syntaxattribute>0</syntaxattribute>
+        <forbidwords></forbidwords>
+        <allowwords></allowwords>
+        <forbidfloat>1</forbidfloat>
+        <requirelowestterms>0</requirelowestterms>
+        <checkanswertype>0</checkanswertype>
+        <mustverify>0</mustverify>
+        <showvalidation>0</showvalidation>
+        <options>[[1,"\\(v = L \\frac{di}{dt}\\) (voltage proportional to rate of change of current)"],[2,"\\(v = \\frac{1}{L} \\int i\\,dt\\) (voltage proportional to integral of current)"],[3,"\\(v = L \\cdot i\\) (voltage proportional to current)"],[4,"\\(v = \\frac{L}{i}\\) (voltage inversely proportional to current)"]]</options>
+    </input>
+    <input>
+        <name>ansB</name>
+        <type>numerical</type>
+        <tans>taB</tans>
+        <boxsize>10</boxsize>
+        <strictsyntax>1</strictsyntax>
+        <insertstars>0</insertstars>
+        <syntaxhint></syntaxhint>
+        <syntaxattribute>0</syntaxattribute>
+        <forbidwords></forbidwords>
+        <allowwords></allowwords>
+        <forbidfloat>0</forbidfloat>
+        <requirelowestterms>0</requirelowestterms>
+        <checkanswertype>0</checkanswertype>
+        <mustverify>1</mustverify>
+        <showvalidation>1</showvalidation>
+        <options></options>
+    </input>
+    <prt>
+        <name>prtA</name>
+        <value>2</value>
+        <autosimplify>1</autosimplify>
+        <feedbackstyle>1</feedbackstyle>
+        <feedbackvariables>
+            <text></text>
+        </feedbackvariables>
+        <node>
+            <name>0</name>
+            <answertest>AlgEquiv</answertest>
+            <sans>ansA</sans>
+            <tans>taA</tans>
+            <testoptions></testoptions>
+            <quiet>0</quiet>
+            <truescoremode>=</truescoremode>
+            <truescore>1</truescore>
+            <truepenalty></truepenalty>
+            <truenextnode>-1</truenextnode>
+            <trueanswernote>prtA-1-T</trueanswernote>
+            <truefeedback format="html">
+                <text><![CDATA[
+<p>Correct! The voltage across an inductor is \(v = L\,\frac{di}{dt}\).
+This is the defining constitutive relationship for an ideal inductor.</p>
+]]></text>
+            </truefeedback>
+            <falsescoremode>=</falsescoremode>
+            <falsescore>0</falsescore>
+            <falsepenalty></falsepenalty>
+            <falsenextnode>-1</falsenextnode>
+            <falseanswernote>prtA-1-F</falseanswernote>
+            <falsefeedback format="html">
+                <text><![CDATA[
+<p>Incorrect. The correct inductor voltage-current relationship is
+\(v = L\,\frac{di}{dt}\). The voltage across an inductor is proportional
+to the <em>rate of change</em> of the current, not to the current itself
+or its integral.</p>
+]]></text>
+            </falsefeedback>
+        </node>
+    </prt>
+    <prt>
+        <name>prtB</name>
+        <value>4</value>
+        <autosimplify>1</autosimplify>
+        <feedbackstyle>1</feedbackstyle>
+        <feedbackvariables>
+            <text></text>
+        </feedbackvariables>
+        <node>
+            <name>0</name>
+            <answertest>NumAbsolute</answertest>
+            <sans>ansB</sans>
+            <tans>taB</tans>
+            <testoptions>0.05</testoptions>
+            <quiet>0</quiet>
+            <truescoremode>=</truescoremode>
+            <truescore>1</truescore>
+            <truepenalty></truepenalty>
+            <truenextnode>-1</truenextnode>
+            <trueanswernote>prtB-1-T</trueanswernote>
+            <truefeedback format="html">
+                <text><![CDATA[
+<p>Correct! The energy stored in the inductor at steady state is</p>
+<p>\(E_L = \frac{1}{2}L\,I_{ss}^2
+     = \frac{1}{2}\times {@L_val@}\;\text{H}\times ({@Iss@})^2\;\text{A}^2
+     = {@E_mJ@}\;\text{mJ}.\)</p>
+]]></text>
+            </truefeedback>
+            <falsescoremode>=</falsescoremode>
+            <falsescore>0</falsescore>
+            <falsepenalty></falsepenalty>
+            <falsenextnode>-1</falsenextnode>
+            <falseanswernote>prtB-1-F</falseanswernote>
+            <falsefeedback format="html">
+                <text><![CDATA[
+<p>Incorrect. The energy stored in an inductor is \(E = \frac{1}{2}L\,I^2\).</p>
+<p>At steady state: \(I_{ss} = V_s/R = {@Vs@}/{@R@} = {@Iss@}\;\text{A}\).</p>
+<p>So \(E = \frac{1}{2}\times{@L_val@}\times({@Iss@})^2 = {@E_mJ@}\;\text{mJ}\).</p>
+]]></text>
+            </falsefeedback>
+        </node>
+    </prt>
+    <deployedseed>12345</deployedseed>
+</question>
+
+
+<!-- ============================================================== -->
+<!-- VARIANT 2 — Capacitor RC Circuit                               -->
+<!-- Diagram: q2_v2_capacitor_rc.svg                                -->
+<!-- ============================================================== -->
+<question type="stack">
+    <name>
+        <text>Q2 Medium A — V2: Capacitor RC Circuit (Energy, KCL-Charge, Compare)</text>
+    </name>
+    <questiontext format="html">
+        <text><![CDATA[
+<h3>Question 2 — Capacitor in a Series RC Circuit (13 pts, ~30 min)</h3>
+
+<p><strong>Context:</strong> Consider the series RC circuit shown below. A DC voltage source
+\(V_s = {@Vs@}\;\text{V}\) is connected in series with a resistor
+\(R = {@R_kOhm@}\;\text{k}\Omega\) and a capacitor
+\(C = {@C_uF@}\;\mu\text{F}\).
+The capacitor is initially uncharged. At steady state the capacitor is fully
+charged to \(v_C = V_s = {@Vs@}\;\text{V}\).</p>
+
+<p style="text-align:center;">
+<img src="@@PLUGINFILE@@/q2_v2_capacitor_rc.svg" alt="Series RC circuit with voltage source Vs, resistor R, and capacitor C" style="max-width:420px;" />
+</p>
+
+<hr />
+
+<!-- ======== Part A (2 pts) — STACK MCQ ======== -->
+<h4>Part A (2 pts) — Capacitor Energy Formula</h4>
+<p>Which of the following correctly expresses the energy stored in a
+capacitor charged to voltage \(V\)?</p>
+<p>[[input:ansA]] [[validation:ansA]]</p>
+<div style="display:none;">[[feedback:prtA]]</div>
+
+<hr />
+
+<!-- ======== Part B (4 pts) — STACK Numerical ======== -->
+<h4>Part B (4 pts) — Energy Stored at Steady State</h4>
+<p>Calculate the energy stored in the capacitor at steady state.
+Express your answer in <strong>millijoules (mJ)</strong>, rounded to two decimal places.</p>
+<p>\(E_C = \) [[input:ansB]] mJ [[validation:ansB]]</p>
+<div style="display:none;">[[feedback:prtB]]</div>
+
+<hr />
+
+<!-- ======== Part C (4 pts) — Essay ======== -->
+<h4>Part C (4 pts) — KCL and Charge Conservation</h4>
+<p>Kirchhoff's Current Law (KCL) states that the sum of currents entering
+any node equals the sum of currents leaving that node.</p>
+<p><strong>Explain</strong> how KCL is a direct expression of charge conservation.
+In your answer, discuss:</p>
+<ul>
+    <li>How current is defined as the rate of charge flow (\(i = dq/dt\)).</li>
+    <li>Why the algebraic sum of currents at a node being zero means
+        charge is neither created nor destroyed there.</li>
+    <li>How this applies at the node connecting R and C in this circuit
+        (the current through R equals the current into C).</li>
+</ul>
+<p><textarea name="essayC" rows="10" cols="80"
+    placeholder="Write your explanation here (4 pts)..."></textarea></p>
+
+<hr />
+
+<!-- ======== Part D (3 pts) — Compare ======== -->
+<h4>Part D (3 pts) — Compare Two Approaches</h4>
+<p>Two students calculate the energy stored in a system of two capacitors
+\(C_a\) and \(C_b\) connected in parallel and charged to the same voltage \(V\).</p>
+
+<blockquote style="background:#f0f0f9; padding:12px; border-left:4px solid #00c;">
+<p><strong>Student A:</strong> "I calculate the energy in each capacitor separately
+and add them:
+\(E = \tfrac{1}{2}C_a V^2 + \tfrac{1}{2}C_b V^2\)."</p>
+</blockquote>
+
+<blockquote style="background:#f0f9f0; padding:12px; border-left:4px solid #0c0;">
+<p><strong>Student B:</strong> "I first find the total capacitance \(C_{total} = C_a + C_b\),
+then calculate:
+\(E = \tfrac{1}{2}C_{total}\,V^2 = \tfrac{1}{2}(C_a+C_b)V^2\)."</p>
+</blockquote>
+
+<p><strong>Are both approaches correct?</strong>  Explain <em>why</em> they give the same
+result, and discuss under what general principle this equivalence holds.</p>
+<p><textarea name="essayD" rows="10" cols="80"
+    placeholder="Write your comparison here (3 pts)..."></textarea></p>
+]]></text>
+    </questiontext>
+    <generalfeedback format="html">
+        <text><![CDATA[
+<h4>Model Answers</h4>
+<p><strong>Part A:</strong> The correct capacitor energy formula is
+\(E = \tfrac{1}{2}C V^2\).</p>
+
+<p><strong>Part B:</strong> At steady state \(v_C = V_s = {@Vs@}\;\text{V}\).
+The energy is \(E_C = \tfrac{1}{2}\times{@C_val@}\;\text{F}\times({@Vs@})^2
+= {@E_mJ@}\;\text{mJ}\).</p>
+
+<p><strong>Part C:</strong> KCL is a statement of charge conservation.
+Since current \(i = dq/dt\), saying \(\sum i_{in} = \sum i_{out}\) at a node
+is equivalent to saying that the net rate of charge accumulation at the node
+is zero: charge is conserved.  At the R-C junction in this circuit, the
+current through R equals the charging current into C:
+\(i_R = C\,dv_C/dt\).  All charge that flows through R accumulates on the
+capacitor plates — none is lost.</p>
+
+<p><strong>Part D:</strong> Both approaches are correct and give identical results.
+Student A computes \(\tfrac{1}{2}C_a V^2 + \tfrac{1}{2}C_b V^2
+= \tfrac{1}{2}(C_a+C_b)V^2\), which equals Student B's expression.
+This works because energy is additive (superposition of stored energy)
+and parallel capacitors share the same voltage.  The equivalence reflects
+the distributive property of multiplication over addition, combined with the
+physical fact that energy stored in a linear system is the sum of energies in
+each element.</p>
+]]></text>
+    </generalfeedback>
+    <defaultgrade>13</defaultgrade>
+    <penalty>0.1</penalty>
+    <hidden>0</hidden>
+    <idnumber></idnumber>
+    <stackversion>
+        <text>2024120900</text>
+    </stackversion>
+    <questionvariables>
+        <text><![CDATA[
+/* --- V2: Series RC Circuit --- */
+/* Randomised source voltage (V) */
+Vs : rand([5, 10, 12, 15, 24]);
+
+/* Randomised resistance in kOhm */
+R_kOhm : rand([1, 2.2, 3.3, 4.7, 10]);
+
+/* Resistance in ohms */
+R_val : R_kOhm * 1000;
+
+/* Randomised capacitance in uF */
+C_uF : rand([10, 22, 47, 100, 220]);
+
+/* Capacitance in farads */
+C_val : C_uF / 1000000;
+
+/* Energy in joules at steady state (vC = Vs) */
+E_J : (1/2) * C_val * Vs^2;
+
+/* Energy in millijoules */
+E_mJ : E_J * 1000;
+
+/* Teacher answer for Part B */
+taB : E_mJ;
+
+/* MCQ correct answer is option 1 */
+taA : 1;
+]]></text>
+    </questionvariables>
+    <specificfeedback format="html">
+        <text></text>
+    </specificfeedback>
+    <questionnote>
+        <text>V2 Capacitor RC: Vs={@Vs@} V, R={@R_kOhm@} kOhm, C={@C_uF@} uF, E={@E_mJ@} mJ</text>
+    </questionnote>
+    <questiondescription format="html">
+        <text><![CDATA[
+<p>Q2 Medium Pool A — Variant 2: Series RC circuit. Students identify the
+capacitor energy formula, calculate stored energy, explain KCL-charge
+conservation connection, and compare two energy calculation approaches.</p>
+]]></text>
+    </questiondescription>
+    <questionsimplify>1</questionsimplify>
+    <assumepositive>0</assumepositive>
+    <assumereal>0</assumereal>
+    <prtcorrect format="html">
+        <text><![CDATA[<span style="font-size: 1.5em; color:green;"><strong>Correct!</strong></span>]]></text>
+    </prtcorrect>
+    <prtpartiallycorrect format="html">
+        <text><![CDATA[<span style="font-size: 1.5em; color:orange;"><strong>Partially correct.</strong></span>]]></text>
+    </prtpartiallycorrect>
+    <prtincorrect format="html">
+        <text><![CDATA[<span style="font-size: 1.5em; color:red;"><strong>Incorrect.</strong></span>]]></text>
+    </prtincorrect>
+    <decimals>.</decimals>
+    <scientificnotation>*10</scientificnotation>
+    <multiplicationsign>dot</multiplicationsign>
+    <sqrtsign>1</sqrtsign>
+    <complexno>i</complexno>
+    <inversetrig>cos-1</inversetrig>
+    <logicsymbol>lang</logicsymbol>
+    <matrixparens>[</matrixparens>
+    <variantsselectionseed></variantsselectionseed>
+    <input>
+        <name>ansA</name>
+        <type>dropdown</type>
+        <tans>taA</tans>
+        <boxsize>15</boxsize>
+        <strictsyntax>1</strictsyntax>
+        <insertstars>0</insertstars>
+        <syntaxhint></syntaxhint>
+        <syntaxattribute>0</syntaxattribute>
+        <forbidwords></forbidwords>
+        <allowwords></allowwords>
+        <forbidfloat>1</forbidfloat>
+        <requirelowestterms>0</requirelowestterms>
+        <checkanswertype>0</checkanswertype>
+        <mustverify>0</mustverify>
+        <showvalidation>0</showvalidation>
+        <options>[[1,"\\(E = \\frac{1}{2}C V^2\\) (energy proportional to capacitance and voltage squared)"],[2,"\\(E = \\frac{1}{2}C I^2\\) (energy proportional to capacitance and current squared)"],[3,"\\(E = C V\\) (energy proportional to capacitance times voltage)"],[4,"\\(E = \\frac{1}{2} \\frac{V^2}{C}\\) (energy inversely proportional to capacitance)"]]</options>
+    </input>
+    <input>
+        <name>ansB</name>
+        <type>numerical</type>
+        <tans>taB</tans>
+        <boxsize>10</boxsize>
+        <strictsyntax>1</strictsyntax>
+        <insertstars>0</insertstars>
+        <syntaxhint></syntaxhint>
+        <syntaxattribute>0</syntaxattribute>
+        <forbidwords></forbidwords>
+        <allowwords></allowwords>
+        <forbidfloat>0</forbidfloat>
+        <requirelowestterms>0</requirelowestterms>
+        <checkanswertype>0</checkanswertype>
+        <mustverify>1</mustverify>
+        <showvalidation>1</showvalidation>
+        <options></options>
+    </input>
+    <prt>
+        <name>prtA</name>
+        <value>2</value>
+        <autosimplify>1</autosimplify>
+        <feedbackstyle>1</feedbackstyle>
+        <feedbackvariables>
+            <text></text>
+        </feedbackvariables>
+        <node>
+            <name>0</name>
+            <answertest>AlgEquiv</answertest>
+            <sans>ansA</sans>
+            <tans>taA</tans>
+            <testoptions></testoptions>
+            <quiet>0</quiet>
+            <truescoremode>=</truescoremode>
+            <truescore>1</truescore>
+            <truepenalty></truepenalty>
+            <truenextnode>-1</truenextnode>
+            <trueanswernote>prtA-1-T</trueanswernote>
+            <truefeedback format="html">
+                <text><![CDATA[
+<p>Correct! The energy stored in a capacitor is \(E = \frac{1}{2}C V^2\).
+This comes from integrating the instantaneous power \(p = v\,i = C\,v\,\frac{dv}{dt}\)
+from 0 to \(V\).</p>
+]]></text>
+            </truefeedback>
+            <falsescoremode>=</falsescoremode>
+            <falsescore>0</falsescore>
+            <falsepenalty></falsepenalty>
+            <falsenextnode>-1</falsenextnode>
+            <falseanswernote>prtA-1-F</falseanswernote>
+            <falsefeedback format="html">
+                <text><![CDATA[
+<p>Incorrect. The correct energy formula for a capacitor is
+\(E = \frac{1}{2}C V^2\), where \(C\) is the capacitance and \(V\) is the
+voltage across the capacitor.  Note the analogy: for an inductor it is
+\(\frac{1}{2}L I^2\); for a capacitor it is \(\frac{1}{2}C V^2\).</p>
+]]></text>
+            </falsefeedback>
+        </node>
+    </prt>
+    <prt>
+        <name>prtB</name>
+        <value>4</value>
+        <autosimplify>1</autosimplify>
+        <feedbackstyle>1</feedbackstyle>
+        <feedbackvariables>
+            <text></text>
+        </feedbackvariables>
+        <node>
+            <name>0</name>
+            <answertest>NumAbsolute</answertest>
+            <sans>ansB</sans>
+            <tans>taB</tans>
+            <testoptions>0.05</testoptions>
+            <quiet>0</quiet>
+            <truescoremode>=</truescoremode>
+            <truescore>1</truescore>
+            <truepenalty></truepenalty>
+            <truenextnode>-1</truenextnode>
+            <trueanswernote>prtB-1-T</trueanswernote>
+            <truefeedback format="html">
+                <text><![CDATA[
+<p>Correct! The energy stored in the capacitor at steady state is</p>
+<p>\(E_C = \frac{1}{2}C V_s^2
+     = \frac{1}{2}\times{@C_val@}\;\text{F}\times({@Vs@})^2\;\text{V}^2
+     = {@E_mJ@}\;\text{mJ}.\)</p>
+]]></text>
+            </truefeedback>
+            <falsescoremode>=</falsescoremode>
+            <falsescore>0</falsescore>
+            <falsepenalty></falsepenalty>
+            <falsenextnode>-1</falsenextnode>
+            <falseanswernote>prtB-1-F</falseanswernote>
+            <falsefeedback format="html">
+                <text><![CDATA[
+<p>Incorrect. The energy stored in a capacitor is \(E = \frac{1}{2}C V^2\).</p>
+<p>At steady state: \(v_C = V_s = {@Vs@}\;\text{V}\).</p>
+<p>\(E = \frac{1}{2}\times{@C_val@}\;\text{F}\times({@Vs@})^2
+     = {@E_mJ@}\;\text{mJ}\).</p>
+<p>Make sure you converted \(\mu\text{F}\) to \(\text{F}\) correctly
+(divide by \(10^6\)) and expressed the answer in mJ (multiply joules by 1000).</p>
+]]></text>
+            </falsefeedback>
+        </node>
+    </prt>
+    <deployedseed>23456</deployedseed>
+</question>
+
+
+<!-- ============================================================== -->
+<!-- VARIANT 3 — Inductor Energy from Current Waveform              -->
+<!-- ============================================================== -->
+<question type="stack">
+    <name>
+        <text>Q2 Medium A — V3: Inductor Energy from Current Waveform (Voltage Segments, Debug)</text>
+    </name>
+    <questiontext format="html">
+        <text><![CDATA[
+<h3>Question 2 — Inductor Energy from a Current Waveform (13 pts, ~30 min)</h3>
+
+<p><strong>Context:</strong> An inductor with inductance
+\(L = {@L_mH@}\;\text{mH}\) carries a piecewise-linear current waveform
+\(i(t)\) described as follows:</p>
+
+<table border="1" cellpadding="8" cellspacing="0" style="border-collapse:collapse; text-align:center;">
+<tr><th>Segment</th><th>Time Interval</th><th>Current</th><th>\(di/dt\)</th></tr>
+<tr><td>1</td><td>\(0 \le t &lt; {@t1@}\;\text{ms}\)</td>
+    <td>Ramps from \(0\) to \({@Ipeak@}\;\text{A}\)</td>
+    <td>\({@slope1@}\;\text{A/s}\)</td></tr>
+<tr><td>2</td><td>\({@t1@} \le t &lt; {@t2@}\;\text{ms}\)</td>
+    <td>Constant at \({@Ipeak@}\;\text{A}\)</td>
+    <td>\(0\;\text{A/s}\)</td></tr>
+<tr><td>3</td><td>\({@t2@} \le t &lt; {@t3@}\;\text{ms}\)</td>
+    <td>Ramps from \({@Ipeak@}\;\text{A}\) down to \(0\)</td>
+    <td>\({@slope3@}\;\text{A/s}\)</td></tr>
+</table>
+
+<hr />
+
+<!-- ======== Part A (2 pts) — STACK MCQ ======== -->
+<h4>Part A (2 pts) — Highest Inductor Voltage</h4>
+<p>Recall that the voltage across an inductor is \(v_L = L\,\frac{di}{dt}\).
+Which segment of the waveform has the <strong>highest magnitude</strong> of
+inductor voltage \(|v_L|\)?</p>
+<p>[[input:ansA]] [[validation:ansA]]</p>
+<div style="display:none;">[[feedback:prtA]]</div>
+
+<hr />
+
+<!-- ======== Part B (4 pts) — STACK Numerical ======== -->
+<h4>Part B (4 pts) — Energy at Time \(t_1\)</h4>
+<p>Calculate the energy stored in the inductor at the end of Segment 1
+(at time \(t = {@t1@}\;\text{ms}\)), when the current has just reached
+its peak value \(I_{peak} = {@Ipeak@}\;\text{A}\).</p>
+<p>Express your answer in <strong>millijoules (mJ)</strong>, rounded to two decimal places.</p>
+<p>\(E_L(t_1) = \) [[input:ansB]] mJ [[validation:ansB]]</p>
+<div style="display:none;">[[feedback:prtB]]</div>
+
+<hr />
+
+<!-- ======== Part C (4 pts) — Essay ======== -->
+<h4>Part C (4 pts) — Physical Meaning of Inductor Energy</h4>
+<p><strong>Explain</strong> the physical meaning of energy stored in an inductor.
+In your answer, discuss:</p>
+<ul>
+    <li>Where the energy is physically stored (magnetic field).</li>
+    <li>How the energy relates to the current through the inductor
+        (not the voltage across it).</li>
+    <li>What happens to this energy when the current decreases
+        (Segment 3) — where does the energy go?</li>
+</ul>
+<p><textarea name="essayC" rows="10" cols="80"
+    placeholder="Write your explanation here (4 pts)..."></textarea></p>
+
+<hr />
+
+<!-- ======== Part D (3 pts) — Debug ======== -->
+<h4>Part D (3 pts) — Debug a Student Solution</h4>
+<p>A student tries to calculate the energy stored at the end of Segment 1
+and writes:</p>
+
+<blockquote style="background:#f9f0f0; padding:12px; border-left:4px solid #c00;">
+<p><em>"The voltage during Segment 1 is
+\(v_L = L \cdot di/dt = {@L_val@}\times{@slope1@} = {@v_seg1@}\;\text{V}\).</em></p>
+<p><em>The energy stored is:</em></p>
+<p style="text-align:center;">\(E = \frac{1}{2}L\,v_L^2 = \frac{1}{2}\times{@L_val@}\times({@v_seg1@})^2 = {@E_wrong@}\;\text{J}\)</p>
+<p><em>"</em></p>
+</blockquote>
+
+<p><strong>Identify the error(s)</strong> in the student's work and provide the
+correct result.  Specifically address:</p>
+<ul>
+    <li>Why the formula \(E = \frac{1}{2}L\,v^2\) is wrong (what is the
+        correct formula?).</li>
+    <li>What confusion between inductor and capacitor formulas led to
+        this mistake.</li>
+    <li>Compute the correct energy value.</li>
+</ul>
+<p><textarea name="essayD" rows="10" cols="80"
+    placeholder="Write your debugging analysis here (3 pts)..."></textarea></p>
+]]></text>
+    </questiontext>
+    <generalfeedback format="html">
+        <text><![CDATA[
+<h4>Model Answers</h4>
+<p><strong>Part A:</strong> The highest |v_L| occurs in whichever segment has the
+largest |di/dt|.  Segment 1 has |di/dt| = {@abs_slope1@} A/s and
+Segment 3 has |di/dt| = {@abs_slope3@} A/s.
+Segment 2 has di/dt = 0. The correct answer is Segment {@max_seg@}.</p>
+
+<p><strong>Part B:</strong>
+\(E_L = \tfrac{1}{2}L\,I_{peak}^2
+     = \tfrac{1}{2}\times{@L_val@}\times({@Ipeak@})^2
+     = {@E_mJ@}\;\text{mJ}\).</p>
+
+<p><strong>Part C:</strong> Energy in an inductor is stored in the magnetic field
+surrounding and permeating the inductor coil.  The energy depends on the
+current (\(E = \tfrac{1}{2}L I^2\)), not the voltage.  Even when
+\(v_L = 0\) (Segment 2), energy is stored because current is flowing.
+During Segment 3, as the current decreases, the magnetic field collapses
+and the stored energy is returned to the circuit (delivered to other
+elements such as resistors where it is dissipated as heat).</p>
+
+<p><strong>Part D:</strong> The student used \(E = \tfrac{1}{2}L v^2\), which is the
+<em>capacitor</em> formula \(E = \tfrac{1}{2}C V^2\) with L incorrectly
+substituted for C.  The correct inductor energy formula is
+\(E = \tfrac{1}{2}L I^2\).  For inductors, energy depends on current;
+for capacitors, energy depends on voltage.
+Correct value: \(E = \tfrac{1}{2}\times{@L_val@}\times{@Ipeak@}^2
+= {@E_mJ@}\;\text{mJ}\).</p>
+]]></text>
+    </generalfeedback>
+    <defaultgrade>13</defaultgrade>
+    <penalty>0.1</penalty>
+    <hidden>0</hidden>
+    <idnumber></idnumber>
+    <stackversion>
+        <text>2024120900</text>
+    </stackversion>
+    <questionvariables>
+        <text><![CDATA[
+/* --- V3: Inductor Energy from Current Waveform --- */
+/* Randomised inductance in mH */
+L_mH : rand([5, 10, 20, 50]);
+
+/* Inductance in henries */
+L_val : L_mH / 1000;
+
+/* Randomised peak current (A) */
+Ipeak : rand([0.5, 1, 2, 3, 5]);
+
+/* Time breakpoints in ms */
+/* Segment 1: 0 to t1 (ramp up) */
+t1 : rand([1, 2, 5]);
+
+/* Segment 2: t1 to t2 (constant) */
+t2 : t1 + rand([2, 3, 5]);
+
+/* Segment 3: t2 to t3 (ramp down) */
+t3_dur : rand([2, 4, 5]);
+t3 : t2 + t3_dur;
+
+/* Slopes in A/s (time is in ms, so convert) */
+slope1 : Ipeak / (t1 / 1000);
+slope3 : -Ipeak / (t3_dur / 1000);
+
+abs_slope1 : abs(slope1);
+abs_slope3 : abs(slope3);
+
+/* Determine which segment has highest |v_L| */
+/* Segment 2 is always 0, so compare 1 and 3 */
+max_seg : if abs_slope1 >= abs_slope3 then 1 else 3;
+
+/* Voltage during segment 1 */
+v_seg1 : L_val * slope1;
+
+/* Wrong energy (student error: E = 0.5*L*v^2) */
+E_wrong : (1/2) * L_val * v_seg1^2;
+
+/* Correct energy in joules */
+E_J : (1/2) * L_val * Ipeak^2;
+
+/* Energy in millijoules */
+E_mJ : E_J * 1000;
+
+/* Teacher answers */
+taB : E_mJ;
+
+/* MCQ: correct answer is the segment number with highest |v| */
+taA : max_seg;
+]]></text>
+    </questionvariables>
+    <specificfeedback format="html">
+        <text></text>
+    </specificfeedback>
+    <questionnote>
+        <text>V3 Inductor Waveform: L={@L_mH@} mH, Ipeak={@Ipeak@} A, t1={@t1@} ms, t2={@t2@} ms, t3={@t3@} ms, slope1={@slope1@} A/s, slope3={@slope3@} A/s, max_seg={@max_seg@}, E={@E_mJ@} mJ</text>
+    </questionnote>
+    <questiondescription format="html">
+        <text><![CDATA[
+<p>Q2 Medium Pool A — Variant 3: Inductor with piecewise-linear current
+waveform.  Students identify the highest-voltage segment, calculate stored
+energy, explain physical meaning of magnetic energy, and debug a formula
+confusion error.</p>
+]]></text>
+    </questiondescription>
+    <questionsimplify>1</questionsimplify>
+    <assumepositive>0</assumepositive>
+    <assumereal>0</assumereal>
+    <prtcorrect format="html">
+        <text><![CDATA[<span style="font-size: 1.5em; color:green;"><strong>Correct!</strong></span>]]></text>
+    </prtcorrect>
+    <prtpartiallycorrect format="html">
+        <text><![CDATA[<span style="font-size: 1.5em; color:orange;"><strong>Partially correct.</strong></span>]]></text>
+    </prtpartiallycorrect>
+    <prtincorrect format="html">
+        <text><![CDATA[<span style="font-size: 1.5em; color:red;"><strong>Incorrect.</strong></span>]]></text>
+    </prtincorrect>
+    <decimals>.</decimals>
+    <scientificnotation>*10</scientificnotation>
+    <multiplicationsign>dot</multiplicationsign>
+    <sqrtsign>1</sqrtsign>
+    <complexno>i</complexno>
+    <inversetrig>cos-1</inversetrig>
+    <logicsymbol>lang</logicsymbol>
+    <matrixparens>[</matrixparens>
+    <variantsselectionseed></variantsselectionseed>
+    <input>
+        <name>ansA</name>
+        <type>dropdown</type>
+        <tans>taA</tans>
+        <boxsize>15</boxsize>
+        <strictsyntax>1</strictsyntax>
+        <insertstars>0</insertstars>
+        <syntaxhint></syntaxhint>
+        <syntaxattribute>0</syntaxattribute>
+        <forbidwords></forbidwords>
+        <allowwords></allowwords>
+        <forbidfloat>1</forbidfloat>
+        <requirelowestterms>0</requirelowestterms>
+        <checkanswertype>0</checkanswertype>
+        <mustverify>0</mustverify>
+        <showvalidation>0</showvalidation>
+        <options>[[1,"Segment 1 (ramp up from 0 to Ipeak)"],[2,"Segment 2 (constant at Ipeak)"],[3,"Segment 3 (ramp down from Ipeak to 0)"]]</options>
+    </input>
+    <input>
+        <name>ansB</name>
+        <type>numerical</type>
+        <tans>taB</tans>
+        <boxsize>10</boxsize>
+        <strictsyntax>1</strictsyntax>
+        <insertstars>0</insertstars>
+        <syntaxhint></syntaxhint>
+        <syntaxattribute>0</syntaxattribute>
+        <forbidwords></forbidwords>
+        <allowwords></allowwords>
+        <forbidfloat>0</forbidfloat>
+        <requirelowestterms>0</requirelowestterms>
+        <checkanswertype>0</checkanswertype>
+        <mustverify>1</mustverify>
+        <showvalidation>1</showvalidation>
+        <options></options>
+    </input>
+    <prt>
+        <name>prtA</name>
+        <value>2</value>
+        <autosimplify>1</autosimplify>
+        <feedbackstyle>1</feedbackstyle>
+        <feedbackvariables>
+            <text></text>
+        </feedbackvariables>
+        <node>
+            <name>0</name>
+            <answertest>AlgEquiv</answertest>
+            <sans>ansA</sans>
+            <tans>taA</tans>
+            <testoptions></testoptions>
+            <quiet>0</quiet>
+            <truescoremode>=</truescoremode>
+            <truescore>1</truescore>
+            <truepenalty></truepenalty>
+            <truenextnode>-1</truenextnode>
+            <trueanswernote>prtA-1-T</trueanswernote>
+            <truefeedback format="html">
+                <text><![CDATA[
+<p>Correct! Segment {@max_seg@} has the highest \(|di/dt|\) and therefore
+the highest magnitude of inductor voltage \(|v_L| = L\,|di/dt|\).</p>
+]]></text>
+            </truefeedback>
+            <falsescoremode>=</falsescoremode>
+            <falsescore>0</falsescore>
+            <falsepenalty></falsepenalty>
+            <falsenextnode>-1</falsenextnode>
+            <falseanswernote>prtA-1-F</falseanswernote>
+            <falsefeedback format="html">
+                <text><![CDATA[
+<p>Incorrect. The inductor voltage is \(v_L = L\,di/dt\), so the segment
+with the steepest current slope (largest \(|di/dt|\)) has the highest
+voltage magnitude.</p>
+<ul>
+<li>Segment 1: \(|di/dt| = {@abs_slope1@}\;\text{A/s}\),
+    \(|v_L| = {@L_val@}\times{@abs_slope1@} = {@L_val*abs_slope1@}\;\text{V}\)</li>
+<li>Segment 2: \(|di/dt| = 0\), \(|v_L| = 0\)</li>
+<li>Segment 3: \(|di/dt| = {@abs_slope3@}\;\text{A/s}\),
+    \(|v_L| = {@L_val@}\times{@abs_slope3@} = {@L_val*abs_slope3@}\;\text{V}\)</li>
+</ul>
+<p>The correct answer is Segment {@max_seg@}.</p>
+]]></text>
+            </falsefeedback>
+        </node>
+    </prt>
+    <prt>
+        <name>prtB</name>
+        <value>4</value>
+        <autosimplify>1</autosimplify>
+        <feedbackstyle>1</feedbackstyle>
+        <feedbackvariables>
+            <text></text>
+        </feedbackvariables>
+        <node>
+            <name>0</name>
+            <answertest>NumAbsolute</answertest>
+            <sans>ansB</sans>
+            <tans>taB</tans>
+            <testoptions>0.05</testoptions>
+            <quiet>0</quiet>
+            <truescoremode>=</truescoremode>
+            <truescore>1</truescore>
+            <truepenalty></truepenalty>
+            <truenextnode>-1</truenextnode>
+            <trueanswernote>prtB-1-T</trueanswernote>
+            <truefeedback format="html">
+                <text><![CDATA[
+<p>Correct! The energy stored at time \(t_1\) when \(i = I_{peak} = {@Ipeak@}\;\text{A}\) is</p>
+<p>\(E_L = \frac{1}{2}L\,I_{peak}^2
+     = \frac{1}{2}\times{@L_val@}\times({@Ipeak@})^2
+     = {@E_mJ@}\;\text{mJ}.\)</p>
+]]></text>
+            </truefeedback>
+            <falsescoremode>=</falsescoremode>
+            <falsescore>0</falsescore>
+            <falsepenalty></falsepenalty>
+            <falsenextnode>-1</falsenextnode>
+            <falseanswernote>prtB-1-F</falseanswernote>
+            <falsefeedback format="html">
+                <text><![CDATA[
+<p>Incorrect. The energy stored in an inductor is \(E = \frac{1}{2}L\,I^2\).</p>
+<p>At time \(t_1 = {@t1@}\;\text{ms}\), the current is \(I_{peak} = {@Ipeak@}\;\text{A}\).</p>
+<p>\(E = \frac{1}{2}\times{@L_val@}\;\text{H}\times({@Ipeak@})^2\;\text{A}^2
+     = {@E_mJ@}\;\text{mJ}.\)</p>
+<p>Remember: convert mH to H by dividing by 1000, and express the final
+answer in mJ by multiplying joules by 1000.</p>
+]]></text>
+            </falsefeedback>
+        </node>
+    </prt>
+    <deployedseed>34567</deployedseed>
+</question>
+
+
+<!-- ============================================================== -->
+<!-- VARIANT 4 — Capacitor Parallel Combination                     -->
+<!-- ============================================================== -->
+<question type="stack">
+    <name>
+        <text>Q2 Medium A — V4: Capacitor Parallel Combination (Energy, KCL-Charge, Compare)</text>
+    </name>
+    <questiontext format="html">
+        <text><![CDATA[
+<h3>Question 2 — Parallel Capacitor Combination (13 pts, ~30 min)</h3>
+
+<p><strong>Context:</strong> Two capacitors, \(C_1 = {@C1_uF@}\;\mu\text{F}\) and
+\(C_2 = {@C2_uF@}\;\mu\text{F}\), are connected in <strong>parallel</strong>
+across a voltage source of \(V = {@V@}\;\text{V}\).  Both capacitors are
+fully charged to voltage \(V\).</p>
+
+<hr />
+
+<!-- ======== Part A (2 pts) — STACK MCQ ======== -->
+<h4>Part A (2 pts) — Total Capacitance</h4>
+<p>What is the total (equivalent) capacitance of two capacitors connected
+in parallel?</p>
+<p>[[input:ansA]] [[validation:ansA]]</p>
+<div style="display:none;">[[feedback:prtA]]</div>
+
+<hr />
+
+<!-- ======== Part B (4 pts) — STACK Numerical ======== -->
+<h4>Part B (4 pts) — Total Stored Energy</h4>
+<p>Calculate the <strong>total</strong> energy stored in both capacitors combined.
+Express your answer in <strong>millijoules (mJ)</strong>, rounded to two decimal places.</p>
+<p>\(E_{total} = \) [[input:ansB]] mJ [[validation:ansB]]</p>
+<div style="display:none;">[[feedback:prtB]]</div>
+
+<hr />
+
+<!-- ======== Part C (4 pts) — Essay ======== -->
+<h4>Part C (4 pts) — KCL at the Junction Node and Charge Conservation</h4>
+<p>Consider the node where the voltage source positive terminal connects
+to both capacitors in parallel.</p>
+<p><strong>Explain</strong> how KCL at this junction node is a statement of charge
+conservation.  In your answer, discuss:</p>
+<ul>
+    <li>How the total current from the source splits between \(C_1\) and \(C_2\).</li>
+    <li>How \(i = C\,dv/dt\) for each capacitor means the total charge
+        delivered equals \(q_1 + q_2 = (C_1 + C_2)\,V\).</li>
+    <li>Why this is consistent with the idea that charge flowing into the
+        node must equal the total charge flowing out to both capacitors.</li>
+</ul>
+<p><textarea name="essayC" rows="10" cols="80"
+    placeholder="Write your explanation here (4 pts)..."></textarea></p>
+
+<hr />
+
+<!-- ======== Part D (3 pts) — Compare ======== -->
+<h4>Part D (3 pts) — Compare Two Student Approaches</h4>
+
+<blockquote style="background:#f0f0f9; padding:12px; border-left:4px solid #00c;">
+<p><strong>Student A:</strong> "I calculate the energy in each capacitor separately
+and add:</p>
+<p style="text-align:center;">\(E = \frac{1}{2}C_1 V^2 + \frac{1}{2}C_2 V^2
+     = \frac{1}{2}({@C1_uF@}\times 10^{-6})({@V@})^2
+       + \frac{1}{2}({@C2_uF@}\times 10^{-6})({@V@})^2
+     = {@E1_mJ@} + {@E2_mJ@}
+     = {@E_mJ@}\;\text{mJ}\)</p>
+<p>"</p>
+</blockquote>
+
+<blockquote style="background:#f0f9f0; padding:12px; border-left:4px solid #0c0;">
+<p><strong>Student B:</strong> "I first combine the capacitors:
+\(C_{total} = C_1 + C_2 = {@Ctot_uF@}\;\mu\text{F}\), then:</p>
+<p style="text-align:center;">\(E = \frac{1}{2}C_{total} V^2
+     = \frac{1}{2}({@Ctot_uF@}\times 10^{-6})({@V@})^2
+     = {@E_mJ@}\;\text{mJ}\)</p>
+<p>"</p>
+</blockquote>
+
+<p><strong>Are both students correct?</strong>  Explain:</p>
+<ul>
+    <li>Why both methods yield the same numerical answer.</li>
+    <li>What mathematical property (distributive law) and what physical
+        principle (energy additivity / superposition for linear elements)
+        make this equivalence hold.</li>
+    <li>Would this equivalence still hold if the capacitors were in
+        <em>series</em> instead of parallel?  Briefly justify.</li>
+</ul>
+<p><textarea name="essayD" rows="10" cols="80"
+    placeholder="Write your comparison here (3 pts)..."></textarea></p>
+]]></text>
+    </questiontext>
+    <generalfeedback format="html">
+        <text><![CDATA[
+<h4>Model Answers</h4>
+<p><strong>Part A:</strong> For parallel capacitors, the total capacitance is
+\(C_{total} = C_1 + C_2 = {@Ctot_uF@}\;\mu\text{F}\).</p>
+
+<p><strong>Part B:</strong>
+\(E_{total} = \tfrac{1}{2}(C_1 + C_2) V^2
+            = \tfrac{1}{2}\times{@Ctot_val@}\;\text{F}\times({@V@})^2
+            = {@E_mJ@}\;\text{mJ}\).</p>
+
+<p><strong>Part C:</strong> At the junction node, KCL says
+\(i_{source} = i_{C_1} + i_{C_2}\).  Since \(i = C\,dv/dt\) and both
+capacitors have the same voltage (parallel), we get
+\(i_{source} = (C_1 + C_2)\,dv/dt\).  Integrating both sides over time:
+the total charge from the source equals \(q_1 + q_2\), the sum of charges
+on each capacitor.  This is charge conservation: every coulomb from the
+source ends up on one of the capacitors.</p>
+
+<p><strong>Part D:</strong> Both students are correct.
+Student A: \(\tfrac{1}{2}C_1 V^2 + \tfrac{1}{2}C_2 V^2
+= \tfrac{1}{2}V^2(C_1 + C_2)\) (factoring out \(\tfrac{1}{2}V^2\)).
+Student B: \(\tfrac{1}{2}(C_1+C_2)V^2\).  These are identical by the
+distributive property.
+Physically, energy is an extensive quantity — the total energy in a linear
+system equals the sum of energies in each element (energy additivity).
+For series capacitors, the same decomposition principle holds
+(\(E_{total} = E_1 + E_2\)), but the voltages across each capacitor
+would differ and the equivalent capacitance formula changes to
+\(1/C_{total} = 1/C_1 + 1/C_2\).  The energy sum would still equal the
+energy computed from the equivalent, because the equivalence of series/parallel
+combinations preserves total stored energy by construction.</p>
+]]></text>
+    </generalfeedback>
+    <defaultgrade>13</defaultgrade>
+    <penalty>0.1</penalty>
+    <hidden>0</hidden>
+    <idnumber></idnumber>
+    <stackversion>
+        <text>2024120900</text>
+    </stackversion>
+    <questionvariables>
+        <text><![CDATA[
+/* --- V4: Capacitor Parallel Combination --- */
+/* Randomised capacitances in uF */
+C1_uF : rand([10, 22, 33, 47]);
+C2_uF : rand([22, 33, 47, 100]);
+
+/* Randomised voltage (V) */
+V : rand([5, 10, 12, 15]);
+
+/* Total capacitance in uF */
+Ctot_uF : C1_uF + C2_uF;
+
+/* Convert to farads */
+C1_val : C1_uF / 1000000;
+C2_val : C2_uF / 1000000;
+Ctot_val : Ctot_uF / 1000000;
+
+/* Individual energies in joules */
+E1_J : (1/2) * C1_val * V^2;
+E2_J : (1/2) * C2_val * V^2;
+
+/* Individual energies in mJ (for display in Part D) */
+E1_mJ : E1_J * 1000;
+E2_mJ : E2_J * 1000;
+
+/* Total energy in joules */
+E_J : (1/2) * Ctot_val * V^2;
+
+/* Total energy in millijoules */
+E_mJ : E_J * 1000;
+
+/* Teacher answers */
+taB : E_mJ;
+
+/* MCQ correct answer: option 1 (C1+C2) */
+taA : 1;
+]]></text>
+    </questionvariables>
+    <specificfeedback format="html">
+        <text></text>
+    </specificfeedback>
+    <questionnote>
+        <text>V4 Parallel Caps: C1={@C1_uF@} uF, C2={@C2_uF@} uF, V={@V@} V, Ctot={@Ctot_uF@} uF, E={@E_mJ@} mJ</text>
+    </questionnote>
+    <questiondescription format="html">
+        <text><![CDATA[
+<p>Q2 Medium Pool A — Variant 4: Two capacitors in parallel.  Students
+identify the parallel capacitance formula, calculate total stored energy,
+explain KCL/charge conservation at the junction, and compare two equivalent
+approaches to energy calculation.</p>
+]]></text>
+    </questiondescription>
+    <questionsimplify>1</questionsimplify>
+    <assumepositive>0</assumepositive>
+    <assumereal>0</assumereal>
+    <prtcorrect format="html">
+        <text><![CDATA[<span style="font-size: 1.5em; color:green;"><strong>Correct!</strong></span>]]></text>
+    </prtcorrect>
+    <prtpartiallycorrect format="html">
+        <text><![CDATA[<span style="font-size: 1.5em; color:orange;"><strong>Partially correct.</strong></span>]]></text>
+    </prtpartiallycorrect>
+    <prtincorrect format="html">
+        <text><![CDATA[<span style="font-size: 1.5em; color:red;"><strong>Incorrect.</strong></span>]]></text>
+    </prtincorrect>
+    <decimals>.</decimals>
+    <scientificnotation>*10</scientificnotation>
+    <multiplicationsign>dot</multiplicationsign>
+    <sqrtsign>1</sqrtsign>
+    <complexno>i</complexno>
+    <inversetrig>cos-1</inversetrig>
+    <logicsymbol>lang</logicsymbol>
+    <matrixparens>[</matrixparens>
+    <variantsselectionseed></variantsselectionseed>
+    <input>
+        <name>ansA</name>
+        <type>dropdown</type>
+        <tans>taA</tans>
+        <boxsize>15</boxsize>
+        <strictsyntax>1</strictsyntax>
+        <insertstars>0</insertstars>
+        <syntaxhint></syntaxhint>
+        <syntaxattribute>0</syntaxattribute>
+        <forbidwords></forbidwords>
+        <allowwords></allowwords>
+        <forbidfloat>1</forbidfloat>
+        <requirelowestterms>0</requirelowestterms>
+        <checkanswertype>0</checkanswertype>
+        <mustverify>0</mustverify>
+        <showvalidation>0</showvalidation>
+        <options>[[1,"\\(C_{total} = C_1 + C_2\\) (capacitances add in parallel)"],[2,"\\(\\frac{1}{C_{total}} = \\frac{1}{C_1} + \\frac{1}{C_2}\\) (reciprocals add in parallel)"],[3,"\\(C_{total} = C_1 \\cdot C_2\\) (capacitances multiply in parallel)"],[4,"\\(C_{total} = \\frac{C_1 \\cdot C_2}{C_1 + C_2}\\) (product over sum in parallel)"]]</options>
+    </input>
+    <input>
+        <name>ansB</name>
+        <type>numerical</type>
+        <tans>taB</tans>
+        <boxsize>10</boxsize>
+        <strictsyntax>1</strictsyntax>
+        <insertstars>0</insertstars>
+        <syntaxhint></syntaxhint>
+        <syntaxattribute>0</syntaxattribute>
+        <forbidwords></forbidwords>
+        <allowwords></allowwords>
+        <forbidfloat>0</forbidfloat>
+        <requirelowestterms>0</requirelowestterms>
+        <checkanswertype>0</checkanswertype>
+        <mustverify>1</mustverify>
+        <showvalidation>1</showvalidation>
+        <options></options>
+    </input>
+    <prt>
+        <name>prtA</name>
+        <value>2</value>
+        <autosimplify>1</autosimplify>
+        <feedbackstyle>1</feedbackstyle>
+        <feedbackvariables>
+            <text></text>
+        </feedbackvariables>
+        <node>
+            <name>0</name>
+            <answertest>AlgEquiv</answertest>
+            <sans>ansA</sans>
+            <tans>taA</tans>
+            <testoptions></testoptions>
+            <quiet>0</quiet>
+            <truescoremode>=</truescoremode>
+            <truescore>1</truescore>
+            <truepenalty></truepenalty>
+            <truenextnode>-1</truenextnode>
+            <trueanswernote>prtA-1-T</trueanswernote>
+            <truefeedback format="html">
+                <text><![CDATA[
+<p>Correct! For capacitors in parallel, the total capacitance is the
+<em>sum</em> of individual capacitances: \(C_{total} = C_1 + C_2\).
+This is because parallel capacitors share the same voltage, so the total
+charge stored is \(q = (C_1 + C_2)V\).</p>
+]]></text>
+            </truefeedback>
+            <falsescoremode>=</falsescoremode>
+            <falsescore>0</falsescore>
+            <falsepenalty></falsepenalty>
+            <falsenextnode>-1</falsenextnode>
+            <falseanswernote>prtA-1-F</falseanswernote>
+            <falsefeedback format="html">
+                <text><![CDATA[
+<p>Incorrect. For capacitors in <strong>parallel</strong>, the total capacitance
+is the sum: \(C_{total} = C_1 + C_2\).</p>
+<p>Note: The reciprocal formula \(1/C_{total} = 1/C_1 + 1/C_2\) applies
+to capacitors in <em>series</em>, not parallel. (This is opposite to the
+resistor convention where resistances add in series.)</p>
+]]></text>
+            </falsefeedback>
+        </node>
+    </prt>
+    <prt>
+        <name>prtB</name>
+        <value>4</value>
+        <autosimplify>1</autosimplify>
+        <feedbackstyle>1</feedbackstyle>
+        <feedbackvariables>
+            <text></text>
+        </feedbackvariables>
+        <node>
+            <name>0</name>
+            <answertest>NumAbsolute</answertest>
+            <sans>ansB</sans>
+            <tans>taB</tans>
+            <testoptions>0.05</testoptions>
+            <quiet>0</quiet>
+            <truescoremode>=</truescoremode>
+            <truescore>1</truescore>
+            <truepenalty></truepenalty>
+            <truenextnode>-1</truenextnode>
+            <trueanswernote>prtB-1-T</trueanswernote>
+            <truefeedback format="html">
+                <text><![CDATA[
+<p>Correct! The total energy stored is</p>
+<p>\(E_{total} = \frac{1}{2}(C_1+C_2)V^2
+     = \frac{1}{2}\times{@Ctot_val@}\;\text{F}\times({@V@})^2
+     = {@E_mJ@}\;\text{mJ}.\)</p>
+]]></text>
+            </truefeedback>
+            <falsescoremode>=</falsescoremode>
+            <falsescore>0</falsescore>
+            <falsepenalty></falsepenalty>
+            <falsenextnode>-1</falsenextnode>
+            <falseanswernote>prtB-1-F</falseanswernote>
+            <falsefeedback format="html">
+                <text><![CDATA[
+<p>Incorrect. For parallel capacitors at the same voltage:</p>
+<p>\(C_{total} = C_1 + C_2 = {@C1_uF@} + {@C2_uF@} = {@Ctot_uF@}\;\mu\text{F}
+   = {@Ctot_val@}\;\text{F}\).</p>
+<p>\(E = \frac{1}{2}C_{total}V^2
+     = \frac{1}{2}\times{@Ctot_val@}\times({@V@})^2
+     = {@E_mJ@}\;\text{mJ}.\)</p>
+<p>Check your unit conversions: \(\mu\text{F} = 10^{-6}\;\text{F}\)
+and multiply joules by 1000 to get mJ.</p>
+]]></text>
+            </falsefeedback>
+        </node>
+    </prt>
+    <deployedseed>45678</deployedseed>
+</question>
+
+</quiz>

@@ -1,0 +1,96 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 420" preserveAspectRatio="xMidYMid meet" role="img" aria-label="Q1 Variant 1: Two essential nodes DC circuit with voltage source, current source, and three resistors">
+  <title>Q1-V1: Two Essential Nodes Circuit</title>
+  <style>
+    text { font-family: 'Segoe UI', Arial, Helvetica, sans-serif; }
+    .title { font-size: 18px; font-weight: bold; fill: #222; }
+    .comp-label { font-size: 16px; font-weight: bold; fill: #0055aa; }
+    .node-label { font-size: 16px; font-weight: bold; fill: #cc0000; }
+    .annotation { font-size: 14px; fill: #666; }
+    .polarity { font-size: 14px; fill: #333; }
+    .wire { stroke: #333; stroke-width: 2.5; fill: none; }
+    .component { stroke: #333; stroke-width: 2.5; fill: none; }
+    .ground-line { stroke: #333; }
+    .find-text { font-size: 16px; fill: #cc0000; font-weight: bold; }
+  </style>
+
+  <defs>
+    <marker id="arrowhead-v1" markerWidth="10" markerHeight="7" refX="10" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#333"/>
+    </marker>
+    <marker id="arrowhead-red-v1" markerWidth="10" markerHeight="7" refX="10" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#cc0000"/>
+    </marker>
+  </defs>
+
+  <!-- Title -->
+  <text x="300" y="30" text-anchor="middle" class="title">Q1-V1: Node-Voltage Analysis</text>
+
+  <!-- === WIRES === -->
+  <!-- Bottom rail (Ground) -->
+  <line x1="70" y1="340" x2="530" y2="340" class="wire"/>
+
+  <!-- Top rail (connecting R1 output to Node A to R2-R3 junction) -->
+  <line x1="200" y1="100" x2="420" y2="100" class="wire"/>
+
+  <!-- Left vertical: Vs bottom to Vs top -->
+  <line x1="70" y1="340" x2="70" y2="250" class="wire"/>
+  <line x1="70" y1="160" x2="70" y2="100" class="wire"/>
+  <line x1="70" y1="100" x2="130" y2="100" class="wire"/>
+
+  <!-- Right vertical: Is -->
+  <line x1="530" y1="340" x2="530" y2="250" class="wire"/>
+  <line x1="530" y1="155" x2="530" y2="100" class="wire"/>
+  <line x1="530" y1="100" x2="420" y2="100" class="wire"/>
+
+  <!-- Center vertical: R2 to ground -->
+  <line x1="300" y1="100" x2="300" y2="150" class="wire"/>
+  <line x1="300" y1="230" x2="300" y2="340" class="wire"/>
+
+  <!-- Right-center vertical: R3 to ground -->
+  <line x1="420" y1="100" x2="420" y2="150" class="wire"/>
+  <line x1="420" y1="230" x2="420" y2="340" class="wire"/>
+
+  <!-- === COMPONENTS === -->
+
+  <!-- Vs: Voltage source (left, vertical) -->
+  <circle cx="70" cy="205" r="28" class="component"/>
+  <text x="62" y="198" class="polarity">+</text>
+  <text x="65" y="222" class="polarity">&minus;</text>
+  <text x="22" y="210" class="comp-label">V_s</text>
+
+  <!-- R1: Horizontal resistor (top-left, from Vs node to Node A) -->
+  <rect x="130" y="90" width="70" height="20" class="component" rx="3"/>
+  <text x="165" y="82" text-anchor="middle" class="comp-label">R&#x2081;</text>
+
+  <!-- R2: Vertical resistor (center, Node A to ground) -->
+  <rect x="288" y="150" width="24" height="80" class="component" rx="3"/>
+  <text x="322" y="196" class="comp-label">R&#x2082;</text>
+
+  <!-- R3: Vertical resistor (right-center, Node A to ground) -->
+  <rect x="408" y="150" width="24" height="80" class="component" rx="3"/>
+  <text x="442" y="196" class="comp-label">R&#x2083;</text>
+
+  <!-- Is: Current source (right, vertical) -->
+  <circle cx="530" cy="205" r="28" class="component"/>
+  <line x1="530" y1="195" x2="530" y2="172" class="wire" marker-end="url(#arrowhead-v1)"/>
+  <text x="565" y="210" class="comp-label">I_s</text>
+
+  <!-- === NODE MARKERS === -->
+  <circle cx="300" cy="100" r="5" fill="#cc0000"/>
+  <text x="300" y="70" text-anchor="middle" class="node-label">Node A</text>
+
+  <!-- === GROUND SYMBOL === -->
+  <line x1="295" y1="340" x2="305" y2="340" stroke="#333" stroke-width="4"/>
+  <line x1="297" y1="347" x2="303" y2="347" stroke="#333" stroke-width="3"/>
+  <line x1="299" y1="354" x2="301" y2="354" stroke="#333" stroke-width="2"/>
+  <text x="300" y="375" text-anchor="middle" class="annotation">Reference (Ground)</text>
+
+  <!-- === VOLTAGE ANNOTATION === -->
+  <line x1="260" y1="108" x2="260" y2="332" stroke="#cc0000" stroke-width="1.2" stroke-dasharray="5,4"/>
+  <line x1="256" y1="115" x2="260" y2="108" stroke="#cc0000" stroke-width="1.5"/>
+  <line x1="264" y1="115" x2="260" y2="108" stroke="#cc0000" stroke-width="1.5"/>
+  <text x="244" y="225" text-anchor="end" class="find-text">V_A</text>
+
+  <!-- Find instruction -->
+  <text x="300" y="410" text-anchor="middle" class="find-text">Find: V_A (voltage at Node A relative to ground)</text>
+</svg>

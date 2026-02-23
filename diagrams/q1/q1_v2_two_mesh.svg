@@ -1,0 +1,85 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 440" preserveAspectRatio="xMidYMid meet" role="img" aria-label="Q1 Variant 2: Two-mesh circuit with two voltage sources and four resistors">
+  <title>Q1-V2: Two-Mesh Circuit — Mesh-Current Analysis</title>
+  <style>
+    text { font-family: 'Segoe UI', Arial, Helvetica, sans-serif; }
+    .title { font-size: 18px; font-weight: bold; fill: #222; }
+    .comp-label { font-size: 16px; font-weight: bold; fill: #0055aa; }
+    .mesh-label { font-size: 16px; font-weight: bold; fill: #cc0000; }
+    .annotation { font-size: 14px; fill: #666; }
+    .polarity { font-size: 14px; fill: #333; }
+    .wire { stroke: #333; stroke-width: 2.5; fill: none; }
+    .component { stroke: #333; stroke-width: 2.5; fill: none; }
+    .mesh-arrow { stroke: #cc0000; stroke-width: 1.8; fill: none; }
+    .find-text { font-size: 16px; fill: #cc0000; font-weight: bold; }
+  </style>
+
+  <defs>
+    <marker id="mesh-arr" markerWidth="8" markerHeight="6" refX="8" refY="3" orient="auto">
+      <polygon points="0 0, 8 3, 0 6" fill="#cc0000"/>
+    </marker>
+  </defs>
+
+  <!-- Title -->
+  <text x="300" y="30" text-anchor="middle" class="title">Q1-V2: Mesh-Current Analysis</text>
+
+  <!-- === OUTER FRAME === -->
+  <!-- Top rail -->
+  <line x1="70" y1="80" x2="530" y2="80" class="wire"/>
+  <!-- Bottom rail -->
+  <line x1="70" y1="350" x2="530" y2="350" class="wire"/>
+  <!-- Left side -->
+  <line x1="70" y1="80" x2="70" y2="350" class="wire"/>
+  <!-- Right side -->
+  <line x1="530" y1="80" x2="530" y2="350" class="wire"/>
+  <!-- Middle divider -->
+  <line x1="300" y1="80" x2="300" y2="350" class="wire"/>
+
+  <!-- === LEFT MESH COMPONENTS === -->
+
+  <!-- Vs1: Left branch voltage source -->
+  <circle cx="70" cy="215" r="28" class="component"/>
+  <text x="62" y="208" class="polarity">+</text>
+  <text x="65" y="232" class="polarity">&minus;</text>
+  <text x="20" y="220" class="comp-label">V_s1</text>
+
+  <!-- R1: Top-left horizontal resistor -->
+  <rect x="140" y="70" width="80" height="20" class="component" rx="3"/>
+  <text x="180" y="62" text-anchor="middle" class="comp-label">R&#x2081;</text>
+
+  <!-- R4: Bottom-left horizontal resistor -->
+  <rect x="140" y="340" width="80" height="20" class="component" rx="3"/>
+  <text x="180" y="385" text-anchor="middle" class="comp-label">R&#x2084;</text>
+
+  <!-- === SHARED COMPONENT === -->
+
+  <!-- R2: Middle vertical resistor (shared between meshes) -->
+  <rect x="288" y="160" width="24" height="90" class="component" rx="3"/>
+  <text x="322" y="210" class="comp-label">R&#x2082;</text>
+
+  <!-- === RIGHT MESH COMPONENTS === -->
+
+  <!-- Vs2: Right branch voltage source -->
+  <circle cx="530" cy="215" r="28" class="component"/>
+  <text x="522" y="208" class="polarity">+</text>
+  <text x="525" y="232" class="polarity">&minus;</text>
+  <text x="566" y="220" class="comp-label">V_s2</text>
+
+  <!-- R3: Top-right horizontal resistor -->
+  <rect x="370" y="70" width="80" height="20" class="component" rx="3"/>
+  <text x="410" y="62" text-anchor="middle" class="comp-label">R&#x2083;</text>
+
+  <!-- === MESH CURRENT ARROWS (clockwise) === -->
+
+  <!-- Mesh 1 (left) -->
+  <path d="M 160,180 A 55,55 0 1,1 160,260" class="mesh-arrow" marker-end="url(#mesh-arr)"/>
+  <text x="185" y="228" class="mesh-label">i&#x2081;</text>
+  <text x="165" y="310" text-anchor="middle" class="annotation">Mesh 1</text>
+
+  <!-- Mesh 2 (right) -->
+  <path d="M 390,180 A 55,55 0 1,1 390,260" class="mesh-arrow" marker-end="url(#mesh-arr)"/>
+  <text x="415" y="228" class="mesh-label">i&#x2082;</text>
+  <text x="415" y="310" text-anchor="middle" class="annotation">Mesh 2</text>
+
+  <!-- Find instruction -->
+  <text x="300" y="425" text-anchor="middle" class="find-text">Find: current through R&#x2082; (in terms of mesh currents: i&#x2081; &minus; i&#x2082;)</text>
+</svg>

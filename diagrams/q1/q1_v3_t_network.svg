@@ -1,0 +1,90 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 620 420" preserveAspectRatio="xMidYMid meet" role="img" aria-label="Q1 Variant 3: T-network with voltage source, current source, and three resistors">
+  <title>Q1-V3: T-Network — Node-Voltage with Two Nodes</title>
+  <style>
+    text { font-family: 'Segoe UI', Arial, Helvetica, sans-serif; }
+    .title { font-size: 18px; font-weight: bold; fill: #222; }
+    .comp-label { font-size: 16px; font-weight: bold; fill: #0055aa; }
+    .node-label { font-size: 16px; font-weight: bold; fill: #cc0000; }
+    .annotation { font-size: 14px; fill: #666; }
+    .polarity { font-size: 14px; fill: #333; }
+    .wire { stroke: #333; stroke-width: 2.5; fill: none; }
+    .component { stroke: #333; stroke-width: 2.5; fill: none; }
+    .find-text { font-size: 16px; fill: #cc0000; font-weight: bold; }
+  </style>
+
+  <defs>
+    <marker id="arr-v3" markerWidth="10" markerHeight="7" refX="10" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#333"/>
+    </marker>
+  </defs>
+
+  <!-- Title -->
+  <text x="310" y="30" text-anchor="middle" class="title">Q1-V3: T-Network with Mixed Sources</text>
+
+  <!-- === WIRES === -->
+  <!-- Top rail segments -->
+  <line x1="70" y1="100" x2="140" y2="100" class="wire"/>
+  <line x1="220" y1="100" x2="300" y2="100" class="wire"/>
+  <line x1="300" y1="100" x2="380" y2="100" class="wire"/>
+  <line x1="460" y1="100" x2="550" y2="100" class="wire"/>
+
+  <!-- Bottom rail -->
+  <line x1="70" y1="350" x2="550" y2="350" class="wire"/>
+
+  <!-- Left vertical (Vs) -->
+  <line x1="70" y1="100" x2="70" y2="155" class="wire"/>
+  <line x1="70" y1="255" x2="70" y2="350" class="wire"/>
+
+  <!-- Center vertical (R3) -->
+  <line x1="300" y1="100" x2="300" y2="155" class="wire"/>
+  <line x1="300" y1="255" x2="300" y2="350" class="wire"/>
+
+  <!-- Right vertical (Is) -->
+  <line x1="550" y1="100" x2="550" y2="155" class="wire"/>
+  <line x1="550" y1="255" x2="550" y2="350" class="wire"/>
+
+  <!-- === COMPONENTS === -->
+
+  <!-- Vs: Voltage source (left vertical) -->
+  <circle cx="70" cy="205" r="28" class="component"/>
+  <text x="62" y="198" class="polarity">+</text>
+  <text x="65" y="222" class="polarity">&minus;</text>
+  <text x="22" y="210" class="comp-label">V_s</text>
+
+  <!-- R1: Top-left horizontal -->
+  <rect x="140" y="90" width="80" height="20" class="component" rx="3"/>
+  <text x="180" y="82" text-anchor="middle" class="comp-label">R&#x2081;</text>
+
+  <!-- R2: Top-right horizontal -->
+  <rect x="380" y="90" width="80" height="20" class="component" rx="3"/>
+  <text x="420" y="82" text-anchor="middle" class="comp-label">R&#x2082;</text>
+
+  <!-- R3: Center vertical -->
+  <rect x="288" y="155" width="24" height="100" class="component" rx="3"/>
+  <text x="322" y="210" class="comp-label">R&#x2083;</text>
+
+  <!-- Is: Current source (right vertical) -->
+  <circle cx="550" cy="205" r="28" class="component"/>
+  <line x1="550" y1="195" x2="550" y2="172" class="wire" marker-end="url(#arr-v3)"/>
+  <text x="586" y="210" class="comp-label">I_s</text>
+
+  <!-- === NODE MARKERS === -->
+  <circle cx="300" cy="100" r="5" fill="#cc0000"/>
+  <text x="300" y="70" text-anchor="middle" class="node-label">Node B</text>
+
+  <circle cx="550" cy="100" r="5" fill="#cc0000"/>
+  <text x="550" y="70" text-anchor="middle" class="node-label">Node C</text>
+
+  <!-- V_s constrains left node -->
+  <text x="70" y="70" text-anchor="middle" class="annotation">V_A = V_s</text>
+  <text x="70" y="84" text-anchor="middle" class="annotation">(constrained)</text>
+
+  <!-- === GROUND SYMBOL === -->
+  <line x1="295" y1="350" x2="305" y2="350" stroke="#333" stroke-width="4"/>
+  <line x1="297" y1="357" x2="303" y2="357" stroke="#333" stroke-width="3"/>
+  <line x1="299" y1="364" x2="301" y2="364" stroke="#333" stroke-width="2"/>
+  <text x="300" y="388" text-anchor="middle" class="annotation">Reference (Ground)</text>
+
+  <!-- Find instruction -->
+  <text x="310" y="415" text-anchor="middle" class="find-text">Find: V_B (voltage at Node B relative to ground)</text>
+</svg>
