@@ -66,7 +66,7 @@
     <li>What is the inductor current at \(t = 0^+\)? What is it as \(t \to \infty\)? Justify both using circuit analysis or the s-domain.</li>
     <li>Explain the physical meaning of the time constant \(\tau\) you computed. What happens to the current at \(t = \tau\)?</li>
 </ul>
-<p><textarea name="essayD" rows="10" cols="80" style="width:100%; font-family:monospace;"></textarea></p>
+<p>[[input:ansD]] [[validation:ansD]]</p>
 ]]></text>
     </questiontext>
     <generalfeedback format="html">
@@ -110,6 +110,7 @@ Isteady: Vth/Req;
 correctA: a;
 correctB: Req;
 correctC: tau;
+taD: "See model answer in general feedback.";
 ]]></text>
     </questionvariables>
     <specificfeedback format="html">
@@ -194,6 +195,24 @@ correctC: tau;
         <checkanswertype>0</checkanswertype>
         <mustverify>1</mustverify>
         <showvalidation>1</showvalidation>
+        <options></options>
+    </input>
+    <input>
+        <name>ansD</name>
+        <type>essay</type>
+        <tans>taD</tans>
+        <boxsize>15</boxsize>
+        <strictsyntax>0</strictsyntax>
+        <insertstars>0</insertstars>
+        <syntaxhint></syntaxhint>
+        <syntaxattribute>0</syntaxattribute>
+        <forbidwords></forbidwords>
+        <allowwords></allowwords>
+        <forbidfloat>1</forbidfloat>
+        <requirelowestterms>0</requirelowestterms>
+        <checkanswertype>0</checkanswertype>
+        <mustverify>0</mustverify>
+        <showvalidation>0</showvalidation>
         <options></options>
     </input>
     <prt>
@@ -361,7 +380,7 @@ correctC: tau;
     <li>What is the voltage across the capacitor at \(t = 0^+\)? What is it as \(t \to \infty\)? Justify both answers.</li>
     <li>Explain the physical meaning of the time constant \(\tau\) you computed. At \(t = \tau\), what fraction of the final voltage has the capacitor reached?</li>
 </ul>
-<p><textarea name="essayD" rows="10" cols="80" style="width:100%; font-family:monospace;"></textarea></p>
+<p>[[input:ansD]] [[validation:ansD]]</p>
 ]]></text>
     </questiontext>
     <generalfeedback format="html">
@@ -406,6 +425,7 @@ Vth: Vs*R2/(R1+R2);
 correctA: b;
 correctB: Req;
 correctC: tau;
+taD: "See model answer in general feedback.";
 ]]></text>
     </questionvariables>
     <specificfeedback format="html">
@@ -490,6 +510,24 @@ correctC: tau;
         <checkanswertype>0</checkanswertype>
         <mustverify>1</mustverify>
         <showvalidation>1</showvalidation>
+        <options></options>
+    </input>
+    <input>
+        <name>ansD</name>
+        <type>essay</type>
+        <tans>taD</tans>
+        <boxsize>15</boxsize>
+        <strictsyntax>0</strictsyntax>
+        <insertstars>0</insertstars>
+        <syntaxhint></syntaxhint>
+        <syntaxattribute>0</syntaxattribute>
+        <forbidwords></forbidwords>
+        <allowwords></allowwords>
+        <forbidfloat>1</forbidfloat>
+        <requirelowestterms>0</requirelowestterms>
+        <checkanswertype>0</checkanswertype>
+        <mustverify>0</mustverify>
+        <showvalidation>0</showvalidation>
         <options></options>
     </input>
     <prt>
@@ -657,7 +695,7 @@ correctC: tau;
     <li>What is the inductor current at \(t = 0^+\)? What is it as \(t \to \infty\)? Justify both answers.</li>
     <li>The initial energy stored in the inductor is \(W_0 = \frac{1}{2}LI_0^2\). Where does this energy go? Explain how it is distributed among the resistors in the network.</li>
 </ul>
-<p><textarea name="essayD" rows="10" cols="80" style="width:100%; font-family:monospace;"></textarea></p>
+<p>[[input:ansD]] [[validation:ansD]]</p>
 ]]></text>
     </questiontext>
     <generalfeedback format="html">
@@ -702,6 +740,7 @@ W0: (1/2)*L*I0^2;
 correctA: b;
 correctB: Req;
 correctC: tau;
+taD: "See model answer in general feedback.";
 ]]></text>
     </questionvariables>
     <specificfeedback format="html">
@@ -786,6 +825,24 @@ correctC: tau;
         <checkanswertype>0</checkanswertype>
         <mustverify>1</mustverify>
         <showvalidation>1</showvalidation>
+        <options></options>
+    </input>
+    <input>
+        <name>ansD</name>
+        <type>essay</type>
+        <tans>taD</tans>
+        <boxsize>15</boxsize>
+        <strictsyntax>0</strictsyntax>
+        <insertstars>0</insertstars>
+        <syntaxhint></syntaxhint>
+        <syntaxattribute>0</syntaxattribute>
+        <forbidwords></forbidwords>
+        <allowwords></allowwords>
+        <forbidfloat>1</forbidfloat>
+        <requirelowestterms>0</requirelowestterms>
+        <checkanswertype>0</checkanswertype>
+        <mustverify>0</mustverify>
+        <showvalidation>0</showvalidation>
         <options></options>
     </input>
     <prt>
@@ -953,7 +1010,7 @@ correctC: tau;
     <li>What is the capacitor voltage at \(t = 0^+\)? What is it as \(t \to \infty\)? Justify both answers.</li>
     <li>The initial energy stored in the capacitor is \(W_0 = \frac{1}{2}CV_0^2\). Where does this energy go? Explain how it is distributed among the resistors in the network.</li>
 </ul>
-<p><textarea name="essayD" rows="10" cols="80" style="width:100%; font-family:monospace;"></textarea></p>
+<p>[[input:ansD]] [[validation:ansD]]</p>
 ]]></text>
     </questiontext>
     <generalfeedback format="html">
@@ -998,6 +1055,7 @@ W0: (1/2)*Cval*V0^2;
 correctA: b;
 correctB: Req;
 correctC: tau;
+taD: "See model answer in general feedback.";
 ]]></text>
     </questionvariables>
     <specificfeedback format="html">
@@ -1082,6 +1140,24 @@ correctC: tau;
         <checkanswertype>0</checkanswertype>
         <mustverify>1</mustverify>
         <showvalidation>1</showvalidation>
+        <options></options>
+    </input>
+    <input>
+        <name>ansD</name>
+        <type>essay</type>
+        <tans>taD</tans>
+        <boxsize>15</boxsize>
+        <strictsyntax>0</strictsyntax>
+        <insertstars>0</insertstars>
+        <syntaxhint></syntaxhint>
+        <syntaxattribute>0</syntaxattribute>
+        <forbidwords></forbidwords>
+        <allowwords></allowwords>
+        <forbidfloat>1</forbidfloat>
+        <requirelowestterms>0</requirelowestterms>
+        <checkanswertype>0</checkanswertype>
+        <mustverify>0</mustverify>
+        <showvalidation>0</showvalidation>
         <options></options>
     </input>
     <prt>

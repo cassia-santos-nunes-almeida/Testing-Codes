@@ -35,7 +35,7 @@ with schemdraw.Drawing() as d:
 
     # Current source on the right
     d += elm.Line().right().length(1)
-    d += elm.SourceI().down().label('Is')
+    d += elm.SourceI().down().reverse().label('Is')
 
     # Bottom return rail
     d += elm.Line().left().length(2)

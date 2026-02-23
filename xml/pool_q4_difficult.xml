@@ -39,7 +39,7 @@
 <p>After the switch opens (t &gt; 0), R<sub>2</sub> is disconnected. Draw and describe the equivalent circuit seen by the capacitor.</p>
 <p>In the s-domain, set up the circuit equation with the initial condition v<sub>C</sub>(0) = V<sub>0</sub>.</p>
 <p><strong>Write your s-domain circuit description and equation setup below:</strong></p>
-<textarea rows="6" cols="80" style="width:100%; font-family:monospace;" placeholder="Describe the s-domain equivalent circuit and write the circuit equation."></textarea>
+[[input:ans4]] [[validation:ans4]]
 
 <hr/>
 
@@ -66,17 +66,17 @@
   <li>Check your answer using the initial value theorem: lim<sub>s&rarr;&infin;</sub> s&middot;V<sub>C</sub>(s) should equal v<sub>C</sub>(0<sup>+</sup>).</li>
   <li>Where does the energy come from to charge the capacitor from V<sub>0</sub> to V<sub>s</sub>?</li>
 </ol>
-<textarea rows="8" cols="80" style="width:100%; font-family:monospace;" placeholder="Write your answers to all three parts here."></textarea>
+[[input:ans5]] [[validation:ans5]]
 ]]></text>
   </questiontext>
 
   <generalfeedback format="html">
     <text><![CDATA[
 <h4>Solution — Q4-V1</h4>
-<p><b>Part A:</b> At DC steady state with switch closed, C is open. Voltage divider: V<sub>0</sub> = V<sub>s</sub> &middot; R<sub>2</sub>/(R<sub>1</sub>+R<sub>2</sub>) = {@V0@} V</p>
+<p><b>Part A:</b> At DC steady state with switch closed, C is open. Voltage divider: V<sub>0</sub> = V<sub>s</sub> &middot; R<sub>2</sub>/(R<sub>1</sub>+R<sub>2</sub>) = {@V0_rounded@} V</p>
 <p><b>Part B:</b> After switch opens, circuit is V<sub>s</sub> &mdash; R<sub>1</sub> &mdash; C. In s-domain: V<sub>s</sub>/s = I(s)&middot;(R<sub>1</sub> + 1/(sC)) + V<sub>0</sub>/s</p>
 <p><b>Part C:</b> &tau; = R<sub>1</sub>&middot;C = {@tau_ms@} ms. Final value: v<sub>C</sub>(&infin;) = V<sub>s</sub> = {@Vs@} V</p>
-<p><b>Complete response:</b> v<sub>C</sub>(t) = {@Vs@} + ({@V0@} &minus; {@Vs@})&middot;e<sup>&minus;t/{@tau_ms@}ms</sup> for t &gt; 0</p>
+<p><b>Complete response:</b> v<sub>C</sub>(t) = {@Vs@} + ({@V0_rounded@} &minus; {@Vs@})&middot;e<sup>&minus;t/{@tau_ms@}ms</sup> for t &gt; 0</p>
 ]]></text>
   </generalfeedback>
 
@@ -110,6 +110,8 @@ Vfinal: Vs;
 ta1: V0_rounded;
 ta2: tau_ms;
 ta3: float(Vs);
+ta4_essay: "See model answer in general feedback.";
+ta5_essay: "See model answer in general feedback.";
     </text>
   </questionvariables>
 
@@ -181,6 +183,46 @@ ta3: float(Vs);
     <options/>
   </input>
 
+  <!-- Input: ans4 (Part B - s-domain essay) -->
+  <input>
+    <name>ans4</name>
+    <type>essay</type>
+    <tans>ta4_essay</tans>
+    <boxsize>15</boxsize>
+    <strictsyntax>0</strictsyntax>
+    <insertstars>0</insertstars>
+    <syntaxhint></syntaxhint>
+    <syntaxattribute>0</syntaxattribute>
+    <forbidwords></forbidwords>
+    <allowwords></allowwords>
+    <forbidfloat>1</forbidfloat>
+    <requirelowestterms>0</requirelowestterms>
+    <checkanswertype>0</checkanswertype>
+    <mustverify>0</mustverify>
+    <showvalidation>0</showvalidation>
+    <options></options>
+  </input>
+
+  <!-- Input: ans5 (Part D - interpretation essay) -->
+  <input>
+    <name>ans5</name>
+    <type>essay</type>
+    <tans>ta5_essay</tans>
+    <boxsize>15</boxsize>
+    <strictsyntax>0</strictsyntax>
+    <insertstars>0</insertstars>
+    <syntaxhint></syntaxhint>
+    <syntaxattribute>0</syntaxattribute>
+    <forbidwords></forbidwords>
+    <allowwords></allowwords>
+    <forbidfloat>1</forbidfloat>
+    <requirelowestterms>0</requirelowestterms>
+    <checkanswertype>0</checkanswertype>
+    <mustverify>0</mustverify>
+    <showvalidation>0</showvalidation>
+    <options></options>
+  </input>
+
   <!-- PRT1: Initial voltage (Part A, 2 pts) -->
   <prt>
     <name>prt1</name>
@@ -233,7 +275,7 @@ ta3: float(Vs);
       <falsepenalty/>
       <falsenextnode>-1</falsenextnode>
       <falseanswernote>prt2-1-F</falseanswernote>
-      <falsefeedback format="html"><text><![CDATA[<p>Incorrect. After the switch opens, the capacitor sees only R<sub>1</sub>. &tau; = R<sub>1</sub>(k&Omega;) &times; C(&mu;F) = ms.</p>]]></text></falsefeedback>
+      <falsefeedback format="html"><text><![CDATA[<p>Incorrect. After the switch opens, the capacitor sees only R<sub>1</sub>. &tau; = R<sub>1</sub>(k&Omega;) &times; C(&mu;F) = {@tau_ms@} ms.</p>]]></text></falsefeedback>
     </node>
   </prt>
 
@@ -299,7 +341,7 @@ ta3: float(Vs);
 <p>After the switch opens (t &gt; 0), the source and R<sub>1</sub> are disconnected. The inductor current flows through R<sub>2</sub> only.</p>
 <p>Set up the s-domain circuit with the initial condition i<sub>L</sub>(0) = I<sub>0</sub>.</p>
 <p><strong>Write your s-domain model below:</strong></p>
-<textarea rows="6" cols="80" style="width:100%; font-family:monospace;" placeholder="Describe the s-domain equivalent circuit and write the circuit equation."></textarea>
+[[input:ans4]] [[validation:ans4]]
 
 <hr/>
 
@@ -325,17 +367,17 @@ ta3: float(Vs);
   <li>Where does the energy stored in the inductor go as the current decays?</li>
   <li>What happens to the voltage across R<sub>2</sub> at t = 0<sup>+</sup>? Can it exceed V<sub>s</sub>? Explain.</li>
 </ol>
-<textarea rows="8" cols="80" style="width:100%; font-family:monospace;" placeholder="Write your answers to all three parts here."></textarea>
+[[input:ans5]] [[validation:ans5]]
 ]]></text>
   </questiontext>
 
   <generalfeedback format="html">
     <text><![CDATA[
 <h4>Solution — Q4-V2</h4>
-<p><b>Part A:</b> At DC steady state, L is short. Parallel combination of R<sub>2</sub> and L(short) = 0. All current from V<sub>s</sub> through R<sub>1</sub>: I<sub>total</sub> = V<sub>s</sub>/R<sub>1</sub>. Since L is short, all current goes through L: I<sub>0</sub> = {@I0@} A.</p>
+<p><b>Part A:</b> At DC steady state, L is short. Parallel combination of R<sub>2</sub> and L(short) = 0. All current from V<sub>s</sub> through R<sub>1</sub>: I<sub>total</sub> = V<sub>s</sub>/R<sub>1</sub>. Since L is short, all current goes through L: I<sub>0</sub> = {@I0_rounded@} A.</p>
 <p><b>Part B:</b> After switch opens: (sL + R<sub>2</sub>)&middot;I(s) = L&middot;I<sub>0</sub> &rarr; I(s) = I<sub>0</sub>/(s + R<sub>2</sub>/L)</p>
-<p><b>Part C:</b> &tau; = L/R<sub>2</sub> = {@tau_ms@} ms. Final value: i<sub>L</sub>(&infin;) = 0 A.</p>
-<p><b>Complete response:</b> i<sub>L</sub>(t) = {@I0@} &middot; e<sup>&minus;t/{@tau_ms@}ms</sup> for t &gt; 0</p>
+<p><b>Part C:</b> &tau; = L/R<sub>2</sub> = {@tau_ms_rounded@} ms. Final value: i<sub>L</sub>(&infin;) = 0 A.</p>
+<p><b>Complete response:</b> i<sub>L</sub>(t) = {@I0_rounded@} &middot; e<sup>&minus;t/{@tau_ms_rounded@}ms</sup> for t &gt; 0</p>
 ]]></text>
   </generalfeedback>
 
@@ -370,6 +412,8 @@ Ifinal: 0;
 ta1: I0_rounded;
 ta2: tau_ms_rounded;
 ta3: 0;
+ta4_essay: "See model answer in general feedback.";
+ta5_essay: "See model answer in general feedback.";
     </text>
   </questionvariables>
 
@@ -441,6 +485,46 @@ ta3: 0;
     <options/>
   </input>
 
+  <!-- Input: ans4 (Part B - s-domain essay) -->
+  <input>
+    <name>ans4</name>
+    <type>essay</type>
+    <tans>ta4_essay</tans>
+    <boxsize>15</boxsize>
+    <strictsyntax>0</strictsyntax>
+    <insertstars>0</insertstars>
+    <syntaxhint></syntaxhint>
+    <syntaxattribute>0</syntaxattribute>
+    <forbidwords></forbidwords>
+    <allowwords></allowwords>
+    <forbidfloat>1</forbidfloat>
+    <requirelowestterms>0</requirelowestterms>
+    <checkanswertype>0</checkanswertype>
+    <mustverify>0</mustverify>
+    <showvalidation>0</showvalidation>
+    <options></options>
+  </input>
+
+  <!-- Input: ans5 (Part D - interpretation essay) -->
+  <input>
+    <name>ans5</name>
+    <type>essay</type>
+    <tans>ta5_essay</tans>
+    <boxsize>15</boxsize>
+    <strictsyntax>0</strictsyntax>
+    <insertstars>0</insertstars>
+    <syntaxhint></syntaxhint>
+    <syntaxattribute>0</syntaxattribute>
+    <forbidwords></forbidwords>
+    <allowwords></allowwords>
+    <forbidfloat>1</forbidfloat>
+    <requirelowestterms>0</requirelowestterms>
+    <checkanswertype>0</checkanswertype>
+    <mustverify>0</mustverify>
+    <showvalidation>0</showvalidation>
+    <options></options>
+  </input>
+
   <!-- PRT1: Initial current (Part A, 2 pts) -->
   <prt>
     <name>prt1</name>
@@ -477,10 +561,10 @@ ta3: 0;
     <feedbackstyle>1</feedbackstyle>
     <node>
       <name>0</name>
-      <answertest>NumAbsolute</answertest>
+      <answertest>NumRelative</answertest>
       <sans>ans2</sans>
       <tans>ta2</tans>
-      <testoptions>0.01</testoptions>
+      <testoptions>0.05</testoptions>
       <quiet>0</quiet>
       <truescoremode>=</truescoremode>
       <truescore>1.0000000</truescore>
@@ -493,7 +577,7 @@ ta3: 0;
       <falsepenalty/>
       <falsenextnode>-1</falsenextnode>
       <falseanswernote>prt2-1-F</falseanswernote>
-      <falsefeedback format="html"><text><![CDATA[<p>Incorrect. After switch opens, L discharges through R<sub>2</sub>. &tau; = L/R<sub>2</sub>. Convert L to Henrys first: L(mH)/1000 / R<sub>2</sub>(&Omega;) &times; 1000 = ms.</p>]]></text></falsefeedback>
+      <falsefeedback format="html"><text><![CDATA[<p>Incorrect. After switch opens, L discharges through R<sub>2</sub>. &tau; = L/R<sub>2</sub>. Since L is in mH and R<sub>2</sub> in &Omega;, L(mH)/R<sub>2</sub>(&Omega;) gives &tau; directly in ms: {@tau_ms_rounded@} ms.</p>]]></text></falsefeedback>
     </node>
   </prt>
 
@@ -561,7 +645,7 @@ ta3: 0;
 <h4>Part B (3 points) — s-Domain Model Setup</h4>
 <p>Replace the original circuit with its Th&eacute;venin equivalent: V<sub>th</sub> in series with R<sub>th</sub> and C (with initial voltage V<sub>0</sub>).</p>
 <p><strong>Write the s-domain equation below:</strong></p>
-<textarea rows="5" cols="80" style="width:100%; font-family:monospace;" placeholder="Describe the s-domain equivalent circuit and write the circuit equation."></textarea>
+[[input:ans5]] [[validation:ans5]]
 
 <hr/>
 
@@ -585,17 +669,17 @@ ta3: 0;
   <li>Verify your answer: at t = 0<sup>+</sup>, what is v<sub>C</sub>? At t &rarr; &infin;, what is v<sub>C</sub>? Do these match your initial condition and final value?</li>
   <li>How much total energy is dissipated in R<sub>th</sub> during the transient? Express in terms of C, V<sub>0</sub>, and V<sub>th</sub>.</li>
 </ol>
-<textarea rows="8" cols="80" style="width:100%; font-family:monospace;" placeholder="Write your answers to all three parts here."></textarea>
+[[input:ans6]] [[validation:ans6]]
 ]]></text>
   </questiontext>
 
   <generalfeedback format="html">
     <text><![CDATA[
 <h4>Solution — Q4-V3</h4>
-<p><b>Part A:</b> V<sub>th</sub> = V<sub>s</sub> &middot; R<sub>2</sub>/(R<sub>1</sub>+R<sub>2</sub>) = {@Vth@} V. R<sub>th</sub> = R<sub>1</sub>||R<sub>2</sub> = R<sub>1</sub>&middot;R<sub>2</sub>/(R<sub>1</sub>+R<sub>2</sub>) = {@Rth@} k&Omega;.</p>
+<p><b>Part A:</b> V<sub>th</sub> = V<sub>s</sub> &middot; R<sub>2</sub>/(R<sub>1</sub>+R<sub>2</sub>) = {@Vth_rounded@} V. R<sub>th</sub> = R<sub>1</sub>||R<sub>2</sub> = R<sub>1</sub>&middot;R<sub>2</sub>/(R<sub>1</sub>+R<sub>2</sub>) = {@Rth_rounded@} k&Omega;.</p>
 <p><b>Part B:</b> V<sub>th</sub>/s = I(s)&middot;R<sub>th</sub> + V<sub>C</sub>(s), with V<sub>C</sub>(s) = V<sub>0</sub>/s + I(s)/(sC).</p>
-<p><b>Part C:</b> &tau; = R<sub>th</sub>&middot;C = {@tau_ms@} ms. Final value = V<sub>th</sub> = {@Vth@} V.</p>
-<p><b>Complete response:</b> v<sub>C</sub>(t) = {@Vth@} + ({@V0@} &minus; {@Vth@})&middot;e<sup>&minus;t/{@tau_ms@}ms</sup> for t &gt; 0</p>
+<p><b>Part C:</b> &tau; = R<sub>th</sub>&middot;C = {@tau_ms_rounded@} ms. Final value = V<sub>th</sub> = {@Vth_rounded@} V.</p>
+<p><b>Complete response:</b> v<sub>C</sub>(t) = {@Vth_rounded@} + ({@V0@} &minus; {@Vth_rounded@})&middot;e<sup>&minus;t/{@tau_ms_rounded@}ms</sup> for t &gt; 0</p>
 <p><b>Energy dissipated:</b> &Delta;E = &frac12;C(V<sub>0</sub> &minus; V<sub>th</sub>)&sup2; (energy lost to R<sub>th</sub> during the exponential transient).</p>
 ]]></text>
   </generalfeedback>
@@ -632,6 +716,8 @@ ta1: Vth_rounded;
 ta2: Rth_rounded;
 ta3: tau_ms_rounded;
 ta4: Vth_rounded;
+ta5_essay: "See model answer in general feedback.";
+ta6_essay: "See model answer in general feedback.";
     </text>
   </questionvariables>
 
@@ -721,6 +807,46 @@ ta4: Vth_rounded;
     <mustverify>1</mustverify>
     <showvalidation>3</showvalidation>
     <options/>
+  </input>
+
+  <!-- Input: ans5 (Part B - s-domain essay) -->
+  <input>
+    <name>ans5</name>
+    <type>essay</type>
+    <tans>ta5_essay</tans>
+    <boxsize>15</boxsize>
+    <strictsyntax>0</strictsyntax>
+    <insertstars>0</insertstars>
+    <syntaxhint></syntaxhint>
+    <syntaxattribute>0</syntaxattribute>
+    <forbidwords></forbidwords>
+    <allowwords></allowwords>
+    <forbidfloat>1</forbidfloat>
+    <requirelowestterms>0</requirelowestterms>
+    <checkanswertype>0</checkanswertype>
+    <mustverify>0</mustverify>
+    <showvalidation>0</showvalidation>
+    <options></options>
+  </input>
+
+  <!-- Input: ans6 (Part D - interpretation essay) -->
+  <input>
+    <name>ans6</name>
+    <type>essay</type>
+    <tans>ta6_essay</tans>
+    <boxsize>15</boxsize>
+    <strictsyntax>0</strictsyntax>
+    <insertstars>0</insertstars>
+    <syntaxhint></syntaxhint>
+    <syntaxattribute>0</syntaxattribute>
+    <forbidwords></forbidwords>
+    <allowwords></allowwords>
+    <forbidfloat>1</forbidfloat>
+    <requirelowestterms>0</requirelowestterms>
+    <checkanswertype>0</checkanswertype>
+    <mustverify>0</mustverify>
+    <showvalidation>0</showvalidation>
+    <options></options>
   </input>
 
   <!-- PRT1: Vth (Part A, 1 pt) -->

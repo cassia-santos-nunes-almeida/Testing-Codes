@@ -57,8 +57,6 @@ with schemdraw.Drawing(canvas=ax2) as d:
 
     d.add(elm.CurrentLabelInline(direction='in').at(r2.center).label('i(t)', fontsize=12))
 
-    d += elm.Ground().at(ind.end)
-
 ax2.axis('off')
 
 plt.tight_layout()
