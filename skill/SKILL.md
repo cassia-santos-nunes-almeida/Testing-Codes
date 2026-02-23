@@ -1,5 +1,5 @@
 ---
-name: STACK Exam Builder
+name: stack-exam-builder
 description: Generates randomized Moodle STACK exam questions (XML + Maxima) and SVG circuit diagrams for undergraduate electrical circuits courses.
 ---
 
@@ -13,10 +13,8 @@ When this skill is loaded, immediately read ALL context files in this order:
 2. `context.md` — Stable project facts, architecture, constraints
 3. `active-session.md` — Current sprint, tasks in progress, immediate next steps
 4. `decisions-log.md` — Chronological history of all project decisions and their rationale
-
-After reading all files, respond with exactly ONE line:
-
-> Context loaded. Ready to continue STACK Exam Builder.
+2. After reading all files, respond with exactly: "✓ Context loaded. Ready to continue STACK Exam Builder."
+3. Then wait for the user's first message.
 
 ## Session Rules
 
