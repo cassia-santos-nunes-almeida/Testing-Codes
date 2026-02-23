@@ -32,9 +32,7 @@
 <p><em>This part is manually graded. Write your equations in the box below.</em></p>
 <p>
 <textarea name="q1v1_partB_essay" rows="8" cols="80" style="width:100%; font-family:monospace;"
-  placeholder="Write your KCL node equation(s) here. For example:
-At Node A: (V_A - Vs)/R1 + V_A/R2 + V_A/R3 = Is
-..."></textarea>
+  placeholder="Write your KCL node equation(s) here. Label each equation clearly."></textarea>
 </p>
 
 <hr />
@@ -50,8 +48,7 @@ At Node A: (V_A - Vs)/R1 + V_A/R2 + V_A/R3 = Is
 <p><em>This part is manually graded. Write your verification and explanation below.</em></p>
 <p>
 <textarea name="q1v1_partD_essay" rows="8" cols="80" style="width:100%; font-family:monospace;"
-  placeholder="1. Verify KCL at Node A using your computed V_A.
-2. Explain why node-voltage is preferred here (e.g., fewer equations, presence of current source, etc.)"></textarea>
+  placeholder="Write your verification and justification here."></textarea>
 </p>
 ]]></text>
   </questiontext>
@@ -269,10 +266,7 @@ ta2: float(VA);
 <p><em>This part is manually graded. Write your equations in the box below.</em></p>
 <p>
 <textarea name="q1v2_partB_essay" rows="8" cols="80" style="width:100%; font-family:monospace;"
-  placeholder="Write your KVL mesh equations here. For example:
-Mesh 1: -Vs1 + R1*i1 + R2*(i1-i2) + R4*i1 = 0
-Mesh 2: R3*i2 + Vs2 + R2*(i2-i1) = 0
-..."></textarea>
+  placeholder="Write your KVL mesh equations here. Label each mesh equation clearly."></textarea>
 </p>
 
 <hr />
@@ -288,8 +282,7 @@ Mesh 2: R3*i2 + Vs2 + R2*(i2-i1) = 0
 <p><em>This part is manually graded. Write your verification and explanation below.</em></p>
 <p>
 <textarea name="q1v2_partD_essay" rows="8" cols="80" style="width:100%; font-family:monospace;"
-  placeholder="1. Verify KVL around each mesh using your computed i1 and i2.
-2. Explain why mesh-current is preferred (e.g., only voltage sources present, 2 meshes vs. more nodes, etc.)"></textarea>
+  placeholder="Write your verification and justification here."></textarea>
 </p>
 ]]></text>
   </questiontext>
@@ -522,10 +515,7 @@ ta2: float(iR2);
 <p><em>This part is manually graded. Write your equations in the box below.</em></p>
 <p>
 <textarea name="q1v3_partB_essay" rows="10" cols="80" style="width:100%; font-family:monospace;"
-  placeholder="Write your KCL node equations here. For example:
-At Node B: (V_B - V_A)/R1 + V_B/R3 + (V_B - V_C)/R2 = 0
-At Node C: (V_C - V_B)/R2 = Is  (current source entering Node C)
-..."></textarea>
+  placeholder="Write your KCL node equations here. Label each equation clearly."></textarea>
 </p>
 
 <hr />
@@ -541,8 +531,7 @@ At Node C: (V_C - V_B)/R2 = Is  (current source entering Node C)
 <p><em>This part is manually graded. Write your verification and explanation below.</em></p>
 <p>
 <textarea name="q1v3_partD_essay" rows="8" cols="80" style="width:100%; font-family:monospace;"
-  placeholder="1. Verify KCL at Node B using your computed V_B and V_C.
-2. Explain why node-voltage is preferred (mixed sources, current source simplifies node equations, etc.)"></textarea>
+  placeholder="Write your verification and justification here."></textarea>
 </p>
 ]]></text>
   </questiontext>
@@ -567,15 +556,11 @@ At Node C: (V_C - V_B)/R2 = Is  (current source entering Node C)
   <questionvariables>
     <text><![CDATA[/* Variant 3: T-Network with Mixed Sources */
 /* Randomize component values */
-Vs: rand_with_step(10, 20, 1);
-Is: rand_with_step(1, 5, 1);
+Vs: rand([ 10, 12, 15, 18, 20 ]);
+Is: rand([ 1, 2, 3, 5 ]);
 R1: rand_with_step(2, 5, 1);
 R2: rand_with_step(3, 6, 1);
 R3: rand_with_step(4, 8, 2);
-
-/* Restrict Vs to allowed set */
-Vs: rand([ 10, 12, 15, 18, 20 ]);
-Is: rand([ 1, 2, 3, 5 ]);
 
 /* Convert to Ohms */
 R1_ohm: R1 * 1000;
@@ -779,10 +764,7 @@ ta2: float(VB);
 <p><em>This part is manually graded. Write your equations in the box below.</em></p>
 <p>
 <textarea name="q1v4_partB_essay" rows="10" cols="80" style="width:100%; font-family:monospace;"
-  placeholder="Write your KCL node equations here. For example:
-At Node B: (V_B - V_A)/R1 + V_B/R3 + (V_B - V_C)/R5 = 0
-At Node C: (V_C - V_A)/R2 + V_C/R4 + (V_C - V_B)/R5 = 0
-..."></textarea>
+  placeholder="Write your KCL node equations here. Label each equation clearly."></textarea>
 </p>
 
 <hr />
@@ -798,9 +780,7 @@ At Node C: (V_C - V_A)/R2 + V_C/R4 + (V_C - V_B)/R5 = 0
 <p><em>This part is manually graded. Write your verification and explanation below.</em></p>
 <p>
 <textarea name="q1v4_partD_essay" rows="8" cols="80" style="width:100%; font-family:monospace;"
-  placeholder="1. Verify KCL at Nodes B and C.
-2. State the balance condition: R1*R4 = R2*R3.
-3. Check if this holds for the given values and comment."></textarea>
+  placeholder="Write your verification and justification here."></textarea>
 </p>
 ]]></text>
   </questiontext>

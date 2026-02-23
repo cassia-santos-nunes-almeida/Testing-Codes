@@ -39,7 +39,7 @@
 <p>After the switch opens (t &gt; 0), R<sub>2</sub> is disconnected. Draw and describe the equivalent circuit seen by the capacitor.</p>
 <p>In the s-domain, set up the circuit equation with the initial condition v<sub>C</sub>(0) = V<sub>0</sub>.</p>
 <p><strong>Write your s-domain circuit description and equation setup below:</strong></p>
-<textarea rows="6" cols="80" style="width:100%; font-family:monospace;" placeholder="Describe the s-domain equivalent circuit: Vs/s in series with R1 and impedance 1/(sC). Include the initial condition as V0/s source..."></textarea>
+<textarea rows="6" cols="80" style="width:100%; font-family:monospace;" placeholder="Describe the s-domain equivalent circuit and write the circuit equation."></textarea>
 
 <hr/>
 
@@ -66,7 +66,7 @@
   <li>Check your answer using the initial value theorem: lim<sub>s&rarr;&infin;</sub> s&middot;V<sub>C</sub>(s) should equal v<sub>C</sub>(0<sup>+</sup>).</li>
   <li>Where does the energy come from to charge the capacitor from V<sub>0</sub> to V<sub>s</sub>?</li>
 </ol>
-<textarea rows="8" cols="80" style="width:100%; font-family:monospace;" placeholder="1. Physical explanation of voltage change...&#10;2. Initial value theorem verification...&#10;3. Energy source analysis..."></textarea>
+<textarea rows="8" cols="80" style="width:100%; font-family:monospace;" placeholder="Write your answers to all three parts here."></textarea>
 ]]></text>
   </questiontext>
 
@@ -299,7 +299,7 @@ ta3: float(Vs);
 <p>After the switch opens (t &gt; 0), the source and R<sub>1</sub> are disconnected. The inductor current flows through R<sub>2</sub> only.</p>
 <p>Set up the s-domain circuit with the initial condition i<sub>L</sub>(0) = I<sub>0</sub>.</p>
 <p><strong>Write your s-domain model below:</strong></p>
-<textarea rows="6" cols="80" style="width:100%; font-family:monospace;" placeholder="s-domain: The inductor with initial current I0 is modeled as sL·I(s) - L·I0. With only R2 in the loop: (sL + R2)·I(s) = L·I0 → I(s) = I0/(s + R2/L)..."></textarea>
+<textarea rows="6" cols="80" style="width:100%; font-family:monospace;" placeholder="Describe the s-domain equivalent circuit and write the circuit equation."></textarea>
 
 <hr/>
 
@@ -325,7 +325,7 @@ ta3: float(Vs);
   <li>Where does the energy stored in the inductor go as the current decays?</li>
   <li>What happens to the voltage across R<sub>2</sub> at t = 0<sup>+</sup>? Can it exceed V<sub>s</sub>? Explain.</li>
 </ol>
-<textarea rows="8" cols="80" style="width:100%; font-family:monospace;" placeholder="1. Inductor current continuity explanation...&#10;2. Energy dissipation analysis...&#10;3. Voltage across R2 at t=0+..."></textarea>
+<textarea rows="8" cols="80" style="width:100%; font-family:monospace;" placeholder="Write your answers to all three parts here."></textarea>
 ]]></text>
   </questiontext>
 
@@ -359,8 +359,8 @@ Lval: rand([10,20,47,100]);
 I0: float(Vs / R1);
 I0_rounded: float(round(I0 * 10000) / 10000);
 
-/* Time constant: tau = L/R2, L in mH, R2 in Ohm => tau in ms */
-tau_ms: float(Lval / R2 * 1000);
+/* Time constant: tau = L/R, L in mH, R2 in Ohm => Lval/R2 gives ms directly */
+tau_ms: float(Lval / R2);
 tau_ms_rounded: float(round(tau_ms * 1000) / 1000);
 
 /* Final value */
@@ -561,7 +561,7 @@ ta3: 0;
 <h4>Part B (3 points) — s-Domain Model Setup</h4>
 <p>Replace the original circuit with its Th&eacute;venin equivalent: V<sub>th</sub> in series with R<sub>th</sub> and C (with initial voltage V<sub>0</sub>).</p>
 <p><strong>Write the s-domain equation below:</strong></p>
-<textarea rows="5" cols="80" style="width:100%; font-family:monospace;" placeholder="s-domain: Vth/s = I(s)·Rth + I(s)·(1/(sC)) + V0/s&#10;Or equivalently: Vc(s) = Vth/s + (V0 - Vth)/(s + 1/(Rth·C))..."></textarea>
+<textarea rows="5" cols="80" style="width:100%; font-family:monospace;" placeholder="Describe the s-domain equivalent circuit and write the circuit equation."></textarea>
 
 <hr/>
 
@@ -585,7 +585,7 @@ ta3: 0;
   <li>Verify your answer: at t = 0<sup>+</sup>, what is v<sub>C</sub>? At t &rarr; &infin;, what is v<sub>C</sub>? Do these match your initial condition and final value?</li>
   <li>How much total energy is dissipated in R<sub>th</sub> during the transient? Express in terms of C, V<sub>0</sub>, and V<sub>th</sub>.</li>
 </ol>
-<textarea rows="8" cols="80" style="width:100%; font-family:monospace;" placeholder="1. Thévenin simplification explanation...&#10;2. Boundary condition verification...&#10;3. Energy dissipated = ½C(V0² - Vth²) or ½C(V0-Vth)²..."></textarea>
+<textarea rows="8" cols="80" style="width:100%; font-family:monospace;" placeholder="Write your answers to all three parts here."></textarea>
 ]]></text>
   </questiontext>
 

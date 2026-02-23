@@ -281,7 +281,7 @@ or its integral.</p>
         </feedbackvariables>
         <node>
             <name>0</name>
-            <answertest>NumAbsolute</answertest>
+            <answertest>NumRelative</answertest>
             <sans>ansB</sans>
             <tans>taB</tans>
             <testoptions>0.05</testoptions>
@@ -587,7 +587,7 @@ voltage across the capacitor.  Note the analogy: for an inductor it is
         </feedbackvariables>
         <node>
             <name>0</name>
-            <answertest>NumAbsolute</answertest>
+            <answertest>NumRelative</answertest>
             <sans>ansB</sans>
             <tans>taB</tans>
             <testoptions>0.05</testoptions>
@@ -940,7 +940,7 @@ voltage magnitude.</p>
         </feedbackvariables>
         <node>
             <name>0</name>
-            <answertest>NumAbsolute</answertest>
+            <answertest>NumRelative</answertest>
             <sans>ansB</sans>
             <tans>taB</tans>
             <testoptions>0.05</testoptions>
@@ -1276,7 +1276,7 @@ resistor convention where resistances add in series.)</p>
         </feedbackvariables>
         <node>
             <name>0</name>
-            <answertest>NumAbsolute</answertest>
+            <answertest>NumRelative</answertest>
             <sans>ansB</sans>
             <tans>taB</tans>
             <testoptions>0.05</testoptions>
