@@ -18,7 +18,8 @@ The exam consists of **4 question pools** (15 total variants) plus a file upload
 | **STACK plugin** | Auto-grading engine for mathematical questions (numerical, algebraic, MCQ) |
 | **Maxima CAS** | Computer algebra system embedded in STACK for randomization and grading |
 | **Moodle XML** | Import format for all questions (STACK, Essay, File Upload) |
-| **SVG + PNG** | Circuit diagram formats — SVG as source, PNG exports for Moodle upload |
+| **Python + Schemdraw** | Circuit diagram generation — reproducible scripts for all 15 variants |
+| **SVG + PNG** | Circuit diagram formats — SVG as source, PNG embedded in XML for Moodle |
 | **Git** | Version control for all exam artifacts |
 | **CC0 License** | Public domain dedication — no restrictions on reuse |
 
@@ -33,7 +34,11 @@ Testing-Codes/
 │   ├── q1/  (4 variants)          # DC resistive circuits — SVG + PNG
 │   ├── q2/  (4 variants)          # Energy storage circuits — SVG + PNG
 │   ├── q3/  (4 variants)          # Laplace transform circuits — SVG + PNG
-│   └── q4/  (3 variants)          # Transient analysis circuits — SVG + PNG
+│   ├── q4/  (3 variants)          # Transient analysis circuits — SVG + PNG
+│   └── scripts/                   # Python Schemdraw generation scripts
+│       ├── q*_v*_*.py (16 files)  # One script per circuit variant
+│       ├── render_all.py          # Master render script (runs all 16)
+│       └── embed_images_in_xml.py # Embeds PNG diagrams into XML files
 ├── xml/                           # Moodle-importable question files
 │   ├── pool_q1_easy.xml           # Q1: 4 STACK variants (12 pts)
 │   ├── pool_q2_medium_a.xml       # Q2: 4 STACK+Essay variants (13 pts)
@@ -41,12 +46,39 @@ Testing-Codes/
 │   ├── pool_q4_difficult.xml      # Q4: 3 STACK variants (12 pts)
 │   └── upload_questions.xml       # File upload question (0 pts standalone)
 ├── skill/                         # Claude skill files (this folder)
+│   └── rlc-circuit-drawing-generator/  # Sub-skill for diagram generation
+│       ├── SKILL.md               # Usage instructions
+│       ├── assets/examples/       # Example Schemdraw scripts + SVG outputs
+│       ├── references/            # Schemdraw guide + circuit pattern templates
+│       └── scripts/               # Rendering utility
 └── LICENSE                        # CC0 1.0 Universal
 ```
 
+### Diagram Pipeline
+
+All 15 circuit diagrams are generated from **Python Schemdraw scripts** in `diagrams/scripts/`. Run `render_all.py` to regenerate all SVG + PNG outputs, then `embed_images_in_xml.py` to re-embed PNGs into XML.
+
 ### Diagram Embedding Strategy
 
-Diagrams are **not** embedded in the XML files. After iterating through multiple approaches (base64 data URIs, `@@PLUGINFILE@@` references), the final approach uses **text placeholders** like `[INSERT DIAGRAM: diagrams/q1/q1_v1_two_node.svg]` in the XML. The instructor manually uploads each diagram via Moodle's editor after import. Both SVG (source) and PNG (1200px, 150 DPI exports) are available in the `diagrams/` folder.
+PNG diagrams are **embedded directly in the XML files** using Moodle's `@@PLUGINFILE@@` mechanism. Each `<questiontext>` contains an `<img src="@@PLUGINFILE@@/filename.png">` tag, and the corresponding `<file name="filename.png" encoding="base64">` element carries the base64-encoded PNG data. This allows Moodle to display diagrams immediately after XML import with no manual upload step. SVG source files are kept in the repository for version control and future edits.
+
+Previous approaches tried and abandoned: bare base64 data URIs (stripped by Moodle's HTML sanitizer), inline SVG in CDATA (bloated XML, rendering inconsistencies), text placeholders with manual upload (extra instructor effort).
+
+### Grading Structure
+
+All 25 numerical PRTs use a **3-node tiered grading** scheme:
+- **Node 0:** NumRelative 5% tolerance → 100% marks
+- **Node 1:** NumRelative 15% tolerance → 70% marks
+- **Node 2:** Order-of-magnitude check → 60% marks (correct significant figures, wrong power of 10)
+- **Otherwise:** 0%
+
+Exception: Q4-V2 `prt3` (`ta=0`) uses NumAbsolute since NumRelative is undefined for zero.
+
+Students are instructed: *"Express numerical answers to 3 significant figures. Scientific notation accepted (e.g., 2.50\*10^3 or 2.50E3)."*
+
+### Essay Inputs
+
+All essay subparts use proper **STACK essay-type inputs** (`[[input:ansX]]` with `type=essay`), not raw HTML `<textarea>` elements. This ensures student responses are recorded in the Moodle gradebook. Total: 26 essay inputs across Q1-Q4.
 
 ## Exam Structure (50 Points Total, 120 Minutes)
 
@@ -58,7 +90,7 @@ Diagrams are **not** embedded in the XML files. After iterating through multiple
 | Q4 | Difficult | 12 | ~30 min | Complete transient analysis (pre-switch → s-domain → response) | 3 |
 | Upload | — | 0 | ~10 min | Handwritten work photos (PDF/JPG/PNG, up to 4 files) | 1 |
 
-Each question has 4 scaffolded subparts (A-D) mixing STACK auto-graded and Essay manual-graded components. Grading split: ~60% STACK auto-graded, ~40% instructor-graded essays.
+Each question has 4 scaffolded subparts (A-D) mixing STACK auto-graded and Essay manual-graded components. Grading split: ~60% STACK auto-graded (numerical with tiered PRTs), ~40% instructor-graded essays (STACK essay inputs).
 
 ## Key Constraints
 
@@ -94,4 +126,4 @@ Each question has 4 scaffolded subparts (A-D) mixing STACK auto-graded and Essay
 - Reducing the pool to fewer than 15 variants (instructor requirement).
 
 ## Last Updated
-2026-02-24
+2026-02-23

@@ -161,5 +161,47 @@ Each entry: `[date] — Decision` followed by reasoning and rejected alternative
 
 ---
 
+### 2026-02-23 — Replace hand-coded SVGs with Schemdraw-generated diagrams
+**Reason:** Hand-coded SVGs were error-prone (e.g., Q1-V1 current source arrow pointing wrong direction), hard to maintain, and inconsistent in style. Python Schemdraw scripts produce professional, reproducible diagrams from declarative code. Each variant now has a source `.py` file, making future edits straightforward.
+**Alternatives rejected:** Continuing with hand-coded SVGs (error-prone, no reproducibility), LaTeX TikZ/CircuiTikZ (not directly usable in Moodle without extra toolchain), external drawing tools (not version-controllable).
+
+---
+
+### 2026-02-23 — Create RLC Circuit Drawing Generator sub-skill
+**Reason:** Circuit diagram generation requires specialized knowledge (Schemdraw API, circuit topology patterns, accessibility conventions). Packaging this as a reusable sub-skill with reference docs and examples allows consistent diagram generation across sessions without re-explaining the conventions each time.
+**Alternatives rejected:** Keeping diagram knowledge only in conversation context (lost between sessions), embedding all references in the main skill (bloats the main context with niche technical details).
+
+---
+
+### 2026-02-23 — Replace all 26 raw HTML textareas with STACK essay-type inputs
+**Reason:** Raw `<textarea>` HTML elements are not processed by STACK or Moodle — student answers typed in them are silently discarded on submission. Replacing with proper `[[input:ansX]]` essay-type inputs ensures responses are recorded in the gradebook and available for instructor grading.
+**Alternatives rejected:** Keeping raw textareas (data loss — critical bug), using STACK string inputs (no multiline support, poor UX for paragraph responses).
+
+---
+
+### 2026-02-23 — Implement 3-node tiered PRT grading (100%/70%/60%/0%)
+**Reason:** A single-threshold PRT (right/wrong) is too harsh for a take-home exam with randomized parameters. Tiered grading rewards students who demonstrate understanding but make small errors: 5% tolerance = full marks, 15% = 70%, order-of-magnitude correct = 60%. This recognizes common error modes (rounding, unit conversion, calculator mistakes) while still requiring correct methodology.
+**Alternatives rejected:** Single-node pass/fail (too punitive, no partial credit), 2-node (misses the order-of-magnitude case), continuous scoring function (STACK PRTs don't support arbitrary score functions).
+
+---
+
+### 2026-02-23 — Require 3 significant figures and accept scientific notation
+**Reason:** Students need a consistent format expectation for numerical answers. Three significant figures balances precision with practical calculator use. Scientific notation (`2.50*10^3` or `2.50E3`) prevents errors when answers span multiple orders of magnitude (e.g., energy in joules vs. millijoules). The old "rounded to two decimal places" instruction was problematic for very large or very small answers.
+**Alternatives rejected:** Two decimal places (fails for answers like 0.000125 or 15000), exact values (impractical with randomized parameters), free format with generous tolerance (inconsistent grading).
+
+---
+
+### 2026-02-23 — Embed base64 PNG diagrams in XML via @@PLUGINFILE@@
+**Reason:** The text-placeholder approach (`[INSERT DIAGRAM: ...]`) required manual instructor upload of 15 diagrams after XML import — tedious and error-prone. Embedding PNGs as base64 `<file>` elements with `@@PLUGINFILE@@` `<img>` references means diagrams display automatically after import. PNG chosen over SVG because some Moodle themes/mobile clients don't render SVGs reliably.
+**Alternatives rejected:** Text placeholders with manual upload (previous approach — too much instructor effort), inline SVG in CDATA (rendering inconsistencies across Moodle themes), external image hosting (fragile, depends on network availability during exam).
+
+---
+
+### 2026-02-23 — Remove display:none from Q2 feedback divs
+**Reason:** The Q2 `prtA` and `prtB` feedback divs had `display:none` CSS, which meant students could not see whether their numerical answers to Parts A and B were correct. This defeated the purpose of STACK auto-grading feedback. Removing the hidden style restores immediate correctness feedback.
+**Alternatives rejected:** Keeping hidden feedback (students get no signal on numerical correctness), showing feedback only after submission (STACK's default behavior already handles this — the `display:none` was an unintended override).
+
+---
+
 ## Last Updated
-2026-02-24
+2026-02-23
