@@ -31,8 +31,7 @@
 <p>Using the <strong>node-voltage method</strong>, write the KCL equation(s) at each essential node (excluding the reference/ground node). Show your work clearly, labelling each equation.</p>
 <p><em>This part is manually graded. Write your equations in the box below.</em></p>
 <p>
-<textarea name="q1v1_partB_essay" rows="8" cols="80" style="width:100%; font-family:monospace;"
-  placeholder="Write your KCL node equation(s) here. Label each equation clearly."></textarea>
+[[input:ans3]] [[validation:ans3]]
 </p>
 
 <hr />
@@ -47,8 +46,7 @@
 <p>Verify your answer by checking that KCL is satisfied at Node&nbsp;A. Also, briefly explain why the node-voltage method is the most efficient choice for this circuit (consider the number of essential nodes vs. meshes).</p>
 <p><em>This part is manually graded. Write your verification and explanation below.</em></p>
 <p>
-<textarea name="q1v1_partD_essay" rows="8" cols="80" style="width:100%; font-family:monospace;"
-  placeholder="Write your verification and justification here."></textarea>
+[[input:ans4]] [[validation:ans4]]
 </p>
 ]]></text>
   </questiontext>
@@ -99,6 +97,10 @@ ta1: [[1, true, "Node-Voltage method, 1 equation needed"], [2, false, "Node-Volt
 
 /* Part C: numerical answer for V_A in Volts */
 ta2: float(VA);
+
+/* Part B & D: essay teacher answers */
+ta3_essay: "See model answer in general feedback.";
+ta4_essay: "See model answer in general feedback.";
 ]]></text>
   </questionvariables>
   <specificfeedback format="html">
@@ -165,6 +167,42 @@ ta2: float(VA);
     <checkanswertype>0</checkanswertype>
     <mustverify>1</mustverify>
     <showvalidation>3</showvalidation>
+    <options/>
+  </input>
+  <input>
+    <name>ans3</name>
+    <type>essay</type>
+    <tans>ta3_essay</tans>
+    <boxsize>15</boxsize>
+    <strictsyntax>0</strictsyntax>
+    <insertstars>0</insertstars>
+    <syntaxhint/>
+    <syntaxattribute>0</syntaxattribute>
+    <forbidwords/>
+    <allowwords/>
+    <forbidfloat>1</forbidfloat>
+    <requirelowestterms>0</requirelowestterms>
+    <checkanswertype>0</checkanswertype>
+    <mustverify>0</mustverify>
+    <showvalidation>0</showvalidation>
+    <options/>
+  </input>
+  <input>
+    <name>ans4</name>
+    <type>essay</type>
+    <tans>ta4_essay</tans>
+    <boxsize>15</boxsize>
+    <strictsyntax>0</strictsyntax>
+    <insertstars>0</insertstars>
+    <syntaxhint/>
+    <syntaxattribute>0</syntaxattribute>
+    <forbidwords/>
+    <allowwords/>
+    <forbidfloat>1</forbidfloat>
+    <requirelowestterms>0</requirelowestterms>
+    <checkanswertype>0</checkanswertype>
+    <mustverify>0</mustverify>
+    <showvalidation>0</showvalidation>
     <options/>
   </input>
   <prt>
@@ -265,8 +303,7 @@ ta2: float(VA);
 <p>Using the <strong>mesh-current method</strong>, write the KVL equation for each mesh. Define mesh currents \(i_1\) (left, CW) and \(i_2\) (right, CW). Show your work clearly.</p>
 <p><em>This part is manually graded. Write your equations in the box below.</em></p>
 <p>
-<textarea name="q1v2_partB_essay" rows="8" cols="80" style="width:100%; font-family:monospace;"
-  placeholder="Write your KVL mesh equations here. Label each mesh equation clearly."></textarea>
+[[input:ans3]] [[validation:ans3]]
 </p>
 
 <hr />
@@ -281,8 +318,7 @@ ta2: float(VA);
 <p>Verify your answer by checking that KVL holds around both meshes using your computed mesh currents. Also, briefly explain why the mesh-current method is the most efficient choice for this circuit.</p>
 <p><em>This part is manually graded. Write your verification and explanation below.</em></p>
 <p>
-<textarea name="q1v2_partD_essay" rows="8" cols="80" style="width:100%; font-family:monospace;"
-  placeholder="Write your verification and justification here."></textarea>
+[[input:ans4]] [[validation:ans4]]
 </p>
 ]]></text>
   </questiontext>
@@ -350,6 +386,10 @@ ta1: [[1, true, "Mesh-Current method, 2 equations needed"], [2, false, "Mesh-Cur
 
 /* Part C: numerical answer for i_R2 in mA */
 ta2: float(iR2);
+
+/* Part B & D: essay teacher answers */
+ta3_essay: "See model answer in general feedback.";
+ta4_essay: "See model answer in general feedback.";
 ]]></text>
   </questionvariables>
   <specificfeedback format="html">
@@ -416,6 +456,42 @@ ta2: float(iR2);
     <checkanswertype>0</checkanswertype>
     <mustverify>1</mustverify>
     <showvalidation>3</showvalidation>
+    <options/>
+  </input>
+  <input>
+    <name>ans3</name>
+    <type>essay</type>
+    <tans>ta3_essay</tans>
+    <boxsize>15</boxsize>
+    <strictsyntax>0</strictsyntax>
+    <insertstars>0</insertstars>
+    <syntaxhint/>
+    <syntaxattribute>0</syntaxattribute>
+    <forbidwords/>
+    <allowwords/>
+    <forbidfloat>1</forbidfloat>
+    <requirelowestterms>0</requirelowestterms>
+    <checkanswertype>0</checkanswertype>
+    <mustverify>0</mustverify>
+    <showvalidation>0</showvalidation>
+    <options/>
+  </input>
+  <input>
+    <name>ans4</name>
+    <type>essay</type>
+    <tans>ta4_essay</tans>
+    <boxsize>15</boxsize>
+    <strictsyntax>0</strictsyntax>
+    <insertstars>0</insertstars>
+    <syntaxhint/>
+    <syntaxattribute>0</syntaxattribute>
+    <forbidwords/>
+    <allowwords/>
+    <forbidfloat>1</forbidfloat>
+    <requirelowestterms>0</requirelowestterms>
+    <checkanswertype>0</checkanswertype>
+    <mustverify>0</mustverify>
+    <showvalidation>0</showvalidation>
     <options/>
   </input>
   <prt>
@@ -516,8 +592,7 @@ ta2: float(iR2);
 <p>Using the <strong>node-voltage method</strong>, write the KCL equations at each unknown node. Note: Node&nbsp;A is known (\(V_A = V_s\)), so you only need equations at Node&nbsp;B and Node&nbsp;C.</p>
 <p><em>This part is manually graded. Write your equations in the box below.</em></p>
 <p>
-<textarea name="q1v3_partB_essay" rows="10" cols="80" style="width:100%; font-family:monospace;"
-  placeholder="Write your KCL node equations here. Label each equation clearly."></textarea>
+[[input:ans3]] [[validation:ans3]]
 </p>
 
 <hr />
@@ -532,8 +607,7 @@ ta2: float(iR2);
 <p>Verify your answer by checking that KCL is satisfied at Node&nbsp;B. Also, explain why the node-voltage method was chosen for this mixed-source circuit.</p>
 <p><em>This part is manually graded. Write your verification and explanation below.</em></p>
 <p>
-<textarea name="q1v3_partD_essay" rows="8" cols="80" style="width:100%; font-family:monospace;"
-  placeholder="Write your verification and justification here."></textarea>
+[[input:ans4]] [[validation:ans4]]
 </p>
 ]]></text>
   </questiontext>
@@ -592,6 +666,10 @@ ta1: [[1, true, "Node-Voltage method, 2 equations needed"], [2, false, "Node-Vol
 
 /* Part C: numerical answer for V_B in Volts */
 ta2: float(VB);
+
+/* Part B & D: essay teacher answers */
+ta3_essay: "See model answer in general feedback.";
+ta4_essay: "See model answer in general feedback.";
 ]]></text>
   </questionvariables>
   <specificfeedback format="html">
@@ -658,6 +736,42 @@ ta2: float(VB);
     <checkanswertype>0</checkanswertype>
     <mustverify>1</mustverify>
     <showvalidation>3</showvalidation>
+    <options/>
+  </input>
+  <input>
+    <name>ans3</name>
+    <type>essay</type>
+    <tans>ta3_essay</tans>
+    <boxsize>15</boxsize>
+    <strictsyntax>0</strictsyntax>
+    <insertstars>0</insertstars>
+    <syntaxhint/>
+    <syntaxattribute>0</syntaxattribute>
+    <forbidwords/>
+    <allowwords/>
+    <forbidfloat>1</forbidfloat>
+    <requirelowestterms>0</requirelowestterms>
+    <checkanswertype>0</checkanswertype>
+    <mustverify>0</mustverify>
+    <showvalidation>0</showvalidation>
+    <options/>
+  </input>
+  <input>
+    <name>ans4</name>
+    <type>essay</type>
+    <tans>ta4_essay</tans>
+    <boxsize>15</boxsize>
+    <strictsyntax>0</strictsyntax>
+    <insertstars>0</insertstars>
+    <syntaxhint/>
+    <syntaxattribute>0</syntaxattribute>
+    <forbidwords/>
+    <allowwords/>
+    <forbidfloat>1</forbidfloat>
+    <requirelowestterms>0</requirelowestterms>
+    <checkanswertype>0</checkanswertype>
+    <mustverify>0</mustverify>
+    <showvalidation>0</showvalidation>
     <options/>
   </input>
   <prt>
@@ -765,8 +879,7 @@ ta2: float(VB);
 <p>Using the <strong>node-voltage method</strong>, write the KCL equations at each unknown essential node. Note: \(V_A = V_s\) (constrained) and \(V_D = 0\) (reference), so write equations at nodes B and C.</p>
 <p><em>This part is manually graded. Write your equations in the box below.</em></p>
 <p>
-<textarea name="q1v4_partB_essay" rows="10" cols="80" style="width:100%; font-family:monospace;"
-  placeholder="Write your KCL node equations here. Label each equation clearly."></textarea>
+[[input:ans3]] [[validation:ans3]]
 </p>
 
 <hr />
@@ -781,8 +894,7 @@ ta2: float(VB);
 <p>Verify your answer by confirming KCL at nodes B and C. Also, discuss: under what condition would \(V_{BC} = 0\) (balanced bridge)? Is the bridge balanced for this set of values?</p>
 <p><em>This part is manually graded. Write your verification and explanation below.</em></p>
 <p>
-<textarea name="q1v4_partD_essay" rows="8" cols="80" style="width:100%; font-family:monospace;"
-  placeholder="Write your verification and justification here."></textarea>
+[[input:ans4]] [[validation:ans4]]
 </p>
 ]]></text>
   </questiontext>
@@ -851,6 +963,10 @@ ta1: [[1, true, "Node-Voltage method, 2 equations needed"], [2, false, "Node-Vol
 
 /* Part C: numerical answer for V_BC in Volts */
 ta2: float(VBC);
+
+/* Part B & D: essay teacher answers */
+ta3_essay: "See model answer in general feedback.";
+ta4_essay: "See model answer in general feedback.";
 ]]></text>
   </questionvariables>
   <specificfeedback format="html">
@@ -917,6 +1033,42 @@ ta2: float(VBC);
     <checkanswertype>0</checkanswertype>
     <mustverify>1</mustverify>
     <showvalidation>3</showvalidation>
+    <options/>
+  </input>
+  <input>
+    <name>ans3</name>
+    <type>essay</type>
+    <tans>ta3_essay</tans>
+    <boxsize>15</boxsize>
+    <strictsyntax>0</strictsyntax>
+    <insertstars>0</insertstars>
+    <syntaxhint/>
+    <syntaxattribute>0</syntaxattribute>
+    <forbidwords/>
+    <allowwords/>
+    <forbidfloat>1</forbidfloat>
+    <requirelowestterms>0</requirelowestterms>
+    <checkanswertype>0</checkanswertype>
+    <mustverify>0</mustverify>
+    <showvalidation>0</showvalidation>
+    <options/>
+  </input>
+  <input>
+    <name>ans4</name>
+    <type>essay</type>
+    <tans>ta4_essay</tans>
+    <boxsize>15</boxsize>
+    <strictsyntax>0</strictsyntax>
+    <insertstars>0</insertstars>
+    <syntaxhint/>
+    <syntaxattribute>0</syntaxattribute>
+    <forbidwords/>
+    <allowwords/>
+    <forbidfloat>1</forbidfloat>
+    <requirelowestterms>0</requirelowestterms>
+    <checkanswertype>0</checkanswertype>
+    <mustverify>0</mustverify>
+    <showvalidation>0</showvalidation>
     <options/>
   </input>
   <prt>

@@ -39,7 +39,7 @@
 <p>After the switch opens (t &gt; 0), R<sub>2</sub> is disconnected. Draw and describe the equivalent circuit seen by the capacitor.</p>
 <p>In the s-domain, set up the circuit equation with the initial condition v<sub>C</sub>(0) = V<sub>0</sub>.</p>
 <p><strong>Write your s-domain circuit description and equation setup below:</strong></p>
-<textarea rows="6" cols="80" style="width:100%; font-family:monospace;" placeholder="Describe the s-domain equivalent circuit and write the circuit equation."></textarea>
+[[input:ans4]] [[validation:ans4]]
 
 <hr/>
 
@@ -66,7 +66,7 @@
   <li>Check your answer using the initial value theorem: lim<sub>s&rarr;&infin;</sub> s&middot;V<sub>C</sub>(s) should equal v<sub>C</sub>(0<sup>+</sup>).</li>
   <li>Where does the energy come from to charge the capacitor from V<sub>0</sub> to V<sub>s</sub>?</li>
 </ol>
-<textarea rows="8" cols="80" style="width:100%; font-family:monospace;" placeholder="Write your answers to all three parts here."></textarea>
+[[input:ans5]] [[validation:ans5]]
 ]]></text>
   </questiontext>
 
@@ -110,6 +110,8 @@ Vfinal: Vs;
 ta1: V0_rounded;
 ta2: tau_ms;
 ta3: float(Vs);
+ta4_essay: "See model answer in general feedback.";
+ta5_essay: "See model answer in general feedback.";
     </text>
   </questionvariables>
 
@@ -179,6 +181,46 @@ ta3: float(Vs);
     <mustverify>1</mustverify>
     <showvalidation>3</showvalidation>
     <options/>
+  </input>
+
+  <!-- Input: ans4 (Part B - s-domain essay) -->
+  <input>
+    <name>ans4</name>
+    <type>essay</type>
+    <tans>ta4_essay</tans>
+    <boxsize>15</boxsize>
+    <strictsyntax>0</strictsyntax>
+    <insertstars>0</insertstars>
+    <syntaxhint></syntaxhint>
+    <syntaxattribute>0</syntaxattribute>
+    <forbidwords></forbidwords>
+    <allowwords></allowwords>
+    <forbidfloat>1</forbidfloat>
+    <requirelowestterms>0</requirelowestterms>
+    <checkanswertype>0</checkanswertype>
+    <mustverify>0</mustverify>
+    <showvalidation>0</showvalidation>
+    <options></options>
+  </input>
+
+  <!-- Input: ans5 (Part D - interpretation essay) -->
+  <input>
+    <name>ans5</name>
+    <type>essay</type>
+    <tans>ta5_essay</tans>
+    <boxsize>15</boxsize>
+    <strictsyntax>0</strictsyntax>
+    <insertstars>0</insertstars>
+    <syntaxhint></syntaxhint>
+    <syntaxattribute>0</syntaxattribute>
+    <forbidwords></forbidwords>
+    <allowwords></allowwords>
+    <forbidfloat>1</forbidfloat>
+    <requirelowestterms>0</requirelowestterms>
+    <checkanswertype>0</checkanswertype>
+    <mustverify>0</mustverify>
+    <showvalidation>0</showvalidation>
+    <options></options>
   </input>
 
   <!-- PRT1: Initial voltage (Part A, 2 pts) -->
@@ -299,7 +341,7 @@ ta3: float(Vs);
 <p>After the switch opens (t &gt; 0), the source and R<sub>1</sub> are disconnected. The inductor current flows through R<sub>2</sub> only.</p>
 <p>Set up the s-domain circuit with the initial condition i<sub>L</sub>(0) = I<sub>0</sub>.</p>
 <p><strong>Write your s-domain model below:</strong></p>
-<textarea rows="6" cols="80" style="width:100%; font-family:monospace;" placeholder="Describe the s-domain equivalent circuit and write the circuit equation."></textarea>
+[[input:ans4]] [[validation:ans4]]
 
 <hr/>
 
@@ -325,7 +367,7 @@ ta3: float(Vs);
   <li>Where does the energy stored in the inductor go as the current decays?</li>
   <li>What happens to the voltage across R<sub>2</sub> at t = 0<sup>+</sup>? Can it exceed V<sub>s</sub>? Explain.</li>
 </ol>
-<textarea rows="8" cols="80" style="width:100%; font-family:monospace;" placeholder="Write your answers to all three parts here."></textarea>
+[[input:ans5]] [[validation:ans5]]
 ]]></text>
   </questiontext>
 
@@ -370,6 +412,8 @@ Ifinal: 0;
 ta1: I0_rounded;
 ta2: tau_ms_rounded;
 ta3: 0;
+ta4_essay: "See model answer in general feedback.";
+ta5_essay: "See model answer in general feedback.";
     </text>
   </questionvariables>
 
@@ -439,6 +483,46 @@ ta3: 0;
     <mustverify>1</mustverify>
     <showvalidation>3</showvalidation>
     <options/>
+  </input>
+
+  <!-- Input: ans4 (Part B - s-domain essay) -->
+  <input>
+    <name>ans4</name>
+    <type>essay</type>
+    <tans>ta4_essay</tans>
+    <boxsize>15</boxsize>
+    <strictsyntax>0</strictsyntax>
+    <insertstars>0</insertstars>
+    <syntaxhint></syntaxhint>
+    <syntaxattribute>0</syntaxattribute>
+    <forbidwords></forbidwords>
+    <allowwords></allowwords>
+    <forbidfloat>1</forbidfloat>
+    <requirelowestterms>0</requirelowestterms>
+    <checkanswertype>0</checkanswertype>
+    <mustverify>0</mustverify>
+    <showvalidation>0</showvalidation>
+    <options></options>
+  </input>
+
+  <!-- Input: ans5 (Part D - interpretation essay) -->
+  <input>
+    <name>ans5</name>
+    <type>essay</type>
+    <tans>ta5_essay</tans>
+    <boxsize>15</boxsize>
+    <strictsyntax>0</strictsyntax>
+    <insertstars>0</insertstars>
+    <syntaxhint></syntaxhint>
+    <syntaxattribute>0</syntaxattribute>
+    <forbidwords></forbidwords>
+    <allowwords></allowwords>
+    <forbidfloat>1</forbidfloat>
+    <requirelowestterms>0</requirelowestterms>
+    <checkanswertype>0</checkanswertype>
+    <mustverify>0</mustverify>
+    <showvalidation>0</showvalidation>
+    <options></options>
   </input>
 
   <!-- PRT1: Initial current (Part A, 2 pts) -->
@@ -561,7 +645,7 @@ ta3: 0;
 <h4>Part B (3 points) — s-Domain Model Setup</h4>
 <p>Replace the original circuit with its Th&eacute;venin equivalent: V<sub>th</sub> in series with R<sub>th</sub> and C (with initial voltage V<sub>0</sub>).</p>
 <p><strong>Write the s-domain equation below:</strong></p>
-<textarea rows="5" cols="80" style="width:100%; font-family:monospace;" placeholder="Describe the s-domain equivalent circuit and write the circuit equation."></textarea>
+[[input:ans5]] [[validation:ans5]]
 
 <hr/>
 
@@ -585,7 +669,7 @@ ta3: 0;
   <li>Verify your answer: at t = 0<sup>+</sup>, what is v<sub>C</sub>? At t &rarr; &infin;, what is v<sub>C</sub>? Do these match your initial condition and final value?</li>
   <li>How much total energy is dissipated in R<sub>th</sub> during the transient? Express in terms of C, V<sub>0</sub>, and V<sub>th</sub>.</li>
 </ol>
-<textarea rows="8" cols="80" style="width:100%; font-family:monospace;" placeholder="Write your answers to all three parts here."></textarea>
+[[input:ans6]] [[validation:ans6]]
 ]]></text>
   </questiontext>
 
@@ -632,6 +716,8 @@ ta1: Vth_rounded;
 ta2: Rth_rounded;
 ta3: tau_ms_rounded;
 ta4: Vth_rounded;
+ta5_essay: "See model answer in general feedback.";
+ta6_essay: "See model answer in general feedback.";
     </text>
   </questionvariables>
 
@@ -721,6 +807,46 @@ ta4: Vth_rounded;
     <mustverify>1</mustverify>
     <showvalidation>3</showvalidation>
     <options/>
+  </input>
+
+  <!-- Input: ans5 (Part B - s-domain essay) -->
+  <input>
+    <name>ans5</name>
+    <type>essay</type>
+    <tans>ta5_essay</tans>
+    <boxsize>15</boxsize>
+    <strictsyntax>0</strictsyntax>
+    <insertstars>0</insertstars>
+    <syntaxhint></syntaxhint>
+    <syntaxattribute>0</syntaxattribute>
+    <forbidwords></forbidwords>
+    <allowwords></allowwords>
+    <forbidfloat>1</forbidfloat>
+    <requirelowestterms>0</requirelowestterms>
+    <checkanswertype>0</checkanswertype>
+    <mustverify>0</mustverify>
+    <showvalidation>0</showvalidation>
+    <options></options>
+  </input>
+
+  <!-- Input: ans6 (Part D - interpretation essay) -->
+  <input>
+    <name>ans6</name>
+    <type>essay</type>
+    <tans>ta6_essay</tans>
+    <boxsize>15</boxsize>
+    <strictsyntax>0</strictsyntax>
+    <insertstars>0</insertstars>
+    <syntaxhint></syntaxhint>
+    <syntaxattribute>0</syntaxattribute>
+    <forbidwords></forbidwords>
+    <allowwords></allowwords>
+    <forbidfloat>1</forbidfloat>
+    <requirelowestterms>0</requirelowestterms>
+    <checkanswertype>0</checkanswertype>
+    <mustverify>0</mustverify>
+    <showvalidation>0</showvalidation>
+    <options></options>
   </input>
 
   <!-- PRT1: Vth (Part A, 1 pt) -->

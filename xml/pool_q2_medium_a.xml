@@ -66,8 +66,7 @@ Faraday's Law.  In your answer, discuss:</p>
         Faraday EMF term.</li>
     <li>What assumptions (lumped-circuit) make KVL valid here.</li>
 </ul>
-<p><textarea name="essayC" rows="10" cols="80"
-    placeholder="Write your explanation here (4 pts)..."></textarea></p>
+<p>[[input:ansC]] [[validation:ansC]]</p>
 
 <hr />
 
@@ -90,8 +89,7 @@ correct calculation.  Specifically address:</p>
     <li>What is the correct formula and the correct numerical result?</li>
     <li>Why does zero voltage across the inductor <em>not</em> imply zero stored energy?</li>
 </ul>
-<p><textarea name="essayD" rows="10" cols="80"
-    placeholder="Write your debugging analysis here (3 pts)..."></textarea></p>
+<p>[[input:ansD]] [[validation:ansD]]</p>
 ]]></text>
     </questiontext>
     <generalfeedback format="html">
@@ -158,6 +156,10 @@ taB : E_mJ;
 
 /* Part A: inductor v-i relationship, correct answer is option 1 */
 taA: [[1, true, "v = L di/dt (voltage proportional to rate of change of current)"], [2, false, "v = (1/L) integral of i dt (voltage proportional to integral of current)"], [3, false, "v = L * i (voltage proportional to current)"], [4, false, "v = L / i (voltage inversely proportional to current)"]];
+
+/* Teacher answers for essay parts */
+taC: "See model answer in general feedback.";
+taD: "See model answer in general feedback.";
 ]]></text>
     </questionvariables>
     <specificfeedback format="html">
@@ -228,6 +230,42 @@ connection, and debug an incorrect student solution.</p>
         <checkanswertype>0</checkanswertype>
         <mustverify>1</mustverify>
         <showvalidation>1</showvalidation>
+        <options></options>
+    </input>
+    <input>
+        <name>ansC</name>
+        <type>essay</type>
+        <tans>taC</tans>
+        <boxsize>15</boxsize>
+        <strictsyntax>0</strictsyntax>
+        <insertstars>0</insertstars>
+        <syntaxhint></syntaxhint>
+        <syntaxattribute>0</syntaxattribute>
+        <forbidwords></forbidwords>
+        <allowwords></allowwords>
+        <forbidfloat>1</forbidfloat>
+        <requirelowestterms>0</requirelowestterms>
+        <checkanswertype>0</checkanswertype>
+        <mustverify>0</mustverify>
+        <showvalidation>0</showvalidation>
+        <options></options>
+    </input>
+    <input>
+        <name>ansD</name>
+        <type>essay</type>
+        <tans>taD</tans>
+        <boxsize>15</boxsize>
+        <strictsyntax>0</strictsyntax>
+        <insertstars>0</insertstars>
+        <syntaxhint></syntaxhint>
+        <syntaxattribute>0</syntaxattribute>
+        <forbidwords></forbidwords>
+        <allowwords></allowwords>
+        <forbidfloat>1</forbidfloat>
+        <requirelowestterms>0</requirelowestterms>
+        <checkanswertype>0</checkanswertype>
+        <mustverify>0</mustverify>
+        <showvalidation>0</showvalidation>
         <options></options>
     </input>
     <prt>
@@ -371,8 +409,7 @@ In your answer, discuss:</p>
     <li>How this applies at the node connecting R and C in this circuit
         (the current through R equals the current into C).</li>
 </ul>
-<p><textarea name="essayC" rows="10" cols="80"
-    placeholder="Write your explanation here (4 pts)..."></textarea></p>
+<p>[[input:ansC]] [[validation:ansC]]</p>
 
 <hr />
 
@@ -395,8 +432,7 @@ then calculate:
 
 <p><strong>Are both approaches correct?</strong>  Explain <em>why</em> they give the same
 result, and discuss under what general principle this equivalence holds.</p>
-<p><textarea name="essayD" rows="10" cols="80"
-    placeholder="Write your comparison here (3 pts)..."></textarea></p>
+<p>[[input:ansD]] [[validation:ansD]]</p>
 ]]></text>
     </questiontext>
     <generalfeedback format="html">
@@ -463,6 +499,10 @@ taB : E_mJ;
 
 /* Part A: capacitor energy formula, correct answer is option 1 */
 taA: [[1, true, "E = (1/2) C V^2 (energy proportional to capacitance and voltage squared)"], [2, false, "E = (1/2) C I^2 (energy proportional to capacitance and current squared)"], [3, false, "E = C V (energy proportional to capacitance times voltage)"], [4, false, "E = (1/2) V^2 / C (energy inversely proportional to capacitance)"]];
+
+/* Teacher answers for essay parts */
+taC: "See model answer in general feedback.";
+taD: "See model answer in general feedback.";
 ]]></text>
     </questionvariables>
     <specificfeedback format="html">
@@ -533,6 +573,42 @@ conservation connection, and compare two energy calculation approaches.</p>
         <checkanswertype>0</checkanswertype>
         <mustverify>1</mustverify>
         <showvalidation>1</showvalidation>
+        <options></options>
+    </input>
+    <input>
+        <name>ansC</name>
+        <type>essay</type>
+        <tans>taC</tans>
+        <boxsize>15</boxsize>
+        <strictsyntax>0</strictsyntax>
+        <insertstars>0</insertstars>
+        <syntaxhint></syntaxhint>
+        <syntaxattribute>0</syntaxattribute>
+        <forbidwords></forbidwords>
+        <allowwords></allowwords>
+        <forbidfloat>1</forbidfloat>
+        <requirelowestterms>0</requirelowestterms>
+        <checkanswertype>0</checkanswertype>
+        <mustverify>0</mustverify>
+        <showvalidation>0</showvalidation>
+        <options></options>
+    </input>
+    <input>
+        <name>ansD</name>
+        <type>essay</type>
+        <tans>taD</tans>
+        <boxsize>15</boxsize>
+        <strictsyntax>0</strictsyntax>
+        <insertstars>0</insertstars>
+        <syntaxhint></syntaxhint>
+        <syntaxattribute>0</syntaxattribute>
+        <forbidwords></forbidwords>
+        <allowwords></allowwords>
+        <forbidfloat>1</forbidfloat>
+        <requirelowestterms>0</requirelowestterms>
+        <checkanswertype>0</checkanswertype>
+        <mustverify>0</mustverify>
+        <showvalidation>0</showvalidation>
         <options></options>
     </input>
     <prt>
@@ -690,8 +766,7 @@ In your answer, discuss:</p>
     <li>What happens to this energy when the current decreases
         (Segment 3) — where does the energy go?</li>
 </ul>
-<p><textarea name="essayC" rows="10" cols="80"
-    placeholder="Write your explanation here (4 pts)..."></textarea></p>
+<p>[[input:ansC]] [[validation:ansC]]</p>
 
 <hr />
 
@@ -717,8 +792,7 @@ correct result.  Specifically address:</p>
         this mistake.</li>
     <li>Compute the correct energy value.</li>
 </ul>
-<p><textarea name="essayD" rows="10" cols="80"
-    placeholder="Write your debugging analysis here (3 pts)..."></textarea></p>
+<p>[[input:ansD]] [[validation:ansD]]</p>
 ]]></text>
     </questiontext>
     <generalfeedback format="html">
@@ -809,6 +883,10 @@ taB : E_mJ;
 
 /* Part A: which segment has highest |v_L|, correct answer is max_seg (1 or 3) */
 taA: [[1, is(max_seg = 1), "Segment 1 (ramp up from 0 to Ipeak)"], [2, false, "Segment 2 (constant at Ipeak)"], [3, is(max_seg = 3), "Segment 3 (ramp down from Ipeak to 0)"]];
+
+/* Teacher answers for essay parts */
+taC: "See model answer in general feedback.";
+taD: "See model answer in general feedback.";
 ]]></text>
     </questionvariables>
     <specificfeedback format="html">
@@ -880,6 +958,42 @@ confusion error.</p>
         <checkanswertype>0</checkanswertype>
         <mustverify>1</mustverify>
         <showvalidation>1</showvalidation>
+        <options></options>
+    </input>
+    <input>
+        <name>ansC</name>
+        <type>essay</type>
+        <tans>taC</tans>
+        <boxsize>15</boxsize>
+        <strictsyntax>0</strictsyntax>
+        <insertstars>0</insertstars>
+        <syntaxhint></syntaxhint>
+        <syntaxattribute>0</syntaxattribute>
+        <forbidwords></forbidwords>
+        <allowwords></allowwords>
+        <forbidfloat>1</forbidfloat>
+        <requirelowestterms>0</requirelowestterms>
+        <checkanswertype>0</checkanswertype>
+        <mustverify>0</mustverify>
+        <showvalidation>0</showvalidation>
+        <options></options>
+    </input>
+    <input>
+        <name>ansD</name>
+        <type>essay</type>
+        <tans>taD</tans>
+        <boxsize>15</boxsize>
+        <strictsyntax>0</strictsyntax>
+        <insertstars>0</insertstars>
+        <syntaxhint></syntaxhint>
+        <syntaxattribute>0</syntaxattribute>
+        <forbidwords></forbidwords>
+        <allowwords></allowwords>
+        <forbidfloat>1</forbidfloat>
+        <requirelowestterms>0</requirelowestterms>
+        <checkanswertype>0</checkanswertype>
+        <mustverify>0</mustverify>
+        <showvalidation>0</showvalidation>
         <options></options>
     </input>
     <prt>
@@ -1030,8 +1144,7 @@ conservation.  In your answer, discuss:</p>
     <li>Why this is consistent with the idea that charge flowing into the
         node must equal the total charge flowing out to both capacitors.</li>
 </ul>
-<p><textarea name="essayC" rows="10" cols="80"
-    placeholder="Write your explanation here (4 pts)..."></textarea></p>
+<p>[[input:ansC]] [[validation:ansC]]</p>
 
 <hr />
 
@@ -1067,8 +1180,7 @@ and add:</p>
     <li>Would this equivalence still hold if the capacitors were in
         <em>series</em> instead of parallel?  Briefly justify.</li>
 </ul>
-<p><textarea name="essayD" rows="10" cols="80"
-    placeholder="Write your comparison here (3 pts)..."></textarea></p>
+<p>[[input:ansD]] [[validation:ansD]]</p>
 ]]></text>
     </questiontext>
     <generalfeedback format="html">
@@ -1149,6 +1261,10 @@ taB : E_mJ;
 
 /* Part A: parallel capacitor combination, correct answer is option 1 */
 taA: [[1, true, "C_total = C1 + C2 (capacitances add in parallel)"], [2, false, "1/C_total = 1/C1 + 1/C2 (reciprocals add in parallel)"], [3, false, "C_total = C1 * C2 (capacitances multiply in parallel)"], [4, false, "C_total = C1*C2/(C1+C2) (product over sum in parallel)"]];
+
+/* Teacher answers for essay parts */
+taC: "See model answer in general feedback.";
+taD: "See model answer in general feedback.";
 ]]></text>
     </questionvariables>
     <specificfeedback format="html">
@@ -1220,6 +1336,42 @@ approaches to energy calculation.</p>
         <checkanswertype>0</checkanswertype>
         <mustverify>1</mustverify>
         <showvalidation>1</showvalidation>
+        <options></options>
+    </input>
+    <input>
+        <name>ansC</name>
+        <type>essay</type>
+        <tans>taC</tans>
+        <boxsize>15</boxsize>
+        <strictsyntax>0</strictsyntax>
+        <insertstars>0</insertstars>
+        <syntaxhint></syntaxhint>
+        <syntaxattribute>0</syntaxattribute>
+        <forbidwords></forbidwords>
+        <allowwords></allowwords>
+        <forbidfloat>1</forbidfloat>
+        <requirelowestterms>0</requirelowestterms>
+        <checkanswertype>0</checkanswertype>
+        <mustverify>0</mustverify>
+        <showvalidation>0</showvalidation>
+        <options></options>
+    </input>
+    <input>
+        <name>ansD</name>
+        <type>essay</type>
+        <tans>taD</tans>
+        <boxsize>15</boxsize>
+        <strictsyntax>0</strictsyntax>
+        <insertstars>0</insertstars>
+        <syntaxhint></syntaxhint>
+        <syntaxattribute>0</syntaxattribute>
+        <forbidwords></forbidwords>
+        <allowwords></allowwords>
+        <forbidfloat>1</forbidfloat>
+        <requirelowestterms>0</requirelowestterms>
+        <checkanswertype>0</checkanswertype>
+        <mustverify>0</mustverify>
+        <showvalidation>0</showvalidation>
         <options></options>
     </input>
     <prt>
