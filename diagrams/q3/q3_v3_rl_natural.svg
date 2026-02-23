@@ -1,0 +1,66 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 420" preserveAspectRatio="xMidYMid meet" role="img" aria-label="Q3 Variant 3: RL natural response circuit with inductor initial current">
+  <title>Q3-V3: RL Natural Response — Laplace Domain</title>
+  <style>
+    text { font-family: 'Segoe UI', Arial, Helvetica, sans-serif; }
+    .title { font-size: 18px; font-weight: bold; fill: #222; }
+    .comp-label { font-size: 16px; font-weight: bold; fill: #0055aa; }
+    .annotation { font-size: 14px; fill: #666; }
+    .polarity { font-size: 14px; fill: #333; }
+    .wire { stroke: #333; stroke-width: 2.5; fill: none; }
+    .component { stroke: #333; stroke-width: 2.5; fill: none; }
+    .ref-dir { stroke: #cc0000; stroke-width: 1.8; fill: none; }
+    .find-text { font-size: 16px; fill: #cc0000; font-weight: bold; }
+    .info-text { font-size: 14px; fill: #0055aa; font-style: italic; }
+    .sdomain { font-size: 14px; fill: #006600; font-weight: bold; }
+    .ic-text { font-size: 15px; fill: #8B0000; font-weight: bold; }
+  </style>
+  <defs>
+    <marker id="cur-q3v3" markerWidth="8" markerHeight="6" refX="8" refY="3" orient="auto">
+      <polygon points="0 0, 8 3, 0 6" fill="#cc0000"/>
+    </marker>
+  </defs>
+
+  <text x="300" y="28" text-anchor="middle" class="title">Q3-V3: RL Natural Response (Laplace)</text>
+
+  <text x="300" y="58" text-anchor="middle" class="annotation">No source. Inductor releases stored energy through R.</text>
+
+  <!-- Simple loop: R on top, L on right -->
+  <!-- Top rail -->
+  <line x1="120" y1="110" x2="200" y2="110" class="wire"/>
+  <rect x="200" y="100" width="120" height="20" class="component" rx="3"/>
+  <text x="260" y="92" text-anchor="middle" class="comp-label">R</text>
+  <line x1="320" y1="110" x2="440" y2="110" class="wire"/>
+
+  <!-- Right side: inductor -->
+  <line x1="440" y1="110" x2="440" y2="130" class="wire"/>
+  <path d="M 440,130 C 440,140 455,140 455,150 C 455,160 440,160 440,170 C 440,180 455,180 455,190 C 455,200 440,200 440,210 C 440,220 455,220 455,230" class="component" fill="none"/>
+  <text x="470" y="185" class="comp-label">L</text>
+  <line x1="440" y1="230" x2="440" y2="270" class="wire"/>
+
+  <!-- Bottom rail -->
+  <line x1="120" y1="270" x2="440" y2="270" class="wire"/>
+
+  <!-- Left side (wire only, no source) -->
+  <line x1="120" y1="110" x2="120" y2="270" class="wire"/>
+
+  <!-- Current direction arrow -->
+  <line x1="150" y1="100" x2="195" y2="100" class="ref-dir" marker-end="url(#cur-q3v3)"/>
+  <text x="173" y="92" text-anchor="middle" style="font-size:14px; fill:#cc0000; font-weight:bold;">i(t)</text>
+
+  <!-- Initial condition annotation -->
+  <rect x="130" y="295" width="200" height="35" rx="6" fill="#fff0f0" stroke="#8B0000" stroke-width="1.2"/>
+  <text x="230" y="318" text-anchor="middle" class="ic-text">i(0) = I_0 (given)</text>
+
+  <!-- Voltage polarity across R -->
+  <text x="220" y="92" class="polarity">+</text>
+  <text x="300" y="92" class="polarity">&minus;</text>
+  <text x="260" y="145" text-anchor="middle" style="font-size:14px; fill:#cc0000; font-weight:bold;">v_R</text>
+
+  <!-- s-domain annotations -->
+  <rect x="40" y="340" width="520" height="48" rx="8" fill="#f0f8f0" stroke="#006600" stroke-width="1.5"/>
+  <text x="300" y="360" text-anchor="middle" class="sdomain">s-Domain: I(s) = I_0 / (s + R/L), &tau; = L/R</text>
+  <text x="300" y="378" text-anchor="middle" class="sdomain">i(t) = I_0 &middot; e^(&minus;Rt/L) &middot; u(t)</text>
+
+  <!-- Find instruction -->
+  <text x="300" y="410" text-anchor="middle" class="find-text">Find: I(s) and time constant &tau; = L/R</text>
+</svg>

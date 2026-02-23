@@ -1,0 +1,1008 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<quiz>
+
+<!-- ============================================================ -->
+<!-- Q1-V1: Two Essential Nodes (Node-Voltage Method)              -->
+<!-- ============================================================ -->
+<question type="stack">
+  <name>
+    <text>Q1-V1 Two Node Analysis (Easy, 12 pts)</text>
+  </name>
+  <questiontext format="html">
+    <text><![CDATA[
+<h3>Q1 &mdash; DC Resistive Circuit Analysis (Variant 1: Two Essential Nodes)</h3>
+<p><strong>Total: 12 points | Estimated time: ~20 minutes</strong></p>
+
+<p>Consider the circuit shown below. The circuit contains a voltage source \(V_s = {@Vs@}\;\text{V}\), a current source \(I_s = {@Is@}\;\text{A}\), and three resistors: \(R_1 = {@R1@}\;\text{k}\Omega\), \(R_2 = {@R2@}\;\text{k}\Omega\), and \(R_3 = {@R3@}\;\text{k}\Omega\).</p>
+
+<p>The voltage source \(V_s\) is connected on the left with \(R_1\) (horizontal) leading to Node&nbsp;A. From Node&nbsp;A, \(R_2\) connects vertically down to ground, and \(R_3\) also connects vertically down to ground. The current source \(I_s\) feeds into Node&nbsp;A (arrow pointing into the node).</p>
+
+<p><img src="@@PLUGINFILE@@/q1_v1_two_node.svg" alt="Two essential node circuit with Vs, R1, R2, R3, and Is" width="500" /></p>
+
+<hr />
+
+<h4>Part A (2 pts) &mdash; Method Selection</h4>
+<p>Which analysis method is <strong>most efficient</strong> for this circuit, and how many independent equations are needed?</p>
+<p>Select your answer: [[input:ans1]] [[validation:ans1]] [[feedback:prt1]]</p>
+
+<hr />
+
+<h4>Part B (3 pts) &mdash; Write the Systematic Equations (Essay)</h4>
+<p>Using the <strong>node-voltage method</strong>, write the KCL equation(s) at each essential node (excluding the reference/ground node). Show your work clearly, labelling each equation.</p>
+<p><em>This part is manually graded. Write your equations in the box below.</em></p>
+<p>
+<textarea name="q1v1_partB_essay" rows="8" cols="80" style="width:100%; font-family:monospace;"
+  placeholder="Write your KCL node equation(s) here. For example:
+At Node A: (V_A - Vs)/R1 + V_A/R2 + V_A/R3 = Is
+..."></textarea>
+</p>
+
+<hr />
+
+<h4>Part C (4 pts) &mdash; Numerical Solution</h4>
+<p>Solve for the node voltage \(V_A\) (in Volts). Enter your answer to at least two decimal places.</p>
+<p>\(V_A = \) [[input:ans2]] V [[validation:ans2]] [[feedback:prt2]]</p>
+
+<hr />
+
+<h4>Part D (3 pts) &mdash; Verification &amp; Method Justification (Essay)</h4>
+<p>Verify your answer by checking that KCL is satisfied at Node&nbsp;A. Also, briefly explain why the node-voltage method is the most efficient choice for this circuit (consider the number of essential nodes vs. meshes).</p>
+<p><em>This part is manually graded. Write your verification and explanation below.</em></p>
+<p>
+<textarea name="q1v1_partD_essay" rows="8" cols="80" style="width:100%; font-family:monospace;"
+  placeholder="1. Verify KCL at Node A using your computed V_A.
+2. Explain why node-voltage is preferred here (e.g., fewer equations, presence of current source, etc.)"></textarea>
+</p>
+]]></text>
+  </questiontext>
+  <generalfeedback format="html">
+    <text><![CDATA[
+<h4>Solution for Variant 1 (Two Essential Nodes)</h4>
+<p><strong>Part A:</strong> The node-voltage method is most efficient. There is 1 essential node (Node&nbsp;A) besides the reference, so only <strong>1 equation</strong> is needed.</p>
+<p><strong>Part B:</strong> KCL at Node A (currents leaving = currents entering):</p>
+<p>\[\frac{V_A - V_s}{R_1} + \frac{V_A}{R_2} + \frac{V_A}{R_3} = I_s\]</p>
+<p><strong>Part C:</strong> Solving for \(V_A\):</p>
+<p>\[V_A \left(\frac{1}{R_1} + \frac{1}{R_2} + \frac{1}{R_3}\right) = \frac{V_s}{R_1} + I_s\]</p>
+<p>\[V_A = \frac{\frac{V_s}{R_1} + I_s}{\frac{1}{R_1} + \frac{1}{R_2} + \frac{1}{R_3}} = {@ta2@}\;\text{V}\]</p>
+<p><strong>Part D:</strong> Verification: substitute \(V_A\) back into KCL to confirm the sum of currents at Node&nbsp;A equals zero. The node-voltage method is preferred because there is only 1 unknown node voltage (1 equation), whereas mesh analysis would require 2 mesh equations.</p>
+]]></text>
+  </generalfeedback>
+  <defaultgrade>12.0000000</defaultgrade>
+  <penalty>0.1000000</penalty>
+  <hidden>0</hidden>
+  <idnumber/>
+  <stackversion>
+    <text>2024032101</text>
+  </stackversion>
+  <questionvariables>
+    <text><![CDATA[/* Variant 1: Two Essential Nodes */
+/* Randomize component values */
+Vs: rand_with_step(8, 16, 2);
+Is: rand_with_step(1, 4, 1);
+R1: rand_with_step(2, 4, 1);
+R2: rand_with_step(3, 6, 1);
+R3: rand_with_step(4, 8, 2);
+
+/* Convert resistances to Ohms for calculation (kOhm * 1000) */
+R1_ohm: R1 * 1000;
+R2_ohm: R2 * 1000;
+R3_ohm: R3 * 1000;
+
+/* Node-voltage equation at Node A:
+   (V_A - Vs)/R1_ohm + V_A/R2_ohm + V_A/R3_ohm = Is
+   V_A * (1/R1_ohm + 1/R2_ohm + 1/R3_ohm) = Vs/R1_ohm + Is
+*/
+G_total: 1/R1_ohm + 1/R2_ohm + 1/R3_ohm;
+I_total: Vs/R1_ohm + Is;
+VA: I_total / G_total;
+
+/* Teacher answers */
+/* Part A: node-voltage method, 1 equation */
+ta1: [[1, "Node-Voltage method; 1 equation needed", true], [2, "Node-Voltage method; 2 equations needed", false], [3, "Mesh-Current method; 1 equation needed", false], [4, "Mesh-Current method; 2 equations needed", false]];
+
+/* Part C: numerical answer for V_A in Volts */
+ta2: float(VA);
+]]></text>
+  </questionvariables>
+  <specificfeedback format="html">
+    <text/>
+  </specificfeedback>
+  <questionnote>
+    <text>V1: Vs={@Vs@}V, Is={@Is@}A, R1={@R1@}kOhm, R2={@R2@}kOhm, R3={@R3@}kOhm, V_A={@ta2@}V</text>
+  </questionnote>
+  <questiondescription format="html">
+    <text><![CDATA[<p>DC Resistive Circuit: Two Essential Nodes — Node-Voltage Method (Easy, 12 pts)</p>]]></text>
+  </questiondescription>
+  <questionsimplify>1</questionsimplify>
+  <assumepositive>0</assumepositive>
+  <assumereal>0</assumereal>
+  <prtcorrect format="html">
+    <text><![CDATA[<span style="font-size: 1.5em; color:green;"><i class="fa fa-check"></i></span> Correct answer, well done!]]></text>
+  </prtcorrect>
+  <prtpartiallycorrect format="html">
+    <text><![CDATA[<span style="font-size: 1.5em; color:orange;"><i class="fa fa-adjust"></i></span> Your answer is partially correct.]]></text>
+  </prtpartiallycorrect>
+  <prtincorrect format="html">
+    <text><![CDATA[<span style="font-size: 1.5em; color:red;"><i class="fa fa-times"></i></span> Incorrect answer.]]></text>
+  </prtincorrect>
+  <decimals>.</decimals>
+  <scientificnotation>*10</scientificnotation>
+  <multiplicationsign>dot</multiplicationsign>
+  <sqrtsign>1</sqrtsign>
+  <complexno>i</complexno>
+  <inversetrig>cos-1</inversetrig>
+  <logicsymbol>lang</logicsymbol>
+  <matrixparens>[</matrixparens>
+  <variantsselectionseed/>
+  <input>
+    <name>ans1</name>
+    <type>dropdown</type>
+    <tans>ta1</tans>
+    <boxsize>30</boxsize>
+    <strictsyntax>1</strictsyntax>
+    <insertstars>0</insertstars>
+    <syntaxhint/>
+    <syntaxattribute>0</syntaxattribute>
+    <forbidwords/>
+    <allowwords/>
+    <forbidfloat>1</forbidfloat>
+    <requirelowestterms>0</requirelowestterms>
+    <checkanswertype>0</checkanswertype>
+    <mustverify>0</mustverify>
+    <showvalidation>0</showvalidation>
+    <options/>
+  </input>
+  <input>
+    <name>ans2</name>
+    <type>numerical</type>
+    <tans>ta2</tans>
+    <boxsize>15</boxsize>
+    <strictsyntax>1</strictsyntax>
+    <insertstars>0</insertstars>
+    <syntaxhint/>
+    <syntaxattribute>0</syntaxattribute>
+    <forbidwords/>
+    <allowwords/>
+    <forbidfloat>0</forbidfloat>
+    <requirelowestterms>0</requirelowestterms>
+    <checkanswertype>0</checkanswertype>
+    <mustverify>1</mustverify>
+    <showvalidation>3</showvalidation>
+    <options/>
+  </input>
+  <prt>
+    <name>prt1</name>
+    <value>2.0000000</value>
+    <autosimplify>1</autosimplify>
+    <feedbackstyle>1</feedbackstyle>
+    <node>
+      <name>0</name>
+      <description>Check Part A MCQ answer</description>
+      <answertest>AlgEquiv</answertest>
+      <sans>ans1</sans>
+      <tans>1</tans>
+      <testoptions/>
+      <quiet>0</quiet>
+      <truescoremode>=</truescoremode>
+      <truescore>1.0000000</truescore>
+      <truepenalty/>
+      <truenextnode>-1</truenextnode>
+      <trueanswernote>prt1-1-T</trueanswernote>
+      <truefeedback format="html">
+        <text><![CDATA[<p>Correct! The node-voltage method is most efficient here with only 1 equation needed (1 essential node besides the reference).</p>]]></text>
+      </truefeedback>
+      <falsescoremode>=</falsescoremode>
+      <falsescore>0.0000000</falsescore>
+      <falsepenalty/>
+      <falsenextnode>-1</falsenextnode>
+      <falseanswernote>prt1-1-F</falseanswernote>
+      <falsefeedback format="html">
+        <text><![CDATA[<p>Incorrect. This circuit has 2 essential nodes (Node A and the reference ground), giving 1 node-voltage equation. The node-voltage method is the most efficient approach.</p>]]></text>
+      </falsefeedback>
+    </node>
+  </prt>
+  <prt>
+    <name>prt2</name>
+    <value>4.0000000</value>
+    <autosimplify>1</autosimplify>
+    <feedbackstyle>1</feedbackstyle>
+    <node>
+      <name>0</name>
+      <description>Check Part C numerical answer for V_A</description>
+      <answertest>NumAbsolute</answertest>
+      <sans>ans2</sans>
+      <tans>ta2</tans>
+      <testoptions>0.01</testoptions>
+      <quiet>0</quiet>
+      <truescoremode>=</truescoremode>
+      <truescore>1.0000000</truescore>
+      <truepenalty/>
+      <truenextnode>-1</truenextnode>
+      <trueanswernote>prt2-1-T</trueanswernote>
+      <truefeedback format="html">
+        <text><![CDATA[<p>Correct! Your value of \(V_A\) matches the expected solution.</p>]]></text>
+      </truefeedback>
+      <falsescoremode>=</falsescoremode>
+      <falsescore>0.0000000</falsescore>
+      <falsepenalty/>
+      <falsenextnode>-1</falsenextnode>
+      <falseanswernote>prt2-1-F</falseanswernote>
+      <falsefeedback format="html">
+        <text><![CDATA[<p>Incorrect. The correct value is \(V_A = {@ta2@}\;\text{V}\). Check your KCL equation at Node A and make sure you converted kOhm to Ohm correctly.</p>]]></text>
+      </falsefeedback>
+    </node>
+  </prt>
+  <deployedseed>12345</deployedseed>
+  <deployedseed>23456</deployedseed>
+  <deployedseed>34567</deployedseed>
+  <deployedseed>45678</deployedseed>
+</question>
+
+<!-- ============================================================ -->
+<!-- Q1-V2: Two Meshes (Mesh-Current Method)                       -->
+<!-- ============================================================ -->
+<question type="stack">
+  <name>
+    <text>Q1-V2 Two Mesh Analysis (Easy, 12 pts)</text>
+  </name>
+  <questiontext format="html">
+    <text><![CDATA[
+<h3>Q1 &mdash; DC Resistive Circuit Analysis (Variant 2: Two Meshes)</h3>
+<p><strong>Total: 12 points | Estimated time: ~20 minutes</strong></p>
+
+<p>Consider the circuit shown below. The circuit contains two voltage sources \(V_{s1} = {@Vs1@}\;\text{V}\) and \(V_{s2} = {@Vs2@}\;\text{V}\), and four resistors: \(R_1 = {@R1@}\;\text{k}\Omega\) (top-left branch), \(R_2 = {@R2@}\;\text{k}\Omega\) (center shared branch), \(R_3 = {@R3@}\;\text{k}\Omega\) (top-right branch), and \(R_4 = {@R4@}\;\text{k}\Omega\) (bottom-left branch).</p>
+
+<p>\(V_{s1}\) is in the left loop and \(V_{s2}\) is in the right loop. Two clockwise mesh currents \(i_1\) (left mesh) and \(i_2\) (right mesh) are defined. \(R_2\) is the shared branch between the two meshes.</p>
+
+<p><img src="@@PLUGINFILE@@/q1_v2_two_mesh.svg" alt="Two mesh circuit with Vs1, Vs2, R1, R2, R3, R4" width="500" /></p>
+
+<hr />
+
+<h4>Part A (2 pts) &mdash; Method Selection</h4>
+<p>Which analysis method is <strong>most efficient</strong> for this circuit, and how many independent equations are needed?</p>
+<p>Select your answer: [[input:ans1]] [[validation:ans1]] [[feedback:prt1]]</p>
+
+<hr />
+
+<h4>Part B (3 pts) &mdash; Write the Systematic Equations (Essay)</h4>
+<p>Using the <strong>mesh-current method</strong>, write the KVL equation for each mesh. Define mesh currents \(i_1\) (left, CW) and \(i_2\) (right, CW). Show your work clearly.</p>
+<p><em>This part is manually graded. Write your equations in the box below.</em></p>
+<p>
+<textarea name="q1v2_partB_essay" rows="8" cols="80" style="width:100%; font-family:monospace;"
+  placeholder="Write your KVL mesh equations here. For example:
+Mesh 1: -Vs1 + R1*i1 + R2*(i1-i2) + R4*i1 = 0
+Mesh 2: R3*i2 + Vs2 + R2*(i2-i1) = 0
+..."></textarea>
+</p>
+
+<hr />
+
+<h4>Part C (4 pts) &mdash; Numerical Solution</h4>
+<p>Find the current through \(R_2\) (in mA). The current through \(R_2\) is defined as \(i_{R2} = i_1 - i_2\) (downward through \(R_2\)). Enter your answer to at least two decimal places.</p>
+<p>\(i_{R2} = \) [[input:ans2]] mA [[validation:ans2]] [[feedback:prt2]]</p>
+
+<hr />
+
+<h4>Part D (3 pts) &mdash; Verification &amp; Method Justification (Essay)</h4>
+<p>Verify your answer by checking that KVL holds around both meshes using your computed mesh currents. Also, briefly explain why the mesh-current method is the most efficient choice for this circuit.</p>
+<p><em>This part is manually graded. Write your verification and explanation below.</em></p>
+<p>
+<textarea name="q1v2_partD_essay" rows="8" cols="80" style="width:100%; font-family:monospace;"
+  placeholder="1. Verify KVL around each mesh using your computed i1 and i2.
+2. Explain why mesh-current is preferred (e.g., only voltage sources present, 2 meshes vs. more nodes, etc.)"></textarea>
+</p>
+]]></text>
+  </questiontext>
+  <generalfeedback format="html">
+    <text><![CDATA[
+<h4>Solution for Variant 2 (Two Meshes)</h4>
+<p><strong>Part A:</strong> The mesh-current method is most efficient. There are 2 meshes, so <strong>2 equations</strong> are needed.</p>
+<p><strong>Part B:</strong> KVL equations (CW mesh currents):</p>
+<p>Mesh 1: \(-V_{s1} + R_1 \cdot i_1 + R_2 \cdot (i_1 - i_2) + R_4 \cdot i_1 = 0\)</p>
+<p>Mesh 2: \(R_3 \cdot i_2 + V_{s2} + R_2 \cdot (i_2 - i_1) = 0\)</p>
+<p><strong>Part C:</strong></p>
+<p>Rewriting in matrix form and solving:</p>
+<p>Mesh 1: \((R_1 + R_2 + R_4) \cdot i_1 - R_2 \cdot i_2 = V_{s1}\)</p>
+<p>Mesh 2: \(-R_2 \cdot i_1 + (R_2 + R_3) \cdot i_2 = -V_{s2}\)</p>
+<p>\(i_{R2} = i_1 - i_2 = {@ta2@}\;\text{mA}\)</p>
+<p><strong>Part D:</strong> Verify by substituting \(i_1\) and \(i_2\) back into both KVL equations. Mesh-current is preferred because the circuit has only voltage sources and exactly 2 independent meshes, giving a clean system of 2 equations.</p>
+]]></text>
+  </generalfeedback>
+  <defaultgrade>12.0000000</defaultgrade>
+  <penalty>0.1000000</penalty>
+  <hidden>0</hidden>
+  <idnumber/>
+  <stackversion>
+    <text>2024032101</text>
+  </stackversion>
+  <questionvariables>
+    <text><![CDATA[/* Variant 2: Two Meshes */
+/* Randomize component values */
+Vs1: rand_with_step(6, 12, 2);
+Vs2: rand_with_step(4, 10, 2);
+R1: rand_with_step(1, 3, 1);
+R2: rand_with_step(2, 4, 1);
+R3: rand_with_step(1, 3, 1);
+R4: rand_with_step(2, 4, 1);
+
+/* Convert to Ohms */
+R1_ohm: R1 * 1000;
+R2_ohm: R2 * 1000;
+R3_ohm: R3 * 1000;
+R4_ohm: R4 * 1000;
+
+/* Mesh equations (CW currents):
+   Mesh 1: (R1+R2+R4)*i1 - R2*i2 = Vs1
+   Mesh 2: -R2*i1 + (R2+R3)*i2 = -Vs2
+*/
+a11: R1_ohm + R2_ohm + R4_ohm;
+a12: -R2_ohm;
+a21: -R2_ohm;
+a22: R2_ohm + R3_ohm;
+b1: Vs1;
+b2: -Vs2;
+
+det: a11*a22 - a12*a21;
+i1: (b1*a22 - b2*a12) / det;
+i2: (a11*b2 - a21*b1) / det;
+
+/* Current through R2 = i1 - i2, convert to mA */
+iR2: (i1 - i2) * 1000;
+
+/* Teacher answers */
+/* Part A: mesh-current method, 2 equations */
+ta1: [[1, "Mesh-Current method; 2 equations needed", true], [2, "Mesh-Current method; 3 equations needed", false], [3, "Node-Voltage method; 2 equations needed", false], [4, "Node-Voltage method; 3 equations needed", false]];
+
+/* Part C: numerical answer for i_R2 in mA */
+ta2: float(iR2);
+]]></text>
+  </questionvariables>
+  <specificfeedback format="html">
+    <text/>
+  </specificfeedback>
+  <questionnote>
+    <text>V2: Vs1={@Vs1@}V, Vs2={@Vs2@}V, R1={@R1@}kOhm, R2={@R2@}kOhm, R3={@R3@}kOhm, R4={@R4@}kOhm, iR2={@ta2@}mA</text>
+  </questionnote>
+  <questiondescription format="html">
+    <text><![CDATA[<p>DC Resistive Circuit: Two Meshes — Mesh-Current Method (Easy, 12 pts)</p>]]></text>
+  </questiondescription>
+  <questionsimplify>1</questionsimplify>
+  <assumepositive>0</assumepositive>
+  <assumereal>0</assumereal>
+  <prtcorrect format="html">
+    <text><![CDATA[<span style="font-size: 1.5em; color:green;"><i class="fa fa-check"></i></span> Correct answer, well done!]]></text>
+  </prtcorrect>
+  <prtpartiallycorrect format="html">
+    <text><![CDATA[<span style="font-size: 1.5em; color:orange;"><i class="fa fa-adjust"></i></span> Your answer is partially correct.]]></text>
+  </prtpartiallycorrect>
+  <prtincorrect format="html">
+    <text><![CDATA[<span style="font-size: 1.5em; color:red;"><i class="fa fa-times"></i></span> Incorrect answer.]]></text>
+  </prtincorrect>
+  <decimals>.</decimals>
+  <scientificnotation>*10</scientificnotation>
+  <multiplicationsign>dot</multiplicationsign>
+  <sqrtsign>1</sqrtsign>
+  <complexno>i</complexno>
+  <inversetrig>cos-1</inversetrig>
+  <logicsymbol>lang</logicsymbol>
+  <matrixparens>[</matrixparens>
+  <variantsselectionseed/>
+  <input>
+    <name>ans1</name>
+    <type>dropdown</type>
+    <tans>ta1</tans>
+    <boxsize>30</boxsize>
+    <strictsyntax>1</strictsyntax>
+    <insertstars>0</insertstars>
+    <syntaxhint/>
+    <syntaxattribute>0</syntaxattribute>
+    <forbidwords/>
+    <allowwords/>
+    <forbidfloat>1</forbidfloat>
+    <requirelowestterms>0</requirelowestterms>
+    <checkanswertype>0</checkanswertype>
+    <mustverify>0</mustverify>
+    <showvalidation>0</showvalidation>
+    <options/>
+  </input>
+  <input>
+    <name>ans2</name>
+    <type>numerical</type>
+    <tans>ta2</tans>
+    <boxsize>15</boxsize>
+    <strictsyntax>1</strictsyntax>
+    <insertstars>0</insertstars>
+    <syntaxhint/>
+    <syntaxattribute>0</syntaxattribute>
+    <forbidwords/>
+    <allowwords/>
+    <forbidfloat>0</forbidfloat>
+    <requirelowestterms>0</requirelowestterms>
+    <checkanswertype>0</checkanswertype>
+    <mustverify>1</mustverify>
+    <showvalidation>3</showvalidation>
+    <options/>
+  </input>
+  <prt>
+    <name>prt1</name>
+    <value>2.0000000</value>
+    <autosimplify>1</autosimplify>
+    <feedbackstyle>1</feedbackstyle>
+    <node>
+      <name>0</name>
+      <description>Check Part A MCQ answer</description>
+      <answertest>AlgEquiv</answertest>
+      <sans>ans1</sans>
+      <tans>1</tans>
+      <testoptions/>
+      <quiet>0</quiet>
+      <truescoremode>=</truescoremode>
+      <truescore>1.0000000</truescore>
+      <truepenalty/>
+      <truenextnode>-1</truenextnode>
+      <trueanswernote>prt1-1-T</trueanswernote>
+      <truefeedback format="html">
+        <text><![CDATA[<p>Correct! The mesh-current method is most efficient here, requiring 2 KVL equations for the 2 meshes.</p>]]></text>
+      </truefeedback>
+      <falsescoremode>=</falsescoremode>
+      <falsescore>0.0000000</falsescore>
+      <falsepenalty/>
+      <falsenextnode>-1</falsenextnode>
+      <falseanswernote>prt1-1-F</falseanswernote>
+      <falsefeedback format="html">
+        <text><![CDATA[<p>Incorrect. This circuit has 2 independent meshes and only voltage sources, making the mesh-current method most efficient with 2 equations.</p>]]></text>
+      </falsefeedback>
+    </node>
+  </prt>
+  <prt>
+    <name>prt2</name>
+    <value>4.0000000</value>
+    <autosimplify>1</autosimplify>
+    <feedbackstyle>1</feedbackstyle>
+    <node>
+      <name>0</name>
+      <description>Check Part C numerical answer for i_R2</description>
+      <answertest>NumAbsolute</answertest>
+      <sans>ans2</sans>
+      <tans>ta2</tans>
+      <testoptions>0.01</testoptions>
+      <quiet>0</quiet>
+      <truescoremode>=</truescoremode>
+      <truescore>1.0000000</truescore>
+      <truepenalty/>
+      <truenextnode>-1</truenextnode>
+      <trueanswernote>prt2-1-T</trueanswernote>
+      <truefeedback format="html">
+        <text><![CDATA[<p>Correct! Your value of \(i_{R2}\) matches the expected solution.</p>]]></text>
+      </truefeedback>
+      <falsescoremode>=</falsescoremode>
+      <falsescore>0.0000000</falsescore>
+      <falsepenalty/>
+      <falsenextnode>-1</falsenextnode>
+      <falseanswernote>prt2-1-F</falseanswernote>
+      <falsefeedback format="html">
+        <text><![CDATA[<p>Incorrect. The correct value is \(i_{R2} = {@ta2@}\;\text{mA}\). Check your mesh equations and ensure correct signs for voltage sources.</p>]]></text>
+      </falsefeedback>
+    </node>
+  </prt>
+  <deployedseed>56789</deployedseed>
+  <deployedseed>67890</deployedseed>
+  <deployedseed>78901</deployedseed>
+  <deployedseed>89012</deployedseed>
+</question>
+
+<!-- ============================================================ -->
+<!-- Q1-V3: T-Network with Mixed Sources (Node-Voltage)            -->
+<!-- ============================================================ -->
+<question type="stack">
+  <name>
+    <text>Q1-V3 T-Network Mixed Sources (Easy, 12 pts)</text>
+  </name>
+  <questiontext format="html">
+    <text><![CDATA[
+<h3>Q1 &mdash; DC Resistive Circuit Analysis (Variant 3: T-Network with Mixed Sources)</h3>
+<p><strong>Total: 12 points | Estimated time: ~20 minutes</strong></p>
+
+<p>Consider the T-network circuit shown below. The circuit contains a voltage source \(V_s = {@Vs@}\;\text{V}\) on the left and a current source \(I_s = {@Is@}\;\text{A}\) on the right. The resistors are: \(R_1 = {@R1@}\;\text{k}\Omega\) (horizontal, left-to-center), \(R_2 = {@R2@}\;\text{k}\Omega\) (horizontal, center-to-right), and \(R_3 = {@R3@}\;\text{k}\Omega\) (vertical, center to ground).</p>
+
+<p>The nodes are: Node&nbsp;A (left, connected to \(V_s\), so \(V_A = V_s\)), Node&nbsp;B (center junction of \(R_1\), \(R_2\), and \(R_3\)), and Node&nbsp;C (right, where \(I_s\) connects). The reference (ground) is at the bottom.</p>
+
+<p><img src="@@PLUGINFILE@@/q1_v3_t_network.svg" alt="T-network circuit with Vs, Is, R1, R2, R3" width="500" /></p>
+
+<hr />
+
+<h4>Part A (2 pts) &mdash; Method Selection</h4>
+<p>Which analysis method is <strong>most efficient</strong> for this circuit, and how many independent equations are needed?</p>
+<p>Select your answer: [[input:ans1]] [[validation:ans1]] [[feedback:prt1]]</p>
+
+<hr />
+
+<h4>Part B (3 pts) &mdash; Write the Systematic Equations (Essay)</h4>
+<p>Using the <strong>node-voltage method</strong>, write the KCL equations at each unknown node. Note: Node&nbsp;A is known (\(V_A = V_s\)), so you only need equations at Node&nbsp;B and Node&nbsp;C.</p>
+<p><em>This part is manually graded. Write your equations in the box below.</em></p>
+<p>
+<textarea name="q1v3_partB_essay" rows="10" cols="80" style="width:100%; font-family:monospace;"
+  placeholder="Write your KCL node equations here. For example:
+At Node B: (V_B - V_A)/R1 + V_B/R3 + (V_B - V_C)/R2 = 0
+At Node C: (V_C - V_B)/R2 = Is  (current source entering Node C)
+..."></textarea>
+</p>
+
+<hr />
+
+<h4>Part C (4 pts) &mdash; Numerical Solution</h4>
+<p>Solve for the node voltage \(V_B\) (in Volts) at the center node. Enter your answer to at least two decimal places.</p>
+<p>\(V_B = \) [[input:ans2]] V [[validation:ans2]] [[feedback:prt2]]</p>
+
+<hr />
+
+<h4>Part D (3 pts) &mdash; Verification &amp; Method Justification (Essay)</h4>
+<p>Verify your answer by checking that KCL is satisfied at Node&nbsp;B. Also, explain why the node-voltage method was chosen for this mixed-source circuit.</p>
+<p><em>This part is manually graded. Write your verification and explanation below.</em></p>
+<p>
+<textarea name="q1v3_partD_essay" rows="8" cols="80" style="width:100%; font-family:monospace;"
+  placeholder="1. Verify KCL at Node B using your computed V_B and V_C.
+2. Explain why node-voltage is preferred (mixed sources, current source simplifies node equations, etc.)"></textarea>
+</p>
+]]></text>
+  </questiontext>
+  <generalfeedback format="html">
+    <text><![CDATA[
+<h4>Solution for Variant 3 (T-Network with Mixed Sources)</h4>
+<p><strong>Part A:</strong> The node-voltage method is most efficient. Node A is constrained by \(V_s\), leaving 2 unknown node voltages (B and C), so <strong>2 equations</strong> are needed.</p>
+<p><strong>Part B:</strong> KCL equations:</p>
+<p>At Node B: \(\frac{V_B - V_s}{R_1} + \frac{V_B}{R_3} + \frac{V_B - V_C}{R_2} = 0\)</p>
+<p>At Node C: \(\frac{V_C - V_B}{R_2} = I_s\)</p>
+<p><strong>Part C:</strong> From the Node C equation: \(V_C = V_B + I_s \cdot R_2\). Substituting into the Node B equation and solving gives \(V_B = {@ta2@}\;\text{V}\).</p>
+<p><strong>Part D:</strong> Substitute back to verify KCL. The node-voltage method is preferred because the voltage source constrains one node directly and the current source provides a simple relationship at Node C, reducing complexity.</p>
+]]></text>
+  </generalfeedback>
+  <defaultgrade>12.0000000</defaultgrade>
+  <penalty>0.1000000</penalty>
+  <hidden>0</hidden>
+  <idnumber/>
+  <stackversion>
+    <text>2024032101</text>
+  </stackversion>
+  <questionvariables>
+    <text><![CDATA[/* Variant 3: T-Network with Mixed Sources */
+/* Randomize component values */
+Vs: rand_with_step(10, 20, 1);
+Is: rand_with_step(1, 5, 1);
+R1: rand_with_step(2, 5, 1);
+R2: rand_with_step(3, 6, 1);
+R3: rand_with_step(4, 8, 2);
+
+/* Restrict Vs to allowed set */
+Vs: rand([ 10, 12, 15, 18, 20 ]);
+Is: rand([ 1, 2, 3, 5 ]);
+
+/* Convert to Ohms */
+R1_ohm: R1 * 1000;
+R2_ohm: R2 * 1000;
+R3_ohm: R3 * 1000;
+
+/* Node equations:
+   Node A: V_A = Vs (constrained by voltage source)
+   Node B: (V_B - Vs)/R1 + V_B/R3 + (V_B - V_C)/R2 = 0
+   Node C: (V_C - V_B)/R2 = Is  =>  V_C = V_B + Is*R2_ohm
+
+   Substituting V_C into Node B equation:
+   (V_B - Vs)/R1 + V_B/R3 + (V_B - (V_B + Is*R2_ohm))/R2 = 0
+   (V_B - Vs)/R1 + V_B/R3 + (-Is*R2_ohm)/R2 = 0
+   (V_B - Vs)/R1 + V_B/R3 - Is = 0
+   V_B/R1 - Vs/R1 + V_B/R3 - Is = 0
+   V_B*(1/R1 + 1/R3) = Vs/R1 + Is
+*/
+G_B: 1/R1_ohm + 1/R3_ohm;
+I_B: Vs/R1_ohm + Is;
+VB: I_B / G_B;
+VC: VB + Is * R2_ohm;
+
+/* Teacher answers */
+/* Part A: node-voltage method, 2 equations */
+ta1: [[1, "Node-Voltage method; 2 equations needed", true], [2, "Node-Voltage method; 3 equations needed", false], [3, "Mesh-Current method; 2 equations needed", false], [4, "Mesh-Current method; 3 equations needed", false]];
+
+/* Part C: numerical answer for V_B in Volts */
+ta2: float(VB);
+]]></text>
+  </questionvariables>
+  <specificfeedback format="html">
+    <text/>
+  </specificfeedback>
+  <questionnote>
+    <text>V3: Vs={@Vs@}V, Is={@Is@}A, R1={@R1@}kOhm, R2={@R2@}kOhm, R3={@R3@}kOhm, V_B={@ta2@}V</text>
+  </questionnote>
+  <questiondescription format="html">
+    <text><![CDATA[<p>DC Resistive Circuit: T-Network with Mixed Sources — Node-Voltage Method (Easy, 12 pts)</p>]]></text>
+  </questiondescription>
+  <questionsimplify>1</questionsimplify>
+  <assumepositive>0</assumepositive>
+  <assumereal>0</assumereal>
+  <prtcorrect format="html">
+    <text><![CDATA[<span style="font-size: 1.5em; color:green;"><i class="fa fa-check"></i></span> Correct answer, well done!]]></text>
+  </prtcorrect>
+  <prtpartiallycorrect format="html">
+    <text><![CDATA[<span style="font-size: 1.5em; color:orange;"><i class="fa fa-adjust"></i></span> Your answer is partially correct.]]></text>
+  </prtpartiallycorrect>
+  <prtincorrect format="html">
+    <text><![CDATA[<span style="font-size: 1.5em; color:red;"><i class="fa fa-times"></i></span> Incorrect answer.]]></text>
+  </prtincorrect>
+  <decimals>.</decimals>
+  <scientificnotation>*10</scientificnotation>
+  <multiplicationsign>dot</multiplicationsign>
+  <sqrtsign>1</sqrtsign>
+  <complexno>i</complexno>
+  <inversetrig>cos-1</inversetrig>
+  <logicsymbol>lang</logicsymbol>
+  <matrixparens>[</matrixparens>
+  <variantsselectionseed/>
+  <input>
+    <name>ans1</name>
+    <type>dropdown</type>
+    <tans>ta1</tans>
+    <boxsize>30</boxsize>
+    <strictsyntax>1</strictsyntax>
+    <insertstars>0</insertstars>
+    <syntaxhint/>
+    <syntaxattribute>0</syntaxattribute>
+    <forbidwords/>
+    <allowwords/>
+    <forbidfloat>1</forbidfloat>
+    <requirelowestterms>0</requirelowestterms>
+    <checkanswertype>0</checkanswertype>
+    <mustverify>0</mustverify>
+    <showvalidation>0</showvalidation>
+    <options/>
+  </input>
+  <input>
+    <name>ans2</name>
+    <type>numerical</type>
+    <tans>ta2</tans>
+    <boxsize>15</boxsize>
+    <strictsyntax>1</strictsyntax>
+    <insertstars>0</insertstars>
+    <syntaxhint/>
+    <syntaxattribute>0</syntaxattribute>
+    <forbidwords/>
+    <allowwords/>
+    <forbidfloat>0</forbidfloat>
+    <requirelowestterms>0</requirelowestterms>
+    <checkanswertype>0</checkanswertype>
+    <mustverify>1</mustverify>
+    <showvalidation>3</showvalidation>
+    <options/>
+  </input>
+  <prt>
+    <name>prt1</name>
+    <value>2.0000000</value>
+    <autosimplify>1</autosimplify>
+    <feedbackstyle>1</feedbackstyle>
+    <node>
+      <name>0</name>
+      <description>Check Part A MCQ answer</description>
+      <answertest>AlgEquiv</answertest>
+      <sans>ans1</sans>
+      <tans>1</tans>
+      <testoptions/>
+      <quiet>0</quiet>
+      <truescoremode>=</truescoremode>
+      <truescore>1.0000000</truescore>
+      <truepenalty/>
+      <truenextnode>-1</truenextnode>
+      <trueanswernote>prt1-1-T</trueanswernote>
+      <truefeedback format="html">
+        <text><![CDATA[<p>Correct! The node-voltage method with 2 equations (for nodes B and C) is the most efficient approach for this mixed-source T-network.</p>]]></text>
+      </truefeedback>
+      <falsescoremode>=</falsescoremode>
+      <falsescore>0.0000000</falsescore>
+      <falsepenalty/>
+      <falsenextnode>-1</falsenextnode>
+      <falseanswernote>prt1-1-F</falseanswernote>
+      <falsefeedback format="html">
+        <text><![CDATA[<p>Incorrect. This circuit has 3 essential nodes (A, B, C) plus the reference. Node A is constrained (\(V_A = V_s\)), leaving 2 unknown node voltages requiring 2 node-voltage equations.</p>]]></text>
+      </falsefeedback>
+    </node>
+  </prt>
+  <prt>
+    <name>prt2</name>
+    <value>4.0000000</value>
+    <autosimplify>1</autosimplify>
+    <feedbackstyle>1</feedbackstyle>
+    <node>
+      <name>0</name>
+      <description>Check Part C numerical answer for V_B</description>
+      <answertest>NumAbsolute</answertest>
+      <sans>ans2</sans>
+      <tans>ta2</tans>
+      <testoptions>0.01</testoptions>
+      <quiet>0</quiet>
+      <truescoremode>=</truescoremode>
+      <truescore>1.0000000</truescore>
+      <truepenalty/>
+      <truenextnode>-1</truenextnode>
+      <trueanswernote>prt2-1-T</trueanswernote>
+      <truefeedback format="html">
+        <text><![CDATA[<p>Correct! Your value of \(V_B\) matches the expected solution.</p>]]></text>
+      </truefeedback>
+      <falsescoremode>=</falsescoremode>
+      <falsescore>0.0000000</falsescore>
+      <falsepenalty/>
+      <falsenextnode>-1</falsenextnode>
+      <falseanswernote>prt2-1-F</falseanswernote>
+      <falsefeedback format="html">
+        <text><![CDATA[<p>Incorrect. The correct value is \(V_B = {@ta2@}\;\text{V}\). Remember: first express \(V_C\) in terms of \(V_B\) using the current source constraint, then substitute into the KCL equation at Node B.</p>]]></text>
+      </falsefeedback>
+    </node>
+  </prt>
+  <deployedseed>11111</deployedseed>
+  <deployedseed>22222</deployedseed>
+  <deployedseed>33333</deployedseed>
+  <deployedseed>44444</deployedseed>
+</question>
+
+<!-- ============================================================ -->
+<!-- Q1-V4: Bridge (Wheatstone) Circuit (Node-Voltage)             -->
+<!-- ============================================================ -->
+<question type="stack">
+  <name>
+    <text>Q1-V4 Wheatstone Bridge Analysis (Easy, 12 pts)</text>
+  </name>
+  <questiontext format="html">
+    <text><![CDATA[
+<h3>Q1 &mdash; DC Resistive Circuit Analysis (Variant 4: Wheatstone Bridge)</h3>
+<p><strong>Total: 12 points | Estimated time: ~20 minutes</strong></p>
+
+<p>Consider the Wheatstone bridge circuit shown below. The circuit is powered by a voltage source \(V_s = {@Vs@}\;\text{V}\). The five resistors are arranged in a diamond (bridge) configuration:</p>
+<ul>
+  <li>\(R_1 = {@R1@}\;\text{k}\Omega\) &mdash; from Node A (top) to Node B (left)</li>
+  <li>\(R_2 = {@R2@}\;\text{k}\Omega\) &mdash; from Node A (top) to Node C (right)</li>
+  <li>\(R_3 = {@R3@}\;\text{k}\Omega\) &mdash; from Node B (left) to Node D (bottom/ground)</li>
+  <li>\(R_4 = {@R4@}\;\text{k}\Omega\) &mdash; from Node C (right) to Node D (bottom/ground)</li>
+  <li>\(R_5 = {@R5@}\;\text{k}\Omega\) &mdash; bridge resistor from Node B to Node C</li>
+</ul>
+
+<p>Node A is connected to the positive terminal of \(V_s\) (so \(V_A = V_s\)). Node D is the ground reference (\(V_D = 0\)).</p>
+
+<p><img src="@@PLUGINFILE@@/q1_v4_bridge.svg" alt="Wheatstone bridge circuit with Vs, R1-R5" width="500" /></p>
+
+<hr />
+
+<h4>Part A (2 pts) &mdash; Method Selection</h4>
+<p>Which analysis method is <strong>most efficient</strong> for this circuit, and how many independent equations are needed?</p>
+<p>Select your answer: [[input:ans1]] [[validation:ans1]] [[feedback:prt1]]</p>
+
+<hr />
+
+<h4>Part B (3 pts) &mdash; Write the Systematic Equations (Essay)</h4>
+<p>Using the <strong>node-voltage method</strong>, write the KCL equations at each unknown essential node. Note: \(V_A = V_s\) (constrained) and \(V_D = 0\) (reference), so write equations at nodes B and C.</p>
+<p><em>This part is manually graded. Write your equations in the box below.</em></p>
+<p>
+<textarea name="q1v4_partB_essay" rows="10" cols="80" style="width:100%; font-family:monospace;"
+  placeholder="Write your KCL node equations here. For example:
+At Node B: (V_B - V_A)/R1 + V_B/R3 + (V_B - V_C)/R5 = 0
+At Node C: (V_C - V_A)/R2 + V_C/R4 + (V_C - V_B)/R5 = 0
+..."></textarea>
+</p>
+
+<hr />
+
+<h4>Part C (4 pts) &mdash; Numerical Solution</h4>
+<p>Find the voltage across the bridge resistor \(R_5\), defined as \(V_{BC} = V_B - V_C\) (in Volts). Enter your answer to at least two decimal places.</p>
+<p>\(V_{BC} = \) [[input:ans2]] V [[validation:ans2]] [[feedback:prt2]]</p>
+
+<hr />
+
+<h4>Part D (3 pts) &mdash; Verification &amp; Method Justification (Essay)</h4>
+<p>Verify your answer by confirming KCL at nodes B and C. Also, discuss: under what condition would \(V_{BC} = 0\) (balanced bridge)? Is the bridge balanced for this set of values?</p>
+<p><em>This part is manually graded. Write your verification and explanation below.</em></p>
+<p>
+<textarea name="q1v4_partD_essay" rows="8" cols="80" style="width:100%; font-family:monospace;"
+  placeholder="1. Verify KCL at Nodes B and C.
+2. State the balance condition: R1*R4 = R2*R3.
+3. Check if this holds for the given values and comment."></textarea>
+</p>
+]]></text>
+  </questiontext>
+  <generalfeedback format="html">
+    <text><![CDATA[
+<h4>Solution for Variant 4 (Wheatstone Bridge)</h4>
+<p><strong>Part A:</strong> The node-voltage method is most efficient. With \(V_A = V_s\) and \(V_D = 0\), there are 2 unknown node voltages (\(V_B\) and \(V_C\)), requiring <strong>2 equations</strong>.</p>
+<p><strong>Part B:</strong> KCL equations:</p>
+<p>At Node B: \(\frac{V_B - V_s}{R_1} + \frac{V_B}{R_3} + \frac{V_B - V_C}{R_5} = 0\)</p>
+<p>At Node C: \(\frac{V_C - V_s}{R_2} + \frac{V_C}{R_4} + \frac{V_C - V_B}{R_5} = 0\)</p>
+<p><strong>Part C:</strong> Solving the 2x2 system yields \(V_B\) and \(V_C\), giving \(V_{BC} = V_B - V_C = {@ta2@}\;\text{V}\).</p>
+<p><strong>Part D:</strong> The bridge is balanced when \(R_1 \cdot R_4 = R_2 \cdot R_3\), which would make \(V_{BC} = 0\) and no current flows through \(R_5\). For the given values: \(R_1 \cdot R_4 = {@R1*R4@}\) and \(R_2 \cdot R_3 = {@R2*R3@}\), so the bridge is {@if is(R1*R4 = R2*R3) then "balanced" else "NOT balanced"@}.</p>
+]]></text>
+  </generalfeedback>
+  <defaultgrade>12.0000000</defaultgrade>
+  <penalty>0.1000000</penalty>
+  <hidden>0</hidden>
+  <idnumber/>
+  <stackversion>
+    <text>2024032101</text>
+  </stackversion>
+  <questionvariables>
+    <text><![CDATA[/* Variant 4: Wheatstone Bridge */
+/* Randomize component values */
+Vs: rand([ 10, 12, 15, 18, 20 ]);
+R1: rand([ 1, 2, 3 ]);
+R2: rand([ 2, 3, 4 ]);
+R3: rand([ 2, 3, 4 ]);
+R4: rand([ 3, 4, 5 ]);
+R5: rand([ 5, 6, 8, 10 ]);
+
+/* Convert to Ohms */
+R1_ohm: R1 * 1000;
+R2_ohm: R2 * 1000;
+R3_ohm: R3 * 1000;
+R4_ohm: R4 * 1000;
+R5_ohm: R5 * 1000;
+
+/* Node-voltage equations:
+   V_A = Vs, V_D = 0
+
+   Node B: (V_B - Vs)/R1 + V_B/R3 + (V_B - V_C)/R5 = 0
+   => V_B*(1/R1 + 1/R3 + 1/R5) - V_C*(1/R5) = Vs/R1
+
+   Node C: (V_C - Vs)/R2 + V_C/R4 + (V_C - V_B)/R5 = 0
+   => -V_B*(1/R5) + V_C*(1/R2 + 1/R4 + 1/R5) = Vs/R2
+*/
+
+a11: 1/R1_ohm + 1/R3_ohm + 1/R5_ohm;
+a12: -1/R5_ohm;
+a21: -1/R5_ohm;
+a22: 1/R2_ohm + 1/R4_ohm + 1/R5_ohm;
+b1: Vs/R1_ohm;
+b2: Vs/R2_ohm;
+
+det: a11*a22 - a12*a21;
+VB: (b1*a22 - b2*a12) / det;
+VCnode: (a11*b2 - a21*b1) / det;
+
+/* Voltage across bridge */
+VBC: VB - VCnode;
+
+/* Teacher answers */
+/* Part A: node-voltage method, 2 equations */
+ta1: [[1, "Node-Voltage method; 2 equations needed", true], [2, "Node-Voltage method; 3 equations needed", false], [3, "Mesh-Current method; 2 equations needed", false], [4, "Mesh-Current method; 3 equations needed", false]];
+
+/* Part C: numerical answer for V_BC in Volts */
+ta2: float(VBC);
+]]></text>
+  </questionvariables>
+  <specificfeedback format="html">
+    <text/>
+  </specificfeedback>
+  <questionnote>
+    <text>V4: Vs={@Vs@}V, R1={@R1@}kOhm, R2={@R2@}kOhm, R3={@R3@}kOhm, R4={@R4@}kOhm, R5={@R5@}kOhm, V_BC={@ta2@}V</text>
+  </questionnote>
+  <questiondescription format="html">
+    <text><![CDATA[<p>DC Resistive Circuit: Wheatstone Bridge — Node-Voltage Method (Easy, 12 pts)</p>]]></text>
+  </questiondescription>
+  <questionsimplify>1</questionsimplify>
+  <assumepositive>0</assumepositive>
+  <assumereal>0</assumereal>
+  <prtcorrect format="html">
+    <text><![CDATA[<span style="font-size: 1.5em; color:green;"><i class="fa fa-check"></i></span> Correct answer, well done!]]></text>
+  </prtcorrect>
+  <prtpartiallycorrect format="html">
+    <text><![CDATA[<span style="font-size: 1.5em; color:orange;"><i class="fa fa-adjust"></i></span> Your answer is partially correct.]]></text>
+  </prtpartiallycorrect>
+  <prtincorrect format="html">
+    <text><![CDATA[<span style="font-size: 1.5em; color:red;"><i class="fa fa-times"></i></span> Incorrect answer.]]></text>
+  </prtincorrect>
+  <decimals>.</decimals>
+  <scientificnotation>*10</scientificnotation>
+  <multiplicationsign>dot</multiplicationsign>
+  <sqrtsign>1</sqrtsign>
+  <complexno>i</complexno>
+  <inversetrig>cos-1</inversetrig>
+  <logicsymbol>lang</logicsymbol>
+  <matrixparens>[</matrixparens>
+  <variantsselectionseed/>
+  <input>
+    <name>ans1</name>
+    <type>dropdown</type>
+    <tans>ta1</tans>
+    <boxsize>30</boxsize>
+    <strictsyntax>1</strictsyntax>
+    <insertstars>0</insertstars>
+    <syntaxhint/>
+    <syntaxattribute>0</syntaxattribute>
+    <forbidwords/>
+    <allowwords/>
+    <forbidfloat>1</forbidfloat>
+    <requirelowestterms>0</requirelowestterms>
+    <checkanswertype>0</checkanswertype>
+    <mustverify>0</mustverify>
+    <showvalidation>0</showvalidation>
+    <options/>
+  </input>
+  <input>
+    <name>ans2</name>
+    <type>numerical</type>
+    <tans>ta2</tans>
+    <boxsize>15</boxsize>
+    <strictsyntax>1</strictsyntax>
+    <insertstars>0</insertstars>
+    <syntaxhint/>
+    <syntaxattribute>0</syntaxattribute>
+    <forbidwords/>
+    <allowwords/>
+    <forbidfloat>0</forbidfloat>
+    <requirelowestterms>0</requirelowestterms>
+    <checkanswertype>0</checkanswertype>
+    <mustverify>1</mustverify>
+    <showvalidation>3</showvalidation>
+    <options/>
+  </input>
+  <prt>
+    <name>prt1</name>
+    <value>2.0000000</value>
+    <autosimplify>1</autosimplify>
+    <feedbackstyle>1</feedbackstyle>
+    <node>
+      <name>0</name>
+      <description>Check Part A MCQ answer</description>
+      <answertest>AlgEquiv</answertest>
+      <sans>ans1</sans>
+      <tans>1</tans>
+      <testoptions/>
+      <quiet>0</quiet>
+      <truescoremode>=</truescoremode>
+      <truescore>1.0000000</truescore>
+      <truepenalty/>
+      <truenextnode>-1</truenextnode>
+      <trueanswernote>prt1-1-T</trueanswernote>
+      <truefeedback format="html">
+        <text><![CDATA[<p>Correct! The node-voltage method with 2 equations is the most efficient approach for this bridge circuit.</p>]]></text>
+      </truefeedback>
+      <falsescoremode>=</falsescoremode>
+      <falsescore>0.0000000</falsescore>
+      <falsepenalty/>
+      <falsenextnode>-1</falsenextnode>
+      <falseanswernote>prt1-1-F</falseanswernote>
+      <falsefeedback format="html">
+        <text><![CDATA[<p>Incorrect. The bridge circuit has 4 essential nodes (A, B, C, D). With A constrained by \(V_s\) and D as reference ground, there are 2 unknown node voltages (\(V_B\) and \(V_C\)), requiring 2 node-voltage equations. This is more efficient than the 3 mesh equations that mesh analysis would require.</p>]]></text>
+      </falsefeedback>
+    </node>
+  </prt>
+  <prt>
+    <name>prt2</name>
+    <value>4.0000000</value>
+    <autosimplify>1</autosimplify>
+    <feedbackstyle>1</feedbackstyle>
+    <node>
+      <name>0</name>
+      <description>Check Part C numerical answer for V_BC</description>
+      <answertest>NumAbsolute</answertest>
+      <sans>ans2</sans>
+      <tans>ta2</tans>
+      <testoptions>0.01</testoptions>
+      <quiet>0</quiet>
+      <truescoremode>=</truescoremode>
+      <truescore>1.0000000</truescore>
+      <truepenalty/>
+      <truenextnode>-1</truenextnode>
+      <trueanswernote>prt2-1-T</trueanswernote>
+      <truefeedback format="html">
+        <text><![CDATA[<p>Correct! Your value of \(V_{BC}\) matches the expected solution.</p>]]></text>
+      </truefeedback>
+      <falsescoremode>=</falsescoremode>
+      <falsescore>0.0000000</falsescore>
+      <falsepenalty/>
+      <falsenextnode>-1</falsenextnode>
+      <falseanswernote>prt2-1-F</falseanswernote>
+      <falsefeedback format="html">
+        <text><![CDATA[<p>Incorrect. The correct value is \(V_{BC} = {@ta2@}\;\text{V}\). Set up the 2x2 system of node-voltage equations at nodes B and C, solve for both, then compute the difference.</p>]]></text>
+      </falsefeedback>
+    </node>
+  </prt>
+  <deployedseed>55555</deployedseed>
+  <deployedseed>66666</deployedseed>
+  <deployedseed>77777</deployedseed>
+  <deployedseed>88888</deployedseed>
+</question>
+
+</quiz>

@@ -1,0 +1,76 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 420" preserveAspectRatio="xMidYMid meet" role="img" aria-label="Q3 Variant 1: Series RL circuit driven by step voltage source for Laplace analysis">
+  <title>Q3-V1: RL Step Response — Laplace Domain</title>
+  <style>
+    text { font-family: 'Segoe UI', Arial, Helvetica, sans-serif; }
+    .title { font-size: 18px; font-weight: bold; fill: #222; }
+    .comp-label { font-size: 16px; font-weight: bold; fill: #0055aa; }
+    .annotation { font-size: 14px; fill: #666; }
+    .polarity { font-size: 14px; fill: #333; }
+    .wire { stroke: #333; stroke-width: 2.5; fill: none; }
+    .component { stroke: #333; stroke-width: 2.5; fill: none; }
+    .ref-dir { stroke: #cc0000; stroke-width: 1.8; fill: none; }
+    .find-text { font-size: 16px; fill: #cc0000; font-weight: bold; }
+    .info-text { font-size: 14px; fill: #0055aa; font-style: italic; }
+    .sdomain { font-size: 14px; fill: #006600; font-weight: bold; }
+  </style>
+  <defs>
+    <marker id="cur-q3v1" markerWidth="8" markerHeight="6" refX="8" refY="3" orient="auto">
+      <polygon points="0 0, 8 3, 0 6" fill="#cc0000"/>
+    </marker>
+  </defs>
+
+  <text x="300" y="28" text-anchor="middle" class="title">Q3-V1: RL Step Response (Laplace)</text>
+
+  <!-- Time-domain circuit (top half) -->
+  <text x="300" y="58" text-anchor="middle" class="annotation">Time Domain (t &gt; 0)</text>
+
+  <!-- Top rail -->
+  <line x1="80" y1="100" x2="200" y2="100" class="wire"/>
+  <line x1="200" y1="100" x2="240" y2="100" class="wire"/>
+  <!-- R on top -->
+  <rect x="240" y="90" width="90" height="20" class="component" rx="3"/>
+  <text x="285" y="82" text-anchor="middle" class="comp-label">R</text>
+  <line x1="330" y1="100" x2="480" y2="100" class="wire"/>
+
+  <!-- Right side: inductor (vertical) -->
+  <line x1="480" y1="100" x2="480" y2="130" class="wire"/>
+  <path d="M 480,130 C 480,140 495,140 495,150 C 495,160 480,160 480,170 C 480,180 495,180 495,190 C 495,200 480,200 480,210 C 480,220 495,220 495,230" class="component" fill="none"/>
+  <text x="510" y="185" class="comp-label">L</text>
+  <line x1="480" y1="230" x2="480" y2="280" class="wire"/>
+
+  <!-- Voltage polarity across L -->
+  <text x="520" y="148" class="polarity">+</text>
+  <text x="520" y="225" class="polarity">&minus;</text>
+  <text x="540" y="185" style="font-size:14px; fill:#cc0000; font-weight:bold;">v_L</text>
+
+  <!-- Bottom rail -->
+  <line x1="80" y1="280" x2="480" y2="280" class="wire"/>
+
+  <!-- Vs on left -->
+  <line x1="80" y1="100" x2="80" y2="145" class="wire"/>
+  <circle cx="80" cy="190" r="28" class="component"/>
+  <text x="72" y="183" class="polarity">+</text>
+  <text x="75" y="207" class="polarity">&minus;</text>
+  <text x="30" y="195" class="comp-label">V_s</text>
+  <line x1="80" y1="218" x2="80" y2="280" class="wire"/>
+
+  <!-- Step indicator -->
+  <text x="80" y="245" text-anchor="middle" class="annotation">u(t)</text>
+
+  <!-- Current direction arrow -->
+  <line x1="160" y1="90" x2="200" y2="90" class="ref-dir" marker-end="url(#cur-q3v1)"/>
+  <text x="180" y="82" text-anchor="middle" style="font-size:14px; fill:#cc0000; font-weight:bold;">I(t)</text>
+
+  <!-- Ground -->
+  <line x1="275" y1="280" x2="285" y2="280" stroke="#333" stroke-width="4"/>
+  <line x1="277" y1="287" x2="283" y2="287" stroke="#333" stroke-width="3"/>
+  <line x1="279" y1="294" x2="281" y2="294" stroke="#333" stroke-width="2"/>
+
+  <!-- s-domain annotations -->
+  <rect x="40" y="310" width="520" height="65" rx="8" fill="#f0f8f0" stroke="#006600" stroke-width="1.5"/>
+  <text x="300" y="332" text-anchor="middle" class="sdomain">s-Domain: V_s/s = I(s) &middot; (R + sL)</text>
+  <text x="300" y="355" text-anchor="middle" class="sdomain">I(s) = V_s / [s(R + sL)] &rarr; i(t) = (V_s/R)(1 &minus; e^(&minus;Rt/L))</text>
+
+  <!-- Find instruction -->
+  <text x="300" y="405" text-anchor="middle" class="find-text">Find: Time constant &tau; = L/R and I(s)</text>
+</svg>

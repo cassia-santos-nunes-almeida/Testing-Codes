@@ -1,0 +1,833 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<quiz>
+
+<!-- ============================================================ -->
+<!-- Q4 — Difficult (12 points) · ~30 min                         -->
+<!-- Complete First-Order Transient Analysis                       -->
+<!-- Pool: 3 variants                                              -->
+<!-- ============================================================ -->
+
+<!-- ============================================================ -->
+<!-- VARIANT 1: RC Circuit with Switch Opening                     -->
+<!-- ============================================================ -->
+<question type="stack">
+  <name><text>Q4-V1 RC Circuit with Switch — Complete Transient</text></name>
+  <questiontext format="html">
+    <text><![CDATA[
+<h3>Q4-V1: RC Circuit with Switch — Complete Transient Analysis</h3>
+
+<p>Consider the circuit below. A DC voltage source <b>V<sub>s</sub> = {@Vs@} V</b> drives a series resistor <b>R<sub>1</sub> = {@R1@} k&Omega;</b>. At the junction node A, a switch S is in series with <b>R<sub>2</sub> = {@R2@} k&Omega;</b> (to ground), and a capacitor <b>C = {@Cval@} &mu;F</b> is connected from node A to ground.</p>
+
+<p><em>Before t = 0:</em> Switch S is <strong>closed</strong>. The circuit is in DC steady state.<br/>
+<em>At t = 0:</em> Switch S <strong>opens</strong>, disconnecting R<sub>2</sub>.</p>
+
+<hr/>
+
+<h4>Part A (2 points) — Initial Condition</h4>
+<p>Before the switch opens (t &lt; 0), the circuit is at DC steady state. The capacitor acts as an <strong>open circuit</strong> at DC.</p>
+<p>Determine the initial capacitor voltage <b>v<sub>C</sub>(0<sup>&minus;</sup>)</b>.</p>
+<p><em>Hint: Use the voltage divider formed by R<sub>1</sub> and R<sub>2</sub>.</em></p>
+<p>v<sub>C</sub>(0<sup>&minus;</sup>) = [[input:ans1]] V</p>
+<div>[[validation:ans1]]</div>
+<div>[[feedback:prt1]]</div>
+
+<hr/>
+
+<h4>Part B (3 points) — s-Domain Model Setup</h4>
+<p>After the switch opens (t &gt; 0), R<sub>2</sub> is disconnected. Draw and describe the equivalent circuit seen by the capacitor.</p>
+<p>In the s-domain, set up the circuit equation with the initial condition v<sub>C</sub>(0) = V<sub>0</sub>.</p>
+<p><strong>Write your s-domain circuit description and equation setup below:</strong></p>
+<textarea rows="6" cols="80" style="width:100%; font-family:monospace;" placeholder="Describe the s-domain equivalent circuit: Vs/s in series with R1 and impedance 1/(sC). Include the initial condition as V0/s source..."></textarea>
+
+<hr/>
+
+<h4>Part C (4 points) — Time-Domain Solution</h4>
+<p>After the switch opens, the capacitor charges from V<sub>0</sub> toward V<sub>s</sub> through R<sub>1</sub> only.</p>
+<p>The time constant is &tau; = R<sub>1</sub> &middot; C.</p>
+
+<p>Calculate the time constant &tau; (in milliseconds):</p>
+<p>&tau; = [[input:ans2]] ms</p>
+<div>[[validation:ans2]]</div>
+<div>[[feedback:prt2]]</div>
+
+<p>What is the final steady-state value v<sub>C</sub>(&infin;)?</p>
+<p>v<sub>C</sub>(&infin;) = [[input:ans3]] V</p>
+<div>[[validation:ans3]]</div>
+<div>[[feedback:prt3]]</div>
+
+<hr/>
+
+<h4>Part D (3 points) — Physical Interpretation</h4>
+<p>Answer the following in your own words (2–4 sentences each):</p>
+<ol>
+  <li>Explain physically why the capacitor voltage changes from V<sub>0</sub> to V<sub>s</sub> after the switch opens.</li>
+  <li>Check your answer using the initial value theorem: lim<sub>s&rarr;&infin;</sub> s&middot;V<sub>C</sub>(s) should equal v<sub>C</sub>(0<sup>+</sup>).</li>
+  <li>Where does the energy come from to charge the capacitor from V<sub>0</sub> to V<sub>s</sub>?</li>
+</ol>
+<textarea rows="8" cols="80" style="width:100%; font-family:monospace;" placeholder="1. Physical explanation of voltage change...&#10;2. Initial value theorem verification...&#10;3. Energy source analysis..."></textarea>
+]]></text>
+  </questiontext>
+
+  <generalfeedback format="html">
+    <text><![CDATA[
+<h4>Solution — Q4-V1</h4>
+<p><b>Part A:</b> At DC steady state with switch closed, C is open. Voltage divider: V<sub>0</sub> = V<sub>s</sub> &middot; R<sub>2</sub>/(R<sub>1</sub>+R<sub>2</sub>) = {@V0@} V</p>
+<p><b>Part B:</b> After switch opens, circuit is V<sub>s</sub> &mdash; R<sub>1</sub> &mdash; C. In s-domain: V<sub>s</sub>/s = I(s)&middot;(R<sub>1</sub> + 1/(sC)) + V<sub>0</sub>/s</p>
+<p><b>Part C:</b> &tau; = R<sub>1</sub>&middot;C = {@tau_ms@} ms. Final value: v<sub>C</sub>(&infin;) = V<sub>s</sub> = {@Vs@} V</p>
+<p><b>Complete response:</b> v<sub>C</sub>(t) = {@Vs@} + ({@V0@} &minus; {@Vs@})&middot;e<sup>&minus;t/{@tau_ms@}ms</sup> for t &gt; 0</p>
+]]></text>
+  </generalfeedback>
+
+  <defaultgrade>12</defaultgrade>
+  <penalty>0.1</penalty>
+  <hidden>0</hidden>
+
+  <stackversion>
+    <text>2024032101</text>
+  </stackversion>
+
+  <questionvariables>
+    <text>
+/* Q4-V1: RC with Switch */
+Vs: rand([10,12,15,20,24]);
+R1: rand([1,2,3,4.7]);
+R2: rand([2,3,4.7,6.8]);
+Cval: rand([10,22,47,100]);
+
+/* Derived quantities */
+V0: float(Vs * R2 / (R1 + R2));
+V0_rounded: float(round(V0 * 1000) / 1000);
+
+/* Time constant in ms: R1 in kOhm, C in uF => tau = R1*C ms */
+tau_ms: float(R1 * Cval);
+
+/* Final value */
+Vfinal: Vs;
+
+/* Teacher answers */
+ta1: V0_rounded;
+ta2: tau_ms;
+ta3: float(Vs);
+    </text>
+  </questionvariables>
+
+  <specificfeedback format="html">
+    <text/>
+  </specificfeedback>
+
+  <questionnote>
+    <text>V1-RC: Vs={@Vs@}V, R1={@R1@}kΩ, R2={@R2@}kΩ, C={@Cval@}µF → V0={@V0_rounded@}V, τ={@tau_ms@}ms</text>
+  </questionnote>
+
+  <!-- Input: ans1 (Part A - initial voltage) -->
+  <input>
+    <name>ans1</name>
+    <type>numerical</type>
+    <tans>ta1</tans>
+    <boxsize>10</boxsize>
+    <strictsyntax>1</strictsyntax>
+    <insertstars>0</insertstars>
+    <syntaxhint/>
+    <syntaxattribute>0</syntaxattribute>
+    <forbidwords/>
+    <allowwords/>
+    <forbidfloat>0</forbidfloat>
+    <requirelowestterms>0</requirelowestterms>
+    <checkanswertype>0</checkanswertype>
+    <mustverify>1</mustverify>
+    <showvalidation>3</showvalidation>
+    <options/>
+  </input>
+
+  <!-- Input: ans2 (Part C - time constant) -->
+  <input>
+    <name>ans2</name>
+    <type>numerical</type>
+    <tans>ta2</tans>
+    <boxsize>10</boxsize>
+    <strictsyntax>1</strictsyntax>
+    <insertstars>0</insertstars>
+    <syntaxhint/>
+    <syntaxattribute>0</syntaxattribute>
+    <forbidwords/>
+    <allowwords/>
+    <forbidfloat>0</forbidfloat>
+    <requirelowestterms>0</requirelowestterms>
+    <checkanswertype>0</checkanswertype>
+    <mustverify>1</mustverify>
+    <showvalidation>3</showvalidation>
+    <options/>
+  </input>
+
+  <!-- Input: ans3 (Part C - final value) -->
+  <input>
+    <name>ans3</name>
+    <type>numerical</type>
+    <tans>ta3</tans>
+    <boxsize>10</boxsize>
+    <strictsyntax>1</strictsyntax>
+    <insertstars>0</insertstars>
+    <syntaxhint/>
+    <syntaxattribute>0</syntaxattribute>
+    <forbidwords/>
+    <allowwords/>
+    <forbidfloat>0</forbidfloat>
+    <requirelowestterms>0</requirelowestterms>
+    <checkanswertype>0</checkanswertype>
+    <mustverify>1</mustverify>
+    <showvalidation>3</showvalidation>
+    <options/>
+  </input>
+
+  <!-- PRT1: Initial voltage (Part A, 2 pts) -->
+  <prt>
+    <name>prt1</name>
+    <value>2.0000000</value>
+    <autosimplify>1</autosimplify>
+    <feedbackstyle>1</feedbackstyle>
+    <node>
+      <name>0</name>
+      <answertest>NumAbsolute</answertest>
+      <sans>ans1</sans>
+      <tans>ta1</tans>
+      <testoptions>0.1</testoptions>
+      <quiet>0</quiet>
+      <truescoremode>=</truescoremode>
+      <truescore>1.0000000</truescore>
+      <truepenalty/>
+      <truenextnode>-1</truenextnode>
+      <trueanswernote>prt1-1-T</trueanswernote>
+      <truefeedback format="html"><text><![CDATA[<p>Correct! V<sub>0</sub> = V<sub>s</sub> &middot; R<sub>2</sub>/(R<sub>1</sub>+R<sub>2</sub>) = {@V0_rounded@} V.</p>]]></text></truefeedback>
+      <falsescoremode>=</falsescoremode>
+      <falsescore>0.0000000</falsescore>
+      <falsepenalty/>
+      <falsenextnode>-1</falsenextnode>
+      <falseanswernote>prt1-1-F</falseanswernote>
+      <falsefeedback format="html"><text><![CDATA[<p>Incorrect. At DC steady state, C is open. The voltage at node A is determined by the voltage divider R<sub>1</sub> and R<sub>2</sub>: V<sub>0</sub> = V<sub>s</sub> &middot; R<sub>2</sub>/(R<sub>1</sub>+R<sub>2</sub>).</p>]]></text></falsefeedback>
+    </node>
+  </prt>
+
+  <!-- PRT2: Time constant (Part C, 2 pts of 4) -->
+  <prt>
+    <name>prt2</name>
+    <value>2.0000000</value>
+    <autosimplify>1</autosimplify>
+    <feedbackstyle>1</feedbackstyle>
+    <node>
+      <name>0</name>
+      <answertest>NumAbsolute</answertest>
+      <sans>ans2</sans>
+      <tans>ta2</tans>
+      <testoptions>0.5</testoptions>
+      <quiet>0</quiet>
+      <truescoremode>=</truescoremode>
+      <truescore>1.0000000</truescore>
+      <truepenalty/>
+      <truenextnode>-1</truenextnode>
+      <trueanswernote>prt2-1-T</trueanswernote>
+      <truefeedback format="html"><text><![CDATA[<p>Correct! &tau; = R<sub>1</sub> &middot; C = {@tau_ms@} ms.</p>]]></text></truefeedback>
+      <falsescoremode>=</falsescoremode>
+      <falsescore>0.0000000</falsescore>
+      <falsepenalty/>
+      <falsenextnode>-1</falsenextnode>
+      <falseanswernote>prt2-1-F</falseanswernote>
+      <falsefeedback format="html"><text><![CDATA[<p>Incorrect. After the switch opens, the capacitor sees only R<sub>1</sub>. &tau; = R<sub>1</sub>(k&Omega;) &times; C(&mu;F) = ms.</p>]]></text></falsefeedback>
+    </node>
+  </prt>
+
+  <!-- PRT3: Final value (Part C, 2 pts of 4) -->
+  <prt>
+    <name>prt3</name>
+    <value>2.0000000</value>
+    <autosimplify>1</autosimplify>
+    <feedbackstyle>1</feedbackstyle>
+    <node>
+      <name>0</name>
+      <answertest>NumAbsolute</answertest>
+      <sans>ans3</sans>
+      <tans>ta3</tans>
+      <testoptions>0.01</testoptions>
+      <quiet>0</quiet>
+      <truescoremode>=</truescoremode>
+      <truescore>1.0000000</truescore>
+      <truepenalty/>
+      <truenextnode>-1</truenextnode>
+      <trueanswernote>prt3-1-T</trueanswernote>
+      <truefeedback format="html"><text><![CDATA[<p>Correct! At t &rarr; &infin;, C is fully charged to V<sub>s</sub> = {@Vs@} V (no current through R<sub>1</sub>, so no voltage drop).</p>]]></text></truefeedback>
+      <falsescoremode>=</falsescoremode>
+      <falsescore>0.0000000</falsescore>
+      <falsepenalty/>
+      <falsenextnode>-1</falsenextnode>
+      <falseanswernote>prt3-1-F</falseanswernote>
+      <falsefeedback format="html"><text><![CDATA[<p>Incorrect. With R<sub>2</sub> disconnected, at steady state i = 0, so v<sub>R1</sub> = 0, meaning v<sub>C</sub>(&infin;) = V<sub>s</sub>.</p>]]></text></falsefeedback>
+    </node>
+  </prt>
+</question>
+
+
+<!-- ============================================================ -->
+<!-- VARIANT 2: RL Circuit with Switch Opening                     -->
+<!-- ============================================================ -->
+<question type="stack">
+  <name><text>Q4-V2 RL Circuit with Switch — Complete Transient</text></name>
+  <questiontext format="html">
+    <text><![CDATA[
+<h3>Q4-V2: RL Circuit with Switch — Complete Transient Analysis</h3>
+
+<p>Consider the circuit below. A DC voltage source <b>V<sub>s</sub> = {@Vs@} V</b> is in series with a switch S and <b>R<sub>1</sub> = {@R1@} &Omega;</b>. From the junction node A: <b>R<sub>2</sub> = {@R2@} &Omega;</b> goes to ground, and an inductor <b>L = {@Lval@} mH</b> goes to ground.</p>
+
+<p><em>Before t = 0:</em> Switch S is <strong>closed</strong>. The circuit is in DC steady state.<br/>
+<em>At t = 0:</em> Switch S <strong>opens</strong>, disconnecting V<sub>s</sub> and R<sub>1</sub>.</p>
+
+<hr/>
+
+<h4>Part A (2 points) — Initial Condition</h4>
+<p>Before the switch opens (t &lt; 0), the circuit is at DC steady state. The inductor acts as a <strong>short circuit</strong> at DC.</p>
+<p>Determine the initial inductor current <b>i<sub>L</sub>(0<sup>&minus;</sup>)</b>.</p>
+<p><em>Hint: Since L is a short at DC, find the current through the L branch using the source and resistor network.</em></p>
+<p>i<sub>L</sub>(0<sup>&minus;</sup>) = [[input:ans1]] A</p>
+<div>[[validation:ans1]]</div>
+<div>[[feedback:prt1]]</div>
+
+<hr/>
+
+<h4>Part B (3 points) — s-Domain Model Setup</h4>
+<p>After the switch opens (t &gt; 0), the source and R<sub>1</sub> are disconnected. The inductor current flows through R<sub>2</sub> only.</p>
+<p>Set up the s-domain circuit with the initial condition i<sub>L</sub>(0) = I<sub>0</sub>.</p>
+<p><strong>Write your s-domain model below:</strong></p>
+<textarea rows="6" cols="80" style="width:100%; font-family:monospace;" placeholder="s-domain: The inductor with initial current I0 is modeled as sL·I(s) - L·I0. With only R2 in the loop: (sL + R2)·I(s) = L·I0 → I(s) = I0/(s + R2/L)..."></textarea>
+
+<hr/>
+
+<h4>Part C (4 points) — Time-Domain Solution</h4>
+<p>After the switch opens, the inductor current decays exponentially through R<sub>2</sub>.</p>
+
+<p>Calculate the time constant &tau; (in milliseconds):</p>
+<p>&tau; = [[input:ans2]] ms</p>
+<div>[[validation:ans2]]</div>
+<div>[[feedback:prt2]]</div>
+
+<p>What is the final steady-state inductor current i<sub>L</sub>(&infin;)?</p>
+<p>i<sub>L</sub>(&infin;) = [[input:ans3]] A</p>
+<div>[[validation:ans3]]</div>
+<div>[[feedback:prt3]]</div>
+
+<hr/>
+
+<h4>Part D (3 points) — Physical Interpretation</h4>
+<p>Answer the following in your own words (2–4 sentences each):</p>
+<ol>
+  <li>Explain physically why the inductor current must be continuous at t = 0 (i.e., i<sub>L</sub>(0<sup>+</sup>) = i<sub>L</sub>(0<sup>&minus;</sup>)).</li>
+  <li>Where does the energy stored in the inductor go as the current decays?</li>
+  <li>What happens to the voltage across R<sub>2</sub> at t = 0<sup>+</sup>? Can it exceed V<sub>s</sub>? Explain.</li>
+</ol>
+<textarea rows="8" cols="80" style="width:100%; font-family:monospace;" placeholder="1. Inductor current continuity explanation...&#10;2. Energy dissipation analysis...&#10;3. Voltage across R2 at t=0+..."></textarea>
+]]></text>
+  </questiontext>
+
+  <generalfeedback format="html">
+    <text><![CDATA[
+<h4>Solution — Q4-V2</h4>
+<p><b>Part A:</b> At DC steady state, L is short. Parallel combination of R<sub>2</sub> and L(short) = 0. All current from V<sub>s</sub> through R<sub>1</sub>: I<sub>total</sub> = V<sub>s</sub>/R<sub>1</sub>. Since L is short, all current goes through L: I<sub>0</sub> = {@I0@} A.</p>
+<p><b>Part B:</b> After switch opens: (sL + R<sub>2</sub>)&middot;I(s) = L&middot;I<sub>0</sub> &rarr; I(s) = I<sub>0</sub>/(s + R<sub>2</sub>/L)</p>
+<p><b>Part C:</b> &tau; = L/R<sub>2</sub> = {@tau_ms@} ms. Final value: i<sub>L</sub>(&infin;) = 0 A.</p>
+<p><b>Complete response:</b> i<sub>L</sub>(t) = {@I0@} &middot; e<sup>&minus;t/{@tau_ms@}ms</sup> for t &gt; 0</p>
+]]></text>
+  </generalfeedback>
+
+  <defaultgrade>12</defaultgrade>
+  <penalty>0.1</penalty>
+  <hidden>0</hidden>
+
+  <stackversion>
+    <text>2024032101</text>
+  </stackversion>
+
+  <questionvariables>
+    <text>
+/* Q4-V2: RL with Switch */
+Vs: rand([12,15,20,24]);
+R1: rand([100,200,330,470]);
+R2: rand([200,330,470,680]);
+Lval: rand([10,20,47,100]);
+
+/* Initial condition: L is short at DC, so I0 = Vs/R1 */
+I0: float(Vs / R1);
+I0_rounded: float(round(I0 * 10000) / 10000);
+
+/* Time constant: tau = L/R2, L in mH, R2 in Ohm => tau in ms */
+tau_ms: float(Lval / R2 * 1000);
+tau_ms_rounded: float(round(tau_ms * 1000) / 1000);
+
+/* Final value */
+Ifinal: 0;
+
+/* Teacher answers */
+ta1: I0_rounded;
+ta2: tau_ms_rounded;
+ta3: 0;
+    </text>
+  </questionvariables>
+
+  <specificfeedback format="html">
+    <text/>
+  </specificfeedback>
+
+  <questionnote>
+    <text>V2-RL: Vs={@Vs@}V, R1={@R1@}Ω, R2={@R2@}Ω, L={@Lval@}mH → I0={@I0_rounded@}A, τ={@tau_ms_rounded@}ms</text>
+  </questionnote>
+
+  <!-- Input: ans1 (Part A - initial current) -->
+  <input>
+    <name>ans1</name>
+    <type>numerical</type>
+    <tans>ta1</tans>
+    <boxsize>10</boxsize>
+    <strictsyntax>1</strictsyntax>
+    <insertstars>0</insertstars>
+    <syntaxhint/>
+    <syntaxattribute>0</syntaxattribute>
+    <forbidwords/>
+    <allowwords/>
+    <forbidfloat>0</forbidfloat>
+    <requirelowestterms>0</requirelowestterms>
+    <checkanswertype>0</checkanswertype>
+    <mustverify>1</mustverify>
+    <showvalidation>3</showvalidation>
+    <options/>
+  </input>
+
+  <!-- Input: ans2 (Part C - time constant) -->
+  <input>
+    <name>ans2</name>
+    <type>numerical</type>
+    <tans>ta2</tans>
+    <boxsize>10</boxsize>
+    <strictsyntax>1</strictsyntax>
+    <insertstars>0</insertstars>
+    <syntaxhint/>
+    <syntaxattribute>0</syntaxattribute>
+    <forbidwords/>
+    <allowwords/>
+    <forbidfloat>0</forbidfloat>
+    <requirelowestterms>0</requirelowestterms>
+    <checkanswertype>0</checkanswertype>
+    <mustverify>1</mustverify>
+    <showvalidation>3</showvalidation>
+    <options/>
+  </input>
+
+  <!-- Input: ans3 (Part C - final value) -->
+  <input>
+    <name>ans3</name>
+    <type>numerical</type>
+    <tans>ta3</tans>
+    <boxsize>10</boxsize>
+    <strictsyntax>1</strictsyntax>
+    <insertstars>0</insertstars>
+    <syntaxhint/>
+    <syntaxattribute>0</syntaxattribute>
+    <forbidwords/>
+    <allowwords/>
+    <forbidfloat>0</forbidfloat>
+    <requirelowestterms>0</requirelowestterms>
+    <checkanswertype>0</checkanswertype>
+    <mustverify>1</mustverify>
+    <showvalidation>3</showvalidation>
+    <options/>
+  </input>
+
+  <!-- PRT1: Initial current (Part A, 2 pts) -->
+  <prt>
+    <name>prt1</name>
+    <value>2.0000000</value>
+    <autosimplify>1</autosimplify>
+    <feedbackstyle>1</feedbackstyle>
+    <node>
+      <name>0</name>
+      <answertest>NumAbsolute</answertest>
+      <sans>ans1</sans>
+      <tans>ta1</tans>
+      <testoptions>0.005</testoptions>
+      <quiet>0</quiet>
+      <truescoremode>=</truescoremode>
+      <truescore>1.0000000</truescore>
+      <truepenalty/>
+      <truenextnode>-1</truenextnode>
+      <trueanswernote>prt1-1-T</trueanswernote>
+      <truefeedback format="html"><text><![CDATA[<p>Correct! I<sub>0</sub> = V<sub>s</sub>/R<sub>1</sub> = {@I0_rounded@} A.</p>]]></text></truefeedback>
+      <falsescoremode>=</falsescoremode>
+      <falsescore>0.0000000</falsescore>
+      <falsepenalty/>
+      <falsenextnode>-1</falsenextnode>
+      <falseanswernote>prt1-1-F</falseanswernote>
+      <falsefeedback format="html"><text><![CDATA[<p>Incorrect. At DC steady state, the inductor is a short circuit. The current through L is I<sub>0</sub> = V<sub>s</sub>/R<sub>1</sub>.</p>]]></text></falsefeedback>
+    </node>
+  </prt>
+
+  <!-- PRT2: Time constant (Part C, 2 pts of 4) -->
+  <prt>
+    <name>prt2</name>
+    <value>2.0000000</value>
+    <autosimplify>1</autosimplify>
+    <feedbackstyle>1</feedbackstyle>
+    <node>
+      <name>0</name>
+      <answertest>NumAbsolute</answertest>
+      <sans>ans2</sans>
+      <tans>ta2</tans>
+      <testoptions>0.01</testoptions>
+      <quiet>0</quiet>
+      <truescoremode>=</truescoremode>
+      <truescore>1.0000000</truescore>
+      <truepenalty/>
+      <truenextnode>-1</truenextnode>
+      <trueanswernote>prt2-1-T</trueanswernote>
+      <truefeedback format="html"><text><![CDATA[<p>Correct! &tau; = L/R<sub>2</sub> = {@tau_ms_rounded@} ms.</p>]]></text></truefeedback>
+      <falsescoremode>=</falsescoremode>
+      <falsescore>0.0000000</falsescore>
+      <falsepenalty/>
+      <falsenextnode>-1</falsenextnode>
+      <falseanswernote>prt2-1-F</falseanswernote>
+      <falsefeedback format="html"><text><![CDATA[<p>Incorrect. After switch opens, L discharges through R<sub>2</sub>. &tau; = L/R<sub>2</sub>. Convert L to Henrys first: L(mH)/1000 / R<sub>2</sub>(&Omega;) &times; 1000 = ms.</p>]]></text></falsefeedback>
+    </node>
+  </prt>
+
+  <!-- PRT3: Final value (Part C, 2 pts of 4) -->
+  <prt>
+    <name>prt3</name>
+    <value>2.0000000</value>
+    <autosimplify>1</autosimplify>
+    <feedbackstyle>1</feedbackstyle>
+    <node>
+      <name>0</name>
+      <answertest>NumAbsolute</answertest>
+      <sans>ans3</sans>
+      <tans>ta3</tans>
+      <testoptions>0.001</testoptions>
+      <quiet>0</quiet>
+      <truescoremode>=</truescoremode>
+      <truescore>1.0000000</truescore>
+      <truepenalty/>
+      <truenextnode>-1</truenextnode>
+      <trueanswernote>prt3-1-T</trueanswernote>
+      <truefeedback format="html"><text><![CDATA[<p>Correct! With no source, the inductor current decays to zero.</p>]]></text></truefeedback>
+      <falsescoremode>=</falsescoremode>
+      <falsescore>0.0000000</falsescore>
+      <falsepenalty/>
+      <falsenextnode>-1</falsenextnode>
+      <falseanswernote>prt3-1-F</falseanswernote>
+      <falsefeedback format="html"><text><![CDATA[<p>Incorrect. With the source disconnected, there is no energy input. The inductor energy dissipates in R<sub>2</sub>, so i<sub>L</sub>(&infin;) = 0 A.</p>]]></text></falsefeedback>
+    </node>
+  </prt>
+</question>
+
+
+<!-- ============================================================ -->
+<!-- VARIANT 3: Thévenin + RC Circuit                              -->
+<!-- ============================================================ -->
+<question type="stack">
+  <name><text>Q4-V3 Thevenin + RC — Complete Transient</text></name>
+  <questiontext format="html">
+    <text><![CDATA[
+<h3>Q4-V3: Th&eacute;venin + RC — Complete Transient Analysis</h3>
+
+<p>Consider the following circuit. A DC source <b>V<sub>s</sub> = {@Vs@} V</b> connects to a voltage divider: <b>R<sub>1</sub> = {@R1@} k&Omega;</b> (top) and <b>R<sub>2</sub> = {@R2@} k&Omega;</b> (bottom, to ground). At the midpoint (node A), a switch S is in series with a capacitor <b>C = {@Cval@} &mu;F</b>.</p>
+
+<p><em>Before t = 0:</em> Switch S is <strong>open</strong>. The capacitor has an initial voltage <b>v<sub>C</sub>(0<sup>&minus;</sup>) = V<sub>0</sub> = {@V0@} V</b>.<br/>
+<em>At t = 0:</em> Switch S <strong>closes</strong>, connecting C to the voltage divider circuit.</p>
+
+<hr/>
+
+<h4>Part A (2 points) — Th&eacute;venin Equivalent</h4>
+<p>Find the Th&eacute;venin equivalent voltage and resistance seen by the capacitor at node A (looking back into the R<sub>1</sub>&ndash;R<sub>2</sub> divider with V<sub>s</sub>).</p>
+
+<p>V<sub>th</sub> = [[input:ans1]] V</p>
+<div>[[validation:ans1]]</div>
+<div>[[feedback:prt1]]</div>
+
+<p>R<sub>th</sub> = [[input:ans2]] k&Omega;</p>
+<div>[[validation:ans2]]</div>
+<div>[[feedback:prt2]]</div>
+
+<hr/>
+
+<h4>Part B (3 points) — s-Domain Model Setup</h4>
+<p>Replace the original circuit with its Th&eacute;venin equivalent: V<sub>th</sub> in series with R<sub>th</sub> and C (with initial voltage V<sub>0</sub>).</p>
+<p><strong>Write the s-domain equation below:</strong></p>
+<textarea rows="5" cols="80" style="width:100%; font-family:monospace;" placeholder="s-domain: Vth/s = I(s)·Rth + I(s)·(1/(sC)) + V0/s&#10;Or equivalently: Vc(s) = Vth/s + (V0 - Vth)/(s + 1/(Rth·C))..."></textarea>
+
+<hr/>
+
+<h4>Part C (4 points) — Time-Domain Solution</h4>
+<p>Calculate the time constant &tau;:</p>
+<p>&tau; = [[input:ans3]] ms</p>
+<div>[[validation:ans3]]</div>
+<div>[[feedback:prt3]]</div>
+
+<p>What is the final steady-state capacitor voltage v<sub>C</sub>(&infin;)?</p>
+<p>v<sub>C</sub>(&infin;) = [[input:ans4]] V</p>
+<div>[[validation:ans4]]</div>
+<div>[[feedback:prt4]]</div>
+
+<hr/>
+
+<h4>Part D (3 points) — Physical Interpretation</h4>
+<p>Answer the following in your own words (2–4 sentences each):</p>
+<ol>
+  <li>Why is the Th&eacute;venin approach useful here? What simplification does it provide?</li>
+  <li>Verify your answer: at t = 0<sup>+</sup>, what is v<sub>C</sub>? At t &rarr; &infin;, what is v<sub>C</sub>? Do these match your initial condition and final value?</li>
+  <li>How much total energy is dissipated in R<sub>th</sub> during the transient? Express in terms of C, V<sub>0</sub>, and V<sub>th</sub>.</li>
+</ol>
+<textarea rows="8" cols="80" style="width:100%; font-family:monospace;" placeholder="1. Thévenin simplification explanation...&#10;2. Boundary condition verification...&#10;3. Energy dissipated = ½C(V0² - Vth²) or ½C(V0-Vth)²..."></textarea>
+]]></text>
+  </questiontext>
+
+  <generalfeedback format="html">
+    <text><![CDATA[
+<h4>Solution — Q4-V3</h4>
+<p><b>Part A:</b> V<sub>th</sub> = V<sub>s</sub> &middot; R<sub>2</sub>/(R<sub>1</sub>+R<sub>2</sub>) = {@Vth@} V. R<sub>th</sub> = R<sub>1</sub>||R<sub>2</sub> = R<sub>1</sub>&middot;R<sub>2</sub>/(R<sub>1</sub>+R<sub>2</sub>) = {@Rth@} k&Omega;.</p>
+<p><b>Part B:</b> V<sub>th</sub>/s = I(s)&middot;R<sub>th</sub> + V<sub>C</sub>(s), with V<sub>C</sub>(s) = V<sub>0</sub>/s + I(s)/(sC).</p>
+<p><b>Part C:</b> &tau; = R<sub>th</sub>&middot;C = {@tau_ms@} ms. Final value = V<sub>th</sub> = {@Vth@} V.</p>
+<p><b>Complete response:</b> v<sub>C</sub>(t) = {@Vth@} + ({@V0@} &minus; {@Vth@})&middot;e<sup>&minus;t/{@tau_ms@}ms</sup> for t &gt; 0</p>
+<p><b>Energy dissipated:</b> &Delta;E = &frac12;C(V<sub>0</sub> &minus; V<sub>th</sub>)&sup2; (energy lost to R<sub>th</sub> during the exponential transient).</p>
+]]></text>
+  </generalfeedback>
+
+  <defaultgrade>12</defaultgrade>
+  <penalty>0.1</penalty>
+  <hidden>0</hidden>
+
+  <stackversion>
+    <text>2024032101</text>
+  </stackversion>
+
+  <questionvariables>
+    <text>
+/* Q4-V3: Thevenin + RC */
+Vs: rand([12,15,18,24]);
+R1: rand([1,2,3,4.7]);
+R2: rand([2,3,4.7,6.8]);
+Cval: rand([10,22,47,100]);
+V0: rand([0,2,5]);
+
+/* Thevenin equivalent */
+Vth: float(Vs * R2 / (R1 + R2));
+Vth_rounded: float(round(Vth * 1000) / 1000);
+Rth: float(R1 * R2 / (R1 + R2));
+Rth_rounded: float(round(Rth * 10000) / 10000);
+
+/* Time constant in ms: Rth in kOhm, C in uF => tau = Rth*C ms */
+tau_ms: float(Rth * Cval);
+tau_ms_rounded: float(round(tau_ms * 1000) / 1000);
+
+/* Teacher answers */
+ta1: Vth_rounded;
+ta2: Rth_rounded;
+ta3: tau_ms_rounded;
+ta4: Vth_rounded;
+    </text>
+  </questionvariables>
+
+  <specificfeedback format="html">
+    <text/>
+  </specificfeedback>
+
+  <questionnote>
+    <text>V3-Thev: Vs={@Vs@}V, R1={@R1@}kΩ, R2={@R2@}kΩ, C={@Cval@}µF, V0={@V0@}V → Vth={@Vth_rounded@}V, Rth={@Rth_rounded@}kΩ, τ={@tau_ms_rounded@}ms</text>
+  </questionnote>
+
+  <!-- Input: ans1 (Part A - Vth) -->
+  <input>
+    <name>ans1</name>
+    <type>numerical</type>
+    <tans>ta1</tans>
+    <boxsize>10</boxsize>
+    <strictsyntax>1</strictsyntax>
+    <insertstars>0</insertstars>
+    <syntaxhint/>
+    <syntaxattribute>0</syntaxattribute>
+    <forbidwords/>
+    <allowwords/>
+    <forbidfloat>0</forbidfloat>
+    <requirelowestterms>0</requirelowestterms>
+    <checkanswertype>0</checkanswertype>
+    <mustverify>1</mustverify>
+    <showvalidation>3</showvalidation>
+    <options/>
+  </input>
+
+  <!-- Input: ans2 (Part A - Rth) -->
+  <input>
+    <name>ans2</name>
+    <type>numerical</type>
+    <tans>ta2</tans>
+    <boxsize>10</boxsize>
+    <strictsyntax>1</strictsyntax>
+    <insertstars>0</insertstars>
+    <syntaxhint/>
+    <syntaxattribute>0</syntaxattribute>
+    <forbidwords/>
+    <allowwords/>
+    <forbidfloat>0</forbidfloat>
+    <requirelowestterms>0</requirelowestterms>
+    <checkanswertype>0</checkanswertype>
+    <mustverify>1</mustverify>
+    <showvalidation>3</showvalidation>
+    <options/>
+  </input>
+
+  <!-- Input: ans3 (Part C - time constant) -->
+  <input>
+    <name>ans3</name>
+    <type>numerical</type>
+    <tans>ta3</tans>
+    <boxsize>10</boxsize>
+    <strictsyntax>1</strictsyntax>
+    <insertstars>0</insertstars>
+    <syntaxhint/>
+    <syntaxattribute>0</syntaxattribute>
+    <forbidwords/>
+    <allowwords/>
+    <forbidfloat>0</forbidfloat>
+    <requirelowestterms>0</requirelowestterms>
+    <checkanswertype>0</checkanswertype>
+    <mustverify>1</mustverify>
+    <showvalidation>3</showvalidation>
+    <options/>
+  </input>
+
+  <!-- Input: ans4 (Part C - final value) -->
+  <input>
+    <name>ans4</name>
+    <type>numerical</type>
+    <tans>ta4</tans>
+    <boxsize>10</boxsize>
+    <strictsyntax>1</strictsyntax>
+    <insertstars>0</insertstars>
+    <syntaxhint/>
+    <syntaxattribute>0</syntaxattribute>
+    <forbidwords/>
+    <allowwords/>
+    <forbidfloat>0</forbidfloat>
+    <requirelowestterms>0</requirelowestterms>
+    <checkanswertype>0</checkanswertype>
+    <mustverify>1</mustverify>
+    <showvalidation>3</showvalidation>
+    <options/>
+  </input>
+
+  <!-- PRT1: Vth (Part A, 1 pt) -->
+  <prt>
+    <name>prt1</name>
+    <value>1.0000000</value>
+    <autosimplify>1</autosimplify>
+    <feedbackstyle>1</feedbackstyle>
+    <node>
+      <name>0</name>
+      <answertest>NumAbsolute</answertest>
+      <sans>ans1</sans>
+      <tans>ta1</tans>
+      <testoptions>0.1</testoptions>
+      <quiet>0</quiet>
+      <truescoremode>=</truescoremode>
+      <truescore>1.0000000</truescore>
+      <truepenalty/>
+      <truenextnode>-1</truenextnode>
+      <trueanswernote>prt1-1-T</trueanswernote>
+      <truefeedback format="html"><text><![CDATA[<p>Correct! V<sub>th</sub> = V<sub>s</sub> &middot; R<sub>2</sub>/(R<sub>1</sub>+R<sub>2</sub>) = {@Vth_rounded@} V.</p>]]></text></truefeedback>
+      <falsescoremode>=</falsescoremode>
+      <falsescore>0.0000000</falsescore>
+      <falsepenalty/>
+      <falsenextnode>-1</falsenextnode>
+      <falseanswernote>prt1-1-F</falseanswernote>
+      <falsefeedback format="html"><text><![CDATA[<p>Incorrect. V<sub>th</sub> is the open-circuit voltage at node A = V<sub>s</sub> &middot; R<sub>2</sub>/(R<sub>1</sub>+R<sub>2</sub>).</p>]]></text></falsefeedback>
+    </node>
+  </prt>
+
+  <!-- PRT2: Rth (Part A, 1 pt) -->
+  <prt>
+    <name>prt2</name>
+    <value>1.0000000</value>
+    <autosimplify>1</autosimplify>
+    <feedbackstyle>1</feedbackstyle>
+    <node>
+      <name>0</name>
+      <answertest>NumAbsolute</answertest>
+      <sans>ans2</sans>
+      <tans>ta2</tans>
+      <testoptions>0.05</testoptions>
+      <quiet>0</quiet>
+      <truescoremode>=</truescoremode>
+      <truescore>1.0000000</truescore>
+      <truepenalty/>
+      <truenextnode>-1</truenextnode>
+      <trueanswernote>prt2-1-T</trueanswernote>
+      <truefeedback format="html"><text><![CDATA[<p>Correct! R<sub>th</sub> = R<sub>1</sub>||R<sub>2</sub> = {@Rth_rounded@} k&Omega;.</p>]]></text></truefeedback>
+      <falsescoremode>=</falsescoremode>
+      <falsescore>0.0000000</falsescore>
+      <falsepenalty/>
+      <falsenextnode>-1</falsenextnode>
+      <falseanswernote>prt2-1-F</falseanswernote>
+      <falsefeedback format="html"><text><![CDATA[<p>Incorrect. R<sub>th</sub> = R<sub>1</sub>||R<sub>2</sub> = R<sub>1</sub>&middot;R<sub>2</sub>/(R<sub>1</sub>+R<sub>2</sub>). Remember to deactivate V<sub>s</sub> (short it) when finding R<sub>th</sub>.</p>]]></text></falsefeedback>
+    </node>
+  </prt>
+
+  <!-- PRT3: Time constant (Part C, 2 pts) -->
+  <prt>
+    <name>prt3</name>
+    <value>2.0000000</value>
+    <autosimplify>1</autosimplify>
+    <feedbackstyle>1</feedbackstyle>
+    <node>
+      <name>0</name>
+      <answertest>NumAbsolute</answertest>
+      <sans>ans3</sans>
+      <tans>ta3</tans>
+      <testoptions>0.5</testoptions>
+      <quiet>0</quiet>
+      <truescoremode>=</truescoremode>
+      <truescore>1.0000000</truescore>
+      <truepenalty/>
+      <truenextnode>-1</truenextnode>
+      <trueanswernote>prt3-1-T</trueanswernote>
+      <truefeedback format="html"><text><![CDATA[<p>Correct! &tau; = R<sub>th</sub> &middot; C = {@tau_ms_rounded@} ms.</p>]]></text></truefeedback>
+      <falsescoremode>=</falsescoremode>
+      <falsescore>0.0000000</falsescore>
+      <falsepenalty/>
+      <falsenextnode>-1</falsenextnode>
+      <falseanswernote>prt3-1-F</falseanswernote>
+      <falsefeedback format="html"><text><![CDATA[<p>Incorrect. &tau; = R<sub>th</sub>(k&Omega;) &times; C(&mu;F) gives ms directly.</p>]]></text></falsefeedback>
+    </node>
+  </prt>
+
+  <!-- PRT4: Final value (Part C, 2 pts) -->
+  <prt>
+    <name>prt4</name>
+    <value>2.0000000</value>
+    <autosimplify>1</autosimplify>
+    <feedbackstyle>1</feedbackstyle>
+    <node>
+      <name>0</name>
+      <answertest>NumAbsolute</answertest>
+      <sans>ans4</sans>
+      <tans>ta4</tans>
+      <testoptions>0.1</testoptions>
+      <quiet>0</quiet>
+      <truescoremode>=</truescoremode>
+      <truescore>1.0000000</truescore>
+      <truepenalty/>
+      <truenextnode>-1</truenextnode>
+      <trueanswernote>prt4-1-T</trueanswernote>
+      <truefeedback format="html"><text><![CDATA[<p>Correct! At steady state, C is open, so v<sub>C</sub>(&infin;) = V<sub>th</sub> = {@Vth_rounded@} V.</p>]]></text></truefeedback>
+      <falsescoremode>=</falsescoremode>
+      <falsescore>0.0000000</falsescore>
+      <falsepenalty/>
+      <falsenextnode>-1</falsenextnode>
+      <falseanswernote>prt4-1-F</falseanswernote>
+      <falsefeedback format="html"><text><![CDATA[<p>Incorrect. At steady state, no current flows through R<sub>th</sub>, so v<sub>C</sub> = V<sub>th</sub>.</p>]]></text></falsefeedback>
+    </node>
+  </prt>
+</question>
+
+</quiz>

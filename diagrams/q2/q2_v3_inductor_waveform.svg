@@ -1,0 +1,79 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 420" preserveAspectRatio="xMidYMid meet" role="img" aria-label="Q2 Variant 3: Inductor with piecewise-linear current waveform for energy analysis">
+  <title>Q2-V3: Inductor Energy from Current Waveform</title>
+  <style>
+    text { font-family: 'Segoe UI', Arial, Helvetica, sans-serif; }
+    .title { font-size: 18px; font-weight: bold; fill: #222; }
+    .comp-label { font-size: 16px; font-weight: bold; fill: #0055aa; }
+    .annotation { font-size: 14px; fill: #666; }
+    .wire { stroke: #333; stroke-width: 2.5; fill: none; }
+    .component { stroke: #333; stroke-width: 2.5; fill: none; }
+    .find-text { font-size: 16px; fill: #cc0000; font-weight: bold; }
+    .info-text { font-size: 14px; fill: #0055aa; font-style: italic; }
+    .axis { stroke: #333; stroke-width: 1.5; }
+    .waveform { stroke: #0055aa; stroke-width: 2.5; fill: none; }
+    .grid { stroke: #ddd; stroke-width: 0.5; }
+  </style>
+  <defs>
+    <marker id="axis-arr" markerWidth="8" markerHeight="6" refX="8" refY="3" orient="auto">
+      <polygon points="0 0, 8 3, 0 6" fill="#333"/>
+    </marker>
+  </defs>
+
+  <text x="300" y="28" text-anchor="middle" class="title">Q2-V3: Inductor Energy from Current Waveform</text>
+
+  <!-- Inductor symbol (top-center) -->
+  <rect x="220" y="45" width="160" height="50" rx="8" fill="#f5f5ff" stroke="#0055aa" stroke-width="1.5"/>
+  <path d="M 240,70 C 240,60 255,60 255,70 C 255,80 270,80 270,70 C 270,60 285,60 285,70 C 285,80 300,80 300,70" class="component" fill="none" transform="translate(10,0)"/>
+  <text x="340" y="75" class="comp-label" style="font-size:15px;">L</text>
+
+  <!-- Current waveform plot -->
+  <!-- Axes -->
+  <line x1="80" y1="300" x2="540" y2="300" class="axis" marker-end="url(#axis-arr)"/>
+  <line x1="80" y1="310" x2="80" y2="115" class="axis" marker-end="url(#axis-arr)"/>
+  <text x="555" y="305" class="annotation">t (ms)</text>
+  <text x="75" y="110" text-anchor="end" class="annotation">i(t)</text>
+
+  <!-- Grid lines -->
+  <line x1="80" y1="250" x2="520" y2="250" class="grid"/>
+  <line x1="80" y1="200" x2="520" y2="200" class="grid"/>
+  <line x1="80" y1="150" x2="520" y2="150" class="grid"/>
+  <line x1="190" y1="300" x2="190" y2="120" class="grid"/>
+  <line x1="300" y1="300" x2="300" y2="120" class="grid"/>
+  <line x1="410" y1="300" x2="410" y2="120" class="grid"/>
+  <line x1="520" y1="300" x2="520" y2="120" class="grid"/>
+
+  <!-- Axis labels -->
+  <text x="80" y="318" text-anchor="middle" class="annotation">0</text>
+  <text x="190" y="318" text-anchor="middle" class="annotation">t&#x2081;</text>
+  <text x="300" y="318" text-anchor="middle" class="annotation">t&#x2082;</text>
+  <text x="410" y="318" text-anchor="middle" class="annotation">t&#x2083;</text>
+  <text x="520" y="318" text-anchor="middle" class="annotation">t&#x2084;</text>
+
+  <!-- Y-axis labels -->
+  <text x="72" y="254" text-anchor="end" class="annotation" style="font-size:12px;">I&#x2081;</text>
+  <text x="72" y="154" text-anchor="end" class="annotation" style="font-size:12px;">I_peak</text>
+
+  <!-- Piecewise linear waveform: rise - flat - fall - zero -->
+  <polyline points="80,300 190,150 300,150 410,250 520,250" class="waveform"/>
+
+  <!-- Segment labels -->
+  <text x="135" y="210" text-anchor="middle" style="font-size:13px; fill:#0055aa; font-weight:bold;">Seg 1</text>
+  <text x="245" y="140" text-anchor="middle" style="font-size:13px; fill:#0055aa; font-weight:bold;">Seg 2</text>
+  <text x="355" y="188" text-anchor="middle" style="font-size:13px; fill:#0055aa; font-weight:bold;">Seg 3</text>
+  <text x="465" y="242" text-anchor="middle" style="font-size:13px; fill:#0055aa; font-weight:bold;">Seg 4</text>
+
+  <!-- Dot at evaluation point -->
+  <circle cx="300" cy="150" r="5" fill="#cc0000"/>
+  <text x="310" y="140" class="find-text" style="font-size:14px;">i(t&#x2082;) = I_peak</text>
+
+  <!-- Annotations -->
+  <text x="135" y="350" text-anchor="middle" class="annotation" style="font-size:13px;">v_L = L &middot; di/dt</text>
+  <text x="135" y="368" text-anchor="middle" class="annotation" style="font-size:13px;">Seg 1: highest |v_L|</text>
+
+  <!-- Energy formula -->
+  <rect x="300" y="340" width="230" height="35" rx="6" fill="#f0f8f0" stroke="#006600" stroke-width="1.2"/>
+  <text x="415" y="363" text-anchor="middle" style="font-size:14px; fill:#006600; font-weight:bold;">E = &frac12; L &middot; i(t)&sup2;</text>
+
+  <!-- Find instruction -->
+  <text x="300" y="410" text-anchor="middle" class="find-text">Find: Energy at t&#x2082; and identify segment with highest v_L</text>
+</svg>
