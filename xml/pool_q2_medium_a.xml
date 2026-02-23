@@ -203,7 +203,7 @@ connection, and debug an incorrect student solution.</p>
         <name>ansA</name>
         <type>dropdown</type>
         <tans>taA</tans>
-        <boxsize>15</boxsize>
+        <boxsize>60</boxsize>
         <strictsyntax>1</strictsyntax>
         <insertstars>0</insertstars>
         <syntaxhint></syntaxhint>
@@ -237,9 +237,9 @@ connection, and debug an incorrect student solution.</p>
     </input>
     <input>
         <name>ansC</name>
-        <type>essay</type>
+        <type>textarea</type>
         <tans>taC</tans>
-        <boxsize>15</boxsize>
+        <boxsize>60</boxsize>
         <strictsyntax>0</strictsyntax>
         <insertstars>0</insertstars>
         <syntaxhint></syntaxhint>
@@ -255,9 +255,9 @@ connection, and debug an incorrect student solution.</p>
     </input>
     <input>
         <name>ansD</name>
-        <type>essay</type>
+        <type>textarea</type>
         <tans>taD</tans>
-        <boxsize>15</boxsize>
+        <boxsize>60</boxsize>
         <strictsyntax>0</strictsyntax>
         <insertstars>0</insertstars>
         <syntaxhint></syntaxhint>
@@ -591,7 +591,7 @@ conservation connection, and compare two energy calculation approaches.</p>
         <name>ansA</name>
         <type>dropdown</type>
         <tans>taA</tans>
-        <boxsize>15</boxsize>
+        <boxsize>60</boxsize>
         <strictsyntax>1</strictsyntax>
         <insertstars>0</insertstars>
         <syntaxhint></syntaxhint>
@@ -625,9 +625,9 @@ conservation connection, and compare two energy calculation approaches.</p>
     </input>
     <input>
         <name>ansC</name>
-        <type>essay</type>
+        <type>textarea</type>
         <tans>taC</tans>
-        <boxsize>15</boxsize>
+        <boxsize>60</boxsize>
         <strictsyntax>0</strictsyntax>
         <insertstars>0</insertstars>
         <syntaxhint></syntaxhint>
@@ -643,9 +643,9 @@ conservation connection, and compare two energy calculation approaches.</p>
     </input>
     <input>
         <name>ansD</name>
-        <type>essay</type>
+        <type>textarea</type>
         <tans>taD</tans>
-        <boxsize>15</boxsize>
+        <boxsize>60</boxsize>
         <strictsyntax>0</strictsyntax>
         <insertstars>0</insertstars>
         <syntaxhint></syntaxhint>
@@ -1021,7 +1021,7 @@ confusion error.</p>
         <name>ansA</name>
         <type>dropdown</type>
         <tans>taA</tans>
-        <boxsize>15</boxsize>
+        <boxsize>60</boxsize>
         <strictsyntax>1</strictsyntax>
         <insertstars>0</insertstars>
         <syntaxhint></syntaxhint>
@@ -1055,9 +1055,9 @@ confusion error.</p>
     </input>
     <input>
         <name>ansC</name>
-        <type>essay</type>
+        <type>textarea</type>
         <tans>taC</tans>
-        <boxsize>15</boxsize>
+        <boxsize>60</boxsize>
         <strictsyntax>0</strictsyntax>
         <insertstars>0</insertstars>
         <syntaxhint></syntaxhint>
@@ -1073,9 +1073,9 @@ confusion error.</p>
     </input>
     <input>
         <name>ansD</name>
-        <type>essay</type>
+        <type>textarea</type>
         <tans>taD</tans>
-        <boxsize>15</boxsize>
+        <boxsize>60</boxsize>
         <strictsyntax>0</strictsyntax>
         <insertstars>0</insertstars>
         <syntaxhint></syntaxhint>
@@ -1444,7 +1444,7 @@ approaches to energy calculation.</p>
         <name>ansA</name>
         <type>dropdown</type>
         <tans>taA</tans>
-        <boxsize>15</boxsize>
+        <boxsize>60</boxsize>
         <strictsyntax>1</strictsyntax>
         <insertstars>0</insertstars>
         <syntaxhint></syntaxhint>
@@ -1478,9 +1478,9 @@ approaches to energy calculation.</p>
     </input>
     <input>
         <name>ansC</name>
-        <type>essay</type>
+        <type>textarea</type>
         <tans>taC</tans>
-        <boxsize>15</boxsize>
+        <boxsize>60</boxsize>
         <strictsyntax>0</strictsyntax>
         <insertstars>0</insertstars>
         <syntaxhint></syntaxhint>
@@ -1496,9 +1496,9 @@ approaches to energy calculation.</p>
     </input>
     <input>
         <name>ansD</name>
-        <type>essay</type>
+        <type>textarea</type>
         <tans>taD</tans>
-        <boxsize>15</boxsize>
+        <boxsize>60</boxsize>
         <strictsyntax>0</strictsyntax>
         <insertstars>0</insertstars>
         <syntaxhint></syntaxhint>
