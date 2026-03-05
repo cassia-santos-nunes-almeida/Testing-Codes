@@ -53,6 +53,9 @@ An \(N = {@N_val@}\)-turn coil is wound around the core.</p>
   <tr><td>Flux \(\Phi\) (Wb)</td><td>Current \(I\) (A)</td></tr>
 </table>
 
+<p><img src="@@PLUGINFILE@@/q4_ccore_physical.svg" alt="C-core electromagnet with air gap" style="max-width:500px;" /></p>
+<p><img src="@@PLUGINFILE@@/q4_ccore_reluctance.svg" alt="Reluctance equivalent circuit" style="max-width:400px;" /></p>
+
 <hr />
 
 <h4>Part (a) &mdash; Reluctance Analogy MCQ (1 pt)</h4>

@@ -32,6 +32,8 @@ The initial conditions are:</p>
 
 <p>Your task: find the complete step response \(i_L(t)\) and then \(v(t)\) for \(t \geq 0\).</p>
 
+<p><img src="@@PLUGINFILE@@/q2_parallel_rlc_step.svg" alt="Parallel RLC circuit with current source" style="max-width:500px;" /></p>
+
 <hr />
 
 <h4>Part (a) &mdash; Physical Reasoning (1 pt)</h4>
