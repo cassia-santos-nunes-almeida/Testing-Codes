@@ -28,6 +28,8 @@ At \(t = 0\), the switch <strong>opens</strong>, disconnecting the DC source and
 
 <p>Your task: determine the complete natural response \(i(t)\) for \(t &gt; 0\) by working through parts (a)&ndash;(f) below.</p>
 
+<p><img src="@@PLUGINFILE@@/q1_series_rlc_switch.svg" alt="Series RLC circuit with switch" style="max-width:500px;" /></p>
+
 <hr />
 
 <h4>Part (a) &mdash; DC Steady-State Concept (1 pt)</h4>

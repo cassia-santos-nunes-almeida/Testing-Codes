@@ -29,6 +29,9 @@
 <p>The cross-sectional area \(A = {@Ac_val@}\;\text{m}^2\) is <strong>uniform</strong> throughout both sections.</p>
 <p>Use \(\mu_0 = 4\pi \times 10^{-7}\;\text{H/m}\).</p>
 
+<p><img src="@@PLUGINFILE@@/q3_toroid_physical.svg" alt="Toroidal core cross-section with air gap" style="max-width:500px;" /></p>
+<p><img src="@@PLUGINFILE@@/q3_toroid_reluctance.svg" alt="Reluctance equivalent circuit" style="max-width:400px;" /></p>
+
 <hr />
 
 <h4>Part (a) &mdash; Which Law? (1 pt)</h4>
