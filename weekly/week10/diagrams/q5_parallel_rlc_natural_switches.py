@@ -1,129 +1,154 @@
 """Q5: Parallel RLC Natural Response — Two-switch circuit (based on Nilsson P8.11).
 
-Full circuit with two SPDT switches. At t=0 switches flip, disconnecting sources
-and leaving a parallel RLC natural response.
+Two SPDT switches operate synchronously at t=0.
 
 Pre-switch (t<0): Switch 1 at 'a', Switch 2 at 'd'.
-  - Left: Is current source || Ra
-  - Center: L and R in parallel
-  - Right: Rb in series with Vdc, C in parallel
+  - Left loop (isolated): Is + Ra + L (inductor = short, I_L = Is)
+  - Right loop (isolated): Vdc + Rb + C (capacitor = open, V_C = Vdc)
+  - R (50 Ohm) not in either loop
 
 Post-switch (t>0): Switch 1 at 'b', Switch 2 at 'c'.
-  - Isolated parallel RLC: L, R, C with initial conditions V0 and I0.
+  - L, R, C form parallel RLC (source-free natural response)
+  - Is, Ra, Vdc, Rb all disconnected
 """
 import schemdraw
 import schemdraw.elements as elm
 
-with schemdraw.Drawing(file='diagrams/week10/q5_parallel_rlc_natural_switches.svg') as d:
+with schemdraw.Drawing(file='weekly/week10/diagrams/q5_parallel_rlc_natural_switches.svg') as d:
     d.config(unit=3.5, fontsize=14, font='sans-serif')
 
-    # ── Bottom rail (reference) ──
-    # Start at bottom-left, build the circuit upward and to the right.
+    # ────────────────────────────────────────
+    # LEFT SECTION: Is ∥ Ra  (pre-charge loop for L)
+    # ────────────────────────────────────────
 
-    # Left section: Current source (up) with Ra in parallel
-    source = d.add(elm.SourceI().up().label('$I_s$', loc='top', ofst=0.15))
+    # Current source (vertical, arrow up)
+    source = d.add(elm.SourceI().up().label('$I_s$', loc='left', ofst=0.15))
     top_left = source.end
     bot_left = source.start
 
-    # Top rail: short line right from source top
+    # Top rail: short wire right to junction
     d += elm.Line().right().length(1.0).at(top_left)
     d += elm.Dot()
-    junction_a_top = d.here
+    junc_Ra_top = d.here
 
-    # Ra resistor (parallel with source): down from junction back to bottom
+    # Ra (parallel with Is): down from junction
     d.push()
-    Ra = d.add(elm.Resistor().down().label('$R_a$', loc='bottom', ofst=0.15))
-    junction_a_bot = d.here
+    d.add(elm.Resistor().down().label('$R_a$', loc='right', ofst=0.15))
+    junc_Ra_bot = d.here
     d.pop()
 
-    # Bottom rail segment: source start to Ra bottom
-    d += elm.Line().right().at(bot_left).tox(junction_a_bot)
+    # Bottom rail: source start → Ra bottom
+    d += elm.Line().right().at(bot_left).tox(junc_Ra_bot)
 
-    # ── Switch 1 (SPDT): positions a and b ──
-    # Represent as a line from junction_a_top going right, with a switch element
-    # Position 'a' = closed (t<0), position 'b' = open line going right
-    d += elm.Line().right().length(0.5).at(junction_a_top)
-    sw1_pivot = d.here
+    # ────────────────────────────────────────
+    # SWITCH 1 (SPDT) — routes Is/Ra between L (pos a) and dead end (pos b)
+    # ────────────────────────────────────────
+    # Wire from Ra junction to switch pole
+    d += elm.Line().right().length(0.8).at(junc_Ra_top)
+    sw1_pole = d.here
 
-    # Switch 1: draw as an open switch going right (at t=0 it flips from a to b)
-    sw1 = d.add(elm.Switch().right().length(2.0).label('$t=0$', loc='top', ofst=0.3))
-    sw1_end = d.here
+    # Draw the SPDT switch: pole on left, throws on right
+    # SwitchSpdt2 anchors: 'a' = pole (common), 'b' = upper throw, 'c' = lower throw
+    sw1 = d.add(elm.SwitchSpdt2().right().at(sw1_pole))
 
-    # Label switch positions
-    d += elm.Dot().at(sw1_pivot)
-    d.add(elm.Label().at(sw1_pivot).label('a', loc='top', ofst=0.15))
-    d.add(elm.Label().at(sw1_end).label('b', loc='top', ofst=0.15))
+    # Label throws: 'a' = upper (t<0 position), 'b' = lower (t>0 position)
+    d.add(elm.Label().at(sw1.absanchors['b']).label('a', loc='right', ofst=0.3))
+    d.add(elm.Label().at(sw1.absanchors['c']).label('b', loc='right', ofst=0.3))
+    d.add(elm.Label().at(sw1.absanchors['a']).label('$t=0$', loc='bottom', ofst=0.4))
 
-    # ── Center section: L and R in parallel ──
-    d += elm.Line().right().length(0.5).at(sw1_end)
+    # ────────────────────────────────────────
+    # INDUCTOR L — connected to switch 1 throw 'a' (upper)
+    # For t<0: Is charges L through this path
+    # For t>0: L connects to parallel RLC via switch 1 at 'b'
+    # ────────────────────────────────────────
+    # Wire from upper throw 'a' (sw1.b) to L top node
+    d += elm.Line().right().length(1.5).at(sw1.absanchors['b'])
     d += elm.Dot()
-    center_top_left = d.here
+    L_top = d.here
 
-    # Branch 1: Inductor (left parallel branch)
     d.push()
-    L = d.add(elm.Inductor().down().label('$L$', loc='top', ofst=0.15))
-    center_bot_left = d.here
+    L = d.add(elm.Inductor().down().label('$L$', loc='right', ofst=0.15))
+    L_bot = d.here
     d.pop()
 
-    # Top rail to R branch
-    d += elm.Line().right().length(2.5)
-    d += elm.Dot()
-    center_top_right = d.here
-
-    # Branch 2: Resistor (right parallel branch)
-    d.push()
-    R = d.add(elm.Resistor().down().label('$R$', loc='bottom', ofst=0.15))
-    center_bot_right = d.here
-    d.pop()
-
-    # Connect center bottom rail
-    d += elm.Line().left().at(center_bot_right).tox(center_bot_left)
-    d += elm.Dot().at(center_bot_left)
-    d += elm.Dot().at(center_bot_right)
-
-    # v_o(t) polarity — Gap between L and R branches (use spacer from center_top_left)
-    spacer_v = d.add(elm.Line().right().at(center_top_left).length(1.25).color('white').zorder(-1))
-    d += elm.Gap().down().at(spacer_v.end).label(['+', '$v_o(t)$', '−'], loc='bottom', ofst=0.15)
-
-    # i_L current arrow on inductor
+    # i_L current arrow
     d += elm.CurrentLabelInline(direction='in').at(L).label('$i_L$')
 
-    # ── Switch 2 (SPDT): positions c and d ──
-    d += elm.Line().right().length(0.5).at(center_top_right)
-    sw2_pivot = d.here
+    # ────────────────────────────────────────
+    # RESISTOR R — center, always in parallel RLC for t>0
+    # ────────────────────────────────────────
+    d += elm.Line().right().length(2.0).at(L_top)
     d += elm.Dot()
+    R_top = d.here
 
-    sw2 = d.add(elm.Switch().right().length(2.0).label('$t=0$', loc='top', ofst=0.3))
-    sw2_end = d.here
-
-    # Label switch positions
-    d.add(elm.Label().at(sw2_pivot).label('c', loc='top', ofst=0.15))
-    d.add(elm.Label().at(sw2_end).label('d', loc='top', ofst=0.15))
-
-    # ── Right section: Rb + Vdc in series (vertical right), C in parallel ──
-    d += elm.Line().right().length(0.5).at(sw2_end)
-    d += elm.Dot()
-    right_top = d.here
-
-    # Branch: Rb in series with Vdc (going down on right side)
     d.push()
-    Rb = d.add(elm.Resistor().down().length(1.75).label('$R_b$', loc='bottom', ofst=0.15))
-    Vdc = d.add(elm.SourceV().down().length(1.75).label('$V_{dc}$', loc='bottom', ofst=0.15).reverse())
-    right_bot_vdc = d.here
+    R = d.add(elm.Resistor().down().label('$R$', loc='right', ofst=0.15))
+    R_bot = d.here
     d.pop()
 
-    # Branch: Capacitor (parallel, further right)
-    d += elm.Line().right().length(2.5).at(right_top)
+    # Bottom rail between L and R
+    d += elm.Line().left().at(R_bot).tox(L_bot)
+    d += elm.Dot().at(L_bot)
+    d += elm.Dot().at(R_bot)
+
+    # v_o(t) polarity label between L and R
+    spacer_mid = d.add(elm.Line().right().at(L_top).length(1.0).color('white').zorder(-1))
+    d += elm.Gap().down().at(spacer_mid.end).label(['+', '$v_o(t)$', '\u2212'], loc='center', ofst=0.15)
+
+    # ────────────────────────────────────────
+    # SWITCH 2 (SPDT) — routes C between parallel RLC (pos c) and Vdc+Rb (pos d)
+    # ────────────────────────────────────────
+    # Wire from R top to switch 2 pole
+    d += elm.Line().right().length(0.8).at(R_top)
+    sw2_pole = d.here
+
+    sw2 = d.add(elm.SwitchSpdt2().right().at(sw2_pole))
+
+    # Label throws: 'c' = upper (t>0, connects to C for RLC), 'd' = lower (t<0, Vdc charges C)
+    d.add(elm.Label().at(sw2.absanchors['b']).label('c', loc='right', ofst=0.3))
+    d.add(elm.Label().at(sw2.absanchors['c']).label('d', loc='right', ofst=0.3))
+    d.add(elm.Label().at(sw2.absanchors['a']).label('$t=0$', loc='bottom', ofst=0.4))
+
+    # ────────────────────────────────────────
+    # CAPACITOR C — connected to switch 2 throw 'c' (upper)
+    # For t>0: C joins parallel RLC
+    # ────────────────────────────────────────
+    d += elm.Line().right().length(1.5).at(sw2.absanchors['b'])
     d += elm.Dot()
+    C_top = d.here
+
     d.push()
-    C = d.add(elm.Capacitor().down().label('$C$', loc='bottom', ofst=0.15))
-    right_bot_c = d.here
+    C = d.add(elm.Capacitor().down().label('$C$', loc='right', ofst=0.15))
+    C_bot = d.here
     d.pop()
 
-    # Connect right bottom rail
-    d += elm.Line().left().at(right_bot_c).tox(right_bot_vdc)
+    # ────────────────────────────────────────
+    # Rb + Vdc path — connected to switch 2 throw 'd' (lower)
+    # For t<0: Vdc charges C through Rb
+    # ────────────────────────────────────────
+    d += elm.Line().right().length(0.8).at(sw2.absanchors['c'])
+    d += elm.Line().down().length(0.5)
+    d += elm.Line().right().length(1.5)
+    Rb_top = d.here
 
-    # ── Connect all bottom rails ──
-    # Bottom: from right section back through center to left section
-    d += elm.Line().left().at(right_bot_vdc).tox(center_bot_right)
-    d += elm.Line().left().at(center_bot_left).tox(junction_a_bot)
+    Rb = d.add(elm.Resistor().down().length(2.0).label('$R_b$', loc='right', ofst=0.15))
+    Rb_bot = d.here
+
+    Vdc = d.add(elm.SourceV().down().label('$V_{dc}$', loc='right', ofst=0.15).reverse())
+    Vdc_bot = d.here
+
+    # Bottom wire: Vdc bottom → C bottom
+    d += elm.Line().left().at(Vdc_bot).tox(C_bot)
+    d += elm.Dot().at(C_bot)
+
+    # Top wire: C top → Rb top
+    d += elm.Line().right().at(C_top).tox(Rb_top)
+
+    # ────────────────────────────────────────
+    # BOTTOM RAILS — connect everything along the bottom
+    # ────────────────────────────────────────
+    # C bottom → R bottom
+    d += elm.Line().left().at(C_bot).tox(R_bot)
+
+    # L bottom → Ra bottom (left section)
+    d += elm.Line().left().at(L_bot).tox(junc_Ra_bot)
