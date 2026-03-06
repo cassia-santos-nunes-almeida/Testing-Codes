@@ -48,5 +48,5 @@ with schemdraw.Drawing(file='diagrams/week10/q2_parallel_rlc_step.svg') as d:
     d += elm.Line().left().at(junction_bot_R).tox(source.start)
     d += elm.Line().up().toy(source.start)
 
-    # Voltage polarity: v(t) across the parallel combination
-    d += elm.Gap().down().at(junction_top).label(['+', '$v(t)$', '−'])
+    # Voltage polarity: v(t) across the parallel combination (source column)
+    d += elm.Gap().down().at(source.end).label(['+', '$v(t)$', '−'], loc='bottom', ofst=0.15)
