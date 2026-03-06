@@ -54,23 +54,29 @@ Users can describe circuits in natural language:
 Schemdraw's default label placement overlaps with element symbols on vertical components.
 **Always use explicit `loc` and `ofst` parameters** for vertical elements.
 
-The `ofst` parameter uses the **element's local coordinate frame**, not screen coordinates.
-For vertical elements, `ofst=(0, y)` moves labels **perpendicular** to the element:
+**IMPORTANT**: For vertical elements, `loc='top'` and `loc='bottom'` place labels **perpendicular
+to the element AND vertically centered on the element body**. In contrast, `loc='left'` and
+`loc='right'` place labels at element **endpoints** (start/end), NOT centered — avoid these for
+vertical elements.
+
+For **both** UP and DOWN elements, the mapping to screen position is:
+- `loc='top'` → screen-LEFT (centered on body)
+- `loc='bottom'` → screen-RIGHT (centered on body)
 
 | Element direction | Goal | Code |
 |---|---|---|
-| `.down()` → label screen-RIGHT | `loc='right', ofst=(0, 0.6)` |
-| `.down()` → label screen-LEFT  | `loc='left', ofst=(0, 0.6)` |
-| `.up()` → label screen-LEFT    | `loc='left', ofst=(0, 0.6)` |
-| `.up()` → label screen-RIGHT   | `loc='left', ofst=(0, -0.6)` |
+| `.down()` → label screen-RIGHT | `loc='bottom', ofst=0.15` |
+| `.down()` → label screen-LEFT  | `loc='top', ofst=0.15` |
+| `.up()` → label screen-LEFT    | `loc='top', ofst=0.15` |
+| `.up()` → label screen-RIGHT   | `loc='bottom', ofst=0.15` |
 | `.right()` → label above       | default (no `ofst` needed) |
 | `.left()` → label above        | default (no `ofst` needed) |
 
 **For the standard layout** (source UP on left, components DOWN on right):
 ```python
-source = d.add(elm.SourceV().up().label('Vs', loc='left', ofst=(0, 0.6)))
-d += elm.Resistor().down().label('R₁', loc='right', ofst=(0, 0.6))
-d += elm.Capacitor().down().label('C₁', loc='right', ofst=(0, 0.6))
+source = d.add(elm.SourceV().up().label('Vs', loc='top', ofst=0.15))
+d += elm.Resistor().down().label('R₁', loc='bottom', ofst=0.15)
+d += elm.Capacitor().down().label('C₁', loc='bottom', ofst=0.15)
 ```
 
 ## Schemdraw Code Generation
@@ -92,16 +98,16 @@ import schemdraw.elements as elm
 with schemdraw.Drawing() as d:
     d.config(unit=3, fontsize=12)
 
-    # Source: UP → label LEFT with ofst=(0, 0.6)
-    source = d.add(elm.SourceV().up().label('V₁\n12V', loc='left', ofst=(0, 0.6)))
+    # Source: UP → label screen-LEFT with loc='top'
+    source = d.add(elm.SourceV().up().label('V₁\n12V', loc='top', ofst=0.15))
 
     # Top rail to the right
     d += elm.Line().right().length(5).at(source.end)
 
-    # Components DOWN → label RIGHT with ofst=(0, 0.6)
-    d += elm.Resistor().down().label('R₁  100Ω', loc='right', ofst=(0, 0.6))
-    d += elm.Inductor().down().label('L₁  10mH', loc='right', ofst=(0, 0.6))
-    d += elm.Capacitor().down().label('C₁  1μF', loc='right', ofst=(0, 0.6))
+    # Components DOWN → label screen-RIGHT with loc='bottom'
+    d += elm.Resistor().down().label('R₁  100Ω', loc='bottom', ofst=0.15)
+    d += elm.Inductor().down().label('L₁  10mH', loc='bottom', ofst=0.15)
+    d += elm.Capacitor().down().label('C₁  1μF', loc='bottom', ofst=0.15)
 
     # Return path with ground
     d += elm.Line().left().length(3)
