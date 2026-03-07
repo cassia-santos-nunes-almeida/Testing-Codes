@@ -265,35 +265,46 @@ Before committing any STACK XML, validate **every PRT** using this checklist:
 
 ## Common Mistakes to Avoid
 
-These are hard-won lessons from previous sessions. **Do not repeat these errors:**
+Hard-won lessons from sessions 1-3. **Do not repeat these errors.**
 
-1. **Don't use `AlgEquiv` when reference value is 0** — `NumRelative` divides by zero. Use `NumAbsolute` with tolerance 0.01.
-2. **Don't use `SigFigsStrict` as a scoring gate** — penalizes formatting, not understanding.
-3. **Don't leak answers** via `syntaxhint` or textarea placeholder text. In unsupervised exams, even structural hints narrow the solution space.
-4. **Verify parameter sets mathematically** before implementing. Check that `alpha` vs `omega0` produces the intended damping regime for every variant.
-5. **Use the right MCQ type for the option length** — `type="dropdown"` for short classification labels (e.g., damping regime); `type="radio"` for long descriptive options (>~40 chars) that would be truncated in a dropdown.
-6. **Don't embed base64 in exam XMLs** — Moodle's HTML sanitizer strips data URIs. Use text placeholders for exams.
-7. **Don't include dependent sources in Easy questions** — students find them confusing; reserve for Difficult (Q4) only.
-8. **Test all parameter set variants** before committing. A single untested variant can produce wrong answers or degenerate cases.
-9. **Don't use `{@ansN@}` in `<specificfeedback>`** — STACK renders these as CAS variable symbols, not student answers.
-10. **Don't forget `insertstars=1`** on algebraic inputs — without it, `2t` is rejected instead of interpreted as `2*t`.
-11. **Name every switch in multi-switch circuits** — unnamed switches force students to count from left to right, which is error-prone. Use SW1, SW2, … in both the diagram and the XML text.
-12. **Don't use abstract switch position labels** (e.g., "position a", "position b") for SPST switches — these only make sense for SPDT (multi-throw) switches. For SPST, describe as "open" or "closed".
-13. **Leave adequate spacing between adjacent vertical components** in horizontal-rail circuits — voltage/polarity labels (like `v_o(t)`) need clear visual separation from neighboring components.
-14. **Don't use `\dfrac` inside CircuiTikZ `l=` labels** — it causes "Extra \endgroup" errors. Use a separate `\node` element for complex math labels instead.
-15. **Keep diagram labels and XML text in sync** — if the diagram shows SW1–SW4, the questiontext, generalfeedback, and hints must all use the same names. Never mix naming conventions (e.g., "switch 1" in text vs. "SW1" in diagram).
-16. **Use exact arithmetic for `mu0`** — write `mu0: 4*%pi/10^7;` (exact rational), **never** `4*%pi*1e-7` (float). The `1e-7` float causes `AlgEquiv` to fail when comparing symbolic expressions like `0.2*%pi` due to floating-point mismatch. This applies to any CAS variable whose definition includes `%pi` or other symbolic constants.
-17. **Always add a `NumRelative` fallback node on symbolic PRTs** — when a PRT uses `AlgEquiv` on an expression that evaluates to a numerical value (possibly containing `%pi`), add a second node with `NumRelative` (5%) against the `float()` version. This catches decimal approximations and any residual float-precision edge cases.
-18. **Define variable aliases for hint symbols** — if a syntax hint tells students to type `N`, `l1`, `mur`, etc., the `questionvariables` block must define matching aliases (`N: N_val; l1: l1_val;` etc.) so STACK can substitute values when the student uses those names. Without aliases, student symbolic expressions contain free variables and fail `AlgEquiv`.
-19. **Syntax hints must explain how to type every special symbol** — don't assume students know CAS syntax. Every algebraic input hint must explicitly state: `mu0` for μ₀, `mur` for μᵣ, `%pi` for π, `j` for imaginary unit, `exp()` / `sin()` / `cos()` for functions. Show a complete typed example matching the expected answer form.
-20. **Use the correct CircuiTikZ switch element for the action** — `opening switch` draws a switch that is opening (was closed, now breaks), `closing switch` draws a switch that is closing (was open, now connects). Don't confuse the element name with the switch's state *before* t=0.
-21. **Wrap all PRT feedbackvariables containing `<` in CDATA** — XML parsers interpret bare `<` as tag openers, corrupting the Maxima code. Always use `<![CDATA[ ... ]]>` around feedbackvariables that contain comparison operators.
-22. **Validate PRT node chains before committing** — use the multi-tiered validation methodology (see "PRT Validation Methodology" section). Check node reachability, feedbackvariable definitions, CDATA wrapping, and score consistency. A single broken `truenextnode` reference can silently skip grading nodes.
-23. **Don't mix Schemdraw and CircuiTikZ in the same content set** — visual inconsistency (line styles, component shapes, font rendering) confuses students. Pick one tool per content set. Legacy Schemdraw files are preserved with `_schemdraw` suffix but should not be used for new content.
-24. **CircuiTikZ `opening switch` vs `closing switch` is about the action, not the prior state** — `opening switch` = was closed, now opening (shows a breaking contact). `closing switch` = was open, now closing (shows a making contact). The name describes what happens at t=0, not the state for t<0.
-25. **Test CircuiTikZ compilation before embedding** — always compile `.tex` → SVG and visually inspect before base64-encoding into XML. LaTeX errors (missing packages, font issues, coordinate mistakes) produce no SVG output, and a broken base64 string renders as nothing in Moodle.
-26. **Use `standalone` document class with `border=10pt`** — ensures tight cropping around the diagram with consistent padding. Without `border`, some components (especially labels and arrows) get clipped at the SVG edges.
+### PRT / Grading
+
+1. **`NumAbsolute` for zero, `NumRelative` fallback for symbolic** — When the reference value is 0, use `NumAbsolute` (tolerance 0.01); `NumRelative` divides by zero. When a PRT uses `AlgEquiv` on an expression that evaluates to a number (possibly containing `%pi`), always add a fallback node with `NumRelative` (5%) against `float()` to catch decimal approximations.
+2. **No `SigFigsStrict` as a scoring gate** — penalizes formatting, not understanding.
+3. **No `{@ansN@}` in `<specificfeedback>`** — STACK renders these as CAS variable symbols. Use `[[feedback:prtN]]` only.
+4. **Wrap feedbackvariables containing `<` in CDATA** — XML parsers interpret bare `<` as tag openers. Always use `<![CDATA[ ... ]]>`.
+5. **Validate PRT node chains before committing** — use the multi-tiered validation methodology (see above). A single broken `truenextnode` reference silently skips grading nodes.
+
+### Maxima / CAS
+
+6. **Exact arithmetic for symbolic constants** — write `mu0: 4*%pi/10^7;` (exact rational), **never** `4*%pi*1e-7` (float). Floats cause `AlgEquiv` failures on symbolic expressions like `0.2*%pi`.
+7. **Verify and test all parameter set variants** — check that `alpha` vs `omega0` produces the intended damping regime for every variant. A single untested variant can produce wrong answers or degenerate cases.
+8. **`insertstars=1`** on all algebraic inputs — without it, `2t` is rejected instead of interpreted as `2*t`.
+
+### Syntax Hints & Answer Security
+
+9. **Syntax hints must define aliases and explain every symbol** — if a hint tells students to type `N`, `l1`, `mur`, etc., `questionvariables` must define matching aliases (`N: N_val;` etc.). Always state how to type special symbols: `mu0` for μ₀, `mur` for μᵣ, `%pi` for π, `j` for imaginary unit, `exp()`/`sin()`/`cos()` for functions. Show a complete typed example.
+10. **Don't leak answers** via `syntaxhint`, textarea placeholder text, or overly specific hint content. In unsupervised exams, even structural hints narrow the solution space.
+
+### MCQ / Input Types
+
+11. **Match MCQ type to option length** — `type="dropdown"` for short classification labels (e.g., damping regime); `type="radio"` for long descriptive options (>~40 chars) that would be truncated in a dropdown.
+12. **No dependent sources in Easy questions** — reserve for Difficult (Q4) only.
+
+### Diagram Embedding
+
+13. **No base64 in exam XMLs** — Moodle's HTML sanitizer strips data URIs. Use text placeholders for exams; base64 is fine for weekly practice questions.
+
+### CircuiTikZ / Diagram Rules
+
+14. **Switch element name = action at t=0** — `opening switch` = was closed, now opening (breaking contact). `closing switch` = was open, now closing (making contact). Don't confuse the element name with the state *before* t=0.
+15. **Name every switch; use "open"/"closed" for SPST** — use SW1, SW2, … in both diagram and XML text. Don't use abstract "position a/b" labels — those only apply to SPDT switches.
+16. **Keep diagram labels and XML text in sync** — if the diagram shows SW1–SW4, the questiontext, generalfeedback, and hints must all use the same names.
+17. **No `\dfrac` inside CircuiTikZ `l=` labels** — causes "Extra \endgroup" errors. Use a separate `\node` element for complex math labels.
+18. **Leave adequate spacing between adjacent vertical components** — voltage/polarity labels need clear visual separation from neighboring components.
+19. **Don't mix diagram tools in the same content set** — visual inconsistency confuses students. Use CircuiTikZ for all new content. Legacy Schemdraw files preserved with `_schemdraw` suffix.
+20. **Test compilation before embedding; use `standalone` with `border=10pt`** — always compile `.tex` → SVG and visually inspect before base64-encoding. Without `border`, labels and arrows get clipped at SVG edges.
 
 ## Last Updated
 
-2026-03-07 (session 3: PRT validation methodology, CircuiTikZ migration lessons, progressive hint unlocking roadmap)
+2026-03-07 (session 3: consolidated lessons 1-20, PRT validation methodology, progressive hint unlocking roadmap)
