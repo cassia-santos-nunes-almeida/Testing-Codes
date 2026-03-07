@@ -50,7 +50,9 @@ and use \(B = \mu_r \mu_0 H_\text{core} = \mu_0 H_\text{gap}\).</em></p>
 <p>\(B = \) [[input:ans2]] T [[validation:ans2]]</p>
 <p><em>Syntax hint: Use <code>N</code> for turns, <code>I</code> for current,
 <code>mu0</code> for \(\mu_0\), <code>mur</code> for \(\mu_r\),
-<code>l1</code> and <code>l2</code> for lengths.</em></p>
+<code>l1</code> and <code>l2</code> for lengths.
+For \(\pi\), type <code>%pi</code>. Use <code>*</code> for multiplication,
+e.g. <code>N*I*mu0/(l1/mur + l2)</code>.</em></p>
 
 <hr />
 
@@ -60,7 +62,8 @@ and use \(B = \mu_r \mu_0 H_\text{core} = \mu_0 H_\text{gap}\).</em></p>
 \(\ell_1 = {@l1_val@}\;\text{m}\), \(\ell_2 = {@l2_val@}\;\text{m}\).</p>
 <p>Calculate \(B\) in Tesla. (Express to 3 significant figures.)</p>
 <p>\(B = \) [[input:ans3]] T [[validation:ans3]]</p>
-<p><em>Syntax hint: Enter a number, e.g. <code>0.523</code> or <code>5.23e-1</code></em></p>
+<p><em>Syntax hint: Enter a number, e.g. <code>0.523</code> or <code>5.23e-1</code>.
+You may also use <code>%pi</code> for \(\pi\), e.g. <code>0.2*%pi</code>.</em></p>
 
 <hr />
 
@@ -182,7 +185,13 @@ l1_val: rand([0.2, 0.3, 0.4]);
 l2_val: rand([5e-4, 1e-3, 2e-3]);
 Ac_val: rand([4e-4, 9e-4, 16e-4]);
 mur_val: rand([500, 1000, 2000]);
-mu0: 4*%pi*1e-7;
+mu0: 4*%pi/10^7;
+
+/* Aliases so students can type symbolic names from the hint */
+N: N_val;
+l1: l1_val;
+l2: l2_val;
+mur: mur_val;
 
 /* ===== Derived answers ===== */
 /* From Ampere: NI = H_core*l1 + H_gap*l2                        */
@@ -502,8 +511,33 @@ ta7: mcq_design;
       <falsescoremode>=</falsescoremode>
       <falsescore>0.0000000</falsescore>
       <falsepenalty/>
-      <falsenextnode>-1</falsenextnode>
+      <falsenextnode>1</falsenextnode>
       <falseanswernote>prt2a-0-F</falseanswernote>
+      <falsefeedback format="html">
+        <text/>
+      </falsefeedback>
+    </node>
+    <node>
+      <name>1</name>
+      <description>Fallback: NumRelative check within 5%</description>
+      <answertest>NumRelative</answertest>
+      <sans>ans2</sans>
+      <tans>ta3</tans>
+      <testoptions>0.05</testoptions>
+      <quiet>0</quiet>
+      <truescoremode>=</truescoremode>
+      <truescore>1.0000000</truescore>
+      <truepenalty/>
+      <truenextnode>-1</truenextnode>
+      <trueanswernote>prt2a-1-T</trueanswernote>
+      <truefeedback format="html">
+        <text><![CDATA[<p>Correct! Your expression for \(B\) evaluates to the expected result: \(B = {@ta2@}\).</p>]]></text>
+      </truefeedback>
+      <falsescoremode>=</falsescoremode>
+      <falsescore>0.0000000</falsescore>
+      <falsepenalty/>
+      <falsenextnode>-1</falsenextnode>
+      <falseanswernote>prt2a-1-F</falseanswernote>
       <falsefeedback format="html">
         <text><![CDATA[<p>Incorrect. Here is the derivation step by step:</p>
 <ol>

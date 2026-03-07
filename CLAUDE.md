@@ -66,8 +66,10 @@ Type-specific hint text:
 |------------|-----------|
 | MCQ / integer | `Enter a single integer, e.g. <code>2</code>` |
 | Numerical | `Enter a number, e.g. <code>0.523</code> or <code>5.23e-1</code>` (adapt to expected magnitude) |
-| Symbolic / algebraic | Show complete example with expected variables, e.g. `Write <code>lc/(mur*mu0*Ac)</code>` |
-| Expression (function of t) | `Use <code>exp(...)</code>, <code>sin(...)</code>, <code>cos(...)</code>, and <code>t</code>.` |
+| Numerical (may contain π) | Add: `You may also use <code>%pi</code> for π, e.g. <code>0.2*%pi</code>.` |
+| Symbolic / algebraic | Show complete example with expected variables, e.g. `Write <code>lc/(mur*mu0*Ac)</code>`. **Always** state how to type special symbols: `<code>mu0</code> for μ₀`, `<code>mur</code> for μᵣ`, `<code>%pi</code> for π`. |
+| Expression (function of t) | `Use <code>exp(...)</code>, <code>sin(...)</code>, <code>cos(...)</code>, and <code>t</code>.` Include a complete example matching the expected form. |
+| Complex roots (with j) | `For complex roots use <code>j</code> for the imaginary unit, e.g. <code>-2800+9600*j</code>` |
 | Notes / essay | Content hint about what to address |
 
 ### Progressive Hints
@@ -248,7 +250,12 @@ These are hard-won lessons from previous sessions. **Do not repeat these errors:
 13. **Leave adequate spacing between adjacent vertical components** in horizontal-rail circuits — voltage/polarity labels (like `v_o(t)`) need clear visual separation from neighboring components.
 15. **Don't use `\dfrac` inside CircuiTikZ `l=` labels** — it causes "Extra \endgroup" errors. Use a separate `\node` element for complex math labels instead.
 14. **Keep diagram labels and XML text in sync** — if the diagram shows SW1–SW4, the questiontext, generalfeedback, and hints must all use the same names. Never mix naming conventions (e.g., "switch 1" in text vs. "SW1" in diagram).
+16. **Use exact arithmetic for `mu0`** — write `mu0: 4*%pi/10^7;` (exact rational), **never** `4*%pi*1e-7` (float). The `1e-7` float causes `AlgEquiv` to fail when comparing symbolic expressions like `0.2*%pi` due to floating-point mismatch. This applies to any CAS variable whose definition includes `%pi` or other symbolic constants.
+17. **Always add a `NumRelative` fallback node on symbolic PRTs** — when a PRT uses `AlgEquiv` on an expression that evaluates to a numerical value (possibly containing `%pi`), add a second node with `NumRelative` (5%) against the `float()` version. This catches decimal approximations and any residual float-precision edge cases.
+18. **Define variable aliases for hint symbols** — if a syntax hint tells students to type `N`, `l1`, `mur`, etc., the `questionvariables` block must define matching aliases (`N: N_val; l1: l1_val;` etc.) so STACK can substitute values when the student uses those names. Without aliases, student symbolic expressions contain free variables and fail `AlgEquiv`.
+19. **Syntax hints must explain how to type every special symbol** — don't assume students know CAS syntax. Every algebraic input hint must explicitly state: `mu0` for μ₀, `mur` for μᵣ, `%pi` for π, `j` for imaginary unit, `exp()` / `sin()` / `cos()` for functions. Show a complete typed example matching the expected answer form.
+20. **Use the correct CircuiTikZ switch element for the action** — `opening switch` draws a switch that is opening (was closed, now breaks), `closing switch` draws a switch that is closing (was open, now connects). Don't confuse the element name with the switch's state *before* t=0.
 
 ## Last Updated
 
-2026-03-07
+2026-03-07 (session 2: syntax hints, exact arithmetic, switch elements, PRT fallback patterns)
