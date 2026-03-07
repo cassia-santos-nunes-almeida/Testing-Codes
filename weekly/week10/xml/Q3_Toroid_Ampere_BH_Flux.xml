@@ -38,6 +38,7 @@
 <p>To find the magnetic field intensity \(H\) inside the toroid,
 which law do you apply along a closed circular path through the core?</p>
 <p>[[input:ans1]] [[validation:ans1]]</p>
+<p><em>Syntax hint: Select one option from the list.</em></p>
 
 <hr />
 
@@ -96,6 +97,7 @@ implies at the interface between two materials.</em></p>
 to the secondary). A power inductor core must store maximal energy.
 Which device intentionally uses an air gap, and why?</p>
 <p>[[input:ans7]] [[validation:ans7]]</p>
+<p><em>Syntax hint: Select one option from the list.</em></p>
 ]]></text>
   </questiontext>
 
@@ -211,6 +213,11 @@ mcq_design: [[1, false, "The transformer \u2014 the gap increases flux linkage b
 
 /* ===== Teacher answers ===== */
 ta1: mcq_law;
+
+/* Explicit correct values for PRT comparison (MCQ lists fail with AlgEquiv) */
+ta1_correct: 2;
+ta7_correct: 2;
+
 ta2: ta_B_sym;
 ta3: ta_B;
 ta4: ta_Hcore;
@@ -297,8 +304,8 @@ ta7: mcq_design;
     <forbidfloat>0</forbidfloat>
     <requirelowestterms>0</requirelowestterms>
     <checkanswertype>0</checkanswertype>
-    <mustverify>0</mustverify>
-    <showvalidation>0</showvalidation>
+    <mustverify>1</mustverify>
+    <showvalidation>1</showvalidation>
     <options/>
   </input>
 
@@ -318,7 +325,7 @@ ta7: mcq_design;
     <requirelowestterms>0</requirelowestterms>
     <checkanswertype>0</checkanswertype>
     <mustverify>1</mustverify>
-    <showvalidation>3</showvalidation>
+    <showvalidation>1</showvalidation>
     <options/>
   </input>
 
@@ -338,7 +345,7 @@ ta7: mcq_design;
     <requirelowestterms>0</requirelowestterms>
     <checkanswertype>0</checkanswertype>
     <mustverify>1</mustverify>
-    <showvalidation>3</showvalidation>
+    <showvalidation>1</showvalidation>
     <options/>
   </input>
 
@@ -358,7 +365,7 @@ ta7: mcq_design;
     <requirelowestterms>0</requirelowestterms>
     <checkanswertype>0</checkanswertype>
     <mustverify>1</mustverify>
-    <showvalidation>3</showvalidation>
+    <showvalidation>1</showvalidation>
     <options/>
   </input>
 
@@ -378,7 +385,7 @@ ta7: mcq_design;
     <requirelowestterms>0</requirelowestterms>
     <checkanswertype>0</checkanswertype>
     <mustverify>1</mustverify>
-    <showvalidation>3</showvalidation>
+    <showvalidation>1</showvalidation>
     <options/>
   </input>
 
@@ -417,8 +424,8 @@ ta7: mcq_design;
     <forbidfloat>0</forbidfloat>
     <requirelowestterms>0</requirelowestterms>
     <checkanswertype>0</checkanswertype>
-    <mustverify>0</mustverify>
-    <showvalidation>0</showvalidation>
+    <mustverify>1</mustverify>
+    <showvalidation>1</showvalidation>
     <options/>
   </input>
 
@@ -441,7 +448,7 @@ ta7: mcq_design;
       <description>Check which-law MCQ</description>
       <answertest>AlgEquiv</answertest>
       <sans>ans1</sans>
-      <tans>ta1</tans>
+      <tans>ta1_correct</tans>
       <testoptions/>
       <quiet>0</quiet>
       <truescoremode>=</truescoremode>
@@ -458,7 +465,7 @@ ta7: mcq_design;
       <falsenextnode>-1</falsenextnode>
       <falseanswernote>prt1-0-F</falseanswernote>
       <falsefeedback format="html">
-        <text><![CDATA[<p>Incorrect. The correct answer is {@ta1@}: <strong>Amp&egrave;re&rsquo;s circuital law</strong> \(\oint \mathbf{H} \cdot d\mathbf{l} = NI\).</p>
+        <text><![CDATA[<p>Incorrect. The correct answer is Option 2: <strong>Amp&egrave;re&rsquo;s circuital law</strong> \(\oint \mathbf{H} \cdot d\mathbf{l} = NI\).</p>
 <ul>
   <li>Biot&ndash;Savart gives \(\mathbf{B}\) from current elements &mdash; less direct for this geometry.</li>
   <li>Faraday&rsquo;s law relates \(\mathbf{E}\) to changing flux &mdash; not relevant for static fields.</li>
@@ -670,7 +677,7 @@ ta7: mcq_design;
       <description>Check design reasoning MCQ</description>
       <answertest>AlgEquiv</answertest>
       <sans>ans7</sans>
-      <tans>ta7</tans>
+      <tans>ta7_correct</tans>
       <testoptions/>
       <quiet>0</quiet>
       <truescoremode>=</truescoremode>

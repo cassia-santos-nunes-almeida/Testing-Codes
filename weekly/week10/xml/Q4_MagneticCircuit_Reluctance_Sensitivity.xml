@@ -61,6 +61,7 @@ An \(N = {@N_val@}\)-turn coil is wound around the core.</p>
 <h4>Part (a) &mdash; Reluctance Analogy MCQ (1 pt)</h4>
 <p>In the magnetic circuit analogy, which mapping is correct?</p>
 <p>[[input:ans1]] [[validation:ans1]]</p>
+<p><em>Syntax hint: Select one option from the list.</em></p>
 
 <hr />
 
@@ -119,6 +120,7 @@ Enter the percentage (negative means \(L\) decreases). Express to 3 significant 
 <p>Which statement best explains why even a small air gap causes a large drop in inductance,
 yet engineers deliberately add air gaps to power inductors?</p>
 <p>[[input:ans8]] [[validation:ans8]]</p>
+<p><em>Syntax hint: Select one option from the list.</em></p>
 ]]></text>
   </questiontext>
 
@@ -259,6 +261,10 @@ ta5: ta_L;
 ta6: ta_dLdlg_sym;
 ta7: ta_pct;
 ta8: mcq_design;
+
+/* Explicit correct values for PRT comparison (MCQ lists fail with AlgEquiv) */
+ta1_correct: 1;
+ta8_correct: 1;
 ]]></text>
   </questionvariables>
 
@@ -341,8 +347,8 @@ ta8: mcq_design;
     <forbidfloat>0</forbidfloat>
     <requirelowestterms>0</requirelowestterms>
     <checkanswertype>0</checkanswertype>
-    <mustverify>0</mustverify>
-    <showvalidation>0</showvalidation>
+    <mustverify>1</mustverify>
+    <showvalidation>1</showvalidation>
     <options/>
   </input>
 
@@ -362,7 +368,7 @@ ta8: mcq_design;
     <requirelowestterms>0</requirelowestterms>
     <checkanswertype>0</checkanswertype>
     <mustverify>1</mustverify>
-    <showvalidation>3</showvalidation>
+    <showvalidation>1</showvalidation>
     <options/>
   </input>
 
@@ -382,7 +388,7 @@ ta8: mcq_design;
     <requirelowestterms>0</requirelowestterms>
     <checkanswertype>0</checkanswertype>
     <mustverify>1</mustverify>
-    <showvalidation>3</showvalidation>
+    <showvalidation>1</showvalidation>
     <options/>
   </input>
 
@@ -402,7 +408,7 @@ ta8: mcq_design;
     <requirelowestterms>0</requirelowestterms>
     <checkanswertype>0</checkanswertype>
     <mustverify>1</mustverify>
-    <showvalidation>3</showvalidation>
+    <showvalidation>1</showvalidation>
     <options/>
   </input>
 
@@ -422,7 +428,7 @@ ta8: mcq_design;
     <requirelowestterms>0</requirelowestterms>
     <checkanswertype>0</checkanswertype>
     <mustverify>1</mustverify>
-    <showvalidation>3</showvalidation>
+    <showvalidation>1</showvalidation>
     <options/>
   </input>
 
@@ -442,7 +448,7 @@ ta8: mcq_design;
     <requirelowestterms>0</requirelowestterms>
     <checkanswertype>0</checkanswertype>
     <mustverify>1</mustverify>
-    <showvalidation>3</showvalidation>
+    <showvalidation>1</showvalidation>
     <options/>
   </input>
 
@@ -462,7 +468,7 @@ ta8: mcq_design;
     <requirelowestterms>0</requirelowestterms>
     <checkanswertype>0</checkanswertype>
     <mustverify>1</mustverify>
-    <showvalidation>3</showvalidation>
+    <showvalidation>1</showvalidation>
     <options/>
   </input>
 
@@ -481,8 +487,8 @@ ta8: mcq_design;
     <forbidfloat>0</forbidfloat>
     <requirelowestterms>0</requirelowestterms>
     <checkanswertype>0</checkanswertype>
-    <mustverify>0</mustverify>
-    <showvalidation>0</showvalidation>
+    <mustverify>1</mustverify>
+    <showvalidation>1</showvalidation>
     <options/>
   </input>
 
@@ -504,7 +510,7 @@ ta8: mcq_design;
       <description>Check analogy MCQ</description>
       <answertest>AlgEquiv</answertest>
       <sans>ans1</sans>
-      <tans>ta1</tans>
+      <tans>ta1_correct</tans>
       <testoptions/>
       <quiet>0</quiet>
       <truescoremode>=</truescoremode>
@@ -770,7 +776,7 @@ This gives \({@ta7@}\%\). This linearisation works well for small changes. The r
       <description>Check design reasoning MCQ</description>
       <answertest>AlgEquiv</answertest>
       <sans>ans8</sans>
-      <tans>ta8</tans>
+      <tans>ta8_correct</tans>
       <testoptions/>
       <quiet>0</quiet>
       <truescoremode>=</truescoremode>

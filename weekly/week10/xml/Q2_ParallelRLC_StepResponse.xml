@@ -41,6 +41,7 @@ The initial conditions are:</p>
 energy oscillates between \(L\) and \(C\). Which statement correctly explains
 why \(R\) eventually stops this oscillation?</p>
 <p>[[input:ans1]] [[validation:ans1]]</p>
+<p><em>Syntax hint: Select one option from the list.</em></p>
 
 <hr />
 
@@ -58,6 +59,7 @@ at DC the inductor is a short circuit and the capacitor is an open circuit.</em>
 <p>For a <strong>parallel</strong> RLC circuit: \(\alpha = \frac{1}{2RC}\),
 \(\omega_0 = \frac{1}{\sqrt{LC}}\). Classify the damping regime:</p>
 <p>[[input:ans3]] [[validation:ans3]]</p>
+<p><em>Syntax hint: Select one option from the list.</em></p>
 
 <hr />
 
@@ -152,9 +154,9 @@ The constant term remaining is:</p>
 <h4>Answer Summary</h4>
 <table border="1" cellpadding="5" cellspacing="0">
   <tr><th>Part</th><th>Quantity</th><th>Correct Answer</th></tr>
-  <tr><td>(a)</td><td>Physical reasoning</td><td>Option {@ta1@}</td></tr>
+  <tr><td>(a)</td><td>Physical reasoning</td><td>Option 1: R dissipates energy as heat</td></tr>
   <tr><td>(b)</td><td>\(I_\text{final}\)</td><td>{@ta2@} A</td></tr>
-  <tr><td>(c)</td><td>Damping regime</td><td>{@regime_name@} (option {@ta3@})</td></tr>
+  <tr><td>(c)</td><td>Damping regime</td><td>{@regime_name@}</td></tr>
   <tr><td>(d)</td><td>General form</td><td>\({@ta4@}\)</td></tr>
   <tr><td>(e)</td><td>\(i_L(t)\)</td><td>\({@ta_iL@}\) A</td></tr>
   <tr><td>(f)</td><td>\(v(t)\)</td><td>\({@ta_v@}\) V</td></tr>
@@ -192,7 +194,7 @@ disc: float(ta_alpha^2 - ta_omega0^2);
 
 /* ===== Regime classification ===== */
 /* 1=overdamped, 2=underdamped, 3=critically damped */
-ta_regime: if abs(ta_alpha-ta_omega0) < 1.0 then 3
+ta_regime: if abs(disc) < 0.01 then 3
            else if disc > 0 then 1
            else 2;
 regime_name: if ta_regime=1 then "overdamped"
@@ -238,6 +240,10 @@ ta_fvt: float(ta_If);
 ta1: [[1, true, "R dissipates energy as heat on every half-cycle, reducing the oscillation amplitude"], [2, false, "R increases the resonant frequency until oscillations become too fast"], [3, false, "R reflects energy back into the source, removing it from the LC tank"], [4, false, "The oscillations stop because the inductor saturates after many cycles"]];
 ta2: ta_If;
 ta3: [[1, is(ta_regime=1), "Overdamped"], [2, is(ta_regime=2), "Underdamped"], [3, is(ta_regime=3), "Critically damped"]];
+
+/* Explicit correct values for PRT comparison (MCQ lists fail with AlgEquiv) */
+ta1_correct: 1;
+ta3_correct: ta_regime;
 
 /* Part (d): general form with symbolic constants */
 ta4: if ta_regime=1 then ta_If + A1*exp(s1_r*t) + A2*exp(s2_r*t)
@@ -337,8 +343,8 @@ ta6_at_t3: float(subst(t=t_test3, ta6));
     <forbidfloat>1</forbidfloat>
     <requirelowestterms>0</requirelowestterms>
     <checkanswertype>0</checkanswertype>
-    <mustverify>0</mustverify>
-    <showvalidation>0</showvalidation>
+    <mustverify>1</mustverify>
+    <showvalidation>1</showvalidation>
     <options/>
   </input>
 
@@ -358,11 +364,11 @@ ta6_at_t3: float(subst(t=t_test3, ta6));
     <requirelowestterms>0</requirelowestterms>
     <checkanswertype>0</checkanswertype>
     <mustverify>1</mustverify>
-    <showvalidation>3</showvalidation>
+    <showvalidation>1</showvalidation>
     <options/>
   </input>
 
-  <!-- ans3: Part (c) Regime MCQ (radio) -->
+  <!-- ans3: Part (c) Regime MCQ (dropdown) -->
   <input>
     <name>ans3</name>
     <type>dropdown</type>
@@ -377,8 +383,8 @@ ta6_at_t3: float(subst(t=t_test3, ta6));
     <forbidfloat>1</forbidfloat>
     <requirelowestterms>0</requirelowestterms>
     <checkanswertype>0</checkanswertype>
-    <mustverify>0</mustverify>
-    <showvalidation>0</showvalidation>
+    <mustverify>1</mustverify>
+    <showvalidation>1</showvalidation>
     <options/>
   </input>
 
@@ -398,7 +404,7 @@ ta6_at_t3: float(subst(t=t_test3, ta6));
     <requirelowestterms>0</requirelowestterms>
     <checkanswertype>0</checkanswertype>
     <mustverify>1</mustverify>
-    <showvalidation>3</showvalidation>
+    <showvalidation>1</showvalidation>
     <options/>
   </input>
 
@@ -418,7 +424,7 @@ ta6_at_t3: float(subst(t=t_test3, ta6));
     <requirelowestterms>0</requirelowestterms>
     <checkanswertype>0</checkanswertype>
     <mustverify>1</mustverify>
-    <showvalidation>3</showvalidation>
+    <showvalidation>1</showvalidation>
     <options/>
   </input>
 
@@ -438,7 +444,7 @@ ta6_at_t3: float(subst(t=t_test3, ta6));
     <requirelowestterms>0</requirelowestterms>
     <checkanswertype>0</checkanswertype>
     <mustverify>1</mustverify>
-    <showvalidation>3</showvalidation>
+    <showvalidation>1</showvalidation>
     <options/>
   </input>
 
@@ -458,7 +464,7 @@ ta6_at_t3: float(subst(t=t_test3, ta6));
     <requirelowestterms>0</requirelowestterms>
     <checkanswertype>0</checkanswertype>
     <mustverify>1</mustverify>
-    <showvalidation>3</showvalidation>
+    <showvalidation>1</showvalidation>
     <options/>
   </input>
 
@@ -480,7 +486,7 @@ ta6_at_t3: float(subst(t=t_test3, ta6));
       <description>Check physical reasoning MCQ</description>
       <answertest>AlgEquiv</answertest>
       <sans>ans1</sans>
-      <tans>ta1</tans>
+      <tans>ta1_correct</tans>
       <testoptions/>
       <quiet>0</quiet>
       <truescoremode>=</truescoremode>
@@ -555,7 +561,7 @@ omega0_sq: float(ta_omega0^2);
       <description>Check regime classification</description>
       <answertest>AlgEquiv</answertest>
       <sans>ans3</sans>
-      <tans>ta3</tans>
+      <tans>ta3_correct</tans>
       <testoptions/>
       <quiet>0</quiet>
       <truescoremode>=</truescoremode>
@@ -572,7 +578,7 @@ omega0_sq: float(ta_omega0^2);
       <falsenextnode>-1</falsenextnode>
       <falseanswernote>prt3-0-F</falseanswernote>
       <falsefeedback format="html">
-        <text><![CDATA[<p>Incorrect. For a <strong>parallel</strong> RLC circuit, \(\alpha = \frac{1}{2RC}\) (not \(\frac{R}{2L}\), which is for series). Compare: \(\alpha^2 = {@alpha_sq@}\) vs \(\omega_0^2 = {@omega0_sq@}\). Since \(\alpha = {@ta_alpha@}\) and \(\omega_0 = {@ta_omega0@}\), the circuit is <strong>{@regime_name@}</strong> (option {@ta3@}).</p>]]></text>
+        <text><![CDATA[<p>Incorrect. For a <strong>parallel</strong> RLC circuit, \(\alpha = \frac{1}{2RC}\) (not \(\frac{R}{2L}\), which is for series). Compare: \(\alpha^2 = {@alpha_sq@}\) vs \(\omega_0^2 = {@omega0_sq@}\). Since \(\alpha = {@ta_alpha@}\) and \(\omega_0 = {@ta_omega0@}\), the circuit is <strong>{@regime_name@}</strong>.</p>]]></text>
       </falsefeedback>
     </node>
   </prt>
