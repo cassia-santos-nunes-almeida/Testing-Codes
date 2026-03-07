@@ -264,6 +264,9 @@ t_test3: 1.0e-3;
 ta7_at_t1: float(subst(t=t_test1, ta7));
 ta7_at_t2: float(subst(t=t_test2, ta7));
 ta7_at_t3: float(subst(t=t_test3, ta7));
+
+/* Explicit correct value for PRT comparison (MCQ lists fail with AlgEquiv) */
+ta5_correct: ta_regime;
 ]]></text>
   </questionvariables>
 
@@ -339,7 +342,7 @@ ta7_at_t3: float(subst(t=t_test3, ta7));
     <requirelowestterms>0</requirelowestterms>
     <checkanswertype>0</checkanswertype>
     <mustverify>1</mustverify>
-    <showvalidation>3</showvalidation>
+    <showvalidation>1</showvalidation>
     <options/>
   </input>
 
@@ -358,7 +361,7 @@ ta7_at_t3: float(subst(t=t_test3, ta7));
     <requirelowestterms>0</requirelowestterms>
     <checkanswertype>0</checkanswertype>
     <mustverify>1</mustverify>
-    <showvalidation>3</showvalidation>
+    <showvalidation>1</showvalidation>
     <options/>
   </input>
 
@@ -377,7 +380,7 @@ ta7_at_t3: float(subst(t=t_test3, ta7));
     <requirelowestterms>0</requirelowestterms>
     <checkanswertype>0</checkanswertype>
     <mustverify>1</mustverify>
-    <showvalidation>3</showvalidation>
+    <showvalidation>1</showvalidation>
     <options/>
   </input>
 
@@ -396,7 +399,7 @@ ta7_at_t3: float(subst(t=t_test3, ta7));
     <requirelowestterms>0</requirelowestterms>
     <checkanswertype>0</checkanswertype>
     <mustverify>1</mustverify>
-    <showvalidation>3</showvalidation>
+    <showvalidation>1</showvalidation>
     <options/>
   </input>
 
@@ -415,8 +418,8 @@ ta7_at_t3: float(subst(t=t_test3, ta7));
     <forbidfloat>1</forbidfloat>
     <requirelowestterms>0</requirelowestterms>
     <checkanswertype>0</checkanswertype>
-    <mustverify>0</mustverify>
-    <showvalidation>0</showvalidation>
+    <mustverify>1</mustverify>
+    <showvalidation>1</showvalidation>
     <options/>
   </input>
 
@@ -435,7 +438,7 @@ ta7_at_t3: float(subst(t=t_test3, ta7));
     <requirelowestterms>0</requirelowestterms>
     <checkanswertype>0</checkanswertype>
     <mustverify>1</mustverify>
-    <showvalidation>3</showvalidation>
+    <showvalidation>1</showvalidation>
     <options/>
   </input>
 
@@ -454,7 +457,7 @@ ta7_at_t3: float(subst(t=t_test3, ta7));
     <requirelowestterms>0</requirelowestterms>
     <checkanswertype>0</checkanswertype>
     <mustverify>1</mustverify>
-    <showvalidation>3</showvalidation>
+    <showvalidation>1</showvalidation>
     <options/>
   </input>
 
@@ -473,7 +476,7 @@ ta7_at_t3: float(subst(t=t_test3, ta7));
     <requirelowestterms>0</requirelowestterms>
     <checkanswertype>0</checkanswertype>
     <mustverify>1</mustverify>
-    <showvalidation>3</showvalidation>
+    <showvalidation>1</showvalidation>
     <options/>
   </input>
 
@@ -624,7 +627,7 @@ ta7_at_t3: float(subst(t=t_test3, ta7));
       <description>Check regime (radio)</description>
       <answertest>AlgEquiv</answertest>
       <sans>ans5</sans>
-      <tans>ta5</tans>
+      <tans>ta5_correct</tans>
       <testoptions/>
       <quiet>0</quiet>
       <truescoremode>=</truescoremode>

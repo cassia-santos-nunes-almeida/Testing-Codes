@@ -259,6 +259,10 @@ ta5: ta_L;
 ta6: ta_dLdlg_sym;
 ta7: ta_pct;
 ta8: mcq_design;
+
+/* Explicit correct values for PRT comparison (MCQ lists fail with AlgEquiv) */
+ta1_correct: 1;
+ta8_correct: 1;
 ]]></text>
   </questionvariables>
 
@@ -341,8 +345,8 @@ ta8: mcq_design;
     <forbidfloat>0</forbidfloat>
     <requirelowestterms>0</requirelowestterms>
     <checkanswertype>0</checkanswertype>
-    <mustverify>0</mustverify>
-    <showvalidation>0</showvalidation>
+    <mustverify>1</mustverify>
+    <showvalidation>1</showvalidation>
     <options/>
   </input>
 
@@ -362,7 +366,7 @@ ta8: mcq_design;
     <requirelowestterms>0</requirelowestterms>
     <checkanswertype>0</checkanswertype>
     <mustverify>1</mustverify>
-    <showvalidation>3</showvalidation>
+    <showvalidation>1</showvalidation>
     <options/>
   </input>
 
@@ -382,7 +386,7 @@ ta8: mcq_design;
     <requirelowestterms>0</requirelowestterms>
     <checkanswertype>0</checkanswertype>
     <mustverify>1</mustverify>
-    <showvalidation>3</showvalidation>
+    <showvalidation>1</showvalidation>
     <options/>
   </input>
 
@@ -402,7 +406,7 @@ ta8: mcq_design;
     <requirelowestterms>0</requirelowestterms>
     <checkanswertype>0</checkanswertype>
     <mustverify>1</mustverify>
-    <showvalidation>3</showvalidation>
+    <showvalidation>1</showvalidation>
     <options/>
   </input>
 
@@ -422,7 +426,7 @@ ta8: mcq_design;
     <requirelowestterms>0</requirelowestterms>
     <checkanswertype>0</checkanswertype>
     <mustverify>1</mustverify>
-    <showvalidation>3</showvalidation>
+    <showvalidation>1</showvalidation>
     <options/>
   </input>
 
@@ -442,7 +446,7 @@ ta8: mcq_design;
     <requirelowestterms>0</requirelowestterms>
     <checkanswertype>0</checkanswertype>
     <mustverify>1</mustverify>
-    <showvalidation>3</showvalidation>
+    <showvalidation>1</showvalidation>
     <options/>
   </input>
 
@@ -462,7 +466,7 @@ ta8: mcq_design;
     <requirelowestterms>0</requirelowestterms>
     <checkanswertype>0</checkanswertype>
     <mustverify>1</mustverify>
-    <showvalidation>3</showvalidation>
+    <showvalidation>1</showvalidation>
     <options/>
   </input>
 
@@ -481,8 +485,8 @@ ta8: mcq_design;
     <forbidfloat>0</forbidfloat>
     <requirelowestterms>0</requirelowestterms>
     <checkanswertype>0</checkanswertype>
-    <mustverify>0</mustverify>
-    <showvalidation>0</showvalidation>
+    <mustverify>1</mustverify>
+    <showvalidation>1</showvalidation>
     <options/>
   </input>
 
@@ -504,7 +508,7 @@ ta8: mcq_design;
       <description>Check analogy MCQ</description>
       <answertest>AlgEquiv</answertest>
       <sans>ans1</sans>
-      <tans>ta1</tans>
+      <tans>ta1_correct</tans>
       <testoptions/>
       <quiet>0</quiet>
       <truescoremode>=</truescoremode>
@@ -770,7 +774,7 @@ This gives \({@ta7@}\%\). This linearisation works well for small changes. The r
       <description>Check design reasoning MCQ</description>
       <answertest>AlgEquiv</answertest>
       <sans>ans8</sans>
-      <tans>ta8</tans>
+      <tans>ta8_correct</tans>
       <testoptions/>
       <quiet>0</quiet>
       <truescoremode>=</truescoremode>
