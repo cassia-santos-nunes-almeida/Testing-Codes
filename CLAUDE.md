@@ -151,9 +151,36 @@ gap.label('-', loc='bottom', ofst=0.15)
 | Weekly questions | Base64 SVG embedded directly in XML via `shared/scripts/embed_images_in_xml.py` |
 | Exam questions | Text placeholders `[INSERT DIAGRAM: ...]` — instructor uploads manually via Moodle editor |
 
+### Circuits with Switches (Multi-Switch Topologies)
+
+When a circuit has multiple switches (e.g., Nilsson P8.11 style):
+
+**Diagram rules:**
+- **Name every switch** (SW1, SW2, …) with an italic label drawn below each switch element.
+- **Label the action** above each switch: `t = 0\n(opens)` or `t = 0\n(closes)`.
+- Use the **matplotlib manual switch drawing** approach (`draw_switch` helper) — Schemdraw has no native SPST switch element that distinguishes open/closed visually.
+- **Leave enough horizontal space** between adjacent vertical components so that polarity/voltage labels (e.g., `v_o(t)`) don't visually overlap neighboring components. A wire segment of `length(1.0)` between a component and the next switch gap works well (vs. the default `WIRE=0.3`).
+
+**XML questiontext rules:**
+- **List every switch explicitly** in a bulleted `<ul>` with: switch name, location (between which components), state for `t < 0`, and state at `t = 0`.
+- Example:
+  ```html
+  <ul>
+    <li><strong>SW1</strong> (between \(R_a\) and \(L\)): <em>closed</em> for \(t &lt; 0\), <em>opens</em> at \(t = 0\).</li>
+    ...
+  </ul>
+  ```
+- Use consistent terminology: "change state" (not "flip" or "move to alternate positions") when describing what happens at `t = 0`.
+- **Generalfeedback and hints** must also reference switch names (SW1, SW2, …), not abstract "switch 1 in position a" language.
+
+**Design pattern (4-switch source-free RLC):**
+- SW1, SW4 closed at `t < 0` → connect energy sources to L and C for DC charging.
+- SW2, SW3 open at `t < 0` → isolate the middle RLC section.
+- At `t = 0`, all switches change state → sources disconnect, L‖R‖C forms a source-free parallel RLC.
+
 ## Known Issues / Pending Work
 
-- **Q5 diagram (`weekly/week10/diagrams/q5_parallel_rlc_natural_switches.py`)** — Does NOT match Nilsson Figure P8.11. The Schemdraw layout needs a complete rewrite to match the textbook circuit topology. Two rewrite attempts failed. The user has the reference image. After fixing, regenerate SVG and re-embed base64 in `Q5_ParallelRLC_NaturalResponse_Switches.xml`.
+- *(None at this time)*
 
 ## Common Mistakes to Avoid
 
@@ -169,7 +196,11 @@ These are hard-won lessons from previous sessions. **Do not repeat these errors:
 8. **Test all parameter set variants** before committing. A single untested variant can produce wrong answers or degenerate cases.
 9. **Don't use `{@ansN@}` in `<specificfeedback>`** — STACK renders these as CAS variable symbols, not student answers.
 10. **Don't forget `insertstars=1`** on algebraic inputs — without it, `2t` is rejected instead of interpreted as `2*t`.
+11. **Name every switch in multi-switch circuits** — unnamed switches force students to count from left to right, which is error-prone. Use SW1, SW2, … in both the diagram and the XML text.
+12. **Don't use abstract switch position labels** (e.g., "position a", "position b") for SPST switches — these only make sense for SPDT (multi-throw) switches. For SPST, describe as "open" or "closed".
+13. **Leave adequate spacing between adjacent vertical components** in horizontal-rail circuits — voltage/polarity labels (like `v_o(t)`) need clear visual separation from neighboring inductors/capacitors. Use `length(1.0)` or more for the connecting wire segment, not the minimal `WIRE=0.3`.
+14. **Keep diagram labels and XML text in sync** — if the diagram shows SW1–SW4, the questiontext, generalfeedback, and hints must all use the same names. Never mix naming conventions (e.g., "switch 1" in text vs. "SW1" in diagram).
 
 ## Last Updated
 
-2026-03-06
+2026-03-07
