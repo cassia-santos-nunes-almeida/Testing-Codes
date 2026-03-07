@@ -292,7 +292,7 @@ ta8_at_t3: float(subst(t=t_test3, ta8));
   <!-- ans1: Part (a) MCQ — DC steady-state concept (radio) -->
   <input>
     <name>ans1</name>
-    <type>dropdown</type>
+    <type>radio</type>
     <tans>ta1</tans>
     <boxsize>3</boxsize>
     <strictsyntax>1</strictsyntax>
@@ -487,7 +487,7 @@ ta8_at_t3: float(subst(t=t_test3, ta8));
       <falsenextnode>-1</falsenextnode>
       <falseanswernote>prt1-0-F</falseanswernote>
       <falsefeedback format="html">
-        <text><![CDATA[<p>Incorrect. The correct answer is {@ta1@}. In DC steady state: the <strong>capacitor</strong> acts as an <strong>open circuit</strong> (it fully charges and blocks DC). The <strong>inductor</strong> acts as a <strong>short circuit</strong> (zero voltage for constant current). Since the capacitor is open, no current flows: \(i(0^-) = 0\;\text{A}\), and \(v_C(0^-) = V_s = {@ta3@}\;\text{V}\).</p>]]></text>
+        <text><![CDATA[<p>Incorrect. The correct answer is: <em>Capacitor = open circuit at DC, so \(i(0^-) = 0\;\text{A}\) and \(v_C(0^-) = V_s\)</em>. In DC steady state: the <strong>capacitor</strong> acts as an <strong>open circuit</strong> (it fully charges and blocks DC). The <strong>inductor</strong> acts as a <strong>short circuit</strong> (zero voltage for constant current). Since the capacitor is open, no current flows: \(i(0^-) = 0\;\text{A}\), and \(v_C(0^-) = V_s = {@ta3@}\;\text{V}\).</p>]]></text>
       </falsefeedback>
     </node>
   </prt>

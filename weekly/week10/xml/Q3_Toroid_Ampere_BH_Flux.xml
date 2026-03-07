@@ -402,10 +402,10 @@ ta7: mcq_design;
     <options/>
   </input>
 
-  <!-- ans7: Part (f) Design reasoning MCQ (dropdown) -->
+  <!-- ans7: Part (f) Design reasoning MCQ (radio) -->
   <input>
     <name>ans7</name>
-    <type>dropdown</type>
+    <type>radio</type>
     <tans>ta7</tans>
     <boxsize>3</boxsize>
     <strictsyntax>1</strictsyntax>
@@ -687,7 +687,7 @@ ta7: mcq_design;
       <falsenextnode>-1</falsenextnode>
       <falseanswernote>prt6-0-F</falseanswernote>
       <falsefeedback format="html">
-        <text><![CDATA[<p>Incorrect. The correct answer is {@ta7@}. An air gap dramatically <strong>reduces inductance</strong> (increases reluctance), which may seem counterproductive. But it <strong>prevents core saturation</strong> at high currents, allowing the inductor to store more energy linearly. The energy density in the gap \(u = B^2/(2\mu_0)\) is much higher than in the core \(u = B^2/(2\mu_r\mu_0)\).</p>
+        <text><![CDATA[<p>Incorrect. The correct answer is: <em>The power inductor &mdash; the gap reduces effective permeability, preventing core saturation and allowing more energy storage</em>. An air gap dramatically <strong>reduces inductance</strong> (increases reluctance), which may seem counterproductive. But it <strong>prevents core saturation</strong> at high currents, allowing the inductor to store more energy linearly. The energy density in the gap \(u = B^2/(2\mu_0)\) is much higher than in the core \(u = B^2/(2\mu_r\mu_0)\).</p>
 <p>Transformers <strong>avoid</strong> gaps to maintain high mutual coupling between primary and secondary windings.</p>]]></text>
       </falsefeedback>
     </node>
