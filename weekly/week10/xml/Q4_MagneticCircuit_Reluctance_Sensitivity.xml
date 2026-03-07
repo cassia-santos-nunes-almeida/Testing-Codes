@@ -326,10 +326,10 @@ ta8: mcq_design;
   <!-- INPUTS (8 total: ans1–ans8)                                  -->
   <!-- ============================================================ -->
 
-  <!-- ans1: Part (a) Analogy MCQ (dropdown) -->
+  <!-- ans1: Part (a) Analogy MCQ (radio) -->
   <input>
     <name>ans1</name>
-    <type>dropdown</type>
+    <type>radio</type>
     <tans>ta1</tans>
     <boxsize>3</boxsize>
     <strictsyntax>1</strictsyntax>
@@ -466,10 +466,10 @@ ta8: mcq_design;
     <options/>
   </input>
 
-  <!-- ans8: Part (f) Physical reasoning MCQ (dropdown) -->
+  <!-- ans8: Part (f) Physical reasoning MCQ (radio) -->
   <input>
     <name>ans8</name>
-    <type>dropdown</type>
+    <type>radio</type>
     <tans>ta8</tans>
     <boxsize>3</boxsize>
     <strictsyntax>1</strictsyntax>

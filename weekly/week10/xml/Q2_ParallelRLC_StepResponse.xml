@@ -325,7 +325,7 @@ ta6_at_t3: float(subst(t=t_test3, ta6));
   <!-- ans1: Part (a) Physical reasoning MCQ (radio) -->
   <input>
     <name>ans1</name>
-    <type>dropdown</type>
+    <type>radio</type>
     <tans>ta1</tans>
     <boxsize>3</boxsize>
     <strictsyntax>1</strictsyntax>
@@ -497,7 +497,7 @@ ta6_at_t3: float(subst(t=t_test3, ta6));
       <falsenextnode>-1</falsenextnode>
       <falseanswernote>prt1-0-F</falseanswernote>
       <falsefeedback format="html">
-        <text><![CDATA[<p>Incorrect. The correct answer is {@ta1@}. A resistor is a <strong>passive element</strong> that converts electrical energy into heat (Joule heating). It cannot change the resonant frequency, reflect energy, or cause saturation. On each oscillation cycle, \(R\) dissipates a fraction of the stored energy, progressively damping the oscillations.</p>]]></text>
+        <text><![CDATA[<p>Incorrect. The correct answer is: <em>R dissipates energy as heat on every half-cycle, reducing the oscillation amplitude</em>. A resistor is a <strong>passive element</strong> that converts electrical energy into heat (Joule heating). It cannot change the resonant frequency, reflect energy, or cause saturation. On each oscillation cycle, \(R\) dissipates a fraction of the stored energy, progressively damping the oscillations.</p>]]></text>
       </falsefeedback>
     </node>
   </prt>
