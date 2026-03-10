@@ -832,10 +832,10 @@ prt3_forgot_4: if (abs(Pmax_wrong) > 1.0e-30 and abs(sa3_float) > 1.0e-30 and ab
     <text><![CDATA[<p><strong>Hint 1 (Intuition):</strong> An ideal transformer transforms impedance: the load impedance seen from the primary side is scaled by the square of the turns ratio. For maximum power transfer, this reflected impedance should match the source resistance.</p>]]></text>
   </hint>
   <hint format="html">
-    <text><![CDATA[<p><strong>Hint 2 (Formulas):</strong> The reflected impedance is \(Z_{\text{in}} = (N_1/N_2)^2 R_L\). Set \(Z_{\text{in}} = R_s\) and solve for \(N_1/N_2\). Maximum power to the load is \(P_{\max} = V_s^2/(4R_s)\). System efficiency at maximum power transfer is always 50%.</p>]]></text>
+    <text><![CDATA[<p><strong>Hint 2 (Formulas):</strong> The reflected impedance is \(Z_{\text{in}} = (N_1/N_2)^2 R_L\). Set \(Z_{\text{in}} = R_s\) and solve for \(N_1/N_2\). Maximum power to the load is \(P_{\max} = V_s^2/(4R_s)\). Think about what fraction of total power is delivered to the load vs. dissipated in \(R_s\) when \(Z_{\text{in}} = R_s\).</p>]]></text>
   </hint>
   <hint format="html">
-    <text><![CDATA[<p><strong>Hint 3 (Worked Step):</strong> \((N_1/N_2)^2 = R_s/R_L = {@Rs@}/{@RL@} = {@ratio_sq@}\), so \(N_1/N_2 = \sqrt{{@ratio_sq@}}\). Then \(Z_{\text{in}} = {@ratio_sq@} \times {@RL@}\). For max power: \(P_{\max} = ({@Vs@})^2/(4 \times {@Rs@})\). The 50% efficiency comes from the voltage divider between \(R_s\) and \(Z_{\text{in}} = R_s\).</p>]]></text>
+    <text><![CDATA[<p><strong>Hint 3 (Worked Step):</strong> \((N_1/N_2)^2 = R_s/R_L = {@Rs@}/{@RL@} = {@ratio_sq@}\), so \(N_1/N_2 = \sqrt{{@ratio_sq@}}\). Then \(Z_{\text{in}} = {@ratio_sq@} \times {@RL@}\). For max power: \(P_{\max} = ({@Vs@})^2/(4 \times {@Rs@})\). Consider: when \(Z_{\text{in}} = R_s\), the source voltage divides equally across \(R_s\) and the reflected load. What does this imply about how much power reaches the load?</p>]]></text>
   </hint>
 
 </question>

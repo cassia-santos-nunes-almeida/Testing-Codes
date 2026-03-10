@@ -709,7 +709,7 @@ prt3_IR_error: if (abs(P_wrong_IR) > 1.0e-30 and abs(sa3_float) > 1.0e-30 and ab
     <text><![CDATA[<p><strong>Hint 2 (Formulas):</strong> The motional EMF is \(\varepsilon = B\ell v\), where \(\ell\) is the length of the bar (convert cm to m!), \(v\) is the velocity, and \(B\) is the magnetic field strength. The current is \(I = \varepsilon/R\) and power is \(P = I^2 R\). For Lenz's law: determine how the flux changes as the bar moves, then find the current direction that opposes that change.</p>]]></text>
   </hint>
   <hint format="html">
-    <text><![CDATA[<p><strong>Hint 3 (Worked Step):</strong> Convert: \(\ell = {@ell_cm@}\;\text{cm} = {@ell@}\;\text{m}\). Then \(\varepsilon = {@B@} \times {@ell@} \times {@v@}\). Once you have \(\varepsilon\), divide by \(R = {@R@}\;\Omega\) to get \(I\), and compute \(P = I^2 \times R\). For the direction: the bar moves right, the area of the loop increases, so the flux into the page increases. Lenz's law says the current must oppose this by creating flux out of the page (counterclockwise).</p>]]></text>
+    <text><![CDATA[<p><strong>Hint 3 (Worked Step):</strong> Convert: \(\ell = {@ell_cm@}\;\text{cm} = {@ell@}\;\text{m}\). Then \(\varepsilon = {@B@} \times {@ell@} \times {@v@}\). Once you have \(\varepsilon\), divide by \(R = {@R@}\;\Omega\) to get \(I\), and compute \(P = I^2 \times R\). For the direction: the bar moves right, so the area of the loop increases. Determine how the flux through the loop changes, then apply Lenz's law — the induced current must flow in the direction that opposes that change in flux.</p>]]></text>
   </hint>
 
 </question>

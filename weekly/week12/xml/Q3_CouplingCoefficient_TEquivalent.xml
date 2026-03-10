@@ -987,7 +987,7 @@ prt5_oom_ok: if (abs(ref5_float) > 1.0e-30 and abs(sa5_float) > 1.0e-30 and (abs
     <text><![CDATA[<p><strong>Hint 1 (Intuition):</strong> The coupling coefficient \(k\) tells you how much of the magnetic flux from one coil links the other. The mutual inductance \(M\) quantifies this coupling in terms of inductance. The dot markings tell you whether the fluxes add (aid) or subtract (oppose).</p>]]></text>
   </hint>
   <hint format="html">
-    <text><![CDATA[<p><strong>Hint 2 (Formulas):</strong> \(M = k\sqrt{L_1 L_2}\). For the dot convention: both currents entering dotted terminals = aiding (+M). The T-equivalent for the aiding case has \(L_a = L_1 - M\), \(L_b = L_2 - M\), \(L_c = M\). Note that \(L_a\) can be negative if \(M > L_1\).</p>]]></text>
+    <text><![CDATA[<p><strong>Hint 2 (Formulas):</strong> \(M = k\sqrt{L_1 L_2}\). For the dot convention: check whether the currents enter their respective dotted or undotted terminals to determine if fluxes aid or oppose. The T-equivalent element values depend on this convention: \(L_a = L_1 \mp M\), \(L_b = L_2 \mp M\), \(L_c = \pm M\). Consider whether any T-equivalent element could become negative for certain values of \(k\).</p>]]></text>
   </hint>
   <hint format="html">
     <text><![CDATA[<p><strong>Hint 3 (Worked Step):</strong> First compute \(M = {@k@}\sqrt{{@L1_mH@} \times {@L2_mH@}} = {@k@} \times {@sqrtL1L2_mH@}\). Then for the T-equivalent: \(L_a = {@L1_mH@} - M\), \(L_b = {@L2_mH@} - M\), \(L_c = M\). Check if \(L_a\) is negative by comparing \(k\) with \(\sqrt{L_1/L_2}\).</p>]]></text>
