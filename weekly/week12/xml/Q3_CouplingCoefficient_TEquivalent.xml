@@ -573,8 +573,33 @@ prt3_oom_ok: if (abs(ref3_float) > 1.0e-30 and abs(sa3_float) > 1.0e-30 and (abs
       <falsescoremode>=</falsescoremode>
       <falsescore>0.0000000</falsescore>
       <falsepenalty/>
-      <falsenextnode>-1</falsenextnode>
+      <falsenextnode>4</falsenextnode>
       <falseanswernote>prt3-2-F</falseanswernote>
+      <falsefeedback format="html">
+        <text/>
+      </falsefeedback>
+    </node>
+    <node>
+      <name>4</name>
+      <description>OoM check (order of magnitude)</description>
+      <answertest>AlgEquiv</answertest>
+      <sans>prt3_oom_ok</sans>
+      <tans>true</tans>
+      <testoptions/>
+      <quiet>1</quiet>
+      <truescoremode>=</truescoremode>
+      <truescore>0.3000000</truescore>
+      <truepenalty/>
+      <truenextnode>-1</truenextnode>
+      <trueanswernote>prt3-4-T</trueanswernote>
+      <truefeedback format="html">
+        <text><![CDATA[<p>Your answer is in the right order of magnitude but not close enough. For the aiding T-equivalent: \(L_a = L_1 - M\).</p>]]></text>
+      </truefeedback>
+      <falsescoremode>=</falsescoremode>
+      <falsescore>0.0000000</falsescore>
+      <falsepenalty/>
+      <falsenextnode>-1</falsenextnode>
+      <falseanswernote>prt3-4-F</falseanswernote>
       <falsefeedback format="html">
         <text><![CDATA[<p>Incorrect. For the aiding T-equivalent: \(L_a = L_1 - M = {@L1_mH@} - {@M_mH@} = {@La_mH@}\;\text{mH}\).</p>]]></text>
       </falsefeedback>
