@@ -16,7 +16,8 @@
 <h3>Week 12 – Q5: Opposing Dot Convention &amp; Coupled Inductor Energy</h3>
 <p><em>Course: Electromagnetism and Circuit Analysis — LUT University, Finland</em></p>
 <p><em>This is a training exercise — you may use books, tutors, and AI.</em></p>
-<p><strong>Total: 7 points | Penalty per wrong attempt: 0%</strong></p>
+<p style="color:#666; font-style:italic;">This question does not count toward your grade. It is provided for additional practice and exam preparation.</p>
+<p><strong>Practice / Exam Preparation (0 points) | Penalty per wrong attempt: 0%</strong></p>
 <hr />
 
 <p>Two coupled inductors have \(L_1 = {@L1_mH@}\;\text{mH}\), \(L_2 = {@L2_mH@}\;\text{mH}\),
@@ -112,7 +113,7 @@ shunt element is mathematically valid in the equivalent circuit model.</p>
 ]]></text>
   </generalfeedback>
 
-  <defaultgrade>7.0000000</defaultgrade>
+  <defaultgrade>0.0000000</defaultgrade>
   <penalty>0.0000000</penalty>
   <hidden>0</hidden>
   <idnumber></idnumber>
@@ -380,7 +381,7 @@ ta7_correct: 1;]]></text>
   <!-- ============================================================ -->
   <prt>
     <name>prt1</name>
-    <value>1.0000000</value>
+    <value>0.0000000</value>
     <autosimplify>1</autosimplify>
     <feedbackstyle>1</feedbackstyle>
     <feedbackvariables>
@@ -418,7 +419,7 @@ ta7_correct: 1;]]></text>
   <!-- ============================================================ -->
   <prt>
     <name>prt2</name>
-    <value>1.0000000</value>
+    <value>0.0000000</value>
     <autosimplify>1</autosimplify>
     <feedbackstyle>1</feedbackstyle>
     <feedbackvariables>
@@ -506,7 +507,7 @@ ta7_correct: 1;]]></text>
   <!-- ============================================================ -->
   <prt>
     <name>prt3</name>
-    <value>1.0000000</value>
+    <value>0.0000000</value>
     <autosimplify>1</autosimplify>
     <feedbackstyle>1</feedbackstyle>
     <feedbackvariables>
@@ -621,7 +622,7 @@ prt3_oom_ok: if (abs(float(ta3)) > 1.0e-30 and abs(float(ans3)) > 1.0e-30 and (a
   <!-- ============================================================ -->
   <prt>
     <name>prt4</name>
-    <value>1.0000000</value>
+    <value>0.0000000</value>
     <autosimplify>1</autosimplify>
     <feedbackstyle>1</feedbackstyle>
     <feedbackvariables>
@@ -736,7 +737,7 @@ prt4_oom_ok: if (abs(float(ta4)) > 1.0e-30 and abs(float(ans4)) > 1.0e-30 and (a
   <!-- ============================================================ -->
   <prt>
     <name>prt5</name>
-    <value>1.0000000</value>
+    <value>0.0000000</value>
     <autosimplify>1</autosimplify>
     <feedbackstyle>1</feedbackstyle>
     <feedbackvariables>
@@ -824,7 +825,7 @@ prt4_oom_ok: if (abs(float(ta4)) > 1.0e-30 and abs(float(ans4)) > 1.0e-30 and (a
   <!-- ============================================================ -->
   <prt>
     <name>prt6</name>
-    <value>1.0000000</value>
+    <value>0.0000000</value>
     <autosimplify>1</autosimplify>
     <feedbackstyle>1</feedbackstyle>
     <feedbackvariables>
@@ -939,7 +940,7 @@ prt6_oom_ok: if (abs(float(ta6)) > 1.0e-30 and abs(float(ans6)) > 1.0e-30 and (a
   <!-- ============================================================ -->
   <prt>
     <name>prt7</name>
-    <value>1.0000000</value>
+    <value>0.0000000</value>
     <autosimplify>1</autosimplify>
     <feedbackstyle>1</feedbackstyle>
     <feedbackvariables>
