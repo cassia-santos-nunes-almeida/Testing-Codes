@@ -324,7 +324,7 @@ Hard-won lessons from sessions 1-3. **Do not repeat these errors.**
   - Maxima grading code
 - Validate each question independently before bundling into a quiz
 
-### CircuiTikZ Diagrams
+### CircuiTikZ / TikZ Diagrams
 - **1 diagram per agent** — each `.tex` file is an independent task
 - Run all diagram agents in parallel
 - Compile and visually inspect each before embedding
@@ -334,6 +334,37 @@ Hard-won lessons from sessions 1-3. **Do not repeat these errors.**
 - If a single agent task takes >2 minutes, it should be split further
 - Always maximize parallel agent execution for independent tasks
 - Plan the full question set structure before generating any XML
+
+## Visual Style & Diagram Resources — Must Read Before Building
+
+Before creating any diagram or visual content, read these files:
+
+| Resource | Path | When to Read |
+|----------|------|-------------|
+| **CircuiTikZ skill** | `.claude/skill/circuitikz-latex-circuit-diagrams/SKILL.md` | Before creating any circuit diagram — compilation pipeline, .tex structure, layout rules |
+| **Circuit patterns** | `.claude/skill/circuitikz-latex-circuit-diagrams/references/circuit-patterns.md` | Before drawing circuits — 8 standard topology templates, switch naming, spacing tips |
+| **Render script** | `shared/scripts/render_circuitikz.py` | For compiling .tex → SVG |
+| **CircuiTikZ template** | `shared/templates/circuitikz_template.tex` | Starter template for new diagrams |
+
+### Diagram Style Rules (CircuiTikZ / TikZ)
+- **Sans-serif fonts** (`\sffamily`) — high contrast, black on white
+- **Vertical layout preferred** — power source on left (positive on top), components on right
+- **Explicit current arrows and voltage polarity** on every circuit
+- **`[american voltages, american currents]`** package options always
+- **`standalone` with `border=10pt`** — prevents label/arrow clipping
+- **Name every switch** (SW1, SW2, …) with italic labels; element name = action at t=0
+- **No `\dfrac` in `l=` labels** — use separate `\node` for complex math
+- **Adequate spacing** between adjacent vertical components for polarity labels
+
+### Diagram Types for Questions
+| Type | Tool | Notes |
+|------|------|-------|
+| Circuit schematics | CircuiTikZ (`.tex`) | Use circuit-patterns.md templates |
+| Magnetic core cross-sections | TikZ (`.tex`) | Use `\usepackage{tikz}` instead of circuitikz |
+| Physical/geometric drawings | TikZ (`.tex`) | Toroid windings, field lines, etc. |
+| Flowcharts / decision trees | TikZ (`.tex`) | Rounded rectangles, diamonds, arrows |
+| Embedding in weekly XML | Base64 SVG | `data:image/svg+xml;base64,...` |
+| Embedding in exam XML | Text placeholder | Instructor uploads manually via Moodle |
 
 ## Last Updated
 
