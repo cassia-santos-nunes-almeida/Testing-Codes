@@ -311,6 +311,30 @@ Hard-won lessons from sessions 1-3. **Do not repeat these errors.**
 19. **Don't mix diagram tools in the same content set** — visual inconsistency confuses students. Use CircuiTikZ for all new content. Legacy Schemdraw files preserved with `_schemdraw` suffix.
 20. **Test compilation before embedding; use `standalone` with `border=10pt`** — always compile `.tex` → SVG and visually inspect before base64-encoding. Without `border`, labels and arrows get clipped at SVG edges.
 
+## Workflow Guidelines — Task Decomposition
+
+**Always plan before building.** Before starting any question set, create a plan first (use the Plan agent or outline the structure). Then execute in small, parallelizable chunks.
+
+### STACK Questions
+- **1–2 questions per agent** — never generate a full question set in one task
+- Separate concerns for complex questions:
+  - Variable randomization & Maxima logic
+  - Solution derivation & worked examples
+  - PRT/feedback tree structure
+  - Maxima grading code
+- Validate each question independently before bundling into a quiz
+
+### CircuiTikZ Diagrams
+- **1 diagram per agent** — each `.tex` file is an independent task
+- Run all diagram agents in parallel
+- Compile and visually inspect each before embedding
+
+### General Principles
+- Smaller tasks = faster completion, easier debugging, better parallelization
+- If a single agent task takes >2 minutes, it should be split further
+- Always maximize parallel agent execution for independent tasks
+- Plan the full question set structure before generating any XML
+
 ## Last Updated
 
-2026-03-10 (session 4-5: added Week 11-12 exercises — Faraday's law, motional EMF, self-inductance/energy, coupling coefficient/T-equivalent, ideal transformer/impedance matching, opposing dot convention/coupled energy. Added higher-Bloom debug and analysis tasks to Q1-Q2.)
+2026-03-19 (session 5-6: added workflow/task-decomposition guidelines)
