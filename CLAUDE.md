@@ -311,6 +311,61 @@ Hard-won lessons from sessions 1-3. **Do not repeat these errors.**
 19. **Don't mix diagram tools in the same content set** — visual inconsistency confuses students. Use CircuiTikZ for all new content. Legacy Schemdraw files preserved with `_schemdraw` suffix.
 20. **Test compilation before embedding; use `standalone` with `border=10pt`** — always compile `.tex` → SVG and visually inspect before base64-encoding. Without `border`, labels and arrows get clipped at SVG edges.
 
+## Workflow Guidelines — Task Decomposition
+
+**Always plan before building.** Before starting any question set, create a plan first (use the Plan agent or outline the structure). Then execute in small, parallelizable chunks.
+
+### STACK Questions
+- **1–2 questions per agent** — never generate a full question set in one task
+- Separate concerns for complex questions:
+  - Variable randomization & Maxima logic
+  - Solution derivation & worked examples
+  - PRT/feedback tree structure
+  - Maxima grading code
+- Validate each question independently before bundling into a quiz
+
+### CircuiTikZ / TikZ Diagrams
+- **1 diagram per agent** — each `.tex` file is an independent task
+- Run all diagram agents in parallel
+- Compile and visually inspect each before embedding
+
+### General Principles
+- Smaller tasks = faster completion, easier debugging, better parallelization
+- If a single agent task takes >2 minutes, it should be split further
+- Always maximize parallel agent execution for independent tasks
+- Plan the full question set structure before generating any XML
+
+## Visual Style & Diagram Resources — Must Read Before Building
+
+Before creating any diagram or visual content, read these files:
+
+| Resource | Path | When to Read |
+|----------|------|-------------|
+| **CircuiTikZ skill** | `.claude/skill/circuitikz-latex-circuit-diagrams/SKILL.md` | Before creating any circuit diagram — compilation pipeline, .tex structure, layout rules |
+| **Circuit patterns** | `.claude/skill/circuitikz-latex-circuit-diagrams/references/circuit-patterns.md` | Before drawing circuits — 8 standard topology templates, switch naming, spacing tips |
+| **Render script** | `shared/scripts/render_circuitikz.py` | For compiling .tex → SVG |
+| **CircuiTikZ template** | `shared/templates/circuitikz_template.tex` | Starter template for new diagrams |
+
+### Diagram Style Rules (CircuiTikZ / TikZ)
+- **Sans-serif fonts** (`\sffamily`) — high contrast, black on white
+- **Vertical layout preferred** — power source on left (positive on top), components on right
+- **Explicit current arrows and voltage polarity** on every circuit
+- **`[american voltages, american currents]`** package options always
+- **`standalone` with `border=10pt`** — prevents label/arrow clipping
+- **Name every switch** (SW1, SW2, …) with italic labels; element name = action at t=0
+- **No `\dfrac` in `l=` labels** — use separate `\node` for complex math
+- **Adequate spacing** between adjacent vertical components for polarity labels
+
+### Diagram Types for Questions
+| Type | Tool | Notes |
+|------|------|-------|
+| Circuit schematics | CircuiTikZ (`.tex`) | Use circuit-patterns.md templates |
+| Magnetic core cross-sections | TikZ (`.tex`) | Use `\usepackage{tikz}` instead of circuitikz |
+| Physical/geometric drawings | TikZ (`.tex`) | Toroid windings, field lines, etc. |
+| Flowcharts / decision trees | TikZ (`.tex`) | Rounded rectangles, diamonds, arrows |
+| Embedding in weekly XML | Base64 SVG | `data:image/svg+xml;base64,...` |
+| Embedding in exam XML | Text placeholder | Instructor uploads manually via Moodle |
+
 ## Last Updated
 
-2026-03-10 (session 4-5: added Week 11-12 exercises — Faraday's law, motional EMF, self-inductance/energy, coupling coefficient/T-equivalent, ideal transformer/impedance matching, opposing dot convention/coupled energy. Added higher-Bloom debug and analysis tasks to Q1-Q2.)
+2026-03-19 (session 5-6: added workflow/task-decomposition guidelines)
