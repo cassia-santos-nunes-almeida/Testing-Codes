@@ -67,183 +67,147 @@ Place <strong>exactly 4 points</strong> on the interactive graph below at times 
 each at the correct voltage level for that time interval.</p>
 
 [[jsxgraph input-ref-ans6="ans6Ref" width="680px" height="440px"]]
-(function () {
-    /* ── Configuration ── */
-    var yMax  = {@y_max@};
-    var yMin  = {@y_min@};
-    var Vss   = {@ta5@};
-    var MAX_POINTS = 4;
-    var SNAP  = 0.5;
+/* ── Configuration ── */
+var yMax  = {@y_max@};
+var yMin  = {@y_min@};
+var Vss   = {@ta5@};
+var MAX_POINTS = 4;
+var SNAP  = 0.5;
 
-    /* ── Board setup ── */
-    var board = JXG.JSXGraph.initBoard(divid, {
-        boundingbox: [-0.5, yMax, 8.5, yMin],
-        axis: false,
-        grid: false,
-        showNavigation: false,
-        showCopyright: false,
-        keepaspectratio: false
-    });
+/* ── Board setup ── */
+var board = JXG.JSXGraph.initBoard(divid, {
+    boundingbox: [-0.5, yMax, 8.5, yMin],
+    axis: true,
+    grid: true,
+    showNavigation: false,
+    showCopyright: false
+});
 
-    /* ── Axes ── */
-    var xAxis = board.create('axis', [[0, 0], [1, 0]], {
-        ticks: {
-            insertTicks: false,
-            ticksDistance: 1,
-            majorHeight: 8,
-            minorHeight: 0,
-            drawLabels: true,
-            label: { offset: [0, -14], anchorX: 'middle', fontSize: 13 }
-        },
-        strokeColor: '#333',
-        strokeWidth: 1.5
-    });
-    var yAxis = board.create('axis', [[0, 0], [0, 1]], {
-        ticks: {
-            insertTicks: false,
-            ticksDistance: 2,
-            majorHeight: 8,
-            minorHeight: 0,
-            drawLabels: true,
-            label: { offset: [-30, 0], anchorX: 'right', fontSize: 13 }
-        },
-        strokeColor: '#333',
-        strokeWidth: 1.5
-    });
+/* Axis labels */
+board.create('text', [8, yMin + (yMax - yMin) * 0.06, 't / T'], {
+    anchorX: 'right', fontSize: 14, fixed: true
+});
+board.create('text', [-0.35, yMax - 2, 'V (V)'], {
+    anchorX: 'right', fontSize: 14, fixed: true
+});
 
-    /* Axis labels */
-    board.create('text', [8, yMin + (yMax - yMin) * 0.06, 't / T'], {
-        anchorX: 'right', fontSize: 14, fixed: true
-    });
-    board.create('text', [-(0.35), yMax - 2, 'V (V)'], {
-        anchorX: 'right', fontSize: 14, fixed: true
-    });
+/* ── Reference lines ── */
+/* Dashed horizontal line at V_ss */
+board.create('line', [[0, Vss], [1, Vss]], {
+    strokeColor: '#999', strokeWidth: 1.5, dash: 3,
+    straightFirst: true, straightLast: true, fixed: true, highlight: false
+});
+board.create('text', [8.2, Vss, 'V<sub>ss</sub>'], {
+    anchorX: 'left', fontSize: 12, fixed: true, cssStyle: 'color:#888;'
+});
 
-    /* ── Reference lines ── */
-    /* Dashed horizontal line at V_ss */
-    board.create('line', [[0, Vss], [1, Vss]], {
-        strokeColor: '#999',
-        strokeWidth: 1.5,
-        dash: 3,
-        straightFirst: true,
-        straightLast: true,
-        fixed: true,
-        highlight: false
+/* Vertical dashed guides at t/T = 1, 3, 5, 7 */
+[1, 3, 5, 7].forEach(function (tx) {
+    board.create('line', [[tx, 0], [tx, 1]], {
+        strokeColor: '#ccc', strokeWidth: 1, dash: 2,
+        straightFirst: true, straightLast: true, fixed: true, highlight: false
     });
-    board.create('text', [8.2, Vss, 'V<sub>ss</sub>'], {
-        anchorX: 'left', fontSize: 12, fixed: true, cssStyle: 'color:#888;'
-    });
+});
 
-    /* Vertical dashed guides at t/T = 1, 3, 5, 7 */
-    [1, 3, 5, 7].forEach(function (tx) {
-        board.create('line', [[tx, 0], [tx, 1]], {
-            strokeColor: '#ccc',
-            strokeWidth: 1,
-            dash: 2,
-            straightFirst: true,
-            straightLast: true,
-            fixed: true,
-            highlight: false
-        });
-    });
+/* ── Point management ── */
+var pts = [];
+var stateInput = document.getElementById(ans6Ref);
 
-    /* ── Point management ── */
-    var pts = [];
+function snapVal(v) {
+    return Math.round(v / SNAP) * SNAP;
+}
 
-    function snapVal(v) {
-        return Math.round(v / SNAP) * SNAP;
+function serializePoints() {
+    if (pts.length === 0) {
+        stateInput.value = '[]';
+    } else {
+        var parts = [];
+        /* Sort by x (time) before serializing */
+        var sorted = pts.slice().sort(function (a, b) { return a.X() - b.X(); });
+        for (var i = 0; i < sorted.length; i++) {
+            parts.push('[' + snapVal(sorted[i].X()) + ',' + snapVal(sorted[i].Y()) + ']');
+        }
+        stateInput.value = '[' + parts.join(',') + ']';
     }
+    stateInput.dispatchEvent(new Event('change'));
+}
 
-    function serializePoints() {
-        var data = pts.map(function (p) {
-            return [snapVal(p.X()), snapVal(p.Y())];
-        });
-        /* Sort by x (time) */
-        data.sort(function (a, b) { return a[0] - b[0]; });
-        return JSON.stringify(data);
+function addPoint(x, y) {
+    if (pts.length >= MAX_POINTS) return null;
+    var snx = snapVal(x);
+    var sny = snapVal(y);
+    var p = board.create('point', [snx, sny], {
+        name: '(' + snx.toFixed(1) + ', ' + sny.toFixed(1) + ')',
+        size: 5, face: 'o',
+        strokeColor: '#0055d4', fillColor: '#3388ff',
+        snapToGrid: true
+    });
+    p.on('drag', function () {
+        p.setName('(' + snapVal(p.X()).toFixed(1) + ', ' + snapVal(p.Y()).toFixed(1) + ')');
+        board.update();
+        serializePoints();
+    });
+    pts.push(p);
+    return p;
+}
+
+function getMouseCoords(e) {
+    var cPos = board.getCoordsTopLeftCorner(e),
+        absPos = JXG.getPosition(e),
+        dx = absPos[0] - cPos[0],
+        dy = absPos[1] - cPos[1];
+    return new JXG.Coords(JXG.COORDS_BY_SCREEN, [dx, dy], board);
+}
+
+/* ── Restore state from saved answer on page reload ── */
+if (stateInput.value && stateInput.value !== '' && stateInput.value !== '[]') {
+    var matches = stateInput.value.match(/\[(-?[\d.]+),\s*(-?[\d.]+)\]/g);
+    if (matches) {
+        for (var i = 0; i < matches.length && i < MAX_POINTS; i++) {
+            var nums = matches[i].match(/(-?[\d.]+)/g);
+            if (nums && nums.length >= 2) addPoint(parseFloat(nums[0]), parseFloat(nums[1]));
+        }
+        serializePoints();
+        board.update();
     }
+}
 
-    function pushToInput() {
-        var el = document.getElementById(ans6Ref);
-        if (el) {
-            el.value = serializePoints();
-            /* Dispatch change event so STACK registers the update */
-            var evt = new Event('change', { bubbles: true });
-            el.dispatchEvent(evt);
+/* ── Click to place points ── */
+board.on('down', function (e) {
+    var canCreate = true, coords, el, x, y;
+
+    if (e[JXG.touchProperty]) return;
+
+    coords = getMouseCoords(e);
+
+    /* Check if clicking on an existing point (drag, not create) */
+    for (el in board.objects) {
+        if (JXG.isPoint(board.objects[el]) &&
+            board.objects[el].hasPoint(coords.scrCoords[1], coords.scrCoords[2])) {
+            canCreate = false;
+            break;
         }
     }
 
-    function updateLabel(p) {
-        var sx = snapVal(p.X()).toFixed(1);
-        var sy = snapVal(p.Y()).toFixed(1);
-        p.setName('(' + sx + ', ' + sy + ')');
-    }
+    if (!canCreate || pts.length >= MAX_POINTS) return;
 
-    function addPoint(x, y) {
-        if (pts.length >= MAX_POINTS) return null;
-        var snx = snapVal(x);
-        var sny = snapVal(y);
-        var p = board.create('point', [snx, sny], {
-            size: 5,
-            strokeColor: '#0055d4',
-            fillColor: '#3388ff',
-            snapSizeX: SNAP,
-            snapSizeY: SNAP,
-            snapToGrid: true,
-            label: { offset: [10, 10], fontSize: 11 }
-        });
-        updateLabel(p);
+    x = snapVal(coords.usrCoords[1]);
+    y = snapVal(coords.usrCoords[2]);
 
-        p.on('drag', function () {
-            updateLabel(p);
-            pushToInput();
-        });
+    /* Ignore clicks outside the plot area */
+    if (x < 0 || x > 8 || y < yMin || y > yMax) return;
 
-        pts.push(p);
-        pushToInput();
-        return p;
-    }
+    addPoint(x, y);
+    serializePoints();
+});
 
-    /* ── Click to place points ── */
-    board.on('down', function (evt) {
-        if (pts.length >= MAX_POINTS) return;
-        var coords = board.getUsrCoordsOfMouse(evt);
-        var x = coords[0];
-        var y = coords[1];
-        /* Ignore clicks too close to axes edges */
-        if (x < 0 || x > 8 || y < yMin || y > yMax) return;
-        addPoint(x, y);
-        board.update();
-    });
-
-    /* ── Reset button ── */
-    var resetBtn = board.create('button', [5.5, yMax - 1.2, 'Reset Points', function () {
-        pts.forEach(function (p) { board.removeObject(p); });
-        pts = [];
-        pushToInput();
-        board.update();
-    }], {
-        fixed: true
-    });
-
-    /* ── Restore state from saved answer ── */
-    var el = document.getElementById(ans6Ref);
-    if (el && el.value && el.value.length > 2) {
-        try {
-            var saved = JSON.parse(el.value);
-            if (Array.isArray(saved)) {
-                saved.forEach(function (pair) {
-                    if (Array.isArray(pair) && pair.length === 2) {
-                        addPoint(pair[0], pair[1]);
-                    }
-                });
-                board.update();
-            }
-        } catch (e) {
-            /* ignore parse errors on reload */
-        }
-    }
-})();
+/* ── Reset button ── */
+board.create('button', [5.5, yMax - 1.5, 'Reset', function () {
+    for (var i = pts.length - 1; i >= 0; i--) board.removeObject(pts[i]);
+    pts = [];
+    board.update();
+    serializePoints();
+}]);
 [[/jsxgraph]]
 
 <p>Click on the graph to place <strong>4 key points</strong> showing the voltage \(V(t)\) at the load.
