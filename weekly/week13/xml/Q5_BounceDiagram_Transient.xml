@@ -112,6 +112,33 @@ var pts = [];
 var labels = [];
 var stateInput = document.getElementById(ans6Ref);
 
+/* Build the "Your placed points" table dynamically inside the JSXGraph div
+   so that DOM lookups always succeed (static HTML outside [[jsxgraph]] is
+   not guaranteed to be in the same DOM scope in all STACK versions). */
+var tableHTML =
+    '<div style="margin:10px 0">' +
+    '<p style="font-weight:bold;margin-bottom:4px;">Your placed points</p>' +
+    '<table border="1" cellpadding="6" cellspacing="0" style="border-collapse:collapse;font-family:sans-serif;">' +
+    '<tr style="background:#e8e8e8;"><th>Point</th><th>t / T</th><th>Voltage</th></tr>' +
+    '<tr><td>P1</td><td id="q5-p1-x"><em>\u2014</em></td><td id="q5-p1-y"><em>\u2014</em></td></tr>' +
+    '<tr><td>P2</td><td id="q5-p2-x"><em>\u2014</em></td><td id="q5-p2-y"><em>\u2014</em></td></tr>' +
+    '<tr><td>P3</td><td id="q5-p3-x"><em>\u2014</em></td><td id="q5-p3-y"><em>\u2014</em></td></tr>' +
+    '<tr><td>P4</td><td id="q5-p4-x"><em>\u2014</em></td><td id="q5-p4-y"><em>\u2014</em></td></tr>' +
+    '</table></div>';
+var boardDiv = document.getElementById(divid);
+var tableWrapper = document.createElement('div');
+tableWrapper.innerHTML = tableHTML;
+boardDiv.parentNode.insertBefore(tableWrapper, boardDiv.nextSibling);
+
+/* Cache direct references to table cells (avoids repeated getElementById) */
+var cellRefs = [];
+for (var ci = 0; ci < MAX_POINTS; ci++) {
+    cellRefs.push({
+        x: tableWrapper.querySelector('#q5-p' + (ci+1) + '-x'),
+        y: tableWrapper.querySelector('#q5-p' + (ci+1) + '-y')
+    });
+}
+
 function snapVal(v) {
     return Math.round(v / SNAP) * SNAP;
 }
@@ -126,6 +153,10 @@ function serializePoints() {
             parts.push('[' + snapVal(sorted[i].X()) + ',' + snapVal(sorted[i].Y()) + ']');
         }
         stateInput.value = '[' + parts.join(',') + ']';
+    }
+    /* Dispatch change event so STACK picks up the new value */
+    if (stateInput) {
+        stateInput.dispatchEvent(new Event('change'));
     }
 }
 
@@ -207,8 +238,8 @@ board.on('down', function(e) {
 
 function updateTable() {
     for (var i = 0; i < MAX_POINTS; i++) {
-        var xCell = document.getElementById('q5-p' + (i+1) + '-x');
-        var yCell = document.getElementById('q5-p' + (i+1) + '-y');
+        var xCell = cellRefs[i].x;
+        var yCell = cellRefs[i].y;
         if (xCell && yCell) {
             if (i < pts.length) {
                 xCell.textContent = snapVal(pts[i].X()).toString();
@@ -235,14 +266,7 @@ board.create('button', [5.5, yMax - 1.5, 'Reset', function() {
 }]);
 [[/jsxgraph]]
 
-<table border="1" cellpadding="6" cellspacing="0" style="margin:10px 0; border-collapse:collapse; font-family:sans-serif;">
-<caption style="font-weight:bold; margin-bottom:4px;">Your placed points</caption>
-<tr style="background:#e8e8e8;"><th>Point</th><th>t / T</th><th>Voltage</th></tr>
-<tr><td>P1</td><td id="q5-p1-x"><em>&mdash;</em></td><td id="q5-p1-y"><em>&mdash;</em></td></tr>
-<tr><td>P2</td><td id="q5-p2-x"><em>&mdash;</em></td><td id="q5-p2-y"><em>&mdash;</em></td></tr>
-<tr><td>P3</td><td id="q5-p3-x"><em>&mdash;</em></td><td id="q5-p3-y"><em>&mdash;</em></td></tr>
-<tr><td>P4</td><td id="q5-p4-x"><em>&mdash;</em></td><td id="q5-p4-y"><em>&mdash;</em></td></tr>
-</table>
+<!-- Table is now created dynamically inside the JSXGraph block above -->
 
 <p>Click on the graph to place <strong>4 key points</strong> showing the voltage \(V(t)\) at the load.
 Place points at times \(t = T,\; 3T,\; 5T,\; 7T\) with the correct voltage level at each step.
