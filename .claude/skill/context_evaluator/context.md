@@ -11,7 +11,7 @@ All content is delivered through **Moodle** using the **STACK** question type pl
 
 **This is NOT a coding project.** It is an educational assessment design project. The "code" is Moodle STACK XML (containing embedded Maxima CAS code) and SVG circuit diagrams.
 
-**Repository:** `https://github.com/cassia-santos-nunes-almeida/Testing-Codes`
+**Repository:** `https://github.com/cassia-santos-nunes-almeida/EM-AC-STACK-Assessments`
 
 ## Tech Stack and Tools
 
@@ -29,11 +29,16 @@ All content is delivered through **Moodle** using the **STACK** question type pl
 ## Architecture
 
 ```
-Testing-Codes/
-├── CLAUDE.md                          # Repo-level rules, conventions, lessons learned
-├── .claude/skill/                     # Claude skill files (session context + diagram generator)
+EM-AC-STACK-Assessments/
+├── CLAUDE.md                          # Rules + EM&AC-specific conventions (~177 lines)
+├── PATTERNS.md                        # Accumulated corrections and rules (living memory)
+├── SESSION.md                         # Current session state (overwritten each close)
+├── .claude/skill/
+│   ├── context_evaluator/             # Session management + this file
+│   ├── circuitikz-latex-circuit-diagrams/ # Circuit diagram skill + references
+│   └── stack-xml-generator/           # Generic STACK XML conventions + PRT validation
 ├── docs/                              # Human-readable documentation
-│   ├── 00_prompt_evaluation.md        # Analysis of original exam prompt + corrections
+│   ├── 00_prompt_evaluation.md        # Original exam brief analysis and corrections
 │   └── 01_exam_overview.md            # Complete exam specification
 ├── shared/
 │   ├── scripts/                       # Reusable utilities across all content
@@ -49,9 +54,18 @@ Testing-Codes/
 │           ├── q1/ q2/ q3/ q4/        # Exported SVG + PNG per variant
 │           └── scripts/               # Schemdraw .py source files (legacy)
 ├── weekly/
-│   └── week10/                        # RLC 2nd-order + magnetic circuits practice
-│       ├── xml/                       # Q1-Q5 STACK questions
-│       └── diagrams/                  # CircuiTikZ .tex + .svg per question
+│   ├── week10/                        # RLC 2nd-order + magnetic circuits practice
+│   │   ├── xml/                       # Q1-Q5 STACK questions
+│   │   └── diagrams/                  # CircuiTikZ .tex + .svg per question
+│   ├── week11/                        # Electromagnetic induction
+│   │   ├── xml/                       # Q1-Q2 (induction) + Q5 (self-inductance & energy)
+│   │   └── diagrams/                  # TikZ/CircuiTikZ .tex + .svg per question
+│   ├── week12/                        # Coupled inductors & ideal transformers
+│   │   ├── xml/                       # Q3-Q5 (coupling, transformer, opposing dots)
+│   │   └── diagrams/                  # CircuiTikZ .tex + .svg per question
+│   └── week13/                        # Transmission lines
+│       ├── xml/                       # Q1-Q5 (lumped/distributed, TL params, reflection, QWT, bounce diagram)
+│       └── diagrams/                  # (no diagrams — text-based questions)
 └── LICENSE                            # CC0 1.0 Universal
 ```
 
@@ -61,13 +75,6 @@ Testing-Codes/
 - **New week:** create `weekly/<weekN>/{xml,diagrams/}`
 - **Naming:** `pool_q<N>_<difficulty>.xml` for exams, `Q<N>_<TopicDescription>.xml` for weekly
 - **Shared scripts** go in `shared/scripts/`
-
-### Diagram Embedding Strategy
-
-Two approaches depending on content type:
-
-- **Exam questions:** Text placeholders like `[INSERT DIAGRAM: ...]` in the XML. Instructor uploads diagrams manually via Moodle's editor after import. Both SVG (source) and PNG (1200px, 150 DPI) available.
-- **Weekly questions:** Base64 SVG embedded directly in XML via `shared/scripts/embed_images_in_xml.py`. Works for practice questions where Moodle sanitizer is less restrictive.
 
 ## Content Summary
 
@@ -92,6 +99,34 @@ Each question has 4 scaffolded subparts (A-D) mixing STACK auto-graded and Essay
 | Q3 | Toroid: Ampere's law, B-H curve, flux | 8 | 8 |
 | Q4 | Magnetic circuit: reluctance, sensitivity analysis | 8 | 8 |
 | Q5 | Parallel RLC natural response with switches (3 damping regimes) | 8 | 8 |
+
+### Weekly Week 11 — Electromagnetic Induction (3 Questions)
+
+| Question | Topic | Parts | Points |
+|----------|-------|-------|--------|
+| Q1 | Faraday's law: EMF from time-varying flux | 8 | 8 |
+| Q2 | Motional EMF: sliding bar on rails | 8 | 8 |
+| Q5 | Self-inductance and stored magnetic energy | 8 | 8 |
+
+### Weekly Week 12 — Coupled Inductors & Ideal Transformers (3 Questions)
+
+| Question | Topic | Parts | Points |
+|----------|-------|-------|--------|
+| Q3 | Coupling coefficient, T-equivalent circuit (aiding dots) | 8 | 8 |
+| Q4 | Ideal transformer: impedance matching, turns ratio | 5 | 5 |
+| Q5 | Opposing dot convention, mutual inductance, energy | 7 | 7 |
+
+### Weekly Week 13 — Transmission Lines (5 Questions)
+
+| Question | Topic | Parts | Points |
+|----------|-------|-------|--------|
+| Q1 | Lumped vs distributed model threshold (ℓ/λ ≥ 0.01) | 9 | 9 |
+| Q2 | Lossless TL parameters (vp, L', C', Z0, β, λ) | 7 | 7 |
+| Q3 | Reflection coefficient, VSWR, design constraint | 10 | 10 |
+| Q4 | Quarter-wave transformer matching | 7 | 7 |
+| Q5 | Bounce diagram transient analysis (JSXGraph interactive) | 10 | 10 |
+
+**Week 13 Q5** uses an interactive JSXGraph graph for point placement. See PATTERNS.md P-STACK-16–20 for JSXGraph authoring rules.
 
 ## Key Constraints
 
@@ -118,13 +153,14 @@ Each question has 4 scaffolded subparts (A-D) mixing STACK auto-graded and Essay
 
 ## Quality Assurance
 
-All STACK XML content must pass the **multi-tiered PRT validation** (documented in CLAUDE.md) before committing:
+All STACK XML content must pass the **multi-tiered PRT validation** (documented in stack-xml-generator skill) before committing:
 - **Tier 1 — Structural:** Node chains, orphan nodes, feedbackvariable definitions
 - **Tier 2 — Grading:** NumAbsolute for zero, NumRelative fallback, score consistency
 - **Tier 3 — XML/CAS:** CDATA wrapping, insertstars, exact arithmetic
 - **Tier 4 — Pedagogical:** Syntax hints, progressive hints, diagram-text sync, no answer leaks
 
 **Week 10 status:** All 5 questions (38 PRTs) passed full validation (2026-03-07).
+**Week 13 status:** All 5 questions audited and fixed (2026-03-22). Q5 JSXGraph uses `stack_jxg.custom_bind`.
 
 ## Never Suggest
 
@@ -141,4 +177,4 @@ All STACK XML content must pass the **multi-tiered PRT validation** (documented 
 - Skipping PRT validation before committing STACK XML.
 
 ## Last Updated
-2026-03-07
+2026-03-22

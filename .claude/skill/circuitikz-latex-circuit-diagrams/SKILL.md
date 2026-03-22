@@ -98,6 +98,59 @@ python shared/scripts/render_circuitikz.py --all weekly/week10/diagrams/
 - **Embedding**: Base64 data URI in weekly XML, text placeholders for exams
 - **Template**: See `shared/templates/circuitikz_template.tex`
 
+## Diagram Style Rules
+
+- **Sans-serif fonts** (`\sffamily`) — high contrast, black on white
+- **Vertical layout preferred** — power source on left (positive on top), components on right
+- **Explicit current arrows and voltage polarity** on every circuit
+- **`[american voltages, american currents]`** package options always
+- **`standalone` with `border=10pt`** — prevents label/arrow clipping
+- **Name every switch** (SW1, SW2, …) with italic labels; element name = action at t=0
+- **No `\dfrac` in `l=` labels** — use separate `\node` for complex math
+- **Adequate spacing** between adjacent vertical components for polarity labels
+
+## Diagram Embedding
+
+| Content type | Embedding method |
+|--------------|-----------------|
+| Weekly questions | Base64 SVG embedded directly in XML (`data:image/svg+xml;base64,...`) |
+| Exam questions | Text placeholders `[INSERT DIAGRAM: ...]` — instructor uploads manually via Moodle editor |
+
+## Diagram Types
+
+| Type | Tool | Notes |
+|------|------|-------|
+| Circuit schematics | CircuiTikZ (`.tex`) | Use circuit-patterns.md templates |
+| Magnetic core cross-sections | TikZ (`.tex`) | Use `\usepackage{tikz}` instead of circuitikz |
+| Physical/geometric drawings | TikZ (`.tex`) | Toroid windings, field lines, etc. |
+| Flowcharts / decision trees | TikZ (`.tex`) | Rounded rectangles, diamonds, arrows |
+
+## Multi-Switch Topologies (EM&AC Course Pattern)
+
+When a circuit has multiple switches (e.g., Nilsson P8.11 style):
+
+**Diagram rules:**
+- **Name every switch** (SW1, SW2, …) with an italic `\textit{}` label below each switch element.
+- **Label the action** above each switch: `t{=}0` `(opens)` or `(closes)`.
+- Use CircuiTikZ's native `opening switch` / `closing switch` elements — no manual drawing needed.
+- **Leave enough horizontal space** between adjacent vertical components so that polarity/voltage labels don't visually overlap.
+
+**XML questiontext rules:**
+- **List every switch explicitly** in a bulleted `<ul>` with: switch name, location (between which components), state for `t < 0`, and state at `t = 0`.
+- Example:
+  ```html
+  <ul>
+    <li><strong>SW1</strong> (between \(R_a\) and \(L\)): <em>closed</em> for \(t &lt; 0\), <em>opens</em> at \(t = 0\).</li>
+  </ul>
+  ```
+- Use consistent terminology: "change state" (not "flip" or "move to alternate positions") when describing what happens at `t = 0`.
+- **Generalfeedback and hints** must also reference switch names (SW1, SW2, …), not abstract "switch 1 in position a" language.
+
+**Design pattern (4-switch source-free RLC):**
+- SW1, SW4 closed at `t < 0` → connect energy sources to L and C for DC charging.
+- SW2, SW3 open at `t < 0` → isolate the middle RLC section.
+- At `t = 0`, all switches change state → sources disconnect, L‖R‖C forms a source-free parallel RLC.
+
 ## Reference Files
 
 - `references/circuitikz-guide.md` - CircuiTikZ component syntax and conventions
