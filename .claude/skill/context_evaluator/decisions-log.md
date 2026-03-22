@@ -285,5 +285,29 @@ Each entry: `[date] — Decision` followed by reasoning and rejected alternative
 
 **Alternatives rejected:** Dropdown (truncates long text), algebraic input (error-prone for concept questions).
 
+---
+
+### 2026-03-21 — Use `stack_jxg.custom_bind()` for JSXGraph input binding in STACK
+
+**Reason:** After 7 iterative fix rounds on Week 13 Q5 (Bounce Diagram), discovered that STACK renders JSXGraph blocks in sandboxed iframes. `document.getElementById()` cannot reach STACK inputs across the iframe boundary. The official solution is `stack_jxg.custom_bind()` which handles iframe↔parent communication internally. Also requires creating display elements (tables) dynamically inside the JSXGraph block.
+
+**Alternatives rejected:** Manual `document.getElementById()` (fails in iframe sandbox), data-attribute bridges on `<span>` elements (Moodle sanitizer strips them), manual `dispatchEvent('change')` (fragile across Moodle versions).
+
+---
+
+### 2026-03-22 — Replace `snapToGrid: true` with `snapSizeX`/`snapSizeY` in JSXGraph
+
+**Reason:** `snapToGrid: true` locks JSXGraph points to integer grid coordinates. For bounce diagram voltage placement, correct values are fractional (e.g., 28.125 V). Using `snapSizeX: 1, snapSizeY: 0.25` gives fine enough precision (0.25 V increments) while keeping the x-axis on integer time units.
+
+**Alternatives rejected:** No snapping (fiddly UX, hard to place precisely), `SNAP = 0.5` (still too coarse for some parameter sets).
+
+---
+
+### 2026-03-22 — Migrate context files: eliminate 19 duplications across CLAUDE.md, context.md, skill files
+
+**Reason:** CLAUDE.md had grown to 465 lines by duplicating content from context.md (Project Overview, repo tree), circuitikz/SKILL.md (all diagram content), and stack-xml-generator/SKILL.md (all generic STACK conventions). This violated CLAUDE.md §6 ("Never duplicate content between CLAUDE.md and a SKILL.md"). Migrated to single-source-of-truth model: CLAUDE.md keeps identity + rules + EM&AC-specific content (~178 lines); all generic content lives in skill files.
+
+**Alternatives rejected:** Keep duplicates with manual sync (drift risk), merge everything into CLAUDE.md (too long, context window waste), delete skill files in favor of CLAUDE.md (loses reusability across repos).
+
 ## Last Updated
-2026-03-10
+2026-03-22

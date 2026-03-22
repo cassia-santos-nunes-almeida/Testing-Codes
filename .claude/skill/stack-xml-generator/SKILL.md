@@ -135,6 +135,68 @@ R1: rand_with_step(2, 8, 2);    /* 2, 4, 6, or 8 */
 6. **Match MCQ type to option length** — `dropdown` for short labels, `radio` for long descriptions.
 7. **Test all parameter variants** — a single untested variant can produce wrong answers or degenerate cases.
 
+## JSXGraph Integration
+
+STACK supports interactive JSXGraph elements inside `[[jsxgraph]]...[[/jsxgraph]]` blocks. These run in **sandboxed iframes** — this has critical implications for how you bind inputs and access the DOM.
+
+### Key Rules (from PATTERNS.md P-STACK-16–20)
+
+1. **Use `{#var#}` not `{@var@}` inside JSXGraph blocks.** The `{@var@}` syntax renders LaTeX delimiters (`\(...\)`) which produce invalid JavaScript. `{#var#}` gives raw Maxima values.
+
+2. **JSXGraph runs in a sandboxed iframe.** `document.getElementById()` cannot reach elements in the parent page (STACK inputs, HTML tables). Create display elements dynamically inside the JSXGraph block.
+
+3. **Use `stack_jxg.custom_bind()` for input binding.** This is the official STACK-JS mechanism for serializing graph state to a hidden input across the iframe boundary.
+
+4. **Dispatch change events** when writing to inputs manually (if not using `custom_bind`). Otherwise STACK won't detect the value change.
+
+5. **Declare `input-ref-X` attributes** on the `[[jsxgraph]]` tag to get references to STACK inputs.
+
+### Recommended Pattern for Point Collection
+
+```javascript
+[[jsxgraph input-ref-ans6="ans6Ref" width="680px" height="440px"]]
+var board = JXG.JSXGraph.initBoard(divid, { ... });
+
+/* Hidden anchor for custom_bind watch */
+var syncAnchor = board.create('point', [0,0], {visible: false, fixed: true});
+
+/* Use snapSizeX/Y instead of snapToGrid (which snaps to integers only) */
+var p = board.create('point', [x, y], {
+    snapSizeX: 1,
+    snapSizeY: 0.25
+});
+
+/* Bind with serializer/deserializer */
+stack_jxg.custom_bind(ans6Ref, serializeFn, deserializeFn, [syncAnchor]);
+stack_jxg.clear_initial(syncAnchor);
+[[/jsxgraph]]
+```
+
+### Hidden Input Configuration for JSXGraph
+
+```xml
+<input>
+    <name>ans6</name>
+    <type>algebraic</type>
+    <tans>correct_points</tans>
+    <mustverify>0</mustverify>
+    <showvalidation>0</showvalidation>
+    <options>hideanswer</options>
+</input>
+```
+
+### Grading JSXGraph Points in PRT
+
+Maxima parses `[[x1,y1],[x2,y2]]` as a **matrix**, not a nested list. Convert with `args()`:
+```maxima
+student_pts: if matrixp(ans6) then args(ans6) else ans6;
+```
+
+Then use nearest-point matching with separate x/y tolerances for order-independent grading.
+
+See `references/jsxgraph-conventions.md` for the complete authoring guide.
+
 ## Reference Files
 
 - `references/stack-xml-conventions.md` — Complete XML structure reference with examples
+- `references/jsxgraph-conventions.md` — JSXGraph authoring guide (binding, snapping, grading)
