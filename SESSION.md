@@ -1,36 +1,24 @@
 # SESSION.md — Current State
 
 Overwritten at every session close. Read at every session open.
-Last updated: 2026-03-22 · Session focus: JSXGraph Q5 fix + Week 13 audit + context file migration
+Last updated: 2026-03-22 · Session focus: Week 13 cleanup — headers, units, MCQ shuffling
 
 ## Completed This Session
 
-* [x] Fixed Week 13 Q5 JSXGraph bounce diagram — 3 bugs (snap, table, grading)
-  - Merged unmerged fix branch `claude/open-session-7TDcM` into main
-  - Fixed `snapToGrid: true` → `snapSizeX: 1, snapSizeY: 0.25`
-  - Reduced SNAP from 0.5 to 0.25
-  - Added `stack_jxg.custom_bind` fallback guard for older STACK versions
-* [x] Audited all 15 weekly questions (weeks 10-13) against PATTERNS.md rules
-* [x] Fixed Week 13 Q1-Q4 issues:
-  - Q1: Standardized 3 syntax hints (ans1, ans2, ans5)
-  - Q2: Fixed float literal `1e-12` → `1/10^12` (P-STACK-06)
-  - Q3: Added "Syntax hint:" prefix to 4 dropdown/radio/notes hints
-  - Q4: Added missing syntax hint for dropdown ans5
-* [x] Context file migration (Phases 1-3 per analysis.md):
-  - CLAUDE.md: 465 → 178 lines (eliminated 19 duplications)
-  - context.md: Updated tree, added weeks 11-13 summaries
-  - circuitikz/SKILL.md: Absorbed multi-switch topology + diagram style
-  - stack-xml-generator/SKILL.md: Added JSXGraph Integration section
-  - Created `references/jsxgraph-conventions.md`
-  - decisions-log.md: Added 3 catch-up entries
-  - personal-preferences.md: Cleaned placeholder comment
-* [x] Added P-STACK-21 and P-DIAG-08 to PATTERNS.md
+* [x] Removed header blocks (course/training/points + `<hr>`) from all 5 Week 13 questions
+* [x] Fixed unit line-breaks with `&nbsp;` in Q1, Q2, Q3, Q5 (14 fixes)
+* [x] Converted Q2 (LosslessTL_Parameters) to STACK `units` input type
+  - Changed ans1–ans5 from `numerical` to `units`
+  - Added `stackunits()` teacher answers (ta1_u through ta5_u)
+  - Changed PRT tests from `NumRelative` to `UnitsRelative` (5% tolerance)
+  - Set `insertstars=1` on unit inputs
+  - Removed "Give your answer in **X**" text (P-STACK-22)
+  - Updated syntax hints to use unrelated unit examples (P-STACK-22)
+* [x] Added `random_permutation()` to all 12 MCQ option lists across Q1–Q5
+* [x] Added P-STACK-22 and P-STACK-23 to PATTERNS.md
+* [x] Committed and pushed: `5ac3f92`
 
 ## In Progress
-
-Task: Week 13 Q5 — user reported a new problem (not yet described)
-Last state: User mentioned finding a new issue during session close
-Next step: Open next session, ask user to describe the new problem
 
 Task: Weeks 10-12 audit fixes (deferred)
 Last state: Issues identified but deferred per user request
@@ -39,40 +27,45 @@ Known issues:
   - Week 10 Q4: `{@ans2@}` and `{@ans3@}` in specificfeedback (P-STACK-03)
   - Week 10 Q1: Float literal `1e-7` in questionvariables (P-STACK-06)
   - All weeks 10-12: Missing `<hint>` blocks (15 questions)
+  - Weeks 10-12: MCQ options likely need `random_permutation()` too (P-STACK-23)
 
 Task: Progressive hint unlocking
 Last state: Not started
 Next step: Research STACK `[[if test="..."]]` conditional blocks
 
+Task: Evaluate unit checking on remaining questions
+Last state: Q2 converted as pilot; user to test in Moodle
+Next step: If Q2 unit checking works well, consider extending to Q1, Q3, Q5
+Note: Q3 ans2 (degrees) cannot use units — STACK has no native degree unit
+
 ## Open Decisions / Blockers
 
-* [ ] **New Q5 problem** — user found another issue, not yet described
+* [ ] **Q2 unit checking validation** — needs Moodle import + test with one variant before extending to other questions
 * [ ] **Progressive hints for exams?** — TBD
+* [ ] **Moodle re-import needed** — all 5 Week 13 XMLs need re-import (especially Q5 to restore corrupted JSXGraph)
 
 ## Patterns Triggered This Session
 
 | Pattern ID | Triggered? | Applied? |
 |------------|-----------|----------|
-| P-DIAG-08 | Created this session | N/A (new) |
-| P-STACK-21 | Created this session | N/A (new) |
-| P-STACK-06 | Triggered by Q2 float literal | Applied |
-| P-STACK-11 | Triggered by missing syntax hints | Applied |
-| P-EXEC-01 | Followed for migration decomposition | Applied |
+| P-STACK-12 | Syntax hints leaked correct units | Fixed — hints now use unrelated examples |
+| P-STACK-22 | Created this session | Applied to Q2 |
+| P-STACK-23 | Created this session | Applied to all Q1–Q5 MCQs |
 
 ## PATTERNS.md Updates This Session
 
-* **Added:** P-STACK-21 — Use `snapSizeX`/`snapSizeY` instead of `snapToGrid`
-* **Added:** P-DIAG-08 — Always merge fix branches before importing to Moodle
+* **Added:** P-STACK-22 — Unit-checked inputs must not hint the correct unit
+* **Added:** P-STACK-23 — MCQ options must be shuffled with `random_permutation()`
 
 ## Skills Used This Session
 
-* [x] context-evaluator
+* [x] context-evaluator (session open/close)
 * [ ] circuitikz-circuit-diagrams
-* [x] stack-xml-generator (referenced for dedup)
+* [ ] stack-xml-generator
 
 ## Notes for Next Session
 
-- User found a NEW problem in Week 13 Q5 — investigate first
-- Migration complete (analysis.md fully executed). Those files can be archived.
-- Weeks 10-12 have known audit issues — tackle when in scope
-- New CLAUDE.md (178 lines) + session-open now includes personal-preferences.md as step 5
+- All 5 Week 13 XMLs need re-import to Moodle — critical for Q5 (JSXGraph was corrupted by WYSIWYG editor)
+- Q2 unit checking is a pilot — test before extending to other questions
+- Weeks 10-12 still have deferred audit issues + now need MCQ shuffling check
+- The Q5 "new problem" from last session turned out to be the JSXGraph blank graph after Moodle edit — resolved by fixing the XML source and re-importing

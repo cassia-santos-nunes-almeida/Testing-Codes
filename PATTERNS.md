@@ -156,6 +156,18 @@ When a rule is superseded, mark it `[RETIRED]` but keep it in place.
 **Scope:** JSXGraph point creation in STACK questions.
 **First seen:** Session 8 (W13 Q5 snap fix), 2026-03-22.
 
+### P-STACK-22 — Unit-checked inputs must not hint the correct unit
+**Pattern:** When converting inputs from `numerical` to `units` type, syntax hints and question text still contained the correct unit (e.g., "Give your answer in **m/s**", example `2.07e8 m/s`), defeating the purpose of unit checking.
+**Rule:** When using STACK `units` input type: (1) remove all "Give your answer in **X**" text from the question, (2) use syntax hint examples with unrelated units (e.g., `9.81 m/s^2` or `50 ohm`) that teach the input format without revealing the answer's unit. The student must determine the correct unit independently.
+**Scope:** STACK `units` input type, syntax hints.
+**First seen:** Session 9 (W13 Q2 unit conversion), 2026-03-22.
+
+### P-STACK-23 — MCQ options must be shuffled with `random_permutation()`
+**Pattern:** All MCQ option lists had the correct answer in a fixed position (typically index 1), allowing students to share answers by position rather than content.
+**Rule:** Always wrap MCQ option lists with `random_permutation()` in `questionvariables`. This applies to both `dropdown` and `radio` input types. The index-based grading (`[index, true/false, "text"]`) is unaffected by display order shuffling.
+**Scope:** All STACK dropdown and radio MCQ inputs.
+**First seen:** Session 9 (W13 all questions), 2026-03-22.
+
 ---
 
 ## CircuiTikZ / Diagrams
