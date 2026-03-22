@@ -512,7 +512,7 @@ ta7: block([V_accum, n_settle, k],
 settle_product_disp: float(round(settle_product * 1000) / 1000);
 
 /* Part (h): radio MCQ — comparing settling behaviour */
-ta8_q5: [[1,true,"Much slower settling — the voltage would oscillate many more times before converging, because each round-trip retains 90% of the wave amplitude"],[2,false,"Faster settling — larger reflections mean more energy is transferred to the load per bounce"],[3,false,"Same settling time — settling depends only on |Γ_L|, not on the product Γ_L·Γ_g"],[4,false,"The voltage would never settle — Γ_L·Γ_g = 0.9 means the system is unstable"]];
+ta8_q5: random_permutation([[1,true,"Much slower settling — the voltage would oscillate many more times before converging, because each round-trip retains 90% of the wave amplitude"],[2,false,"Faster settling — larger reflections mean more energy is transferred to the load per bounce"],[3,false,"Same settling time — settling depends only on |Γ_L|, not on the product Γ_L·Γ_g"],[4,false,"The voltage would never settle — Γ_L·Γ_g = 0.9 means the system is unstable"]]);
 ta8_q5_correct: 1;
 
 /* Part (i): notes input — design constraint (auto-pass) */

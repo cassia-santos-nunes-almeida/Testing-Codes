@@ -152,7 +152,7 @@ ta3: 90;
 ta4: 0;
 
 /* (e) MCQ: still matched at 1.1f? — No */
-ta5: [[1, false, "Yes"], [2, true, "No"]];
+ta5: random_permutation([[1, false, "Yes"], [2, true, "No"]]);
 ta5_correct: 2;
 
 /* ===== Off-frequency analysis ===== */

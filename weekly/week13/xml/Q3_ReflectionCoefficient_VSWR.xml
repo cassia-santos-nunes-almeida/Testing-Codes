@@ -202,11 +202,11 @@ XL_disp: float(XL);
 lambda_disp: float(lambda_m * 100);  /* in cm */
 
 /* MCQ Part (f): If Z_L = Z_0, |Gamma| = ? */
-ta6: [[1, true, "0"], [2, false, "0.5"], [3, false, "1"], [4, false, "Undefined"]];
+ta6: random_permutation([[1, true, "0"], [2, false, "0.5"], [3, false, "1"], [4, false, "Undefined"]]);
 ta6_correct: 1;
 
 /* MCQ Part (g): What does VSWR=1 mean? */
-ta7: [[1, true, "The line is perfectly matched — no reflections occur and all power is delivered to the load"], [2, false, "The line has maximum reflections and no power reaches the load"], [3, false, "The characteristic impedance equals zero"], [4, false, "The line is open-circuited"]];
+ta7: random_permutation([[1, true, "The line is perfectly matched — no reflections occur and all power is delivered to the load"], [2, false, "The line has maximum reflections and no power reaches the load"], [3, false, "The characteristic impedance equals zero"], [4, false, "The line is open-circuited"]]);
 ta7_correct: 1;
 
 /* Part (h): maximum RL for VSWR <= 2 (purely resistive, RL > Z0) */
@@ -217,7 +217,7 @@ ta3_disp: float(round(ta3 * 100) / 100);
 
 /* Part (i): radio MCQ — does the complex load satisfy VSWR <= 2? */
 /* Correct answer depends on whether ta3 is actually <= 2 */
-ta9_q3: if is(ta3 <= 2.0) then
+ta9_q3: random_permutation(if is(ta3 <= 2.0) then
     [[1,true,"Yes — the complex load has VSWR ≤ 2, so the constraint is satisfied"],
      [2,false,"No — the complex load has VSWR > 2, so matching is needed"],
      [3,false,"Cannot determine — the formula R_L ≤ 2·Z₀ only applies to resistive loads"],
@@ -226,7 +226,7 @@ ta9_q3: if is(ta3 <= 2.0) then
     [[1,false,"Yes — the complex load has VSWR ≤ 2, so the constraint is satisfied"],
      [2,true,"No — the complex load has VSWR > 2, so matching is needed"],
      [3,false,"Cannot determine — the formula R_L ≤ 2·Z₀ only applies to resistive loads"],
-     [4,false,"Yes — because the resistive part of Z_L is less than 2·Z₀"]];
+     [4,false,"Yes — because the resistive part of Z_L is less than 2·Z₀"]]);
 ta9_q3_correct: if is(ta3 <= 2.0) then 1 else 2;
 
 /* Part (j): notes input — auto-graded as pass */

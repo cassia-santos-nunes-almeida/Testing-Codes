@@ -27,29 +27,29 @@ relative permittivity \(\varepsilon_r = {@eps_r_disp@}\) and distributed capacit
 <hr />
 
 <h4>Part&nbsp;(a) &mdash; Phase velocity (1&nbsp;pt)</h4>
-<p>Compute the phase velocity \(v_p = c_0 / \sqrt{\varepsilon_r}\). Give your answer in <strong>m/s</strong>.</p>
+<p>Compute the phase velocity \(v_p = c_0 / \sqrt{\varepsilon_r}\).</p>
 <p>\(v_p = \) [[input:ans1]] [[validation:ans1]]</p>
-<p><em>Syntax hint: Enter the value with its unit, e.g. <code>2.07e8 m/s</code></em></p>
+<p><em>Syntax hint: Enter the value followed by its unit, e.g. <code>9.81 m/s^2</code> or <code>50 ohm</code>. Use <code>ohm</code> for &Omega;.</em></p>
 
 <h4>Part&nbsp;(b) &mdash; Distributed inductance (1&nbsp;pt)</h4>
-<p>Using \(v_p = 1/\sqrt{L'C'}\), compute the distributed inductance \(L'\). Give your answer in <strong>H/m</strong>.</p>
+<p>Using \(v_p = 1/\sqrt{L'C'}\), compute the distributed inductance \(L'\).</p>
 <p>\(L' = \) [[input:ans2]] [[validation:ans2]]</p>
-<p><em>Syntax hint: Enter the value with its unit, e.g. <code>2.5e-7 H/m</code></em></p>
+<p><em>Syntax hint: Enter the value followed by its unit, e.g. <code>9.81 m/s^2</code> or <code>50 ohm</code>. Use <code>ohm</code> for &Omega;.</em></p>
 
 <h4>Part&nbsp;(c) &mdash; Characteristic impedance (1&nbsp;pt)</h4>
-<p>Compute the characteristic impedance \(Z_0 = \sqrt{L'/C'}\). Give your answer in <strong>&Omega;</strong>.</p>
+<p>Compute the characteristic impedance \(Z_0 = \sqrt{L'/C'}\).</p>
 <p>\(Z_0 = \) [[input:ans3]] [[validation:ans3]]</p>
-<p><em>Syntax hint: Enter the value with its unit, e.g. <code>50 ohm</code>. Use <code>ohm</code> for &Omega;.</em></p>
+<p><em>Syntax hint: Enter the value followed by its unit, e.g. <code>9.81 m/s^2</code> or <code>50 ohm</code>. Use <code>ohm</code> for &Omega;.</em></p>
 
 <h4>Part&nbsp;(d) &mdash; Wavelength (1&nbsp;pt)</h4>
-<p>Compute the wavelength \(\lambda = v_p / f\). Give your answer in <strong>metres</strong>.</p>
+<p>Compute the wavelength \(\lambda = v_p / f\).</p>
 <p>\(\lambda = \) [[input:ans4]] [[validation:ans4]]</p>
-<p><em>Syntax hint: Enter the value with its unit, e.g. <code>0.414 m</code></em></p>
+<p><em>Syntax hint: Enter the value followed by its unit, e.g. <code>9.81 m/s^2</code> or <code>50 ohm</code>. Use <code>ohm</code> for &Omega;.</em></p>
 
 <h4>Part&nbsp;(e) &mdash; Phase constant (1&nbsp;pt)</h4>
-<p>Compute the phase constant \(\beta = 2\pi / \lambda\). Give your answer in <strong>rad/m</strong>.</p>
+<p>Compute the phase constant \(\beta = 2\pi / \lambda\).</p>
 <p>\(\beta = \) [[input:ans5]] [[validation:ans5]]</p>
-<p><em>Syntax hint: Enter the value with its unit, e.g. <code>15.2 rad/m</code>. You may also use <code>%pi</code> for &pi;, e.g. <code>2*%pi/0.414 rad/m</code>.</em></p>
+<p><em>Syntax hint: Enter the value followed by its unit, e.g. <code>9.81 m/s^2</code> or <code>50 ohm</code>. Use <code>ohm</code> for &Omega;. You may use <code>%pi</code> for &pi;.</em></p>
 
 <h4>Part&nbsp;(f) &mdash; Dispersion (1&nbsp;pt)</h4>
 <p>Is a lossless transmission line dispersive?</p>
@@ -166,11 +166,11 @@ ta4_u: stackunits(ta4, m);
 ta5_u: stackunits(ta5, rad/m);
 
 /* Part (f): Is a lossless line dispersive? No */
-ta6: [[1, false, "Yes"], [2, true, "No"]];
+ta6: random_permutation([[1, false, "Yes"], [2, true, "No"]]);
 ta6_correct: 2;
 
 /* Part (g): If eps_r doubles, Z0 = sqrt(eps_r)/(c0*C') increases */
-ta7: [[1, true, "Increases"], [2, false, "Decreases"], [3, false, "Unchanged"]];
+ta7: random_permutation([[1, true, "Increases"], [2, false, "Decreases"], [3, false, "Unchanged"]]);
 ta7_correct: 1;
 ]]></text>
   </questionvariables>

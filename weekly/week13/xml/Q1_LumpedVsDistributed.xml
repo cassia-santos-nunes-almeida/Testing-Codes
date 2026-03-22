@@ -190,22 +190,22 @@ is_distributed: is(ta2 >= 0.01);
 is_distributed_high: is(ratio_high >= 0.01);
 
 /* Part (c): dropdown Yes/No — Is l/lambda >= 0.01? */
-ta3: [[1, is(ta2 >= 0.01), "Yes"], [2, is(ta2 < 0.01), "No"]];
+ta3: random_permutation([[1, is(ta2 >= 0.01), "Yes"], [2, is(ta2 < 0.01), "No"]]);
 ta3_correct: if is(ta2 >= 0.01) then 1 else 2;
 
 /* Part (d): dropdown Distributed/Lumped */
-ta4: [[1, is(ta2 >= 0.01), "Distributed"], [2, is(ta2 < 0.01), "Lumped"]];
+ta4: random_permutation([[1, is(ta2 >= 0.01), "Distributed"], [2, is(ta2 < 0.01), "Lumped"]]);
 ta4_correct: if is(ta2 >= 0.01) then 1 else 2;
 
 /* Part (e) teacher answer */
 ta5: float(ratio_high);
 
 /* Part (f): dropdown Distributed/Lumped at higher freq */
-ta6: [[1, is(ratio_high >= 0.01), "Distributed"], [2, is(ratio_high < 0.01), "Lumped"]];
+ta6: random_permutation([[1, is(ratio_high >= 0.01), "Distributed"], [2, is(ratio_high < 0.01), "Lumped"]]);
 ta6_correct: if is(ratio_high >= 0.01) then 1 else 2;
 
 /* Part (g): radio — 4 options, option 1 always correct */
-ta7: [[1,true,"At higher frequencies, the wavelength shrinks and becomes comparable to the line length, so wave propagation effects matter"],[2,false,"Higher frequencies increase the resistance of the line, requiring distributed analysis"],[3,false,"The speed of light decreases at higher frequencies"],[4,false,"Higher frequencies make the line physically longer"]];
+ta7: random_permutation([[1,true,"At higher frequencies, the wavelength shrinks and becomes comparable to the line length, so wave propagation effects matter"],[2,false,"Higher frequencies increase the resistance of the line, requiring distributed analysis"],[3,false,"The speed of light decreases at higher frequencies"],[4,false,"Higher frequencies make the line physically longer"]]);
 ta7_correct: 1;
 
 /* Part (h): minimum frequency for distributed model */
@@ -219,7 +219,7 @@ ta8_disp: if is(ta8 >= 1e9) then sconcat(string(float(ta8/1e9)), " GHz")
           else sconcat(string(float(ta8)), " Hz");
 
 /* Radio MCQ: option 1 is always correct — lower vp → lower f_min → conservative */
-ta9: [[1,true,"The distributed model becomes necessary at a lower frequency than calculated — my design is conservative (safe)"],[2,false,"The distributed model becomes necessary at a higher frequency — my design may be optimistic (risky)"],[3,false,"The phase velocity has no effect on the model choice"],[4,false,"I must switch to the distributed model regardless of frequency"]];
+ta9: random_permutation([[1,true,"The distributed model becomes necessary at a lower frequency than calculated — my design is conservative (safe)"],[2,false,"The distributed model becomes necessary at a higher frequency — my design may be optimistic (risky)"],[3,false,"The phase velocity has no effect on the model choice"],[4,false,"I must switch to the distributed model regardless of frequency"]]);
 ta9_correct: 1;
 ]]></text>
   </questionvariables>
