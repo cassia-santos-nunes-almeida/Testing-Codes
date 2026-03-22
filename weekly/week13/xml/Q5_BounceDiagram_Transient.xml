@@ -67,6 +67,10 @@ Place <strong>exactly 4 points</strong> on the interactive graph below at times 
 each at the correct voltage level for that time interval.</p>
 
 [[jsxgraph input-ref-ans6="ans6Ref" width="680px" height="440px"]]
+/* ================================================================
+   Bounce-diagram point-placement graph.
+   Uses stack_jxg.custom_bind for proper STACK-JS iframe binding.
+   ================================================================ */
 var yMax  = {#y_max#};
 var yMin  = {#y_min#};
 var Vss   = {#ta5#};
@@ -107,56 +111,56 @@ for (var gi = 0; gi < guides.length; gi++) {
     });
 }
 
-/* Point management */
+/* ---- Point management ---- */
 var pts = [];
 var labels = [];
-var stateInput = document.getElementById(ans6Ref);
 
-/* Build the "Your placed points" table dynamically inside the JSXGraph div
-   so that DOM lookups always succeed (static HTML outside [[jsxgraph]] is
-   not guaranteed to be in the same DOM scope in all STACK versions). */
+/* Hidden anchor point — used as the watch target for custom_bind.
+   Board-level 'update' events on this object trigger serialization. */
+var syncAnchor = board.create('point', [0, 0], {
+    visible: false, fixed: true, name: '', withLabel: false
+});
+
+/* ---- Dynamic table (inside JSXGraph iframe scope) ---- */
 var tableHTML =
     '<div style="margin:10px 0">' +
     '<p style="font-weight:bold;margin-bottom:4px;">Your placed points</p>' +
-    '<table border="1" cellpadding="6" cellspacing="0" style="border-collapse:collapse;font-family:sans-serif;">' +
+    '<table border="1" cellpadding="6" cellspacing="0" ' +
+    'style="border-collapse:collapse;font-family:sans-serif;">' +
     '<tr style="background:#e8e8e8;"><th>Point</th><th>t / T</th><th>Voltage</th></tr>' +
-    '<tr><td>P1</td><td id="q5-p1-x"><em>\u2014</em></td><td id="q5-p1-y"><em>\u2014</em></td></tr>' +
-    '<tr><td>P2</td><td id="q5-p2-x"><em>\u2014</em></td><td id="q5-p2-y"><em>\u2014</em></td></tr>' +
-    '<tr><td>P3</td><td id="q5-p3-x"><em>\u2014</em></td><td id="q5-p3-y"><em>\u2014</em></td></tr>' +
-    '<tr><td>P4</td><td id="q5-p4-x"><em>\u2014</em></td><td id="q5-p4-y"><em>\u2014</em></td></tr>' +
+    '<tr><td>P1</td><td class="q5-cx" data-i="0"><em>\u2014</em></td>' +
+    '<td class="q5-cy" data-i="0"><em>\u2014</em></td></tr>' +
+    '<tr><td>P2</td><td class="q5-cx" data-i="1"><em>\u2014</em></td>' +
+    '<td class="q5-cy" data-i="1"><em>\u2014</em></td></tr>' +
+    '<tr><td>P3</td><td class="q5-cx" data-i="2"><em>\u2014</em></td>' +
+    '<td class="q5-cy" data-i="2"><em>\u2014</em></td></tr>' +
+    '<tr><td>P4</td><td class="q5-cx" data-i="3"><em>\u2014</em></td>' +
+    '<td class="q5-cy" data-i="3"><em>\u2014</em></td></tr>' +
     '</table></div>';
 var boardDiv = document.getElementById(divid);
 var tableWrapper = document.createElement('div');
 tableWrapper.innerHTML = tableHTML;
 boardDiv.parentNode.insertBefore(tableWrapper, boardDiv.nextSibling);
 
-/* Cache direct references to table cells (avoids repeated getElementById) */
-var cellRefs = [];
-for (var ci = 0; ci < MAX_POINTS; ci++) {
-    cellRefs.push({
-        x: tableWrapper.querySelector('#q5-p' + (ci+1) + '-x'),
-        y: tableWrapper.querySelector('#q5-p' + (ci+1) + '-y')
-    });
-}
+/* Cache cell references using class+data-attribute (avoids ID collisions
+   across multiple question instances on the same page). */
+var xCells = tableWrapper.querySelectorAll('.q5-cx');
+var yCells = tableWrapper.querySelectorAll('.q5-cy');
 
+/* ---- Helpers ---- */
 function snapVal(v) {
     return Math.round(v / SNAP) * SNAP;
 }
 
-function serializePoints() {
-    if (pts.length === 0) {
-        stateInput.value = '[]';
-    } else {
-        var parts = [];
-        var sorted = pts.slice().sort(function(a, b) { return a.X() - b.X(); });
-        for (var i = 0; i < sorted.length; i++) {
-            parts.push('[' + snapVal(sorted[i].X()) + ',' + snapVal(sorted[i].Y()) + ']');
+function updateTable() {
+    for (var i = 0; i < MAX_POINTS; i++) {
+        if (i < pts.length) {
+            xCells[i].textContent = snapVal(pts[i].X()).toString();
+            yCells[i].textContent = snapVal(pts[i].Y()).toString() + ' V';
+        } else {
+            xCells[i].innerHTML = '<em>\u2014</em>';
+            yCells[i].innerHTML = '<em>\u2014</em>';
         }
-        stateInput.value = '[' + parts.join(',') + ']';
-    }
-    /* Dispatch change event so STACK picks up the new value */
-    if (stateInput) {
-        stateInput.dispatchEvent(new Event('change'));
     }
 }
 
@@ -178,8 +182,9 @@ function addPoint(x, y) {
         function() { return 'P' + (idx+1) + ' (' + snapVal(p.X()) + ', ' + snapVal(p.Y()) + ')'; }
     ], { fontSize: 11, color: '#0055d4', fixed: true, highlight: false });
     p.on('drag', function() {
-        serializePoints();
         updateTable();
+        /* board.update() fires automatically after drag, triggering
+           the custom_bind serializer via the syncAnchor watcher. */
     });
     pts.push(p);
     labels.push(lbl);
@@ -195,22 +200,7 @@ function getMouseCoords(e) {
     return new JXG.Coords(JXG.COORDS_BY_SCREEN, [dx, dy], board);
 }
 
-/* Restore state */
-if (stateInput && stateInput.value && stateInput.value !== '[]') {
-    var matches = stateInput.value.match(/\[(-?[\d.]+),\s*(-?[\d.]+)\]/g);
-    if (matches) {
-        for (var i = 0; i < matches.length && i < MAX_POINTS; i++) {
-            var nums = matches[i].match(/(-?[\d.]+)/g);
-            if (nums && nums.length >= 2) {
-                addPoint(parseFloat(nums[0]), parseFloat(nums[1]));
-            }
-        }
-        serializePoints();
-        updateTable();
-    }
-}
-
-/* Click handler */
+/* ---- Click handler ---- */
 board.on('down', function(e) {
     if (e[JXG.touchProperty]) return;
 
@@ -233,26 +223,10 @@ board.on('down', function(e) {
     if (x < 0 || x > 8 || y < yMin || y > yMax) return;
 
     addPoint(x, y);
-    serializePoints();
+    board.update();   /* triggers custom_bind serializer */
 });
 
-function updateTable() {
-    for (var i = 0; i < MAX_POINTS; i++) {
-        var xCell = cellRefs[i].x;
-        var yCell = cellRefs[i].y;
-        if (xCell && yCell) {
-            if (i < pts.length) {
-                xCell.textContent = snapVal(pts[i].X()).toString();
-                yCell.textContent = snapVal(pts[i].Y()).toString() + ' V';
-            } else {
-                xCell.innerHTML = '<em>\u2014</em>';
-                yCell.innerHTML = '<em>\u2014</em>';
-            }
-        }
-    }
-}
-
-/* Reset button */
+/* ---- Reset button ---- */
 board.create('button', [5.5, yMax - 1.5, 'Reset', function() {
     for (var i = pts.length - 1; i >= 0; i--) {
         board.removeObject(labels[i]);
@@ -260,10 +234,60 @@ board.create('button', [5.5, yMax - 1.5, 'Reset', function() {
     }
     pts = [];
     labels = [];
-    board.update();
-    serializePoints();
     updateTable();
+    board.update();   /* triggers custom_bind serializer */
 }]);
+
+/* ================================================================
+   STACK binding via stack_jxg.custom_bind
+   - Serializer: reads pts[] and returns Maxima-compatible list string
+   - Deserializer: parses saved string and recreates points
+   - Watch list: [syncAnchor] — any board.update() triggers serialization
+   ================================================================ */
+stack_jxg.custom_bind(
+    ans6Ref,
+    /* serializer */
+    function() {
+        if (pts.length === 0) return '[]';
+        var sorted = pts.slice().sort(function(a, b) { return a.X() - b.X(); });
+        var parts = [];
+        for (var i = 0; i < sorted.length; i++) {
+            parts.push('[' + snapVal(sorted[i].X()) + ',' + snapVal(sorted[i].Y()) + ']');
+        }
+        return '[' + parts.join(',') + ']';
+    },
+    /* deserializer — called by custom_bind on page load if input has a value */
+    function(data) {
+        /* Clear any existing points */
+        board.suspendUpdate();
+        for (var i = pts.length - 1; i >= 0; i--) {
+            board.removeObject(labels[i]);
+            board.removeObject(pts[i]);
+        }
+        pts = [];
+        labels = [];
+
+        if (data && data !== '[]') {
+            var matches = data.match(/\[(-?[\d.]+),\s*(-?[\d.]+)\]/g);
+            if (matches) {
+                for (var i = 0; i < matches.length && i < MAX_POINTS; i++) {
+                    var nums = matches[i].match(/(-?[\d.]+)/g);
+                    if (nums && nums.length >= 2) {
+                        addPoint(parseFloat(nums[0]), parseFloat(nums[1]));
+                    }
+                }
+            }
+        }
+        board.unsuspendUpdate();
+        updateTable();
+    },
+    [syncAnchor]
+);
+
+/* Clear the initial-value guard so the first click triggers serialization
+   (otherwise custom_bind skips if the serializer returns the same value
+   as the initial snapshot, which is '[]'). */
+stack_jxg.clear_initial(syncAnchor);
 [[/jsxgraph]]
 
 <!-- Table is now created dynamically inside the JSXGraph block above -->
