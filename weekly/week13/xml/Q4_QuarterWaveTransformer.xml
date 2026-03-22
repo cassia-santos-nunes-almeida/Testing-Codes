@@ -52,6 +52,7 @@ line to the load at a design frequency \(f = {@f_GHz@}\;\text{GHz}\).</p>
 
 <p><strong>(e)</strong> Is the line still matched to the load at the shifted frequency?</p>
 <p>[[input:ans5]] [[validation:ans5]]</p>
+<p><em>Syntax hint: Select Yes or No from the dropdown.</em></p>
 
 <p><strong>(f)</strong> What is \(|\Gamma|\) at the input of the transformer at the shifted frequency \(f'\)?</p>
 <p>\(|\Gamma| = \) [[input:ans6]] [[validation:ans6]]</p>

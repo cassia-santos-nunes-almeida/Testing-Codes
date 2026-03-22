@@ -37,12 +37,12 @@ If \(\displaystyle \frac{\ell}{\lambda} \ge 0.01\), use the <strong>distributed<
 <h4>Part&nbsp;(a) &mdash; Wavelength (1&nbsp;pt)</h4>
 <p>Compute the wavelength \(\lambda = v_p / f\). Give your answer in <strong>metres</strong>.</p>
 <p>\(\lambda = \) [[input:ans1]] [[validation:ans1]] m</p>
-<p><em>Hint: \(\lambda = v_p / f\). Enter a numerical value (scientific notation accepted, e.g. 2e5).</em></p>
+<p><em>Syntax hint: Enter a number in metres, e.g. <code>200</code> or <code>2e5</code></em></p>
 
 <h4>Part&nbsp;(b) &mdash; Electrical length ratio (1&nbsp;pt)</h4>
 <p>Compute the ratio \(\ell / \lambda\).</p>
 <p>\(\ell / \lambda = \) [[input:ans2]] [[validation:ans2]]</p>
-<p><em>Hint: Dimensionless ratio. Scientific notation accepted.</em></p>
+<p><em>Syntax hint: Enter a dimensionless number, e.g. <code>0.05</code> or <code>5e-2</code></em></p>
 
 <h4>Part&nbsp;(c) &mdash; Threshold check (1&nbsp;pt)</h4>
 <p>Is \(\ell / \lambda \ge 0.01\)?</p>
@@ -59,7 +59,7 @@ If \(\displaystyle \frac{\ell}{\lambda} \ge 0.01\), use the <strong>distributed<
 while the line length and phase velocity remain the same.
 Compute the new ratio \(\ell / \lambda_{\text{new}}\).</p>
 <p>\(\ell / \lambda_{\text{new}} = \) [[input:ans5]] [[validation:ans5]]</p>
-<p><em>Hint: How does wavelength change when frequency increases? Scientific notation accepted.</em></p>
+<p><em>Syntax hint: Enter a dimensionless number, e.g. <code>5.0</code> or <code>5e0</code></em></p>
 
 <h4>Part&nbsp;(f) &mdash; Model at higher frequency (1&nbsp;pt)</h4>
 <p>At the higher frequency, which model is appropriate?</p>

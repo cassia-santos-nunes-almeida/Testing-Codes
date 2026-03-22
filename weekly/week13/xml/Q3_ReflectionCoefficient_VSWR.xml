@@ -57,12 +57,12 @@ from the load.</p>
 <h4>Part&nbsp;(f) &mdash; Matched load reflection coefficient (1&nbsp;pt)</h4>
 <p>If the load impedance equals the characteristic impedance (\(Z_L = Z_0\)), what is \(|\Gamma|\)?</p>
 <p>[[input:ans6]] [[validation:ans6]]</p>
-<p><em>Select the correct value from the dropdown.</em></p>
+<p><em>Syntax hint: Select the correct value from the dropdown.</em></p>
 
 <h4>Part&nbsp;(g) &mdash; Physical meaning of VSWR = 1 (1&nbsp;pt)</h4>
 <p>What does VSWR = 1 mean physically?</p>
 <p>[[input:ans7]] [[validation:ans7]]</p>
-<p><em>Select the most physically accurate explanation.</em></p>
+<p><em>Syntax hint: Select the most physically accurate explanation.</em></p>
 
 <h4>Part&nbsp;(h) &mdash; Design constraint: maximum load resistance for VSWR &le; 2 (1&nbsp;pt)</h4>
 <p>In parts (a)&ndash;(e) you analysed a complex load. Now consider a <strong>simplified design scenario</strong>:
@@ -81,14 +81,14 @@ This simplification is common in initial design stages before fine-tuning with m
 gave \(|\Gamma| = {@ta1@}\) and \(\text{VSWR} = {@ta3_disp@}\).</p>
 <p><strong>Does this complex load satisfy the VSWR \(\le 2\) constraint?</strong></p>
 <p>[[input:ans9]] [[validation:ans9]]</p>
-<p><em>Select the statement that correctly uses your earlier results.</em></p>
+<p><em>Syntax hint: Select the statement that correctly uses your earlier results.</em></p>
 
 <h4>Part&nbsp;(j) &mdash; Why the resistive formula is not enough (1&nbsp;pt)</h4>
 <p>Explain in 1&ndash;2 sentences: why does the purely resistive formula \(R_L \le 2 Z_0\) <em>not</em>
 guarantee VSWR \(\le 2\) when the load has a reactive component \(jX_L\)?
 What role does \(X_L\) play?</p>
 <p>[[input:ans10]] [[validation:ans10]]</p>
-<p><em>Write a brief explanation. This part is graded for completion; a model answer is provided after submission.</em></p>
+<p><em>Syntax hint: Write a brief explanation (1&ndash;2 sentences). This part is graded for completion; a model answer is provided after submission.</em></p>
 ]]></text>
   </questiontext>
   <generalfeedback format="html">

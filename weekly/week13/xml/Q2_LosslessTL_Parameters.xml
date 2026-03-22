@@ -135,7 +135,7 @@ Cp_pF: if set=1 then 100 else if set=2 then 80 else if set=3 then 120 else 50;
 f_Hz: if set=1 then 500e6 else if set=2 then 1e9 else if set=3 then 100e6 else 500e6;
 
 /* Capacitance in F/m */
-Cp: Cp_pF * 1e-12;
+Cp: Cp_pF / 10^12;
 
 /* Display-friendly values */
 eps_r_disp: float(eps_r);
